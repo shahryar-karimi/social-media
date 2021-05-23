@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import cLI.*;
 import cLI.messengerCLI.MessagesCLI;
 import cLI.personalCLI.InfoCLI;
-import graphic.Pages.LoginGraphic;
-import graphic.Pages.MenuGraphic;
-import graphic.Pages.personalPage.PersonalPageSwing;
+import graphic.pages.LoginGraphic;
+import graphic.pages.MenuGraphic;
+import graphic.pages.personalPage.PersonalPageSwing;
 import logic.pages.LoginPage;
 
 public class Manager {

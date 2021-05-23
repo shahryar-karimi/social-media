@@ -1,8 +1,8 @@
-package graphic.Pages.personalPage;
+package graphic.pages.personalPage;
 
 
 import graphic.MyFrame;
-import graphic.Pages.Swing;
+import graphic.pages.Swing;
 import logic.Singleton;
 import logic.Tweet;
 import logic.pages.personal.PersonalPage;

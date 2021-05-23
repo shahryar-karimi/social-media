@@ -1,4 +1,4 @@
-package graphic.Pages;
+package graphic.pages;
 
 import graphic.GraphicPages;
 import graphic.MyFrame;

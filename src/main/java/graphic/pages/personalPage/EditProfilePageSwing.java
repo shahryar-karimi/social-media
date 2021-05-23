@@ -1,8 +1,8 @@
-package graphic.Pages.personalPage;
+package graphic.pages.personalPage;
 
 import graphic.MyFrame;
-import graphic.Pages.FooterPanel;
-import graphic.Pages.Swing;
+import graphic.pages.FooterPanel;
+import graphic.pages.Swing;
 import logic.Account;
 import logic.pages.personal.PersonalPage;
 import org.jdatepicker.impl.JDatePanelImpl;

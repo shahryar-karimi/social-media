@@ -1,6 +1,8 @@
 # social-media
 # branch1
+  <br>
   useless classes deleted
+  <br>
   added personalPage package in graphics\Pages
   PersonalPageSwing added to personalPage package
   EditProfilePageSwing completed and saved

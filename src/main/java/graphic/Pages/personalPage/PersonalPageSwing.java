@@ -1,20 +1,18 @@
-package graphic.Pages;
+package graphic.Pages.personalPage;
 
 
 import graphic.MyFrame;
+import graphic.Pages.Swing;
 import logic.Singleton;
 import logic.Tweet;
 import logic.pages.personal.PersonalPage;
 import utility.AppProperties;
 
-import  javax.swing.*;
-import  javax.swing.border.EmptyBorder;
-import  javax.swing.border.LineBorder;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class PersonalPageSwing extends  Swing  {
+public class PersonalPageSwing extends Swing {
     private final PersonalPage personalPage;
 
     Tweet newTweet = new Tweet();
@@ -32,17 +30,17 @@ public class PersonalPageSwing extends  Swing  {
     private final JButton sendBtn = new JButton(AppProperties.getInstance().getProperty("send"));
 
 
-    private  final  JPanel jPanel1= new    JPanel();
-    private  final  JPanel jPanel2= new    JPanel();
-    private  final  JPanel jPanel3= new    JPanel();
-    private   final JScrollPane jScrollPane1= new    JScrollPane();
-    private   final JScrollPane jScrollPane4= new    JScrollPane();
-    private final JTextArea jTextArea1 = new    JTextArea();
-    private final JTextArea jTextArea4= new    JTextArea();
-    private  final  ScrollPane scrollPane1= new    ScrollPane();
-    private  final  Scrollbar scrollbar1 = new    Scrollbar();
-    private   final TextArea textArea1= new TextArea();
-    private  final  TextArea textArea2= new TextArea();
+    private final JPanel jPanel1 = new JPanel();
+    private final JPanel jPanel2 = new JPanel();
+    private final JPanel jPanel3 = new JPanel();
+    private final JScrollPane jScrollPane1 = new JScrollPane();
+    private final JScrollPane jScrollPane4 = new JScrollPane();
+    private final JTextArea jTextArea1 = new JTextArea();
+    private final JTextArea jTextArea4 = new JTextArea();
+//    private final ScrollPane scrollPane1 = new ScrollPane();
+//    private final Scrollbar scrollbar1 = new Scrollbar();
+//    private final TextArea textArea1 = new TextArea();
+//    private final TextArea textArea2 = new TextArea();
     private final JLabel jLabel1 = new JLabel();
 
     public PersonalPageSwing(PersonalPage personalPage) {
@@ -58,7 +56,7 @@ public class PersonalPageSwing extends  Swing  {
         frame = new MyFrame();
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
                 "Personal page run for account \"" + personalPage.getAccount().toString() + "\"");
-        System.out.println(PersonalPage.showPage());
+//        System.out.println(PersonalPage.showPage());
         showGraphic();
 
     }
@@ -79,7 +77,6 @@ public class PersonalPageSwing extends  Swing  {
         jTextArea4.setEditable(false);
         jScrollPane4.setViewportView(jTextArea4);
         jTextArea4.append(personalPage.showMyTweets());
-
 
 
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
@@ -106,29 +103,29 @@ public class PersonalPageSwing extends  Swing  {
 
         jLabel1.setText("My Tweets");
 
-        GroupLayout jPanel3Layout = new  GroupLayout(jPanel3);
+        GroupLayout jPanel3Layout = new GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
-                jPanel3Layout.createParallelGroup(  GroupLayout.Alignment.LEADING)
+                jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jScrollPane4,   GroupLayout.PREFERRED_SIZE, 397,   GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 397, GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 73, Short.MAX_VALUE))
                         .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
-                                .addContainerGap(  GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
-                jPanel3Layout.createParallelGroup(  GroupLayout.Alignment.LEADING)
-                        .addGroup(  GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel1,   GroupLayout.PREFERRED_SIZE, 16,   GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(  LayoutStyle.ComponentPlacement.RELATED,   GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane4,   GroupLayout.PREFERRED_SIZE, 526,   GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 526, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
 
-        GroupLayout jPanel1Layout = new   GroupLayout(jPanel1);
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -158,24 +155,24 @@ public class PersonalPageSwing extends  Swing  {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(buttons[0], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(   buttons[1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(buttons[1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(   buttons[2], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(buttons[2], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jPanel2, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent( buttons[3], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(buttons[3], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(   buttons[4], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(buttons[4], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(   buttons[5], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(buttons[5], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(   buttons[6], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(buttons[6], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(   buttons[7], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(buttons[7], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(   buttons[8], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(buttons[8], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -196,8 +193,6 @@ public class PersonalPageSwing extends  Swing  {
 
         frame.setVisible(true);
     }
-
-
 
 
     @Override
@@ -225,11 +220,10 @@ public class PersonalPageSwing extends  Swing  {
             System.exit(0);
         } else if (e.getSource() == sendBtn) {
             String newTweetTxt = jTextArea1.getText();
-            assert newTweetTxt != null;
-            if ( !newTweetTxt.equals("")) {
+            if (newTweetTxt != null && !newTweetTxt.isBlank()) {
                 newTweet = personalPage.writeNewTweet(newTweetTxt);
+                personalPage.sendingATweet(newTweet, true);
             }
-            personalPage.sendingATweet(newTweet, false);
             jTextArea4.setText("");
             jTextArea4.append(personalPage.showMyTweets());
             jTextArea1.setText("");

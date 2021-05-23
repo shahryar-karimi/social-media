@@ -11,12 +11,10 @@ import java.util.Scanner;
 public abstract class Swing implements ActionListener {
     protected final MyLogger myLogger;
 
-    MyFrame frame;
+    protected MyFrame frame;
+
     public Swing() {
-
         myLogger = MyLogger.getLogger();
-
-        //frame = new MyFrame();
     }
 
     public abstract void run();

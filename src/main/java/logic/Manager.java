@@ -5,10 +5,9 @@ import java.util.LinkedList;
 import cLI.*;
 import cLI.messengerCLI.MessagesCLI;
 import cLI.personalCLI.InfoCLI;
-import cLI.personalCLI.PersonalPageCLI;
-import graphic.LoginGraphic;
-import graphic.MenuGraphic;
-import graphic.Pages.PersonalPageSwing;
+import graphic.Pages.LoginGraphic;
+import graphic.Pages.MenuGraphic;
+import graphic.Pages.personalPage.PersonalPageSwing;
 import logic.pages.LoginPage;
 
 public class Manager {
@@ -42,16 +41,20 @@ public class Manager {
         return password.equals(account.getPassword());
     }
 
+    public void save() {
+        Singleton.save(this);
+    }
+
     public void quit(Account account) {
         account.setOnline(false);
-        Singleton.save(this);
+        save();
         goToLoginPage();
         System.exit(0);
     }
 
     public void exit(Account account) {
         account.setOnline(false);
-        Singleton.save(this);
+        save();
         System.exit(0);
     }
 
@@ -63,14 +66,9 @@ public class Manager {
     public void goToMenuPage(Account account) {
         MenuGraphic menuGraphic = new MenuGraphic(account.getMenuPage());
         menuGraphic.run();
-//        MenuCLI menuCLI = new MenuCLI(account.getMenuPage());
-//        menuCLI.run();
     }
 
     public void gotoPersonalPage(Account account) {
-        //PersonalPageCLI personalPageCLI = new PersonalPageCLI(account.getPersonalPage());
-        //personalPageCLI.run();
-
         PersonalPageSwing personalPageSwing = new PersonalPageSwing(account.getPersonalPage());
         personalPageSwing.run();
     }

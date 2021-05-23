@@ -1,7 +1,8 @@
-package graphic;
+package graphic.Pages;
 
+import graphic.GraphicPages;
+import graphic.MyFrame;
 import logic.pages.MenuPage;
-import logic.pages.personal.PersonalPage;
 import utility.AppProperties;
 
 import javax.swing.*;

@@ -1,8 +1,25 @@
+utility/DateLabelFormatter.java
+ utility.DateLabelFormatter
+graphic/MyFrame.java
+ graphic.MyFrame
+logic/Logger/Level.java
+ logic.Logger.Level
+graphic/Pages/Swing.java
+ graphic.Pages.Swing
+cLI/CLI.java
+ cLI.CLI
+logic/Logger/MyLogger.java
+ logic.Logger.MyLogger
+Main.java
+ Main
+utility/AppProperties.java
+ utility.AppProperties
+graphic/GraphicPages.java
+ graphic.GraphicPages
+cLI/ConsoleColors.java
+ cLI.ConsoleColors
 logic/pages/messenger/MessagesPage.java
  logic.pages.messenger.MessagesPage
-NewJFrame.java
- NewJFrame
- NewJFrame$1
 logic/pages/Page.java
  logic.pages.Page
 cLI/personalCLI/NotificationsCLI.java
@@ -21,48 +38,28 @@ logic/pages/messenger/ChatRoom.java
  logic.pages.messenger.ChatRoom
 logic/pages/MenuPage.java
  logic.pages.MenuPage
-Main.java
- Main
-logic/Logger/Level.java
- logic.Logger.Level
 graphic/MenuGraphic.java
  graphic.MenuGraphic
-graphic/Pages/Swing.java
- graphic.Pages.Swing
-graphic/MyFrame.java
- graphic.MyFrame
-utility/DateLabelFormatter.java
- utility.DateLabelFormatter
 graphic/LoginGraphic.java
  graphic.LoginGraphic
 logic/Account.java
  logic.Account
-cLI/ConsoleColors.java
- cLI.ConsoleColors
 logic/pages/personal/PersonalPage.java
  logic.pages.personal.PersonalPage
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
 logic/Tweet.java
  logic.Tweet
-graphic/GraphicPages.java
- graphic.GraphicPages
-utility/AppProperties.java
- utility.AppProperties
 logic/pages/TimeLinePage.java
  logic.pages.TimeLinePage
 cLI/messengerCLI/ChatRoomCLI.java
  cLI.messengerCLI.ChatRoomCLI
 logic/pages/SettingPage.java
  logic.pages.SettingPage
-logic/Logger/MyLogger.java
- logic.Logger.MyLogger
 logic/Singleton.java
  logic.Singleton
 cLI/ExplorerCLI.java
  cLI.ExplorerCLI
-cLI/CLI.java
- cLI.CLI
 cLI/personalCLI/PersonalPageCLI.java
  cLI.personalCLI.PersonalPageCLI
 cLI/SettingCLI.java
@@ -88,5 +85,3 @@ cLI/personalCLI/InfoCLI.java
  cLI.personalCLI.InfoCLI
 cLI/messengerCLI/MessagesCLI.java
  cLI.messengerCLI.MessagesCLI
-graphic/Pages/PersonalPageGraphic.java
- graphic.Pages.PersonalPageGraphic

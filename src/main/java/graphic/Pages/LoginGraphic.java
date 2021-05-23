@@ -1,5 +1,6 @@
-package graphic;
+package graphic.Pages;
 
+import graphic.GraphicPages;
 import logic.Account;
 import logic.Singleton;
 import logic.pages.LoginPage;

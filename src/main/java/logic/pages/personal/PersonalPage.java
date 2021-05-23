@@ -13,8 +13,7 @@ public class PersonalPage extends Page {
     private Notification notification;
     private Info info;
 
-    public PersonalPage() {
-    }
+    public PersonalPage() {}
 
     public PersonalPage(Account account, Manager manager) {
         super(account, manager);
@@ -79,8 +78,8 @@ public class PersonalPage extends Page {
                 follower.getTimeLinePage().addTweet(tweet);
         }
         account.getTimeLinePage().addTweet(tweet);
+        manager.save();
     }
-
 
     public String showMyTweets() {
         String result = "--------------------------------------------------\n";
@@ -92,30 +91,37 @@ public class PersonalPage extends Page {
 
     public void editFirstName(String newFirstName) {
         account.setFirstName(newFirstName);
+        manager.save();
     }
 
     public void editLastName(String newLastName) {
         account.setLastName(newLastName);
+        manager.save();
     }
 
     public void editPassword(String newPassword) {
         account.setPassword(newPassword);
+        manager.save();
     }
 
     public void editEmail(String newEmailAddress) {
         account.setEmailAddress(newEmailAddress);
+        manager.save();
     }
 
     public void editPhoneNumber(String newPhoneNumber) {
         account.setPhoneNumber(newPhoneNumber);
+        manager.save();
     }
 
     public void editBio(String newBio) {
         account.setBio(newBio);
+        manager.save();
     }
 
     public void editBirthdayDate(String newBirthdayDate) {
         account.setBirthdayDate(newBirthdayDate);
+        manager.save();
     }
 
     public String putListToFriendsList(String listsName, ArrayList<Account> accounts) {

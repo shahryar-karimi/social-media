@@ -2,7 +2,7 @@
 # branch1
   useless classes deleted
   <br>
-  added personalPage package in graphics\Pages
+  added personalPage package in graphics\pages
   <br>
   PersonalPageSwing added to personalPage package
   <br>

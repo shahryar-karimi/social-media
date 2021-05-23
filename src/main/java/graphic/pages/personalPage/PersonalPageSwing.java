@@ -37,10 +37,6 @@ public class PersonalPageSwing extends Swing {
     private final JScrollPane jScrollPane4 = new JScrollPane();
     private final JTextArea jTextArea1 = new JTextArea();
     private final JTextArea jTextArea4 = new JTextArea();
-//    private final ScrollPane scrollPane1 = new ScrollPane();
-//    private final Scrollbar scrollbar1 = new Scrollbar();
-//    private final TextArea textArea1 = new TextArea();
-//    private final TextArea textArea2 = new TextArea();
     private final JLabel jLabel1 = new JLabel();
 
     public PersonalPageSwing(PersonalPage personalPage) {
@@ -48,23 +44,21 @@ public class PersonalPageSwing extends Swing {
         this.personalPage = personalPage;
         for (JButton button : buttons)
             button.addActionListener(this);
+        addSwing(this);
+        run();
     }
-
 
     @Override
     public void run() {
-        frame = new MyFrame();
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
                 "Personal page run for account \"" + personalPage.getAccount().toString() + "\"");
-//        System.out.println(PersonalPage.showPage());
         showGraphic();
-
     }
 
     @Override
     public void showGraphic() {
 
-        if (frame != null) frame.dispose();
+        this.dispose();
 
         sendBtn.addActionListener(this);
         jTextArea1.setColumns(20);
@@ -177,8 +171,8 @@ public class PersonalPageSwing extends Swing {
                                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        GroupLayout layout = new GroupLayout(frame.getContentPane());
-        frame.getContentPane().setLayout(layout);
+        GroupLayout layout = new GroupLayout(this.getContentPane());
+        this.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -191,28 +185,31 @@ public class PersonalPageSwing extends Swing {
         );
 
 
-        frame.setVisible(true);
+        this.setVisible(true);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttons[0]) {
-            frame.dispose();
-            EditProfilePageSwing editProfilePageSwing = new EditProfilePageSwing(personalPage);
-            editProfilePageSwing.run();
+            this.dispose();
+            new EditProfilePageSwing(personalPage);
         } else if (e.getSource() == buttons[1]) {
             System.out.println(personalPage.showMyTweets());
         } else if (e.getSource() == buttons[2]) {
+
         } else if (e.getSource() == buttons[3]) {
+
         } else if (e.getSource() == buttons[4]) {
+
         } else if (e.getSource() == buttons[5]) {
+
         } else if (e.getSource() == buttons[6]) {  //Back
-            this.frame.setVisible(false);
+            this.setVisible(false);
         } else if (e.getSource() == buttons[7]) { //Quit
             personalPage.getAccount().setOnline(false);
             Singleton.save(personalPage.getManager());
-            frame.dispose();
+            this.dispose();
             personalPage.getManager().goToLoginPage();
         } else if (e.getSource() == buttons[8]) { //exit
             personalPage.getAccount().setOnline(false);

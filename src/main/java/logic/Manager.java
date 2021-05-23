@@ -69,8 +69,7 @@ public class Manager {
     }
 
     public void gotoPersonalPage(Account account) {
-        PersonalPageSwing personalPageSwing = new PersonalPageSwing(account.getPersonalPage());
-        personalPageSwing.run();
+        new PersonalPageSwing(account.getPersonalPage());
     }
 
     public void goToTimeLinePage(Account account) {

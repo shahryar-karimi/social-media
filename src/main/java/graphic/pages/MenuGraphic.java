@@ -78,16 +78,22 @@ public class MenuGraphic extends GraphicPages implements ActionListener {
             mainFrame.dispose();
             menuPage.getManager().gotoPersonalPage(menuPage.getAccount());
         } else if (e.getSource() == buttons[1]) {
+            mainFrame.dispose();
             menuPage.getManager().goToTimeLinePage(menuPage.getAccount());
         } else if (e.getSource() == buttons[2]) {
+            mainFrame.dispose();
             menuPage.getManager().goToExplorerPage(menuPage.getAccount());
         } else if (e.getSource() == buttons[3]) {
+            mainFrame.dispose();
             menuPage.getManager().goToMessagesPage(menuPage.getAccount());
         } else if (e.getSource() == buttons[4]) {
+            mainFrame.dispose();
             menuPage.getManager().goToSettingPage(menuPage.getAccount());
         } else if (e.getSource() == buttons[5]) {
+            mainFrame.dispose();
             menuPage.getManager().quit(menuPage.getAccount());
         } else if (e.getSource() == buttons[6]) {
+            mainFrame.dispose();
             menuPage.getManager().exit(menuPage.getAccount());
         }
     }

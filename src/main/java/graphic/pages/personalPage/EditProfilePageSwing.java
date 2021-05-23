@@ -1,6 +1,5 @@
 package graphic.pages.personalPage;
 
-import graphic.MyFrame;
 import graphic.pages.FooterPanel;
 import graphic.pages.Swing;
 import logic.Account;
@@ -18,7 +17,6 @@ import java.util.Properties;
 
 public class EditProfilePageSwing extends Swing {
     private final PersonalPage personalPage;
-    private MyFrame frame;
     private JButton update;
     private final JTextField firstNameT = new JTextField();
     private final JTextField lastNameT = new JTextField();
@@ -31,22 +29,22 @@ public class EditProfilePageSwing extends Swing {
     public EditProfilePageSwing(PersonalPage personalPage) {
         super();
         this.personalPage = personalPage;
+        addSwing(this);
+        run();
     }
 
     @Override
     public void run() {
-        frame = new MyFrame();
-        frame.setVisible(true);
+        this.setVisible(true);
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
                 "Edit Profile run for account \"" + personalPage.getAccount().toString() + "\"");
-        System.out.println(PersonalPage.showPage());
         showGraphic();
     }
 
     @Override
     public void showGraphic() {
 
-        FooterPanel footerPanel = new FooterPanel(personalPage);
+        FooterPanel footerPanel = new FooterPanel(getManager());
 
         UtilDateModel model = new UtilDateModel();
         Properties p = new Properties();
@@ -84,7 +82,7 @@ public class EditProfilePageSwing extends Swing {
         this.bioT.setRows(5);
         jScrollPane1.setViewportView(this.bioT);
 
-        //if (frame != null) frame.dispose();
+//        this.dispose();
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,8 +151,8 @@ public class EditProfilePageSwing extends Swing {
                                 .addGap(47, 47, 47))
         );
 
-        GroupLayout layout = new GroupLayout(frame.getContentPane());
-        frame.getContentPane().setLayout(layout);
+        GroupLayout layout = new GroupLayout(this.getContentPane());
+        this.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -172,9 +170,7 @@ public class EditProfilePageSwing extends Swing {
                                 .addContainerGap(88, Short.MAX_VALUE)
                                 .addComponent(footerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
-
-        frame.pack();
-
+        this.pack();
     }
 
     public boolean isValidString(String s) {

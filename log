@@ -13,3 +13,30 @@
 2021-05-23 15:36:45 - DEBUG - graphic.MenuGraphic - run - Menu page ran for account "a"
 2021-05-23 15:36:46 - DEBUG - graphic.Pages.PersonalPageSwing - run - Personal page run for account "a"
 2021-05-23 15:36:48 - DEBUG - graphic.Pages.PersonalPageSwing - run - Edit Profile run for account "a"
+2021-05-23 17:19:29 - DEBUG - logic.CommandProcessor - run - program started
+2021-05-23 17:19:37 - INFO - graphic.pages.LoginGraphic - processToEnterAnAccount - an account with user name "a" logged in
+2021-05-23 17:19:37 - DEBUG - graphic.pages.MenuGraphic - run - Menu page ran for account "a"
+2021-05-23 17:19:38 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-05-23 17:19:43 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Edit Profile run for account "a"
+2021-05-23 17:20:31 - DEBUG - logic.CommandProcessor - run - program started
+2021-05-23 17:20:36 - INFO - graphic.pages.LoginGraphic - processToEnterAnAccount - an account with user name "a" logged in
+2021-05-23 17:20:37 - DEBUG - graphic.pages.MenuGraphic - run - Menu page ran for account "a"
+2021-05-23 17:20:38 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-05-23 17:20:41 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Edit Profile run for account "a"
+2021-05-23 17:21:53 - DEBUG - logic.CommandProcessor - run - program started
+2021-05-23 17:21:58 - INFO - graphic.pages.LoginGraphic - processToEnterAnAccount - an account with user name "a" logged in
+2021-05-23 17:21:59 - DEBUG - graphic.pages.MenuGraphic - run - Menu page ran for account "a"
+2021-05-23 17:22:15 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-05-23 17:23:31 - DEBUG - logic.CommandProcessor - run - program started
+2021-05-23 17:23:37 - INFO - graphic.pages.LoginGraphic - processToEnterAnAccount - an account with user name "a" logged in
+2021-05-23 17:23:37 - DEBUG - graphic.pages.MenuGraphic - run - Menu page ran for account "a"
+2021-05-23 17:23:54 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-05-23 17:24:40 - DEBUG - logic.CommandProcessor - run - program started
+2021-05-23 17:24:44 - INFO - graphic.pages.LoginGraphic - processToEnterAnAccount - an account with user name "a" logged in
+2021-05-23 17:24:45 - DEBUG - graphic.pages.MenuGraphic - run - Menu page ran for account "a"
+2021-05-23 17:24:54 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-05-23 17:26:01 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Edit Profile run for account "a"
+2021-05-23 17:26:46 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-05-23 17:27:09 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Edit Profile run for account "a"
+2021-05-23 17:27:17 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-05-23 17:27:35 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Edit Profile run for account "a"

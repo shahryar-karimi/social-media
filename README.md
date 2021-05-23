@@ -16,6 +16,8 @@
   <br>
   now when you change profile program will save everything
   <br>
+  ------------------------------------------------------------------------------------
+  <br>
   set MyFrame locations att the middle
   <br>
   add manager to MyFrame
@@ -25,3 +27,5 @@
   Swing extends JFrame
   <br>
   abstract method run(); has deleted because it can use constructor instead
+  <br>
+  -----------------------------------------------------------------------------------

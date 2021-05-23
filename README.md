@@ -1,12 +1,17 @@
 # social-media
 # branch1
-  <br>
   useless classes deleted
   <br>
   added personalPage package in graphics\Pages
+  <br>
   PersonalPageSwing added to personalPage package
+  <br>
   EditProfilePageSwing completed and saved
+  <br>
   buttons name on EditProfilePageSwing changed
+  <br>
   MyLogger class in logic\Logger has changed to log everything even program is closed
+  <br>
   save() Method added to Manager class in logic
+  <br>
   now when you change profile program will save everything

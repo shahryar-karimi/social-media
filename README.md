@@ -15,3 +15,10 @@
   save() Method added to Manager class in logic
   <br>
   now when you change profile program will save everything
+  <br>
+  set MyFrame locations att the middle
+  <br>
+  add manager to MyFrame
+  <br>
+  add GraphicManager class to graphics
+  <br>

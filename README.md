@@ -22,3 +22,5 @@
   <br>
   add GraphicManager class to graphics
   <br>
+  Swing extends JFrame
+  <br>

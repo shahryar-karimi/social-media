@@ -24,3 +24,4 @@
   <br>
   Swing extends JFrame
   <br>
+  abstract method run(); has deleted because it can use constructor instead

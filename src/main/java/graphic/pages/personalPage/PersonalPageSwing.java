@@ -2,6 +2,7 @@ package graphic.pages.personalPage;
 
 
 import graphic.MyFrame;
+import graphic.pages.FooterPanel;
 import graphic.pages.Swing;
 import logic.Singleton;
 import logic.Tweet;
@@ -22,10 +23,7 @@ public class PersonalPageSwing extends Swing {
             new JButton(AppProperties.getInstance().getProperty("my-followers")),
             new JButton(AppProperties.getInstance().getProperty("my-black-list")),
             new JButton(AppProperties.getInstance().getProperty("notifications")),
-            new JButton(AppProperties.getInstance().getProperty("create-list")),
-            new JButton(AppProperties.getInstance().getProperty("back")),
-            new JButton(AppProperties.getInstance().getProperty("Quit")),
-            new JButton(AppProperties.getInstance().getProperty("Exit"))
+            new JButton(AppProperties.getInstance().getProperty("create-list"))
     };
     private final JButton sendBtn = new JButton(AppProperties.getInstance().getProperty("send"));
 
@@ -57,6 +55,8 @@ public class PersonalPageSwing extends Swing {
 
     @Override
     public void showGraphic() {
+
+        FooterPanel footerPanel = new FooterPanel(getManager());
 
         this.dispose();
 
@@ -131,10 +131,7 @@ public class PersonalPageSwing extends Swing {
                                         .addComponent(buttons[2], GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(buttons[3], GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addComponent(buttons[4], GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                        .addComponent(buttons[5], GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                        .addComponent(buttons[6], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(buttons[7], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(buttons[8], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(buttons[5], GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,13 +157,7 @@ public class PersonalPageSwing extends Swing {
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(buttons[4], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(buttons[5], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(buttons[6], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(buttons[7], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(buttons[8], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(buttons[5], GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -176,12 +167,19 @@ public class PersonalPageSwing extends Swing {
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 580, GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 7, Short.MAX_VALUE))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(footerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(88, Short.MAX_VALUE)
+                                .addComponent(footerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
 
 
@@ -195,7 +193,8 @@ public class PersonalPageSwing extends Swing {
             this.dispose();
             new EditProfilePageSwing(personalPage);
         } else if (e.getSource() == buttons[1]) {
-            System.out.println(personalPage.showMyTweets());
+            this.dispose();
+            new MyFollowings(personalPage);
         } else if (e.getSource() == buttons[2]) {
 
         } else if (e.getSource() == buttons[3]) {
@@ -203,18 +202,6 @@ public class PersonalPageSwing extends Swing {
         } else if (e.getSource() == buttons[4]) {
 
         } else if (e.getSource() == buttons[5]) {
-
-        } else if (e.getSource() == buttons[6]) {  //Back
-            this.setVisible(false);
-        } else if (e.getSource() == buttons[7]) { //Quit
-            personalPage.getAccount().setOnline(false);
-            Singleton.save(personalPage.getManager());
-            this.dispose();
-            personalPage.getManager().goToLoginPage();
-        } else if (e.getSource() == buttons[8]) { //exit
-            personalPage.getAccount().setOnline(false);
-            Singleton.save(personalPage.getManager());
-            System.exit(0);
         } else if (e.getSource() == sendBtn) {
             String newTweetTxt = jTextArea1.getText();
             if (newTweetTxt != null && !newTweetTxt.isBlank()) {

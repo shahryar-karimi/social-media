@@ -10,6 +10,7 @@ public abstract class Swing extends MyFrame implements ActionListener {
 
     protected final MyLogger myLogger;
     private static GraphicManager manager;
+    protected FooterPanel footerPanel = new FooterPanel(getManager());
 
     public Swing() {
         myLogger = MyLogger.getLogger();

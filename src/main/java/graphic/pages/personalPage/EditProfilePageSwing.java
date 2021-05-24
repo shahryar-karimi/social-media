@@ -44,8 +44,6 @@ public class EditProfilePageSwing extends Swing {
     @Override
     public void showGraphic() {
 
-        FooterPanel footerPanel = new FooterPanel(getManager());
-
         UtilDateModel model = new UtilDateModel();
         Properties p = new Properties();
         p.put("text.today", "Today");

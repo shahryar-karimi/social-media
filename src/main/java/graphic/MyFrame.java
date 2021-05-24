@@ -3,6 +3,7 @@ package graphic;
 import javax.swing.*;
 
 public class MyFrame extends JFrame {
+
     public MyFrame() {
         this.setLayout(null);
         this.setSize(600, 800);

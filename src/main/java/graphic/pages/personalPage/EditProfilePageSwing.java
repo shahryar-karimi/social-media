@@ -1,6 +1,6 @@
 package graphic.pages.personalPage;
 
-import graphic.pages.FooterPanel;
+import graphic.FooterPanel;
 import graphic.pages.Swing;
 import logic.Account;
 import logic.pages.personal.PersonalPage;
@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.util.Properties;
 
 public class EditProfilePageSwing extends Swing {
-    private final PersonalPage personalPage;
     private JButton update;
     private final JTextField firstNameT = new JTextField();
     private final JTextField lastNameT = new JTextField();
@@ -28,7 +27,8 @@ public class EditProfilePageSwing extends Swing {
 
     public EditProfilePageSwing(PersonalPage personalPage) {
         super();
-        this.personalPage = personalPage;
+        this.page = personalPage;
+        footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         addSwing(this);
         run();
     }
@@ -37,7 +37,7 @@ public class EditProfilePageSwing extends Swing {
     public void run() {
         this.setVisible(true);
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
-                "Edit Profile run for account \"" + personalPage.getAccount().toString() + "\"");
+                "Edit Profile run for account \"" + page.getAccount().toString() + "\"");
         showGraphic();
     }
 
@@ -79,8 +79,6 @@ public class EditProfilePageSwing extends Swing {
         this.bioT.setColumns(20);
         this.bioT.setRows(5);
         jScrollPane1.setViewportView(this.bioT);
-
-//        this.dispose();
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,7 +166,7 @@ public class EditProfilePageSwing extends Swing {
                                 .addContainerGap(88, Short.MAX_VALUE)
                                 .addComponent(footerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
-        this.pack();
+
     }
 
     public boolean isValidString(String s) {
@@ -183,7 +181,7 @@ public class EditProfilePageSwing extends Swing {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == update) {
-            Account account = personalPage.getAccount();
+            Account account = page.getAccount();
             String newFirstName = firstNameT.getText();
             String newLastName = lastNameT.getText();
             String newPassword = passwordT.getText();
@@ -194,31 +192,31 @@ public class EditProfilePageSwing extends Swing {
             String msg = "";
             if (isValidString(newFirstName)) {
                 msg += writeMsg("first name", account.getFirstName(), newFirstName);
-                personalPage.editFirstName(newFirstName);
+                ((PersonalPage) page).editFirstName(newFirstName);
             }
             if (isValidString(newLastName)) {
                 msg += writeMsg("last name", account.getLastName(), newLastName);
-                personalPage.editLastName(newLastName);
+                ((PersonalPage) page).editLastName(newLastName);
             }
             if (isValidString(newPassword)) {
                 msg += writeMsg("password", account.getPassword(), newPassword);
-                personalPage.editPassword(newPassword);
+                ((PersonalPage) page).editPassword(newPassword);
             }
             if (isValidString(newBirthdayDate)) {
                 msg += writeMsg("birthday date", account.getBirthdayDate(), newBirthdayDate);
-                personalPage.editBirthdayDate(newBirthdayDate);
+                ((PersonalPage) page).editBirthdayDate(newBirthdayDate);
             }
             if (isValidString(newPhoneNumber)) {
                 msg += writeMsg("phone number", account.getPhoneNumber(), newPhoneNumber);
-                personalPage.editPhoneNumber(newPhoneNumber);
+                ((PersonalPage) page).editPhoneNumber(newPhoneNumber);
             }
             if (isValidString(newEmail)) {
                 msg += writeMsg("email", account.getEmailAddress(), newEmail);
-                personalPage.editEmail(newEmail);
+                ((PersonalPage) page).editEmail(newEmail);
             }
             if (isValidString(newBio)) {
                 msg += writeMsg("bio", account.getBio(), newBio);
-                personalPage.editBio(newBio);
+                ((PersonalPage) page).editBio(newBio);
             }
             msg = msg.trim();
             JOptionPane.showMessageDialog(null, msg, "profile edited", JOptionPane.INFORMATION_MESSAGE);

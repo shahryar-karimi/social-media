@@ -1,5 +1,6 @@
 package graphic.pages.personalPage;
 
+import graphic.FooterPanel;
 import graphic.pages.Swing;
 import logic.Account;
 import logic.pages.personal.PersonalPage;
@@ -17,11 +18,11 @@ public class MyFollowings extends Swing {
     private JList<String> myJList;
     private JTextField searchTxt;
     private DefaultListModel<String> defaultListModel = new DefaultListModel<>();
-    private final PersonalPage personalPage;
 
     public MyFollowings(PersonalPage personalPage) {
         super();
-        this.personalPage = personalPage;
+        this.page = personalPage;
+        footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         addSwing(this);
         run();
         this.bindData();
@@ -29,7 +30,7 @@ public class MyFollowings extends Swing {
 
     private ArrayList<String>  getStars() {
         ArrayList<String> stars = new ArrayList<>();
-        LinkedList<Account> accounts = personalPage.myFollowings();
+        LinkedList<Account> accounts = ((PersonalPage) page).myFollowings();
         for (Account account :accounts) {
             if (account.isActive()) {
                 stars.add(account.toString());//+" "+ account.getFirstName()+" "+ account.getLastName());
@@ -67,7 +68,7 @@ public class MyFollowings extends Swing {
     public void run() {
         this.setVisible(true);
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
-                "Personal page run for account \"" + personalPage.getAccount().toString() + "\"");
+                "Personal page run for account \"" + page.getAccount().toString() + "\"");
         showGraphic();
     }
 
@@ -150,7 +151,7 @@ public class MyFollowings extends Swing {
     }
 
     private void myJListMouseClicked(MouseEvent evt) {
-        new InfoPageSwing(myJList.getSelectedValuesList(), personalPage);
+        new InfoPageSwing(myJList.getSelectedValuesList(), ((PersonalPage) page));
         // JOptionPane.showMessageDialog(rootPane, myJList.getSelectedValuesList(), "selected stars", JOptionPane.INFORMATION_MESSAGE);
     }
 

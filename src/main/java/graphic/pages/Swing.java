@@ -1,8 +1,10 @@
 package graphic.pages;
 
+import graphic.FooterPanel;
 import graphic.GraphicManager;
 import graphic.MyFrame;
 import logic.Logger.MyLogger;
+import logic.pages.Page;
 
 import java.awt.event.ActionListener;
 
@@ -10,7 +12,8 @@ public abstract class Swing extends MyFrame implements ActionListener {
 
     protected final MyLogger myLogger;
     private static GraphicManager manager;
-    protected FooterPanel footerPanel = new FooterPanel(getManager());
+    protected FooterPanel footerPanel;
+    protected Page page;
 
     public Swing() {
         myLogger = MyLogger.getLogger();

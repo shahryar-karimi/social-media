@@ -38,14 +38,6 @@ public class LoginGraphic extends GraphicPages {
         }
     }
 
-    public LoginPage getLoginPage() {
-        return loginPage;
-    }
-
-    public void setLoginPage(LoginPage loginPage) {
-        this.loginPage = loginPage;
-    }
-
     private void processToEnterAnAccount() {
         String userName = getUserNameThatExist();
         Account account = loginPage.getManager().searchByUserName(userName);

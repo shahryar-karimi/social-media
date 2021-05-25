@@ -21,8 +21,12 @@ public class GraphicManager {
     }
 
     public void back() {
-        swings.pop();
-        swings.peek().run();
+        if (!swings.isEmpty()) {
+            swings.pop();
+        }
+        if (!swings.isEmpty()) {
+            swings.peek().run();
+        }
     }
 
     public Stack<Swing> getSwings() {

@@ -7,6 +7,7 @@ import cLI.messengerCLI.MessagesCLI;
 import cLI.personalCLI.InfoCLI;
 import graphic.pages.LoginGraphic;
 import graphic.pages.MenuGraphic;
+import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import logic.pages.LoginPage;
 
@@ -24,6 +25,7 @@ public class Manager {
     public Account createAnAccount(String firstName, String lastName, String userName, String password, String emailAddress, String phoneNumber, String bio) {
         Account newAccount = new Account(this, firstName, lastName, userName, password, emailAddress, phoneNumber, bio);
         accounts.add(newAccount);
+        save();
         return newAccount;
     }
 
@@ -32,6 +34,7 @@ public class Manager {
     }
 
     public Account searchByUserName(String userName) {
+        if (userName == null) return null;
         for (Account account : accounts)
             if (account.getUserName().equals(userName)) return account;
         return null;
@@ -47,7 +50,6 @@ public class Manager {
 
     public void quit(Account account) {
         account.setOnline(false);
-        save();
         goToLoginPage();
         System.exit(0);
     }
@@ -59,40 +61,49 @@ public class Manager {
     }
 
     public void goToLoginPage() {
-        LoginGraphic loginGraphic = new LoginGraphic(new LoginPage(this));
-        loginGraphic.run();
+//        LoginGraphic loginGraphic = new LoginGraphic(new LoginPage(this));
+//        loginGraphic.run();
+        save();
+        new LoginSwing(new LoginPage(this));
     }
 
     public void goToMenuPage(Account account) {
+        save();
         MenuGraphic menuGraphic = new MenuGraphic(account.getMenuPage());
         menuGraphic.run();
     }
 
     public void gotoPersonalPage(Account account) {
+        save();
         new PersonalPageSwing(account.getPersonalPage());
     }
 
     public void goToTimeLinePage(Account account) {
+        save();
         TimeLineCLI timeLineCLI = new TimeLineCLI(account.getTimeLinePage());
         timeLineCLI.run();
     }
 
     public void goToExplorerPage(Account account) {
+        save();
         ExplorerCLI explorerCLI = new ExplorerCLI(account.getExplorerPage());
         explorerCLI.run();
     }
 
     public void goToSettingPage(Account account) {
+        save();
         SettingCLI settingCLI = new SettingCLI(account.getSettingPage());
         settingCLI.run();
     }
 
     public void goToMessagesPage(Account account) {
+        save();
         MessagesCLI messagesCLI = new MessagesCLI(account.getMessagesPage());
         messagesCLI.run();
     }
 
     public void goToInfoPage(Account infosAccount, Account visitor) {
+        save();
         if (!infosAccount.hasBlocked(visitor) && infosAccount.isActive()) {
             InfoCLI infoCLI = new InfoCLI(infosAccount.getPersonalPage().getInfo(), visitor);
             infoCLI.run();

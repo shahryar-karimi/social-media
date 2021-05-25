@@ -1,5 +1,6 @@
 package graphic.pages.personalPage;
 
+import graphic.FooterPanel;
 import graphic.pages.Swing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import logic.pages.personal.PersonalPage;
@@ -10,12 +11,12 @@ import java.util.List;
 
 public class InfoPageSwing extends Swing {
 
-    private final PersonalPage personalPage;
     private List<String> selectedValuesList;
 
     public InfoPageSwing(List<String> selectedValuesList, PersonalPage personalPage) {
         super();
-        this.personalPage = personalPage;
+        this.page = personalPage;
+        footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         this.selectedValuesList = selectedValuesList;
         addSwing(this);
         run();
@@ -26,7 +27,7 @@ public class InfoPageSwing extends Swing {
     public void run() {
         this.setVisible(true);
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
-                "Personal page run for account \"" + this.personalPage.getAccount().toString() + "\"");
+                "Personal page run for account \"" + this.page.getAccount().toString() + "\"");
         showGraphic();
     }
 

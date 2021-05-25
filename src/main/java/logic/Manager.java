@@ -9,6 +9,7 @@ import graphic.pages.LoginGraphic;
 import graphic.pages.MenuGraphic;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
+import logic.Logger.MyLogger;
 import logic.pages.LoginPage;
 
 public class Manager {
@@ -57,12 +58,12 @@ public class Manager {
     public void exit(Account account) {
         account.setOnline(false);
         save();
+        MyLogger logger = MyLogger.getLogger();
+        logger.debug(Manager.class.getName(), "exit", "Program ended");
         System.exit(0);
     }
 
     public void goToLoginPage() {
-//        LoginGraphic loginGraphic = new LoginGraphic(new LoginPage(this));
-//        loginGraphic.run();
         save();
         new LoginSwing(new LoginPage(this));
     }

@@ -151,6 +151,7 @@ public class MyFollowings extends Swing {
     }
 
     private void myJListMouseClicked(MouseEvent evt) {
+        this.dispose();
         new InfoPageSwing(myJList.getSelectedValuesList(), ((PersonalPage) page));
         // JOptionPane.showMessageDialog(rootPane, myJList.getSelectedValuesList(), "selected stars", JOptionPane.INFORMATION_MESSAGE);
     }

@@ -22,7 +22,7 @@ public class GraphicManager {
 
     public void back() {
         if (!swings.isEmpty()) {
-            swings.pop();
+            swings.pop().dispose();
         }
         if (!swings.isEmpty()) {
             swings.peek().run();

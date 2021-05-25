@@ -201,6 +201,7 @@ public class PersonalPageSwing extends Swing {
         } else if (e.getSource() == buttons[4]) {
 
         } else if (e.getSource() == buttons[5]) {
+
         } else if (e.getSource() == sendBtn) {
             String newTweetTxt = jTextArea1.getText();
             if (newTweetTxt != null && !newTweetTxt.isBlank()) {

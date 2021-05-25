@@ -6,28 +6,22 @@ cLI/CLI.java
  cLI.CLI
 graphic/pages/login/LoginPanel.java
  graphic.pages.login.LoginPanel
-cLI/MenuCLI.java
- cLI.MenuCLI
+Main.java
+ Main
 logic/Logger/Level.java
  logic.Logger.Level
 utility/AppProperties.java
  utility.AppProperties
 cLI/ConsoleColors.java
  cLI.ConsoleColors
-logic/pages/LoginPage.java
- logic.pages.LoginPage
+graphic/GraphicPages.java
+ graphic.GraphicPages
 logic/Logger/MyLogger.java
  logic.Logger.MyLogger
 graphic/MyFrame.java
  graphic.MyFrame
-graphic/GraphicPages.java
- graphic.GraphicPages
-logic/pages/personal/Info.java
- logic.pages.personal.Info
-Main.java
- Main
-cLI/SettingCLI.java
- cLI.SettingCLI
+graphic/pages/personalPage/EditProfilePageSwing.java
+ graphic.pages.personalPage.EditProfilePageSwing
 logic/pages/messenger/MessagesPage.java
  logic.pages.messenger.MessagesPage
 logic/pages/Page.java
@@ -36,10 +30,10 @@ cLI/personalCLI/NotificationsCLI.java
  cLI.personalCLI.NotificationsCLI
 logic/pages/personal/Notification.java
  logic.pages.personal.Notification
-cLI/personalCLI/InfoCLI.java
- cLI.personalCLI.InfoCLI
-cLI/LoginCLI.java
- cLI.LoginCLI
+logic/Manager.java
+ logic.Manager
+graphic/pages/personalPage/PersonalPageSwing.java
+ graphic.pages.personalPage.PersonalPageSwing
 logic/pages/messenger/Message.java
  logic.pages.messenger.Message
 logic/pages/messenger/ChatRoom.java
@@ -48,10 +42,12 @@ graphic/pages/LoginGraphic.java
  graphic.pages.LoginGraphic
 logic/pages/MenuPage.java
  logic.pages.MenuPage
-cLI/messengerCLI/MessagesCLI.java
- cLI.messengerCLI.MessagesCLI
-logic/CommandProcessor.java
- logic.CommandProcessor
+graphic/pages/login/LoginSwing.java
+ graphic.pages.login.LoginSwing
+graphic/pages/personalPage/MyFollowings.java
+ graphic.pages.personalPage.MyFollowings
+ graphic.pages.personalPage.MyFollowings$1
+ graphic.pages.personalPage.MyFollowings$2
 logic/Account.java
  logic.Account
 graphic/pages/MenuGraphic.java
@@ -60,12 +56,14 @@ logic/pages/personal/PersonalPage.java
  logic.pages.personal.PersonalPage
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
-cLI/TimeLineCLI.java
- cLI.TimeLineCLI
+graphic/pages/personalPage/InfoPageSwing.java
+ graphic.pages.personalPage.InfoPageSwing
 logic/Tweet.java
  logic.Tweet
 logic/pages/TimeLinePage.java
  logic.pages.TimeLinePage
+graphic/GraphicManager.java
+ graphic.GraphicManager
 cLI/messengerCLI/ChatRoomCLI.java
  cLI.messengerCLI.ChatRoomCLI
 logic/pages/SettingPage.java
@@ -74,25 +72,27 @@ logic/Singleton.java
  logic.Singleton
 cLI/ExplorerCLI.java
  cLI.ExplorerCLI
-cLI/personalCLI/PersonalPageCLI.java
- cLI.personalCLI.PersonalPageCLI
-graphic/pages/personalPage/EditProfilePageSwing.java
- graphic.pages.personalPage.EditProfilePageSwing
-graphic/pages/Swing.java
- graphic.pages.Swing
-graphic/pages/personalPage/InfoPageSwing.java
- graphic.pages.personalPage.InfoPageSwing
-graphic/GraphicManager.java
- graphic.GraphicManager
-graphic/pages/personalPage/MyFollowings.java
- graphic.pages.personalPage.MyFollowings
- graphic.pages.personalPage.MyFollowings$1
- graphic.pages.personalPage.MyFollowings$2
-graphic/pages/personalPage/PersonalPageSwing.java
- graphic.pages.personalPage.PersonalPageSwing
 graphic/FooterPanel.java
  graphic.FooterPanel
-graphic/pages/login/LoginSwing.java
- graphic.pages.login.LoginSwing
-logic/Manager.java
- logic.Manager
+cLI/personalCLI/PersonalPageCLI.java
+ cLI.personalCLI.PersonalPageCLI
+cLI/SettingCLI.java
+ cLI.SettingCLI
+logic/pages/personal/Info.java
+ logic.pages.personal.Info
+logic/CommandProcessor.java
+ logic.CommandProcessor
+cLI/MenuCLI.java
+ cLI.MenuCLI
+cLI/LoginCLI.java
+ cLI.LoginCLI
+logic/pages/LoginPage.java
+ logic.pages.LoginPage
+cLI/TimeLineCLI.java
+ cLI.TimeLineCLI
+cLI/personalCLI/InfoCLI.java
+ cLI.personalCLI.InfoCLI
+cLI/messengerCLI/MessagesCLI.java
+ cLI.messengerCLI.MessagesCLI
+graphic/pages/Swing.java
+ graphic.pages.Swing

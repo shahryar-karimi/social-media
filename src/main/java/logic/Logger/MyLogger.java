@@ -21,7 +21,7 @@ public class MyLogger {
     public FileWriter getFileWriter() {
         if (fileWriter == null) {
             try {
-                fileWriter = new FileWriter(file);
+                fileWriter = new FileWriter(file, true);
             } catch (Exception e) {
                 e.printStackTrace();
             }

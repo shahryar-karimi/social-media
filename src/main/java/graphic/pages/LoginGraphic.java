@@ -1,5 +1,6 @@
-package graphic;
+package graphic.pages;
 
+import graphic.GraphicPages;
 import logic.Account;
 import logic.Singleton;
 import logic.pages.LoginPage;
@@ -35,14 +36,6 @@ public class LoginGraphic extends GraphicPages {
                 }
             }
         }
-    }
-
-    public LoginPage getLoginPage() {
-        return loginPage;
-    }
-
-    public void setLoginPage(LoginPage loginPage) {
-        this.loginPage = loginPage;
     }
 
     private void processToEnterAnAccount() {

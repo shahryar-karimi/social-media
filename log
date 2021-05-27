@@ -1,4 +1,0 @@
-2021-05-23 00:15:43 - DEBUG - logic.CommandProcessor - run - program started
-2021-05-23 00:15:57 - INFO - graphic.LoginGraphic - processToEnterAnAccount - an account with user name "a" logged in
-2021-05-23 00:15:58 - DEBUG - graphic.MenuGraphic - run - Menu page ran for account "a"
-2021-05-23 00:15:59 - DEBUG - graphic.Pages.PersonalPageSwing - run - Personal page run for account "a"

@@ -34,7 +34,9 @@ public class LoginCLI extends CLI {
     private void processToEnterAnAccount() {
         String userName = getUserNameThatExist();
         if (userName.equals("back")) return;
+
         Account account = loginPage.getManager().searchByUserName(userName);
+
         System.out.println("Enter your password:");
         String password = scanner.next();
         while (!password.equals("back") && !processIsCorrectPassword(account, password)) {
@@ -42,6 +44,7 @@ public class LoginCLI extends CLI {
             password = scanner.next();
         }
         if (password.equals("back")) return;
+
         myLogger.info(LoginCLI.class.getName(), "processToEnterAnAccount",
                 "an account with user name \"" + account.toString() + "\" logged in");
         System.out.println(ConsoleColors.GREEN + "You are log in" + ConsoleColors.RESET);
@@ -53,17 +56,23 @@ public class LoginCLI extends CLI {
         System.out.println("Enter your first name:");
         String firstName = scanner.next();
         if (firstName.equals("back")) return;
+
         System.out.println("Enter your last name:");
         String lastName = scanner.next();
         if (lastName.equals("back")) return;
+
         String userName = getUserNameThatDoesntExist();
         if (userName.equals("back")) return;
+
         System.out.println("Enter your password:");
         String password = scanner.next();
         if (password.equals("back")) return;
+
         String emailAddress = getEmailAddress();
         if (emailAddress.equals("back")) return;
+
         Account account = loginPage.getManager().createAnAccount(firstName, lastName, userName, password, emailAddress, null, null);
+
         if (account != null) {
             myLogger.info(LoginCLI.class.getName(), "processCreatingAnAccount",
                     "an account with user name \"" + account.toString() + "\" has created");

@@ -1,9 +1,9 @@
-package graphic.pages.personalPage;
+package graphic.pages;
 
 import graphic.FooterPanel;
-import graphic.pages.Swing;
+import graphic.pages.personalPage.InfoPageSwing;
 import logic.Account;
-import logic.pages.personal.PersonalPage;
+import logic.pages.Page;
 import utility.AppProperties;
 
 import javax.swing.*;
@@ -13,37 +13,36 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Locale;
 
-public class MyFollowings extends Swing {
+public class AccountsListSwing extends Swing {
 
     private JList<String> myJList;
     private JTextField searchTxt;
     private DefaultListModel<String> defaultListModel = new DefaultListModel<>();
+    private LinkedList<Account> accounts;
 
-    public MyFollowings(PersonalPage personalPage) {
+    public AccountsListSwing(Page page, LinkedList<Account> accounts) {
         super();
-        this.page = personalPage;
+        this.page = page;
+        this.accounts = accounts;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         addSwing(this);
         run();
         this.bindData();
     }
 
-    private ArrayList<String>  getStars() {
+    private ArrayList<String> getStars(LinkedList<Account> accounts) {
         ArrayList<String> stars = new ArrayList<>();
-        LinkedList<Account> accounts = ((PersonalPage) page).myFollowings();
-        for (Account account :accounts) {
+        for (Account account : accounts) {
             if (account.isActive()) {
-                stars.add(account.toString());//+" "+ account.getFirstName()+" "+ account.getLastName());
+                stars.add(account.toString());
             }
         }
         return stars;
     }
 
-
-
     private void bindData() {
-        for (String star:getStars()) {
-            defaultListModel.addElement( star);
+        for (String star : getStars(accounts)) {
+            defaultListModel.addElement(star);
         }
         myJList.setModel(defaultListModel);
         myJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -51,7 +50,7 @@ public class MyFollowings extends Swing {
 
     private void searchFilter(String searchTerm) {
         DefaultListModel<String> filteredItems = new DefaultListModel<>();
-        ArrayList<String> stars = getStars();
+        ArrayList<String> stars = getStars(accounts);
 
         stars.forEach((star) -> {
             String starName = stars.toString().toLowerCase(Locale.ROOT);
@@ -67,8 +66,6 @@ public class MyFollowings extends Swing {
     @Override
     public void run() {
         this.setVisible(true);
-        myLogger.debug(PersonalPageSwing.class.getName(), "run",
-                "Personal page run for account \"" + page.getAccount().toString() + "\"");
         showGraphic();
     }
 
@@ -152,7 +149,8 @@ public class MyFollowings extends Swing {
 
     private void myJListMouseClicked(MouseEvent evt) {
         this.dispose();
-        new InfoPageSwing(myJList.getSelectedValuesList(), ((PersonalPage) page));
+        Account account = page.getManager().searchByUserName(myJList.getSelectedValue());
+        new InfoPageSwing(myJList.getSelectedValuesList(), account.getPersonalPage().getInfo());
         // JOptionPane.showMessageDialog(rootPane, myJList.getSelectedValuesList(), "selected stars", JOptionPane.INFORMATION_MESSAGE);
     }
 

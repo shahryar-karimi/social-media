@@ -2,8 +2,7 @@ package graphic.pages.personalPage;
 
 import graphic.FooterPanel;
 import graphic.pages.Swing;
-import graphic.pages.personalPage.PersonalPageSwing;
-import logic.pages.personal.PersonalPage;
+import logic.pages.personal.Info;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,13 +10,13 @@ import java.util.List;
 
 public class InfoPageSwing extends Swing {
 
-    private List<String> selectedValuesList;
+//    private List<String> selectedValuesList;
 
-    public InfoPageSwing(List<String> selectedValuesList, PersonalPage personalPage) {
+    public InfoPageSwing(List<String> selectedValuesList, Info info) {
         super();
-        this.page = personalPage;
+        this.page = info;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
-        this.selectedValuesList = selectedValuesList;
+//        this.selectedValuesList = selectedValuesList;
         addSwing(this);
         run();
 
@@ -34,29 +33,33 @@ public class InfoPageSwing extends Swing {
     @Override
     public void showGraphic() {
 
-        JPanel  jPanel1 = new javax.swing.JPanel();
+        JPanel jPanel1 = new javax.swing.JPanel();
         JTextField followersTxt = new javax.swing.JTextField();
-        JButton  followOrNotBtn = new javax.swing.JButton();
-        JTextField  followingTxt = new javax.swing.JTextField();
+        JButton followOrNotBtn = new javax.swing.JButton();
+        JTextField followingTxt = new javax.swing.JTextField();
         JTextField accountUserNameTxt = new javax.swing.JTextField();
-        JButton  sendMessageBtn = new javax.swing.JButton();
+        JButton sendMessageBtn = new javax.swing.JButton();
         JTextField accountFirstLastNameTxt = new javax.swing.JTextField();
         JButton AddOrRemoveListBtn = new javax.swing.JButton();
 
         //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         followersTxt.setEditable(false);
+        followersTxt.setText("  Followers : " + page.getAccount().getFollowers().size());
 
         followOrNotBtn.setText("Follow");
 
         followingTxt.setEditable(false);
+        followingTxt.setText("  Followings : " + page.getAccount().getFollowings().size());
 
         accountUserNameTxt.setEditable(false);
+        accountUserNameTxt.setText("" + page.getAccount());
         //accountUserNameTxt.setText(selectedValuesList.);  // set userName
 
         sendMessageBtn.setText("Send Message");
 
         accountFirstLastNameTxt.setEditable(false);
+        accountFirstLastNameTxt.setText(page.getAccount().getFirstName() + " " + page.getAccount().getLastName());
 
         AddOrRemoveListBtn.setText("Add to List");
 

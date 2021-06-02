@@ -2,6 +2,7 @@ package graphic.pages.personalPage;
 
 
 import graphic.FooterPanel;
+import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
 import logic.Tweet;
 import logic.pages.personal.PersonalPage;
@@ -193,11 +194,13 @@ public class PersonalPageSwing extends Swing {
             new EditProfilePageSwing(((PersonalPage) page));
         } else if (e.getSource() == buttons[1]) {
             this.dispose();
-            new MyFollowings(((PersonalPage) page));
+            new AccountsListSwing(page, ((PersonalPage) page).myFollowings());
         } else if (e.getSource() == buttons[2]) {
-
+            this.dispose();
+            new AccountsListSwing(page, ((PersonalPage) page).myFollowers());
         } else if (e.getSource() == buttons[3]) {
-
+            this.dispose();
+            new AccountsListSwing(page, ((PersonalPage) page).myBlackList());
         } else if (e.getSource() == buttons[4]) {
 
         } else if (e.getSource() == buttons[5]) {

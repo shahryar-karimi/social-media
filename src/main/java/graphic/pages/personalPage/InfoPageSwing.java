@@ -34,26 +34,30 @@ public class InfoPageSwing extends Swing {
     public void showGraphic() {
 
         JPanel jPanel1 = new JPanel();
-        JButton followOrNotBtn = new JButton();
-        JButton addOrRemoveListBtn = new JButton();
+
         JLabel nameLbl = new JLabel();
         JLabel userNameLbl = new JLabel();
         JLabel idLbl = new JLabel();
         JLabel lastSeenLbl = new JLabel();
-        JScrollPane jScrollPane1 = new JScrollPane();
-        JTextArea bioTxtArea = new JTextArea();
+        JLabel followersQuantityLbl = new JLabel();
+        JLabel followingsQuantityLbl = new JLabel();
         JLabel bioLbl = new JLabel();
+
+        JButton followOrNotBtn = new JButton();
+        JButton addOrRemoveListBtn = new JButton();
         JButton blockBtn = new JButton();
         JButton sendMessageBtn = new JButton();
+        JButton reportBtn1 = new JButton();
+        JButton muteBtn = new JButton();
+        JButton followersBtn = new JButton();
+        JButton followingsBtn = new JButton();
+
+        JScrollPane jScrollPane1 = new JScrollPane();
+        JTextArea bioTxtArea = new JTextArea();
+
+
         JScrollPane jScrollPane3 = new JScrollPane();
         JTextArea tweetTxtArea = new JTextArea();
-        JButton reportBtn1 = new JButton();
-        JLabel followersLbl = new JLabel();
-        JLabel followersQuantityLbl = new JLabel();
-        JLabel followingsLbl = new JLabel();
-        JLabel followingsQuantityLbl = new JLabel();
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         followOrNotBtn.setText("Follow");
 
@@ -67,6 +71,7 @@ public class InfoPageSwing extends Swing {
 
         lastSeenLbl.setText("LastSeen");
 
+        bioTxtArea.setEditable(false);
         bioTxtArea.setColumns(20);
         bioTxtArea.setRows(5);
         jScrollPane1.setViewportView(bioTxtArea);
@@ -77,19 +82,26 @@ public class InfoPageSwing extends Swing {
 
         sendMessageBtn.setText("Send Message");
 
+        tweetTxtArea.setEditable(false);
         tweetTxtArea.setColumns(20);
         tweetTxtArea.setRows(5);
         jScrollPane3.setViewportView(tweetTxtArea);
 
         reportBtn1.setText("Report");
 
-        followersLbl.setText("followers      ");
+        followersQuantityLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        followersQuantityLbl.setHorizontalTextPosition(SwingConstants.CENTER);
+        followersQuantityLbl.setText("QtyFollowers");
 
-        followersQuantityLbl.setText("Qtyfollowers      ");
-
-        followingsLbl.setText("Followings");
-
+        followingsQuantityLbl.setHorizontalAlignment(SwingConstants.CENTER);
+        followingsQuantityLbl.setHorizontalTextPosition(SwingConstants.CENTER);
         followingsQuantityLbl.setText("QtyFollowing");
+
+        muteBtn.setText("Mute");
+
+        followersBtn.setText("Followers");
+
+        followingsBtn.setText("Followings");
 
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,43 +118,46 @@ public class InfoPageSwing extends Swing {
                                                         .addComponent(sendMessageBtn)
                                                         .addComponent(followOrNotBtn, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(lastSeenLbl, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(idLbl, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
-                                                .addGap(51, 51, 51)
+                                                        .addComponent(idLbl, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(muteBtn, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(nameLbl, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 293, GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addComponent(bioLbl)
                                                                 .addGap(18, 18, 18)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                                         .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(followersLbl)
-                                                                                        .addComponent(followersQuantityLbl))
-                                                                                .addGap(43, 43, 43)
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(followingsQuantityLbl)
-                                                                                        .addComponent(followingsLbl)))))))
-                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                .addComponent(userNameLbl, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(nameLbl, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(125, 125, 125))))
+                                                                                        .addComponent(followersBtn, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                                                .addGap(6, 6, 6)
+                                                                                                .addComponent(followersQuantityLbl, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
+                                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                                                .addGap(6, 6, 6)
+                                                                                                .addComponent(followingsQuantityLbl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                                        .addComponent(followingsBtn, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(userNameLbl, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                         .addComponent(userNameLbl)
-                                        .addComponent(followersLbl)
-                                        .addComponent(followingsLbl))
+                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(followersBtn)
+                                                .addComponent(followingsBtn)))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(followersQuantityLbl)
-                                        .addComponent(followingsQuantityLbl))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(followingsQuantityLbl)
+                                        .addComponent(followersQuantityLbl, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                                 .addComponent(nameLbl)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -164,7 +179,9 @@ public class InfoPageSwing extends Swing {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(reportBtn1)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(blockBtn))
+                                                .addComponent(blockBtn)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(muteBtn))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(24, 24, 24)
                                                 .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE)))

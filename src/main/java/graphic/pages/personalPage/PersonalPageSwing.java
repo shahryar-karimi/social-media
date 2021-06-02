@@ -107,7 +107,7 @@ public class PersonalPageSwing extends Swing {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
                 jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -135,7 +135,7 @@ public class PersonalPageSwing extends Swing {
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,100))
                                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -184,6 +184,7 @@ public class PersonalPageSwing extends Swing {
 
 
         this.setVisible(true);
+        this.pack();
     }
 
 

@@ -1,102 +1,98 @@
-graphic/pages/Swing.java
- graphic.pages.Swing
+logic/Logger/MyLogger.java
+ logic.Logger.MyLogger
+graphic/GraphicPages.java
+ graphic.GraphicPages
+graphic/MyFrame.java
+ graphic.MyFrame
+utility/DateLabelFormatter.java
+ utility.DateLabelFormatter
+utility/AppProperties.java
+ utility.AppProperties
+Main.java
+ Main
+logic/Logger/Level.java
+ logic.Logger.Level
+cLI/ConsoleColors.java
+ cLI.ConsoleColors
+graphic/pages/login/LoginPanel.java
+ graphic.pages.login.LoginPanel
+cLI/CLI.java
+ cLI.CLI
+graphic/pages/login/SignUpPanel.java
+ graphic.pages.login.SignUpPanel
+logic/CommandProcessor.java
+ logic.CommandProcessor
 logic/pages/messenger/MessagesPage.java
  logic.pages.messenger.MessagesPage
 logic/pages/Page.java
  logic.pages.Page
 cLI/personalCLI/NotificationsCLI.java
  cLI.personalCLI.NotificationsCLI
+cLI/messengerCLI/MessagesCLI.java
+ cLI.messengerCLI.MessagesCLI
 logic/pages/personal/Notification.java
  logic.pages.personal.Notification
-cLI/personalCLI/InfoCLI.java
- cLI.personalCLI.InfoCLI
-cLI/TimeLineCLI.java
- cLI.TimeLineCLI
+logic/Manager.java
+ logic.Manager
+cLI/LoginCLI.java
+ cLI.LoginCLI
 logic/pages/messenger/Message.java
  logic.pages.messenger.Message
 logic/pages/messenger/ChatRoom.java
  logic.pages.messenger.ChatRoom
 graphic/pages/LoginGraphic.java
  graphic.pages.LoginGraphic
-graphic/pages/login/SignUpPanel.java
- graphic.pages.login.SignUpPanel
 logic/pages/MenuPage.java
  logic.pages.MenuPage
-graphic/pages/login/LoginPanel.java
- graphic.pages.login.LoginPanel
-Main.java
- Main
-logic/Logger/Level.java
- logic.Logger.Level
-graphic/pages/login/LoginSwing.java
- graphic.pages.login.LoginSwing
-graphic/MyFrame.java
- graphic.MyFrame
-graphic/pages/personalPage/MyFollowings.java
- graphic.pages.personalPage.MyFollowings
- graphic.pages.personalPage.MyFollowings$1
- graphic.pages.personalPage.MyFollowings$2
-utility/DateLabelFormatter.java
- utility.DateLabelFormatter
+cLI/personalCLI/InfoCLI.java
+ cLI.personalCLI.InfoCLI
+logic/pages/personal/Info.java
+ logic.pages.personal.Info
 logic/Account.java
  logic.Account
-cLI/ConsoleColors.java
- cLI.ConsoleColors
-graphic/pages/MenuGraphic.java
- graphic.pages.MenuGraphic
 logic/pages/personal/PersonalPage.java
  logic.pages.personal.PersonalPage
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
-cLI/messengerCLI/MessagesCLI.java
- cLI.messengerCLI.MessagesCLI
+cLI/TimeLineCLI.java
+ cLI.TimeLineCLI
 logic/Tweet.java
  logic.Tweet
-graphic/GraphicPages.java
- graphic.GraphicPages
-utility/AppProperties.java
- utility.AppProperties
 logic/pages/TimeLinePage.java
  logic.pages.TimeLinePage
-graphic/GraphicManager.java
- graphic.GraphicManager
+logic/pages/LoginPage.java
+ logic.pages.LoginPage
 cLI/messengerCLI/ChatRoomCLI.java
  cLI.messengerCLI.ChatRoomCLI
 logic/pages/SettingPage.java
  logic.pages.SettingPage
-logic/Logger/MyLogger.java
- logic.Logger.MyLogger
 logic/Singleton.java
  logic.Singleton
 cLI/ExplorerCLI.java
  cLI.ExplorerCLI
-graphic/FooterPanel.java
- graphic.FooterPanel
-cLI/CLI.java
- cLI.CLI
+cLI/MenuCLI.java
+ cLI.MenuCLI
 cLI/personalCLI/PersonalPageCLI.java
  cLI.personalCLI.PersonalPageCLI
 cLI/SettingCLI.java
  cLI.SettingCLI
-logic/pages/personal/Info.java
- logic.pages.personal.Info
-logic/CommandProcessor.java
- logic.CommandProcessor
-cLI/MenuCLI.java
- cLI.MenuCLI
-cLI/LoginCLI.java
- cLI.LoginCLI
-logic/pages/LoginPage.java
- logic.pages.LoginPage
 graphic/pages/personalPage/EditProfilePageSwing.java
  graphic.pages.personalPage.EditProfilePageSwing
 graphic/pages/AccountsListSwing.java
  graphic.pages.AccountsListSwing
  graphic.pages.AccountsListSwing$1
  graphic.pages.AccountsListSwing$2
+graphic/pages/login/LoginSwing.java
+ graphic.pages.login.LoginSwing
 graphic/pages/personalPage/InfoPageSwing.java
  graphic.pages.personalPage.InfoPageSwing
-logic/Manager.java
- logic.Manager
+graphic/GraphicManager.java
+ graphic.GraphicManager
 graphic/pages/personalPage/PersonalPageSwing.java
  graphic.pages.personalPage.PersonalPageSwing
+graphic/FooterPanel.java
+ graphic.FooterPanel
+graphic/pages/Swing.java
+ graphic.pages.Swing
+graphic/pages/MenuSwing.java
+ graphic.pages.MenuSwing

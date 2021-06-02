@@ -24,7 +24,9 @@ public class FooterPanel extends JPanel {
             }
         });
         buttons[1].addActionListener(e -> {
-
+            graphicManager.getSwings().pop().dispose();
+            graphicManager.getSwings().empty();
+            manager.goToMenuPage(account);
         });
         buttons[2].addActionListener(e -> manager.exit(account));
         add(buttons[0]);

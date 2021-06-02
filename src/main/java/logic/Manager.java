@@ -5,8 +5,7 @@ import java.util.LinkedList;
 import cLI.*;
 import cLI.messengerCLI.MessagesCLI;
 import cLI.personalCLI.InfoCLI;
-import graphic.pages.LoginGraphic;
-import graphic.pages.MenuGraphic;
+import graphic.pages.MenuSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import logic.Logger.MyLogger;
@@ -70,8 +69,7 @@ public class Manager {
 
     public void goToMenuPage(Account account) {
         save();
-        MenuGraphic menuGraphic = new MenuGraphic(account.getMenuPage());
-        menuGraphic.run();
+        new MenuSwing(account.getMenuPage());
     }
 
     public void gotoPersonalPage(Account account) {

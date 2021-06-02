@@ -1,6 +1,5 @@
 package graphic.pages;
 
-import graphic.GraphicPages;
 import graphic.MyFrame;
 import logic.pages.MenuPage;
 import utility.AppProperties;
@@ -10,9 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuGraphic extends GraphicPages implements ActionListener {
+public class MenuSwing extends Swing implements ActionListener {
 
-    private MenuPage menuPage;
     private MyFrame mainFrame;
     private final JButton[] buttons = new JButton[]{
             new JButton("Personal"),
@@ -25,30 +23,24 @@ public class MenuGraphic extends GraphicPages implements ActionListener {
     };
     private final JLabel label = new JLabel("Menu:");
 
-    public MenuGraphic(MenuPage menuPage) {
+    public MenuSwing(MenuPage menuPage) {
         super();
-        this.menuPage = menuPage;
+        this.page = menuPage;
         for (JButton button : buttons)
             button.addActionListener(this);
-    }
-
-    public MenuPage getMenuPage() {
-        return menuPage;
-    }
-
-    public void setMenuPage(MenuPage menuPage) {
-        this.menuPage = menuPage;
+        addSwing(this);
+        run();
     }
 
     @Override
     public void run() {
-
-        myLogger.debug(MenuGraphic.class.getName(), "run",
-                "Menu page ran for account \"" + menuPage.getAccount().toString() + "\"");
-        processShowMenuPageFrame();
+        myLogger.debug(MenuSwing.class.getName(), "run",
+                "Menu page ran for account \"" + page.getAccount().toString() + "\"");
+        showGraphic();
     }
 
-    private void processShowMenuPageFrame() {
+    @Override
+    public void showGraphic() {
         label.setFocusable(false);
         label.setFont(new Font("MV Boli", Font.PLAIN, 25));
         label.setHorizontalTextPosition(JLabel.CENTER);
@@ -68,7 +60,6 @@ public class MenuGraphic extends GraphicPages implements ActionListener {
             mainFrame.add(button);
         }
 
-
         mainFrame.setVisible(true);
     }
 
@@ -76,25 +67,25 @@ public class MenuGraphic extends GraphicPages implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttons[0]) {
             mainFrame.dispose();
-            menuPage.getManager().gotoPersonalPage(menuPage.getAccount());
+            page.getManager().gotoPersonalPage(page.getAccount());
         } else if (e.getSource() == buttons[1]) {
             mainFrame.dispose();
-            menuPage.getManager().goToTimeLinePage(menuPage.getAccount());
+            page.getManager().goToTimeLinePage(page.getAccount());
         } else if (e.getSource() == buttons[2]) {
             mainFrame.dispose();
-            menuPage.getManager().goToExplorerPage(menuPage.getAccount());
+            page.getManager().goToExplorerPage(page.getAccount());
         } else if (e.getSource() == buttons[3]) {
             mainFrame.dispose();
-            menuPage.getManager().goToMessagesPage(menuPage.getAccount());
+            page.getManager().goToMessagesPage(page.getAccount());
         } else if (e.getSource() == buttons[4]) {
             mainFrame.dispose();
-            menuPage.getManager().goToSettingPage(menuPage.getAccount());
+            page.getManager().goToSettingPage(page.getAccount());
         } else if (e.getSource() == buttons[5]) {
             mainFrame.dispose();
-            menuPage.getManager().quit(menuPage.getAccount());
+            page.getManager().quit(page.getAccount());
         } else if (e.getSource() == buttons[6]) {
             mainFrame.dispose();
-            menuPage.getManager().exit(menuPage.getAccount());
+            page.getManager().exit(page.getAccount());
         }
     }
 }

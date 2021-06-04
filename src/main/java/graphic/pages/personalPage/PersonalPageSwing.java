@@ -56,10 +56,6 @@ public class PersonalPageSwing extends Swing {
     @Override
     public void showGraphic() {
 
-//        FooterPanel footerPanel = new FooterPanel(getManager());
-
-//        this.dispose();
-
         sendBtn.addActionListener(this);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);

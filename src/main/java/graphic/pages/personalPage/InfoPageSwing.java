@@ -2,21 +2,21 @@ package graphic.pages.personalPage;
 
 import graphic.FooterPanel;
 import graphic.pages.Swing;
+import logic.Account;
 import logic.pages.personal.Info;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.List;
 
 public class InfoPageSwing extends Swing {
 
-//    private List<String> selectedValuesList;
+    private Account visitor;
 
-    public InfoPageSwing(List<String> selectedValuesList, Info info) {
+    public InfoPageSwing(Info info, Account visitor) {
         super();
         this.page = info;
+        this.visitor = visitor;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
-//        this.selectedValuesList = selectedValuesList;
         addSwing(this);
         run();
 
@@ -63,13 +63,13 @@ public class InfoPageSwing extends Swing {
 
         addOrRemoveListBtn.setText("Add to List");
 
-        nameLbl.setText("Name");
+        nameLbl.setText(page.getAccount().getFirstName() + " " + page.getAccount().getLastName());
 
-        userNameLbl.setText("UserName");
+        userNameLbl.setText(page.getAccount().getUserName());
 
-        idLbl.setText("id");
+        idLbl.setText(page.getAccount().getId());
 
-        lastSeenLbl.setText("LastSeen");
+        lastSeenLbl.setText(page.getAccount().getLastSeen(visitor));
 
         bioTxtArea.setEditable(false);
         bioTxtArea.setColumns(20);
@@ -89,10 +89,12 @@ public class InfoPageSwing extends Swing {
 
         reportBtn1.setText("Report");
 
+        followersQuantityLbl.setText(page.getAccount().getFollowers().size() + "");
         followersQuantityLbl.setHorizontalAlignment(SwingConstants.CENTER);
         followersQuantityLbl.setHorizontalTextPosition(SwingConstants.CENTER);
         followersQuantityLbl.setText("QtyFollowers");
 
+        followingsQuantityLbl.setText(page.getAccount().getFollowings().size() + "");
         followingsQuantityLbl.setHorizontalAlignment(SwingConstants.CENTER);
         followingsQuantityLbl.setHorizontalTextPosition(SwingConstants.CENTER);
         followingsQuantityLbl.setText("QtyFollowing");

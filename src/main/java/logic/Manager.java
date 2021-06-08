@@ -80,9 +80,7 @@ public class Manager {
 
     public void goToTimeLinePage(Account account) {
         save();
-        //TimeLineCLI timeLineCLI = new TimeLineCLI(account.getTimeLinePage());
-        //timeLineCLI.run();
-        new TimeLineSwing(account.getPersonalPage());
+        new TimeLineSwing(account.getTimeLinePage(), false);
     }
 
     public void goToExplorerPage(Account account) {

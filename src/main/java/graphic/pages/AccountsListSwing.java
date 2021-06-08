@@ -15,13 +15,19 @@ import java.util.Locale;
 
 public class AccountsListSwing extends Swing {
 
-    private JList<String> myJList;
+    private final JList<String> myJList;
     private JTextField searchTxt;
     private DefaultListModel<String> defaultListModel = new DefaultListModel<>();
-    private LinkedList<Account> accounts;
+    private final LinkedList<Account> accounts;
 
     public AccountsListSwing(Page page, LinkedList<Account> accounts) {
         super();
+        myJList = new JList<>();
+        myJList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                myJListMouseClicked(evt);
+            }
+        });
         this.page = page;
         this.accounts = accounts;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
@@ -76,7 +82,6 @@ public class AccountsListSwing extends Swing {
         JLabel searchLabel = new JLabel();
         searchTxt = new JTextField();
         JScrollPane jScrollPane1 = new JScrollPane();
-        myJList = new JList<>();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -90,11 +95,6 @@ public class AccountsListSwing extends Swing {
             }
         });
 
-        myJList.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                myJListMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(myJList);
 
         GroupLayout panel1Layout = new GroupLayout(panel1);
@@ -148,10 +148,9 @@ public class AccountsListSwing extends Swing {
     }
 
     private void myJListMouseClicked(MouseEvent evt) {
-        this.dispose();
+        getManager().getSwings().pop().dispose();
         Account account = page.getManager().searchByUserName(myJList.getSelectedValue());
-        new InfoPageSwing(myJList.getSelectedValuesList(), account.getPersonalPage().getInfo());
-        // JOptionPane.showMessageDialog(rootPane, myJList.getSelectedValuesList(), "selected stars", JOptionPane.INFORMATION_MESSAGE);
+        new InfoPageSwing(account.getPersonalPage().getInfo(), page.getAccount());
     }
 
     private void searchTxtKeyReleased(KeyEvent evt) {

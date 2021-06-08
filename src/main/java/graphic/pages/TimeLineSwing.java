@@ -1,16 +1,31 @@
 package graphic.pages;
 
 import graphic.FooterPanel;
+import graphic.TweetsSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
+import logic.Account;
+import logic.Tweet;
+import logic.pages.TimeLinePage;
 import logic.pages.personal.PersonalPage;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 
 public class TimeLineSwing extends Swing {
-    public TimeLineSwing(PersonalPage personalPage) {
+
+    private JTextArea newTweetTxtArea;
+    private JButton sendBtn;
+    private TweetsSwing tweetPanel;
+    private final boolean isComment;
+
+    public TimeLineSwing(TimeLinePage timeLinePage, boolean isComment) {
         super();
-        this.page = personalPage;
+        this.page = timeLinePage;
+        this.isComment = isComment;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         addSwing(this);
         run();
@@ -23,21 +38,71 @@ public class TimeLineSwing extends Swing {
         showGraphic();
     }
 
+    private void initTweet() {
+        tweetPanel = new TweetsSwing(((TimeLinePage) page).getCurrentTweet());
+        tweetPanel.getNameLbl().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                Account account = page.getManager().searchByUserName(tweetPanel.getNameLbl().getText());
+                page.getManager().goToInfoPage(account, page.getAccount());
+            }
+
+            public void mouseEntered(MouseEvent evt) {
+                TweetsSwing.mouseEntered(tweetPanel.getNameLbl());
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                TweetsSwing.mouseEntered(tweetPanel.getNameLbl());
+            }
+        });
+        tweetPanel.getLikeBtn().addActionListener(e -> {
+            ((TimeLinePage) page).fave();
+            tweetPanel.getLikeQtyLbl().setText("" + tweetPanel.getTweet().getFavesSet().size());
+        });
+        tweetPanel.getCommentBtn().addActionListener(e -> {
+            dispose();
+            TimeLinePage anotherTimeLinePage = new TimeLinePage(page.getAccount(), page.getManager(), false);
+            anotherTimeLinePage.setTweets(((TimeLinePage) page).getCurrentTweet().getComments());
+            anotherTimeLinePage.setIndexOfTweet(((TimeLinePage) page).getCurrentTweet().getComments().size() - 1);
+            new TimeLineSwing(anotherTimeLinePage, true);
+        });
+        tweetPanel.getRetweetBtn().addActionListener(e -> ((TimeLinePage) page).retweet());
+        tweetPanel.getShareBtn().addActionListener(e -> {
+            //Todo forward a message (build a list from accounts and choose from them)
+        });
+        tweetPanel.getLikeQtyLbl().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                dispose();
+                new AccountsListSwing(page, new LinkedList<>(tweetPanel.getTweet().getFavesSet()));
+            }
+
+            public void mouseEntered(MouseEvent evt) {
+                TweetsSwing.mouseEntered(tweetPanel.getLikeQtyLbl());
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                TweetsSwing.mouseEntered(tweetPanel.getLikeQtyLbl());
+            }
+        });
+
+
+    }
+
     @Override
     public void showGraphic() {
-        JLabel timeLineLbl = new javax.swing.JLabel();
-        JLabel newTweetLbl = new javax.swing.JLabel();
-        JPanel jPanel1 = new javax.swing.JPanel();
-        JTextArea newTweetTxtArea = new javax.swing.JTextArea();
-        JButton sendBtn = new javax.swing.JButton();
-        JPanel tweetPanel = SwingUtility.getTweetPanel();
+        JLabel timeLineLbl = new JLabel();
+        JLabel newTweetLbl = new JLabel();
+        JPanel jPanel1 = new JPanel();
+        newTweetTxtArea = new JTextArea();
+        sendBtn = new JButton();
+        initTweet();
         JScrollPane jScrollPane2 = new JScrollPane();
 
 
         newTweetLbl.setText("New tweet: ");
 
         timeLineLbl.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        timeLineLbl.setText("Time line");
+        if (isComment) timeLineLbl.setText("Comments");
+        else timeLineLbl.setText("Time line");
 
         newTweetTxtArea.setColumns(20);
         newTweetTxtArea.setRows(5);
@@ -46,47 +111,44 @@ public class TimeLineSwing extends Swing {
         sendBtn.setText("send");
         sendBtn.setMaximumSize(new java.awt.Dimension(580, 580));
         sendBtn.setPreferredSize(new java.awt.Dimension(34, 34));
-        sendBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //sendBtnActionPerformed(evt);
-            }
-        });
+        sendBtn.addActionListener(this);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(timeLineLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(timeLineLbl, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
                                 .addGap(229, 229, 229))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(tweetPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        )
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(81, 81, 81)
                                                 .addComponent(newTweetLbl))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(77, 77, 77)
-                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(sendBtn, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(timeLineLbl)
                                 .addGap(42, 42, 42)
                                 .addComponent(newTweetLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sendBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
                                 .addGap(76, 76, 76)
-                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tweetPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
@@ -116,9 +178,33 @@ public class TimeLineSwing extends Swing {
         this.pack();
     }
 
+    public void sendingATweet(Tweet tweet) {
+        tweet.setTime();
+        Account account = page.getAccount();
+        if (!isComment) {
+            account.addTweet(tweet);
+            for (Account follower : account.getFollowers()) {
+                if (!follower.isMute(account))
+                    follower.getTimeLinePage().addTweet(tweet);
+            }
+        } else {
+            ((TimeLinePage) page).sendComment(tweet.getTweetText());
+        }
+        page.getManager().save();
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == sendBtn) {
+            String newTweetText = newTweetTxtArea.getText();
+            if (newTweetText != null && !newTweetText.isBlank()) {
+                if (isComment) {
 
+                } else {
+                    sendingATweet(new Tweet(page.getAccount(), newTweetText));
+                }
+            }
+        }
     }
 }

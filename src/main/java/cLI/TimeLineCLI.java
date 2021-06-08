@@ -153,10 +153,6 @@ public class TimeLineCLI extends CLI {
         showCurrentTweet();
     }
 
-    private void processFrowardToLists() {
-
-    }
-
     private void processForwardToAccounts() {
         System.out.println("Enter user names that you want to forward this tweet and when finished say end:");
         LinkedList<Account> accounts = new LinkedList<>();

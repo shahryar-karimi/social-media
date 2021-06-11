@@ -376,3 +376,10 @@
 2021-06-11 18:15:29 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
 2021-06-11 18:15:30 - DEBUG - graphic.pages.MenuSwing - run - Menu page ran for account "a"
 2021-06-11 18:15:31 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-06-11 18:39:52 - DEBUG - logic.CommandProcessor - run - program started
+2021-06-11 18:39:52 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-06-11 18:39:55 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-06-11 18:39:56 - DEBUG - graphic.pages.MenuSwing - run - Menu page ran for account "a"
+2021-06-11 18:39:57 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-06-11 18:40:00 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Comments run for account "a"
+2021-06-11 18:40:00 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"

@@ -68,7 +68,6 @@ public class TweetsSwing extends JPanel{
         likeQtyLbl.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         commentQtyLbl.setText("" + tweet.getComments().size());
-//        commentQtyLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         retweetQtyLbl.setHorizontalAlignment(SwingConstants.CENTER);
         retweetQtyLbl.setText("" + tweet.getRetweet());

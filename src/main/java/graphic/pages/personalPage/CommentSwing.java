@@ -2,15 +2,17 @@ package graphic.pages.personalPage;
 
 import graphic.FooterPanel;
 import graphic.pages.Swing;
+import logic.pages.Page;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class CommentSwing extends Swing {
 
-    public CommentSwing() { //Tweet tweet
+    public CommentSwing(Page page) { //Tweet tweet
         super();
         //this.tweet = tweet;
+        this.page = page;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         addSwing(this);
         run();
@@ -53,8 +55,6 @@ public class CommentSwing extends Swing {
 
         JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
         JTextArea tweetTxtArea = new javax.swing.JTextArea();
-
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

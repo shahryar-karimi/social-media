@@ -80,7 +80,8 @@ public class TimeLineSwing extends Swing {
         });
         tweetPanel.getCommentBtn().addActionListener(e -> {
             //Todo forward a message
-            new CommentSwing();
+            dispose();
+            new CommentSwing(page);
         });
     }
 

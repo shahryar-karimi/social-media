@@ -2,6 +2,7 @@ package graphic.pages;
 
 import graphic.FooterPanel;
 import graphic.TweetsSwing;
+import graphic.pages.personalPage.CommentSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import logic.Account;
 import logic.Tweet;
@@ -9,6 +10,7 @@ import logic.pages.TimeLinePage;
 import logic.pages.personal.PersonalPage;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -49,14 +51,11 @@ public class TimeLineSwing extends Swing {
             public void mouseEntered(MouseEvent evt) {
                 TweetsSwing.mouseEntered(tweetPanel.getNameLbl());
             }
-
-            public void mouseExited(MouseEvent evt) {
-                TweetsSwing.mouseEntered(tweetPanel.getNameLbl());
-            }
         });
         tweetPanel.getLikeBtn().addActionListener(e -> {
             ((TimeLinePage) page).fave();
             tweetPanel.getLikeQtyLbl().setText("" + tweetPanel.getTweet().getFavesSet().size());
+            tweetPanel.getLikeBtn().setIcon(new ImageIcon("src/main/resources/pictures/red-like.png")); // like
         });
         tweetPanel.getCommentBtn().addActionListener(e -> {
             dispose();
@@ -78,13 +77,11 @@ public class TimeLineSwing extends Swing {
             public void mouseEntered(MouseEvent evt) {
                 TweetsSwing.mouseEntered(tweetPanel.getLikeQtyLbl());
             }
-
-            public void mouseExited(MouseEvent evt) {
-                TweetsSwing.mouseEntered(tweetPanel.getLikeQtyLbl());
-            }
         });
-
-
+        tweetPanel.getCommentBtn().addActionListener(e -> {
+            //Todo forward a message
+            new CommentSwing();
+        });
     }
 
     @Override
@@ -94,9 +91,13 @@ public class TimeLineSwing extends Swing {
         JPanel jPanel1 = new JPanel();
         newTweetTxtArea = new JTextArea();
         sendBtn = new JButton();
-        initTweet();
+
+        JButton nextBtn = new JButton();
+        JButton previousBtn = new JButton();
+
         JScrollPane jScrollPane2 = new JScrollPane();
 
+        initTweet();
 
         newTweetLbl.setText("New tweet: ");
 
@@ -113,43 +114,76 @@ public class TimeLineSwing extends Swing {
         sendBtn.setPreferredSize(new java.awt.Dimension(34, 34));
         sendBtn.addActionListener(this);
 
+        nextBtn.setText(">>");
+        nextBtn.setToolTipText("next tweet");
+        nextBtn.setMaximumSize(new Dimension(580, 580));
+        nextBtn.setPreferredSize(new Dimension(34, 34));
+        nextBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //nextBtnActionPerformed(evt);
+            }
+        });
+
+        previousBtn.setText("<<");
+        previousBtn.setToolTipText("previous tweet");
+        previousBtn.setMaximumSize(new Dimension(580, 580));
+        previousBtn.setPreferredSize(new Dimension(34, 34));
+        previousBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //previousBtnActionPerformed(evt);
+            }
+        });
+
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(timeLineLbl, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-                                .addGap(229, 229, 229))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(tweetPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        )
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(81, 81, 81)
-                                                .addComponent(newTweetLbl))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(77, 77, 77)
-                                                .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(sendBtn, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(timeLineLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(229, 229, 229))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(previousBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newTweetLbl)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
+                .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(timeLineLbl)
-                                .addGap(42, 42, 42)
-                                .addComponent(newTweetLbl)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(sendBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                                .addGap(76, 76, 76)
-                                .addComponent(tweetPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(60, Short.MAX_VALUE))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(newTweetLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(timeLineLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(previousBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(245, 245, 245))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(247, 247, 247))))
         );
 
 

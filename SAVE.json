@@ -11,12 +11,13 @@
       "bio": "sdvfgbghn",
       "isOnline": true,
       "birthdayDate": "2021-05-12",
-      "lastSeen": "online",
+      "lastSeen": "2021-06-10 22:35:02",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
       "followersUserName": [
-        "b"
+        "b",
+        "arina"
       ],
       "followingsUserName": [
         "c",
@@ -42,9 +43,10 @@
           "requests": [],
           "indexOfCurrentRequest": -1,
           "systemMessages": [
-            "b followed you"
+            "b followed you",
+            "arina followed you"
           ],
-          "indexOfCurrentSystemMessage": -1
+          "indexOfCurrentSystemMessage": 1
         },
         "info": {}
       },
@@ -626,6 +628,78 @@
       },
       "menuPage": {},
       "myTweets": []
+    },
+    {
+      "firstName": "arina",
+      "lastName": "aghaee",
+      "userName": "arina",
+      "id": "@arina93082123",
+      "password": "arina",
+      "emailAddress": "arina@gmail.com",
+      "phoneNumber": "",
+      "bio": "",
+      "isOnline": true,
+      "birthdayDate": "",
+      "lastSeen": "online",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [],
+      "followingsUserName": [
+        "a"
+      ],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": 5,
+        "currentTweet": {
+          "tweetText": "hello every one",
+          "time": "2021-06-10 22:33:27",
+          "favesSet": [],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
+        }
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [],
+          "indexOfCurrentSystemMessage": -1
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "arina",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 152755126851620,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": [
+        {
+          "tweetText": "hello every one",
+          "time": "2021-06-10 22:33:27",
+          "favesSet": [],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
+        }
+      ]
     }
   ]
 }

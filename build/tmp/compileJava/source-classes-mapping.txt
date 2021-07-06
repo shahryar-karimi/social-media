@@ -36,8 +36,10 @@ graphic/pages/AccountsListSwing.java
  graphic.pages.AccountsListSwing$2
 logic/pages/personal/Notification.java
  logic.pages.personal.Notification
-logic/Manager.java
- logic.Manager
+graphic/TweetsSwing.java
+ graphic.TweetsSwing
+ graphic.TweetsSwing$1
+ graphic.TweetsSwing$2
 graphic/pages/personalPage/PersonalPageSwing.java
  graphic.pages.personalPage.PersonalPageSwing
 cLI/messengerCLI/MessagesCLI.java
@@ -100,7 +102,5 @@ graphic/pages/TimeLineSwing.java
  graphic.pages.TimeLineSwing
  graphic.pages.TimeLineSwing$1
  graphic.pages.TimeLineSwing$2
-graphic/TweetsSwing.java
- graphic.TweetsSwing
- graphic.TweetsSwing$1
- graphic.TweetsSwing$2
+logic/Manager.java
+ logic.Manager

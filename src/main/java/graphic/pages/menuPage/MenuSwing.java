@@ -1,6 +1,7 @@
-package graphic.pages;
+package graphic.pages.menuPage;
 
 import graphic.MyFrame;
+import graphic.pages.Swing;
 import logic.pages.MenuPage;
 import utility.AppProperties;
 

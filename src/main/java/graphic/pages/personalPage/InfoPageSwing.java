@@ -3,6 +3,7 @@ package graphic.pages.personalPage;
 import graphic.FooterPanel;
 import graphic.pages.Swing;
 import logic.Account;
+import logic.pages.Page;
 import logic.pages.personal.Info;
 
 import javax.swing.*;
@@ -11,6 +12,14 @@ import java.awt.event.ActionEvent;
 public class InfoPageSwing extends Swing {
 
     private Account visitor;
+    private final JButton followOrNotBtn = new JButton();
+    private final JButton addOrRemoveListBtn = new JButton();
+    private final JButton blockBtn = new JButton();
+    private final JButton sendMessageBtn = new JButton();
+    private final JButton reportBtn1 = new JButton();
+    private final JButton muteBtn = new JButton();
+    private final JButton followersBtn = new JButton();
+    private final JButton followingsBtn = new JButton();
 
     public InfoPageSwing(Info info, Account visitor) {
         super();
@@ -43,18 +52,8 @@ public class InfoPageSwing extends Swing {
         JLabel followingsQuantityLbl = new JLabel();
         JLabel bioLbl = new JLabel();
 
-        JButton followOrNotBtn = new JButton();
-        JButton addOrRemoveListBtn = new JButton();
-        JButton blockBtn = new JButton();
-        JButton sendMessageBtn = new JButton();
-        JButton reportBtn1 = new JButton();
-        JButton muteBtn = new JButton();
-        JButton followersBtn = new JButton();
-        JButton followingsBtn = new JButton();
-
         JScrollPane jScrollPane1 = new JScrollPane();
         JTextArea bioTxtArea = new JTextArea();
-
 
         JScrollPane jScrollPane3 = new JScrollPane();
         JTextArea tweetTxtArea = new JTextArea();
@@ -216,6 +215,43 @@ public class InfoPageSwing extends Swing {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Account owner = page.getAccount();
+//        JButton sendMessageBtn = new JButton();
+//        JButton reportBtn1 = new JButton();
+//        JButton muteBtn = new JButton();
+//        JButton followersBtn = new JButton();
+//        JButton followingsBtn = new JButton();
+        if (e.getSource() == followOrNotBtn) {
+            if (visitor.isFollow(owner)) {
+                JOptionPane.showMessageDialog(null, visitor.unFollow(owner, true), "Info page", JOptionPane.INFORMATION_MESSAGE);
+            } else if (!owner.hasBlocked(visitor)) {
+                if (owner.isPagePublic()) {
+                    JOptionPane.showMessageDialog(null, visitor.follow(owner), "Info page", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, visitor.sendRequestTo(owner), "Info page", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                System.out.println("You are blocked");
+                JOptionPane.showMessageDialog(null, "You are blocked", "Info page", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (e.getSource() == addOrRemoveListBtn) {
 
+        } else if (e.getSource() == blockBtn) {
+            if (visitor.hasBlocked(page.getAccount())) {
+                System.out.println(visitor.unBlock(page.getAccount()));
+            } else {
+                System.out.println(visitor.block(page.getAccount()));
+            }
+        } else if (e.getSource() == sendMessageBtn) {
+
+        } else if (e.getSource() == reportBtn1) {
+
+        } else if (e.getSource() == muteBtn) {
+
+        } else if (e.getSource() == followersBtn) {
+
+        } else if (e.getSource() == followingsBtn) {
+
+        }
     }
 }

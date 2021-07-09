@@ -2,18 +2,12 @@ package logic;
 
 import java.util.LinkedList;
 
-import cLI.*;
-import cLI.messengerCLI.MessagesCLI;
-import cLI.personalCLI.InfoCLI;
-import graphic.pages.MenuSwing;
-import graphic.pages.TimeLineSwing;
-import graphic.pages.login.LoginSwing;
-import graphic.pages.personalPage.PersonalPageSwing;
+import graphic.GraphicManager;
 import logic.Logger.MyLogger;
-import logic.pages.LoginPage;
 
 public class Manager {
     private LinkedList<Account> accounts;
+    private transient GraphicManager graphicManager;
 
     public Manager() {
         this.accounts = new LinkedList<>();
@@ -51,8 +45,10 @@ public class Manager {
 
     public void quit(Account account) {
         account.setOnline(false);
+        MyLogger logger = MyLogger.getLogger();
+        logger.debug(Manager.class.getName(), "quit", "Program ended");
+        save();
         goToLoginPage();
-        System.exit(0);
     }
 
     public void exit(Account account) {
@@ -65,55 +61,56 @@ public class Manager {
 
     public void goToLoginPage() {
         save();
-        new LoginSwing(new LoginPage(this));
+        graphicManager = new GraphicManager();
+        graphicManager.goToLoginPage(this);
     }
 
     public void goToMenuPage(Account account) {
         save();
-        new MenuSwing(account.getMenuPage());
+        graphicManager.goToMenuPage(account);
     }
 
     public void gotoPersonalPage(Account account) {
         save();
-        new PersonalPageSwing(account.getPersonalPage());
+        graphicManager.gotoPersonalPage(account);
     }
 
     public void goToTimeLinePage(Account account) {
         save();
-        new TimeLineSwing(account.getTimeLinePage(), false);
+        graphicManager.goToTimeLinePage(account);
     }
 
     public void goToExplorerPage(Account account) {
         save();
-        ExplorerCLI explorerCLI = new ExplorerCLI(account.getExplorerPage());
-        explorerCLI.run();
+        graphicManager.goToExplorerPage(account);
     }
 
     public void goToSettingPage(Account account) {
         save();
-        SettingCLI settingCLI = new SettingCLI(account.getSettingPage());
-        settingCLI.run();
+        graphicManager.goToSettingPage(account);
     }
 
     public void goToMessagesPage(Account account) {
         save();
-        MessagesCLI messagesCLI = new MessagesCLI(account.getMessagesPage());
-        messagesCLI.run();
+        graphicManager.goToMessagesPage(account);
     }
 
     public void goToInfoPage(Account infosAccount, Account visitor) {
         save();
-        if (!infosAccount.hasBlocked(visitor) && infosAccount.isActive()) {
-            InfoCLI infoCLI = new InfoCLI(infosAccount.getPersonalPage().getInfo(), visitor);
-            infoCLI.run();
-        } else {
-            System.err.println("Page not found\nYou are blocked or page is deActive");
-        }
+        graphicManager.goToInfoPage(infosAccount, visitor);
     }
 
     public Account searchByEmail(String email) {
         for (Account account : accounts)
             if (email.equals(account.getEmailAddress())) return account;
         return null;
+    }
+
+    public GraphicManager getGraphicManager() {
+        return graphicManager;
+    }
+
+    public void setGraphicManager(GraphicManager graphicManager) {
+        this.graphicManager = graphicManager;
     }
 }

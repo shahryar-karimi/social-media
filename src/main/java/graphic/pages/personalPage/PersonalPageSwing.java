@@ -4,7 +4,9 @@ package graphic.pages.personalPage;
 import graphic.FooterPanel;
 import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
+import graphic.pages.personalPage.notification.NotificationSwing;
 import logic.Tweet;
+import logic.pages.personal.Notification;
 import logic.pages.personal.PersonalPage;
 import utility.AppProperties;
 
@@ -198,9 +200,10 @@ public class PersonalPageSwing extends Swing {
         } else if (e.getSource() == buttons[3]) {
             this.dispose();
             new AccountsListSwing(page, ((PersonalPage) page).myBlackList());
-        } else if (e.getSource() == buttons[4]) {
-
-        } else if (e.getSource() == buttons[5]) {
+        } else if (e.getSource() == buttons[4]) { // notification
+            this.dispose();
+            new NotificationSwing(((PersonalPage) page).getNotification());
+        } else if (e.getSource() == buttons[5]) { // create list
 
         } else if (e.getSource() == sendBtn) {
             String newTweetTxt = jTextArea1.getText();

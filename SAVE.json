@@ -11,27 +11,37 @@
       "bio": "",
       "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "2021-07-07 22:49:27",
+      "lastSeen": "2021-07-22 22:31:48",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
-      "followersUserName": [],
-      "followingsUserName": [
+      "followersUserName": [
         "b"
       ],
+      "followingsUserName": [],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": -1
+        "indexOfTweet": 0,
+        "currentTweet": {
+          "tweetText": "hello everyone",
+          "time": "2021-07-22 18:53:08",
+          "favesSet": [],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
+        }
       },
       "settingPage": {},
       "personalPage": {
         "notification": {
           "requests": [],
           "indexOfCurrentRequest": -1,
-          "systemMessages": [],
-          "indexOfCurrentSystemMessage": -1
+          "systemMessages": [
+            "b followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
         },
         "info": {}
       },
@@ -53,7 +63,16 @@
         }
       },
       "menuPage": {},
-      "myTweets": []
+      "myTweets": [
+        {
+          "tweetText": "hello everyone",
+          "time": "2021-07-22 18:53:08",
+          "favesSet": [],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
+        }
+      ]
     },
     {
       "firstName": "b",
@@ -70,15 +89,23 @@
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
-      "followersUserName": [
+      "followersUserName": [],
+      "followingsUserName": [
         "a"
       ],
-      "followingsUserName": [],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": -1
+        "indexOfTweet": 0,
+        "currentTweet": {
+          "tweetText": "hello everyone",
+          "time": "2021-07-22 18:53:08",
+          "favesSet": [],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
+        }
       },
       "settingPage": {},
       "personalPage": {
@@ -86,9 +113,10 @@
           "requests": [],
           "indexOfCurrentRequest": -1,
           "systemMessages": [
-            "a followed you"
+            "a followed you",
+            "a unfollowed you"
           ],
-          "indexOfCurrentSystemMessage": 0
+          "indexOfCurrentSystemMessage": 1
         },
         "info": {}
       },

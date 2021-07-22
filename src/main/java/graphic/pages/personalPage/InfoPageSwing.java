@@ -1,17 +1,20 @@
 package graphic.pages.personalPage;
 
 import graphic.FooterPanel;
+import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
 import logic.Account;
-import logic.pages.Page;
+import logic.pages.TimeLinePage;
+import logic.pages.messenger.ChatRoom;
 import logic.pages.personal.Info;
+import logic.pages.personal.PersonalPage;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class InfoPageSwing extends Swing {
 
-    private Account visitor;
+    private final Account visitor;
     private final JButton followOrNotBtn = new JButton();
     private final JButton addOrRemoveListBtn = new JButton();
     private final JButton blockBtn = new JButton();
@@ -20,6 +23,9 @@ public class InfoPageSwing extends Swing {
     private final JButton muteBtn = new JButton();
     private final JButton followersBtn = new JButton();
     private final JButton followingsBtn = new JButton();
+    private final JButton[] buttons =
+            {followOrNotBtn, addOrRemoveListBtn, blockBtn, sendMessageBtn,
+                    reportBtn1, muteBtn, followersBtn, followingsBtn};
 
     public InfoPageSwing(Info info, Account visitor) {
         super();
@@ -91,12 +97,10 @@ public class InfoPageSwing extends Swing {
         followersQuantityLbl.setText(page.getAccount().getFollowers().size() + "");
         followersQuantityLbl.setHorizontalAlignment(SwingConstants.CENTER);
         followersQuantityLbl.setHorizontalTextPosition(SwingConstants.CENTER);
-        followersQuantityLbl.setText("QtyFollowers");
 
         followingsQuantityLbl.setText(page.getAccount().getFollowings().size() + "");
         followingsQuantityLbl.setHorizontalAlignment(SwingConstants.CENTER);
         followingsQuantityLbl.setHorizontalTextPosition(SwingConstants.CENTER);
-        followingsQuantityLbl.setText("QtyFollowing");
 
         muteBtn.setText("Mute");
 
@@ -210,7 +214,12 @@ public class InfoPageSwing extends Swing {
         );
 
         this.pack();
+        setButtons();
+    }
 
+    private void setButtons() {
+        for (JButton button : buttons)
+            button.addActionListener(this);
     }
 
     @Override
@@ -231,27 +240,43 @@ public class InfoPageSwing extends Swing {
                     JOptionPane.showMessageDialog(null, visitor.sendRequestTo(owner), "Info page", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
-                System.out.println("You are blocked");
                 JOptionPane.showMessageDialog(null, "You are blocked", "Info page", JOptionPane.ERROR_MESSAGE);
             }
         } else if (e.getSource() == addOrRemoveListBtn) {
 
         } else if (e.getSource() == blockBtn) {
-            if (visitor.hasBlocked(page.getAccount())) {
-                System.out.println(visitor.unBlock(page.getAccount()));
+            if (visitor.hasBlocked(owner)) {
+                JOptionPane.showMessageDialog(null, visitor.unBlock(owner), "Block process", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                System.out.println(visitor.block(page.getAccount()));
+                JOptionPane.showMessageDialog(null, visitor.block(owner), "Block process", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (e.getSource() == sendMessageBtn) {
-
+            ChatRoom chatRoom = visitor.getMessagesPage().searchChatRoomByListener(owner);
+            if (chatRoom == null) {
+                if (visitor.getMessagesPage().buildNewChatRoom(owner)) {
+                    chatRoom = visitor.getMessagesPage().searchChatRoomByListener(owner);
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can not send message to this account", "sending message", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+            getManager().goToChatRoom(chatRoom);
         } else if (e.getSource() == reportBtn1) {
-
+            JOptionPane.showMessageDialog(null, visitor.report(owner), "Reporting", JOptionPane.PLAIN_MESSAGE);
         } else if (e.getSource() == muteBtn) {
-
+            if (visitor.isMute(owner)) {
+                JOptionPane.showMessageDialog(null, "You unMuted \"" + owner + "\" successfully", "Mute", JOptionPane.WARNING_MESSAGE);
+                visitor.unMute(owner);
+            } else {
+                JOptionPane.showMessageDialog(null, "You muted \"" + owner + "\" successfully", "Mute", JOptionPane.WARNING_MESSAGE);
+                visitor.mute(owner);
+            }
         } else if (e.getSource() == followersBtn) {
-
+            this.dispose();
+            new AccountsListSwing(page, owner.getFollowers());
         } else if (e.getSource() == followingsBtn) {
-
+            this.dispose();
+            new AccountsListSwing(page, owner.getFollowings());
         }
     }
 }

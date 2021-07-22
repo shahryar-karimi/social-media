@@ -2,6 +2,7 @@ package graphic;
 
 import cLI.ExplorerCLI;
 import cLI.SettingCLI;
+import cLI.messengerCLI.ChatRoomCLI;
 import cLI.messengerCLI.MessagesCLI;
 import cLI.personalCLI.InfoCLI;
 import graphic.pages.menuPage.MenuSwing;
@@ -12,6 +13,7 @@ import graphic.pages.personalPage.PersonalPageSwing;
 import logic.Account;
 import logic.Manager;
 import logic.pages.LoginPage;
+import logic.pages.messenger.ChatRoom;
 
 import java.util.Stack;
 
@@ -80,6 +82,10 @@ public class GraphicManager {
         }
     }
 
+    public void goToChatRoom(ChatRoom chatRoom) {
+        ChatRoomCLI chatRoomCLI = new ChatRoomCLI(chatRoom);
+        chatRoomCLI.run();
+    }
 
     public Stack<Swing> getSwings() {
         return swings;

@@ -20,30 +20,26 @@ graphic/MyFrame.java
  graphic.MyFrame
 Main.java
  Main
-graphic/pages/personalPage/EditProfilePageSwing.java
- graphic.pages.personalPage.EditProfilePageSwing
-graphic/pages/TimeLineSwing.java
- graphic.pages.TimeLineSwing
- graphic.pages.TimeLineSwing$1
- graphic.pages.TimeLineSwing$2
- graphic.pages.TimeLineSwing$3
- graphic.pages.TimeLineSwing$4
+cLI/TimeLineCLI.java
+ cLI.TimeLineCLI
+graphic/pages/AccountsListSwing.java
+ graphic.pages.AccountsListSwing
+ graphic.pages.AccountsListSwing$1
+ graphic.pages.AccountsListSwing$2
 logic/pages/messenger/MessagesPage.java
  logic.pages.messenger.MessagesPage
 logic/pages/Page.java
  logic.pages.Page
 cLI/personalCLI/NotificationsCLI.java
  cLI.personalCLI.NotificationsCLI
-graphic/pages/AccountsListSwing.java
- graphic.pages.AccountsListSwing
- graphic.pages.AccountsListSwing$1
- graphic.pages.AccountsListSwing$2
+cLI/messengerCLI/MessagesCLI.java
+ cLI.messengerCLI.MessagesCLI
 logic/pages/personal/Notification.java
  logic.pages.personal.Notification
 logic/Manager.java
  logic.Manager
-graphic/pages/personalPage/PersonalPageSwing.java
- graphic.pages.personalPage.PersonalPageSwing
+cLI/LoginCLI.java
+ cLI.LoginCLI
 graphic/TweetsSwing.java
  graphic.TweetsSwing
 logic/pages/messenger/Message.java
@@ -58,32 +54,22 @@ graphic/pages/login/LoginSwing.java
  graphic.pages.login.LoginSwing
 logic/Account.java
  logic.Account
-graphic/pages/personalPage/CommentSwing.java
- graphic.pages.personalPage.CommentSwing
- graphic.pages.personalPage.CommentSwing$1
- graphic.pages.personalPage.CommentSwing$10
- graphic.pages.personalPage.CommentSwing$2
- graphic.pages.personalPage.CommentSwing$3
- graphic.pages.personalPage.CommentSwing$4
- graphic.pages.personalPage.CommentSwing$5
- graphic.pages.personalPage.CommentSwing$6
- graphic.pages.personalPage.CommentSwing$7
- graphic.pages.personalPage.CommentSwing$8
- graphic.pages.personalPage.CommentSwing$9
+cLI/personalCLI/InfoCLI.java
+ cLI.personalCLI.InfoCLI
 graphic/pages/menuPage/MenuSwing.java
  graphic.pages.menuPage.MenuSwing
 logic/pages/personal/PersonalPage.java
  logic.pages.personal.PersonalPage
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
-graphic/pages/personalPage/InfoPageSwing.java
- graphic.pages.personalPage.InfoPageSwing
+graphic/pages/Swing.java
+ graphic.pages.Swing
 logic/Tweet.java
  logic.Tweet
 logic/pages/TimeLinePage.java
  logic.pages.TimeLinePage
-graphic/GraphicManager.java
- graphic.GraphicManager
+logic/pages/LoginPage.java
+ logic.pages.LoginPage
 cLI/messengerCLI/ChatRoomCLI.java
  cLI.messengerCLI.ChatRoomCLI
 logic/pages/SettingPage.java
@@ -104,15 +90,37 @@ logic/CommandProcessor.java
  logic.CommandProcessor
 cLI/MenuCLI.java
  cLI.MenuCLI
-cLI/LoginCLI.java
- cLI.LoginCLI
-logic/pages/LoginPage.java
- logic.pages.LoginPage
-cLI/TimeLineCLI.java
- cLI.TimeLineCLI
-cLI/personalCLI/InfoCLI.java
- cLI.personalCLI.InfoCLI
-graphic/pages/Swing.java
- graphic.pages.Swing
-cLI/messengerCLI/MessagesCLI.java
- cLI.messengerCLI.MessagesCLI
+graphic/pages/personalPage/EditProfilePageSwing.java
+ graphic.pages.personalPage.EditProfilePageSwing
+graphic/pages/TimeLineSwing.java
+ graphic.pages.TimeLineSwing
+ graphic.pages.TimeLineSwing$1
+ graphic.pages.TimeLineSwing$2
+ graphic.pages.TimeLineSwing$3
+ graphic.pages.TimeLineSwing$4
+graphic/pages/personalPage/CommentSwing.java
+ graphic.pages.personalPage.CommentSwing
+ graphic.pages.personalPage.CommentSwing$1
+ graphic.pages.personalPage.CommentSwing$10
+ graphic.pages.personalPage.CommentSwing$2
+ graphic.pages.personalPage.CommentSwing$3
+ graphic.pages.personalPage.CommentSwing$4
+ graphic.pages.personalPage.CommentSwing$5
+ graphic.pages.personalPage.CommentSwing$6
+ graphic.pages.personalPage.CommentSwing$7
+ graphic.pages.personalPage.CommentSwing$8
+ graphic.pages.personalPage.CommentSwing$9
+graphic/pages/personalPage/InfoPageSwing.java
+ graphic.pages.personalPage.InfoPageSwing
+graphic/pages/personalPage/notification/request/RequestsPanel.java
+ graphic.pages.personalPage.notification.request.RequestsPanel
+graphic/pages/personalPage/notification/request/SingleRequest.java
+ graphic.pages.personalPage.notification.request.SingleRequest
+graphic/GraphicManager.java
+ graphic.GraphicManager
+graphic/pages/personalPage/PersonalPageSwing.java
+ graphic.pages.personalPage.PersonalPageSwing
+graphic/pages/personalPage/notification/systemMessage/SystemMessagePanel.java
+ graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel
+graphic/pages/personalPage/notification/NotificationSwing.java
+ graphic.pages.personalPage.notification.NotificationSwing

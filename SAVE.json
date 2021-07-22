@@ -1,32 +1,34 @@
 {
   "accounts": [
     {
-      "firstName": "a",
-      "lastName": "a",
-      "userName": "a",
-      "id": "@a97",
-      "password": "a",
-      "emailAddress": "a",
-      "phoneNumber": "",
-      "bio": "",
-      "isOnline": false,
+      "firstName": "shahryar",
+      "lastName": "karimi",
+      "userName": "shah80ryar",
+      "id": "@shah80ryar890137580",
+      "password": "20031380",
+      "emailAddress": "shahryarkarimi20@gmail.com",
+      "phoneNumber": "09038168087",
+      "bio": "hi there",
+      "isOnline": true,
       "birthdayDate": "",
-      "lastSeen": "2021-07-22 22:31:48",
+      "lastSeen": "online",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
       "followersUserName": [
-        "b"
+        "negar"
       ],
-      "followingsUserName": [],
+      "followingsUserName": [
+        "negar"
+      ],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 0,
+        "indexOfTweet": 1,
         "currentTweet": {
-          "tweetText": "hello everyone",
-          "time": "2021-07-22 18:53:08",
+          "tweetText": "this is my first tweet for negar",
+          "time": "2021-07-22 23:09:03",
           "favesSet": [],
           "comments": [],
           "retweet": 0,
@@ -39,7 +41,7 @@
           "requests": [],
           "indexOfCurrentRequest": -1,
           "systemMessages": [
-            "b followed you"
+            "negar followed you"
           ],
           "indexOfCurrentSystemMessage": 0
         },
@@ -48,7 +50,7 @@
       "messagesPage": {
         "chatRooms": [
           {
-            "listenerUserName": "a",
+            "listenerUserName": "shah80ryar",
             "messages": [],
             "unreadMessages": 0,
             "indexOfShowPage": 0
@@ -57,7 +59,7 @@
       },
       "explorerPage": {
         "random": {
-          "seed": 30809449701086,
+          "seed": 237828048294740,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
@@ -65,8 +67,8 @@
       "menuPage": {},
       "myTweets": [
         {
-          "tweetText": "hello everyone",
-          "time": "2021-07-22 18:53:08",
+          "tweetText": "hello everyone\nthis is first tweet for test",
+          "time": "2021-07-22 23:07:37",
           "favesSet": [],
           "comments": [],
           "retweet": 0,
@@ -75,32 +77,34 @@
       ]
     },
     {
-      "firstName": "b",
-      "lastName": "b",
-      "userName": "b",
-      "id": "@b98",
-      "password": "b",
-      "emailAddress": "b",
-      "phoneNumber": "",
-      "bio": "",
-      "isOnline": true,
+      "firstName": "negar",
+      "lastName": "rahgozar",
+      "userName": "negar",
+      "id": "@negar104698305",
+      "password": "20031380",
+      "emailAddress": "negar@gmail.com",
+      "phoneNumber": "09125628361",
+      "bio": "hello my name is negar",
+      "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "online",
+      "lastSeen": "2021-07-22 23:32:17",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
-      "followersUserName": [],
+      "followersUserName": [
+        "shah80ryar"
+      ],
       "followingsUserName": [
-        "a"
+        "shah80ryar"
       ],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 0,
+        "indexOfTweet": 1,
         "currentTweet": {
-          "tweetText": "hello everyone",
-          "time": "2021-07-22 18:53:08",
+          "tweetText": "this is my first tweet for negar",
+          "time": "2021-07-22 23:09:03",
           "favesSet": [],
           "comments": [],
           "retweet": 0,
@@ -113,17 +117,18 @@
           "requests": [],
           "indexOfCurrentRequest": -1,
           "systemMessages": [
-            "a followed you",
-            "a unfollowed you"
+            "shah80ryar followed you",
+            "shah80ryar unfollowed you",
+            "shah80ryar followed you"
           ],
-          "indexOfCurrentSystemMessage": 1
+          "indexOfCurrentSystemMessage": 2
         },
         "info": {}
       },
       "messagesPage": {
         "chatRooms": [
           {
-            "listenerUserName": "b",
+            "listenerUserName": "negar",
             "messages": [],
             "unreadMessages": 0,
             "indexOfShowPage": 0
@@ -132,13 +137,22 @@
       },
       "explorerPage": {
         "random": {
-          "seed": 91107619998133,
+          "seed": 151266287865405,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
       },
       "menuPage": {},
-      "myTweets": []
+      "myTweets": [
+        {
+          "tweetText": "this is my first tweet for negar",
+          "time": "2021-07-22 23:09:03",
+          "favesSet": [],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
+        }
+      ]
     }
   ]
 }

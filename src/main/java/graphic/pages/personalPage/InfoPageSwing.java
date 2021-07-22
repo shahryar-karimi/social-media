@@ -15,6 +15,9 @@ import java.awt.event.ActionEvent;
 public class InfoPageSwing extends Swing {
 
     private final Account visitor;
+    private final JLabel followersQuantityLbl = new JLabel();
+    private final JLabel followingsQuantityLbl = new JLabel();
+    private final JLabel lastSeenLbl = new JLabel();
     private final JButton followOrNotBtn = new JButton();
     private final JButton addOrRemoveListBtn = new JButton();
     private final JButton blockBtn = new JButton();
@@ -53,9 +56,6 @@ public class InfoPageSwing extends Swing {
         JLabel nameLbl = new JLabel();
         JLabel userNameLbl = new JLabel();
         JLabel idLbl = new JLabel();
-        JLabel lastSeenLbl = new JLabel();
-        JLabel followersQuantityLbl = new JLabel();
-        JLabel followingsQuantityLbl = new JLabel();
         JLabel bioLbl = new JLabel();
 
         JScrollPane jScrollPane1 = new JScrollPane();
@@ -64,7 +64,11 @@ public class InfoPageSwing extends Swing {
         JScrollPane jScrollPane3 = new JScrollPane();
         JTextArea tweetTxtArea = new JTextArea();
 
-        followOrNotBtn.setText("Follow");
+        if (visitor.isFollow(page.getAccount())) {
+            followOrNotBtn.setText("unFollow");
+        } else {
+            followOrNotBtn.setText("Follow");
+        }
 
         addOrRemoveListBtn.setText("Add to List");
 
@@ -83,7 +87,11 @@ public class InfoPageSwing extends Swing {
 
         bioLbl.setText("Bio : ");
 
-        blockBtn.setText("Block");
+        if (visitor.hasBlocked(page.getAccount())) {
+            blockBtn.setText("unBlock");
+        } else {
+            blockBtn.setText("Block");
+        }
 
         sendMessageBtn.setText("Send Message");
 
@@ -102,7 +110,11 @@ public class InfoPageSwing extends Swing {
         followingsQuantityLbl.setHorizontalAlignment(SwingConstants.CENTER);
         followingsQuantityLbl.setHorizontalTextPosition(SwingConstants.CENTER);
 
-        muteBtn.setText("Mute");
+        if (visitor.isMute(page.getAccount())) {
+            muteBtn.setText("unMute");
+        } else {
+            muteBtn.setText("Mute");
+        }
 
         followersBtn.setText("Followers");
 
@@ -122,8 +134,8 @@ public class InfoPageSwing extends Swing {
                                                         .addComponent(addOrRemoveListBtn, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(sendMessageBtn)
                                                         .addComponent(followOrNotBtn, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(lastSeenLbl, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(idLbl, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lastSeenLbl, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(idLbl, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(muteBtn, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(nameLbl, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -277,6 +289,28 @@ public class InfoPageSwing extends Swing {
         } else if (e.getSource() == followingsBtn) {
             this.dispose();
             new AccountsListSwing(page, owner.getFollowings());
+        }
+        updatePage();
+    }
+
+    public void updatePage() {
+        followersQuantityLbl.setText(page.getAccount().getFollowers().size() + "");
+        followingsQuantityLbl.setText(page.getAccount().getFollowings().size() + "");
+        lastSeenLbl.setText(page.getAccount().getLastSeen(visitor));
+        if (visitor.isFollow(page.getAccount())) {
+            followOrNotBtn.setText("unFollow");
+        } else {
+            followOrNotBtn.setText("Follow");
+        }
+        if (visitor.hasBlocked(page.getAccount())) {
+            blockBtn.setText("unBlock");
+        } else {
+            blockBtn.setText("Block");
+        }
+        if (visitor.isMute(page.getAccount())) {
+            muteBtn.setText("unMute");
+        } else {
+            muteBtn.setText("Mute");
         }
     }
 }

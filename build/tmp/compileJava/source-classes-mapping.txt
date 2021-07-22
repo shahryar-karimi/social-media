@@ -22,10 +22,8 @@ Main.java
  Main
 cLI/TimeLineCLI.java
  cLI.TimeLineCLI
-graphic/pages/AccountsListSwing.java
- graphic.pages.AccountsListSwing
- graphic.pages.AccountsListSwing$1
- graphic.pages.AccountsListSwing$2
+graphic/GraphicManager.java
+ graphic.GraphicManager
 logic/pages/messenger/MessagesPage.java
  logic.pages.messenger.MessagesPage
 logic/pages/Page.java
@@ -92,12 +90,8 @@ cLI/MenuCLI.java
  cLI.MenuCLI
 graphic/pages/personalPage/EditProfilePageSwing.java
  graphic.pages.personalPage.EditProfilePageSwing
-graphic/pages/TimeLineSwing.java
- graphic.pages.TimeLineSwing
- graphic.pages.TimeLineSwing$1
- graphic.pages.TimeLineSwing$2
- graphic.pages.TimeLineSwing$3
- graphic.pages.TimeLineSwing$4
+graphic/pages/personalPage/notification/NotificationSwing.java
+ graphic.pages.personalPage.notification.NotificationSwing
 graphic/pages/personalPage/CommentSwing.java
  graphic.pages.personalPage.CommentSwing
  graphic.pages.personalPage.CommentSwing$1
@@ -110,17 +104,23 @@ graphic/pages/personalPage/CommentSwing.java
  graphic.pages.personalPage.CommentSwing$7
  graphic.pages.personalPage.CommentSwing$8
  graphic.pages.personalPage.CommentSwing$9
-graphic/pages/personalPage/InfoPageSwing.java
- graphic.pages.personalPage.InfoPageSwing
+graphic/pages/TimeLineSwing.java
+ graphic.pages.TimeLineSwing
+ graphic.pages.TimeLineSwing$1
+ graphic.pages.TimeLineSwing$2
+ graphic.pages.TimeLineSwing$3
+ graphic.pages.TimeLineSwing$4
 graphic/pages/personalPage/notification/request/RequestsPanel.java
  graphic.pages.personalPage.notification.request.RequestsPanel
 graphic/pages/personalPage/notification/request/SingleRequest.java
  graphic.pages.personalPage.notification.request.SingleRequest
-graphic/GraphicManager.java
- graphic.GraphicManager
-graphic/pages/personalPage/PersonalPageSwing.java
- graphic.pages.personalPage.PersonalPageSwing
 graphic/pages/personalPage/notification/systemMessage/SystemMessagePanel.java
  graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel
-graphic/pages/personalPage/notification/NotificationSwing.java
- graphic.pages.personalPage.notification.NotificationSwing
+graphic/pages/personalPage/PersonalPageSwing.java
+ graphic.pages.personalPage.PersonalPageSwing
+graphic/pages/AccountsListSwing.java
+ graphic.pages.AccountsListSwing
+ graphic.pages.AccountsListSwing$1
+ graphic.pages.AccountsListSwing$2
+graphic/pages/personalPage/InfoPageSwing.java
+ graphic.pages.personalPage.InfoPageSwing

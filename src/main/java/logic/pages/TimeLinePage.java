@@ -79,19 +79,21 @@ public class TimeLinePage extends Page {
 
     public String goNextTweet(LinkedList<Tweet> tweets, int indexOfTweet) {
         String message = "";
-        indexOfTweet++;
         if (tweets.size() == 0) {
             message = "There is nothing here!";
             return message;
         } else {
+            indexOfTweet++;
             Tweet nextTweet = showTweetByIndex(tweets, indexOfTweet);
             if (nextTweet == null) {
                 indexOfTweet--;
-                message = "There is no more for you\nThis is the last one:\n";
+                message = "There is no more for you\nThis is the last one\n";
             }
             this.currentTweet = showTweetByIndex(tweets, indexOfTweet);
+            this.indexOfTweet = indexOfTweet;
         }
-        return message + this.currentTweet + " " + indexOfTweet;
+//        return message + this.currentTweet + " " + indexOfTweet;
+        return message;
     }
 
     public String goPreviousTweet(LinkedList<Tweet> tweets, int indexOfTweet) {
@@ -107,8 +109,10 @@ public class TimeLinePage extends Page {
                 message = "There is no more for you\nThis is the first one:\n";
             }
             currentTweet = showTweetByIndex(tweets, indexOfTweet);
+            this.indexOfTweet = indexOfTweet;
         }
-        return message + currentTweet + " " + indexOfTweet;
+//        return message + currentTweet + " " + indexOfTweet;
+        return message;
     }
 
     public String fave() {
@@ -135,6 +139,7 @@ public class TimeLinePage extends Page {
 
     public void retweet() {
         Tweet retweetTweet = currentTweet.clone();
+        retweetTweet.setTime();
         retweetTweet.setRetweet(true);
         currentTweet.setRetweet(currentTweet.getRetweet() + 1);
         retweetTweet.setRetweet(currentTweet.getRetweet());

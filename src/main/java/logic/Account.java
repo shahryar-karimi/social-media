@@ -328,6 +328,7 @@ public class Account {
 
     public void addTweet(Tweet tweet) {
         myTweets.add(tweet);
+        timeLinePage.addTweet(tweet);
     }
 
     //setter

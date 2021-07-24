@@ -1,7 +1,8 @@
-package graphic.pages.personalPage;
+package graphic.pages.timeline;
 
 import graphic.FooterPanel;
 import graphic.pages.Swing;
+import graphic.pages.personalPage.PersonalPageSwing;
 import logic.pages.Page;
 
 import javax.swing.*;

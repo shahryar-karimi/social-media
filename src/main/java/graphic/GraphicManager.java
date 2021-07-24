@@ -7,7 +7,7 @@ import cLI.messengerCLI.MessagesCLI;
 import cLI.personalCLI.InfoCLI;
 import graphic.pages.menuPage.MenuSwing;
 import graphic.pages.Swing;
-import graphic.pages.TimeLineSwing;
+import graphic.pages.timeline.TimeLineSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import logic.Account;

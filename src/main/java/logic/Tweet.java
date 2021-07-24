@@ -14,6 +14,7 @@ public class Tweet implements Comparable{
     private LinkedList<Tweet> comments;
     private int retweet;
     private boolean isRetweet;
+    private Account retweeter;
 
     public Tweet() {
     }
@@ -149,5 +150,13 @@ public class Tweet implements Comparable{
     public int compareTo(Object o) {
         Tweet anotherTweet = (Tweet) o;
         return time.compareTo(anotherTweet.getTime());
+    }
+
+    public Account getRetweeter() {
+        return retweeter;
+    }
+
+    public void setRetweeter(Account retweeter) {
+        this.retweeter = retweeter;
     }
 }

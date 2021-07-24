@@ -18,6 +18,8 @@ public class InfoPageSwing extends Swing {
     private final JLabel followersQuantityLbl = new JLabel();
     private final JLabel followingsQuantityLbl = new JLabel();
     private final JLabel lastSeenLbl = new JLabel();
+    private final JTextArea bioTxtArea = new JTextArea();
+    private final JTextArea tweetTxtArea = new JTextArea();
     private final JButton followOrNotBtn = new JButton();
     private final JButton addOrRemoveListBtn = new JButton();
     private final JButton blockBtn = new JButton();
@@ -59,10 +61,10 @@ public class InfoPageSwing extends Swing {
         JLabel bioLbl = new JLabel();
 
         JScrollPane jScrollPane1 = new JScrollPane();
-        JTextArea bioTxtArea = new JTextArea();
+
 
         JScrollPane jScrollPane3 = new JScrollPane();
-        JTextArea tweetTxtArea = new JTextArea();
+
 
         if (visitor.isFollow(page.getAccount())) {
             followOrNotBtn.setText("unFollow");
@@ -95,6 +97,9 @@ public class InfoPageSwing extends Swing {
 
         sendMessageBtn.setText("Send Message");
 
+        if (page.getAccount().isPagePublic()) {
+            tweetTxtArea.setText(page.getAccount().getPersonalPage().showMyTweets());
+        }
         tweetTxtArea.setEditable(false);
         tweetTxtArea.setColumns(20);
         tweetTxtArea.setRows(5);

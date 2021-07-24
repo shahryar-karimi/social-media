@@ -3,6 +3,7 @@ package cLI.personalCLI;
 import cLI.CLI;
 import cLI.ConsoleColors;
 import logic.Account;
+import logic.Manager;
 import logic.Singleton;
 import logic.pages.personal.Notification;
 

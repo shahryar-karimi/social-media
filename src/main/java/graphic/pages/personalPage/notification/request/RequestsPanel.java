@@ -1,5 +1,6 @@
 package graphic.pages.personalPage.notification.request;
 
+import logic.Manager;
 import logic.pages.personal.Notification;
 
 import javax.swing.*;

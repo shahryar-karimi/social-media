@@ -122,7 +122,7 @@ public class TimeLinePage extends Page {
         } else if (currentTweet == null) {
             return "Failed to fave current tweet\nCurrent tweet not found";
         } else {
-            currentTweet.getFavesSet().remove(account);
+            currentTweet.removeFave(account);
             return "Current tweet disliked successfully";
         }
     }
@@ -140,6 +140,7 @@ public class TimeLinePage extends Page {
     public void retweet() {
         Tweet retweetTweet = currentTweet.clone();
         retweetTweet.setTime();
+        retweetTweet.setRetweeter(account);
         retweetTweet.setRetweet(true);
         currentTweet.setRetweet(currentTweet.getRetweet() + 1);
         retweetTweet.setRetweet(currentTweet.getRetweet());

@@ -150,7 +150,7 @@ public class AccountsListSwing extends Swing {
     private void myJListMouseClicked(MouseEvent evt) {
         getManager().getSwings().pop().dispose();
         Account account = page.getManager().searchByUserName(myJList.getSelectedValue());
-        new InfoPageSwing(account.getPersonalPage().getInfo(), page.getAccount());
+        page.getManager().goToInfoPage(account.getPersonalPage().getInfo(), page.getAccount());
     }
 
     private void searchTxtKeyReleased(KeyEvent evt) {

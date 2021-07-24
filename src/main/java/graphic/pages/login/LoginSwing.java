@@ -2,6 +2,7 @@ package graphic.pages.login;
 
 import graphic.pages.Swing;
 import logic.Account;
+import logic.Manager;
 import logic.pages.LoginPage;
 
 import javax.swing.*;

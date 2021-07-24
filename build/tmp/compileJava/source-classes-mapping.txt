@@ -20,8 +20,10 @@ graphic/MyFrame.java
  graphic.MyFrame
 Main.java
  Main
-cLI/ExplorerCLI.java
- cLI.ExplorerCLI
+graphic/pages/messages/MessageSwing.java
+ graphic.pages.messages.MessageSwing
+graphic/pages/messages/ChatRoomSwing.java
+ graphic.pages.messages.ChatRoomSwing
 graphic/pages/personalPage/EditProfilePageSwing.java
  graphic.pages.personalPage.EditProfilePageSwing
 logic/pages/messenger/MessagesPage.java
@@ -42,10 +44,10 @@ logic/pages/Page.java
  logic.pages.Page
 cLI/personalCLI/NotificationsCLI.java
  cLI.personalCLI.NotificationsCLI
-graphic/pages/timeline/TimeLineSwing.java
- graphic.pages.timeline.TimeLineSwing
- graphic.pages.timeline.TimeLineSwing$1
- graphic.pages.timeline.TimeLineSwing$2
+graphic/pages/AccountsListSwing.java
+ graphic.pages.AccountsListSwing
+ graphic.pages.AccountsListSwing$1
+ graphic.pages.AccountsListSwing$2
 logic/pages/personal/Notification.java
  logic.pages.personal.Notification
 logic/Manager.java
@@ -58,8 +60,6 @@ logic/pages/messenger/Message.java
  logic.pages.messenger.Message
 logic/pages/messenger/ChatRoom.java
  logic.pages.messenger.ChatRoom
-graphic/pages/LoginGraphic.java
- graphic.pages.LoginGraphic
 logic/pages/MenuPage.java
  logic.pages.MenuPage
 graphic/pages/login/LoginSwing.java
@@ -74,8 +74,8 @@ logic/pages/personal/PersonalPage.java
  logic.pages.personal.PersonalPage
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
-graphic/GraphicManager.java
- graphic.GraphicManager
+graphic/pages/personalPage/InfoPageSwing.java
+ graphic.pages.personalPage.InfoPageSwing
 logic/Tweet.java
  logic.Tweet
 logic/pages/TimeLinePage.java
@@ -92,8 +92,12 @@ graphic/FooterPanel.java
  graphic.FooterPanel
 logic/Singleton.java
  logic.Singleton
+cLI/ExplorerCLI.java
+ cLI.ExplorerCLI
 graphic/pages/personalPage/notification/request/SingleRequest.java
  graphic.pages.personalPage.notification.request.SingleRequest
+graphic/pages/setting/SettingSwing.java
+ graphic.pages.setting.SettingSwing
 cLI/personalCLI/PersonalPageCLI.java
  cLI.personalCLI.PersonalPageCLI
 cLI/SettingCLI.java
@@ -114,11 +118,15 @@ cLI/TimeLineCLI.java
  cLI.TimeLineCLI
 cLI/personalCLI/InfoCLI.java
  cLI.personalCLI.InfoCLI
+graphic/pages/messages/MessengerSwing.java
+ graphic.pages.messages.MessengerSwing
+graphic/pages/explorer/ExplorerSwing.java
+ graphic.pages.explorer.ExplorerSwing
 graphic/pages/Swing.java
  graphic.pages.Swing
-graphic/pages/AccountsListSwing.java
- graphic.pages.AccountsListSwing
- graphic.pages.AccountsListSwing$1
- graphic.pages.AccountsListSwing$2
-graphic/pages/personalPage/InfoPageSwing.java
- graphic.pages.personalPage.InfoPageSwing
+graphic/GraphicManager.java
+ graphic.GraphicManager
+graphic/pages/timeline/TimeLineSwing.java
+ graphic.pages.timeline.TimeLineSwing
+ graphic.pages.timeline.TimeLineSwing$1
+ graphic.pages.timeline.TimeLineSwing$2

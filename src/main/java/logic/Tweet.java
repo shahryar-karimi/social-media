@@ -6,23 +6,27 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class Tweet implements Comparable{
+public class Tweet implements Comparable<Tweet> {
     private String tweetText;
     private transient Account account;
+    private String ownerUserName;
     private String time;
-    private ArrayList<Account> favesSet;
+    private transient ArrayList<Account> favesSet;
+    private ArrayList<String> faveSetUserName;
     private LinkedList<Tweet> comments;
     private int retweet;
     private boolean isRetweet;
-    private Account retweeter;
+    private transient Account retweeter;
 
     public Tweet() {
     }
 
     public Tweet(Account account) {
         this.account = account;
+        this.ownerUserName = account.getUserName();
         this.isRetweet = false;
         this.favesSet = new ArrayList<>();
+        this.faveSetUserName = new ArrayList<>();
         this.comments = new LinkedList<>();
         this.retweet = 0;
     }
@@ -39,6 +43,7 @@ public class Tweet implements Comparable{
 
     public void setAccount(Account account) {
         this.account = account;
+        this.ownerUserName = account.getUserName();
     }
 
     public void addComment(Tweet newComment) {
@@ -47,6 +52,7 @@ public class Tweet implements Comparable{
 
     public void addFave(Account account) {
         favesSet.add(account);
+        faveSetUserName.add(account.getUserName());
     }
 
     public String getTweetText() {
@@ -62,6 +68,9 @@ public class Tweet implements Comparable{
     }
 
     public boolean faveSetContains(Object o) {
+//        for (String userName : faveSetUserName)
+//            if (userName.equals(o)) return true;
+//        return false;
         for (Account account1 : favesSet)
             if (account1.equals(o)) return true;
         return false;
@@ -146,17 +155,37 @@ public class Tweet implements Comparable{
         return newTweet;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        Tweet anotherTweet = (Tweet) o;
-        return time.compareTo(anotherTweet.getTime());
-    }
-
     public Account getRetweeter() {
         return retweeter;
     }
 
     public void setRetweeter(Account retweeter) {
         this.retweeter = retweeter;
+    }
+
+    public String getOwnerUserName() {
+        return ownerUserName;
+    }
+
+    public void setOwnerUserName(String ownerUserName) {
+        this.ownerUserName = ownerUserName;
+    }
+
+    public ArrayList<String> getFaveSetUserName() {
+        return faveSetUserName;
+    }
+
+    public void setFaveSetUserName(ArrayList<String> faveSetUserName) {
+        this.faveSetUserName = faveSetUserName;
+    }
+
+    @Override
+    public int compareTo(Tweet anotherTweet) {
+        return time.compareTo(anotherTweet.getTime());
+    }
+
+    public void removeFave(Account account) {
+        favesSet.remove(account);
+        faveSetUserName.remove(account.getUserName());
     }
 }

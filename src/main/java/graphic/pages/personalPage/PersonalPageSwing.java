@@ -6,7 +6,6 @@ import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
 import graphic.pages.personalPage.notification.NotificationSwing;
 import logic.Tweet;
-import logic.pages.personal.Notification;
 import logic.pages.personal.PersonalPage;
 import utility.AppProperties;
 
@@ -15,7 +14,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class PersonalPageSwing extends Swing {
-//    private final PersonalPage personalPage;
 
     Tweet newTweet = new Tweet();
     private final JButton[] buttons = new JButton[]{
@@ -68,7 +66,7 @@ public class PersonalPageSwing extends Swing {
         jTextArea4.setRows(5);
         jTextArea4.setEditable(false);
         jScrollPane4.setViewportView(jTextArea4);
-        jTextArea4.append(((PersonalPage) page).showMyTweets());
+        jTextArea4.setText(((PersonalPage) page).showMyTweets());
 
 
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
@@ -211,8 +209,7 @@ public class PersonalPageSwing extends Swing {
                 newTweet = ((PersonalPage) page).writeNewTweet(newTweetTxt);
                 ((PersonalPage) page).sendingATweet(newTweet, true);
             }
-            jTextArea4.setText("");
-            jTextArea4.append(((PersonalPage) page).showMyTweets());
+            jTextArea4.setText(((PersonalPage) page).showMyTweets());
             jTextArea1.setText("");
         }
     }

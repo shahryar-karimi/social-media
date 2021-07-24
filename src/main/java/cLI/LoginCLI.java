@@ -1,6 +1,7 @@
 package cLI;
 
 import logic.Account;
+import logic.Manager;
 import logic.Singleton;
 import logic.pages.LoginPage;
 

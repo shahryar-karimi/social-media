@@ -3,6 +3,7 @@ package cLI.personalCLI;
 import cLI.CLI;
 import cLI.ConsoleColors;
 import logic.Account;
+import logic.Manager;
 import logic.Singleton;
 import logic.pages.personal.PersonalPage;
 import logic.Tweet;
@@ -115,7 +116,7 @@ public class PersonalPageCLI extends CLI {
     }
 
     private void processShowInfo() {
-        personalPage.getManager().goToInfoPage(personalPage.getAccount(), personalPage.getAccount());
+        personalPage.getManager().goToInfoPage(personalPage.getInfo(), personalPage.getAccount());
     }
 
     private void processMyBlackList() {
@@ -168,7 +169,7 @@ public class PersonalPageCLI extends CLI {
             if (input.equals("back")) {
                 return;
             } else if (account != null && account.isActive()) {
-                personalPage.getManager().goToInfoPage(searchOnList(list, input), personalPage.getAccount());
+                personalPage.getManager().goToInfoPage(searchOnList(list, input).getPersonalPage().getInfo(), personalPage.getAccount());
             } else {
                 System.err.println("Wrong input\nplease input user name or \"back\"");
             }

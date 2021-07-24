@@ -6,13 +6,13 @@ import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import logic.Account;
+import logic.Manager;
 import logic.Tweet;
 import logic.pages.TimeLinePage;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.LinkedList;
@@ -23,6 +23,7 @@ public class TimeLineSwing extends Swing {
     private JButton sendBtn;
     private JButton nextBtn;
     private JButton previousBtn;
+    // TODO add refresh button to panel
     private JButton refresh;
     private TweetsSwing tweetPanel;
     private final boolean isComment;
@@ -51,11 +52,16 @@ public class TimeLineSwing extends Swing {
         tweetPanel.getNameLbl().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 Account account = page.getManager().searchByUserName(tweetPanel.getNameLbl().getText());
-                page.getManager().goToInfoPage(account, page.getAccount());
+                page.getManager().goToInfoPage(account.getPersonalPage().getInfo(), page.getAccount());
             }
 
             public void mouseEntered(MouseEvent evt) {
                 TweetsSwing.mouseEntered(tweetPanel.getNameLbl());
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                TweetsSwing.mouseExited(tweetPanel.getNameLbl());
             }
         });
         tweetPanel.getLikeBtn().addActionListener(e -> {
@@ -76,7 +82,7 @@ public class TimeLineSwing extends Swing {
 //        });
         tweetPanel.getRetweetBtn().addActionListener(e -> {
             ((TimeLinePage) page).retweet();
-            tweetPanel.updatePage();
+            updatePage();
         });
         tweetPanel.getShareBtn().addActionListener(e -> {
             //Todo forward a message (build a list from accounts and choose from them)
@@ -90,6 +96,11 @@ public class TimeLineSwing extends Swing {
 
             public void mouseEntered(MouseEvent evt) {
                 TweetsSwing.mouseEntered(tweetPanel.getLikeQtyLbl());
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                TweetsSwing.mouseExited(tweetPanel.getLikeQtyLbl());
             }
         });
         tweetPanel.getCommentBtn().addActionListener(e -> {
@@ -123,7 +134,7 @@ public class TimeLineSwing extends Swing {
 
         newTweetLbl.setText("New tweet: ");
 
-        timeLineLbl.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        timeLineLbl.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 14)); // NOI18N
         if (isComment) timeLineLbl.setText("Comments");
         else timeLineLbl.setText("Time line");
 
@@ -221,7 +232,7 @@ public class TimeLineSwing extends Swing {
                                 .addComponent(footerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
 
-
+        updatePage();
         this.setVisible(true);
         this.pack();
     }
@@ -245,6 +256,13 @@ public class TimeLineSwing extends Swing {
     }
 
     public void updatePage() {
+        previousBtn.setEnabled(true);
+        nextBtn.setEnabled(true);
+        if (((TimeLinePage) page).getIndexOfTweet() == 0) {
+            previousBtn.setEnabled(false);
+        } else if (((TimeLinePage) page).getIndexOfTweet() == ((TimeLinePage) page).getTweets().size() - 1) {
+            nextBtn.setEnabled(false);
+        }
         newTweetTxtArea.setText("");
         tweetPanel.changeTweet(((TimeLinePage) page).getCurrentTweet());
     }
@@ -253,26 +271,14 @@ public class TimeLineSwing extends Swing {
         String result = ((TimeLinePage) page).goNextTweet(((TimeLinePage) page).getTweets(), ((TimeLinePage) page).getIndexOfTweet());
         if (!result.isBlank())
             JOptionPane.showMessageDialog(null, result, "Next tweet", JOptionPane.ERROR_MESSAGE);
-        Tweet oldTweet = tweetPanel.getTweet();
         updatePage();
-        Tweet newTweet = tweetPanel.getTweet();
-        if (!oldTweet.equals(newTweet))
-            previousBtn.setEnabled(true);
-        if (((TimeLinePage) page).getIndexOfTweet() == ((TimeLinePage) page).getTweets().size() - 1)
-            nextBtn.setEnabled(false);
     }
 
     public void previousBtnAction() {
         String result = ((TimeLinePage) page).goPreviousTweet(((TimeLinePage) page).getTweets(), ((TimeLinePage) page).getIndexOfTweet());
         if (!result.isBlank())
             JOptionPane.showMessageDialog(null, result, "Previous tweet", JOptionPane.ERROR_MESSAGE);
-        Tweet oldTweet = tweetPanel.getTweet();
         updatePage();
-        Tweet newTweet = tweetPanel.getTweet();
-        if (!oldTweet.equals(newTweet))
-            nextBtn.setEnabled(true);
-        if (((TimeLinePage) page).getIndexOfTweet() == 0)
-            previousBtn.setEnabled(false);
     }
 
     @Override

@@ -7,6 +7,7 @@ import cLI.messengerCLI.MessagesCLI;
 import cLI.personalCLI.InfoCLI;
 import graphic.pages.menuPage.MenuSwing;
 import graphic.pages.Swing;
+import graphic.pages.personalPage.InfoPageSwing;
 import graphic.pages.timeline.TimeLineSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
@@ -14,7 +15,9 @@ import logic.Account;
 import logic.Manager;
 import logic.pages.LoginPage;
 import logic.pages.messenger.ChatRoom;
+import logic.pages.personal.Info;
 
+import javax.swing.*;
 import java.util.Stack;
 
 public class GraphicManager {
@@ -73,12 +76,11 @@ public class GraphicManager {
         messagesCLI.run();
     }
 
-    public void goToInfoPage(Account infosAccount, Account visitor) {
-        if (!infosAccount.hasBlocked(visitor) && infosAccount.isActive()) {
-            InfoCLI infoCLI = new InfoCLI(infosAccount.getPersonalPage().getInfo(), visitor);
-            infoCLI.run();
+    public void goToInfoPage(Info info, Account visitor) {
+        if (!info.getAccount().hasBlocked(visitor) && info.getAccount().isActive()) {
+            new InfoPageSwing(info, visitor);
         } else {
-            System.err.println("Page not found\nYou are blocked or page is deActive");
+            JOptionPane.showMessageDialog(null, "Page not found\nYou are blocked or page is deActive", "Change frame", JOptionPane.ERROR_MESSAGE);
         }
     }
 

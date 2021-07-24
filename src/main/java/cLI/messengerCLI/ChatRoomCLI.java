@@ -3,6 +3,7 @@ package cLI.messengerCLI;
 import cLI.ConsoleColors;
 import logic.Account;
 import cLI.CLI;
+import logic.Manager;
 import logic.Singleton;
 import logic.pages.messenger.ChatRoom;
 import logic.pages.messenger.Message;

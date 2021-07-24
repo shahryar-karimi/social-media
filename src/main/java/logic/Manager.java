@@ -2,15 +2,17 @@ package logic;
 
 import java.util.LinkedList;
 
+import cLI.personalCLI.InfoCLI;
 import graphic.GraphicManager;
 import logic.Logger.MyLogger;
+import logic.pages.personal.Info;
 
 public class Manager {
     private LinkedList<Account> accounts;
     private transient GraphicManager graphicManager;
 
     public Manager() {
-        this.accounts = new LinkedList<>();
+        accounts = new LinkedList<>();
     }
 
     public void setAccounts(LinkedList<Account> accounts) {
@@ -30,7 +32,7 @@ public class Manager {
 
     public Account searchByUserName(String userName) {
         if (userName == null) return null;
-        for (Account account : accounts)
+        for (Account account : this.accounts)
             if (account.getUserName().equals(userName)) return account;
         return null;
     }
@@ -95,9 +97,11 @@ public class Manager {
         graphicManager.goToMessagesPage(account);
     }
 
-    public void goToInfoPage(Account infosAccount, Account visitor) {
+    public void goToInfoPage(Info info, Account visitor) {
         save();
-        graphicManager.goToInfoPage(infosAccount, visitor);
+        InfoCLI infoCLI = new InfoCLI(info, visitor);
+        infoCLI.run();
+        graphicManager.goToInfoPage(info, visitor);
     }
 
     public Account searchByEmail(String email) {

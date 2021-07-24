@@ -33,6 +33,7 @@ public class NotificationSwing extends Swing {
 
     @Override
     public void showGraphic() {
+        //TODO
         this.add(requestsPanel);
         this.add(systemMessagePanel);
     }

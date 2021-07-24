@@ -131,39 +131,8 @@ public class TweetsSwing extends JPanel{
                                                         .addComponent(shareBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addContainerGap(12, Short.MAX_VALUE))
         );
+        updatePage();
     }
-
-    //        private void likeBtnActionPerformed(ActionEvent evt) {
-//            // TODO add your handling code here:
-//        }
-//
-//        private void commentBtnActionPerformed(ActionEvent evt) {
-//            // TODO add your handling code here:
-//        }
-//
-//        private void shareBtnActionPerformed(ActionEvent evt) {
-//            // TODO add your handling code here:
-//        }
-//
-//        private void retweetBtnActionPerformed(ActionEvent evt) {
-//            // TODO add your handling code here:
-//        }
-//
-//        private void nameLblMouseClicked(MouseEvent evt) {
-//
-//        }
-//
-//        private void nextBtn1ActionPerformed(ActionEvent evt) {
-//            // TODO add your handling code here:
-//        }
-//
-//        private void commentQtyLblMouseClicked(MouseEvent evt) {
-//            // TODO add your handling code here:
-//        }
-
-//        private void likeQtyLblMouseClicked(MouseEvent evt) {
-//            // TODO add your handling code here:
-//        }
 
     public void updatePage() {
         likeQtyLbl.setText(tweet.getFavesSet().size() + "");
@@ -174,6 +143,11 @@ public class TweetsSwing extends JPanel{
         }
         retweetQtyLbl.setText(tweet.getRetweet() + "");
         commentQtyLbl.setText(tweet.getComments().size() + "");
+        nameLbl.setText(tweet.getAccount().getUserName());
+        if (tweet.isRetweet()) {
+            nameLbl.setText(tweet.getRetweeter().getUserName() + " Retweeted from: " + tweet.getAccount().getUserName());
+        }
+        dateLbl.setText(tweet.getTime());
     }
 
     public void changeTweet(Tweet tweet) {
@@ -183,7 +157,11 @@ public class TweetsSwing extends JPanel{
     }
 
     public static void mouseEntered(JLabel label) {
-        label.setFont(new Font("Lucida Grande", 1, 13));
+        label.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+    }
+
+    public static void mouseExited(JLabel label) {
+        label.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
     }
 
     public Tweet getTweet() {

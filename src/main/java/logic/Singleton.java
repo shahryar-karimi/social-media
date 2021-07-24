@@ -70,7 +70,7 @@ public class Singleton {
 
             loadFriendsLists(manager, account);
 
-            laodPersonalPage(manager, account);
+            loadPersonalPage(manager, account);
 
             loadMenuPage(manager, account);
 
@@ -88,7 +88,7 @@ public class Singleton {
 
             loadChatRooms(manager, account);
 
-            loadTweets(account);
+            loadTweets(manager, account);
 
             loadMessages(manager, account);
         }
@@ -144,7 +144,7 @@ public class Singleton {
         account.getMenuPage().setManager(manager);
     }
 
-    private static void laodPersonalPage(Manager manager, Account account) {
+    private static void loadPersonalPage(Manager manager, Account account) {
         account.getPersonalPage().setAccount(account);
         account.getPersonalPage().setManager(manager);
     }
@@ -204,16 +204,30 @@ public class Singleton {
         }
     }
 
-    private static void loadTweets(Account account) {
+    private static void loadTweets(Manager manager, Account account) {
         for (Tweet tweet : account.getMyTweets()) {
-            setAccountForTweet(tweet, account);
+            setAccountForTweet(manager, tweet, manager.searchByUserName(tweet.getOwnerUserName()));
+            setFavesSetForTweet(manager, tweet);
+            if (tweet.isRetweet()) {
+                tweet.setRetweeter(account);
+            }
         }
     }
 
-    private static void setAccountForTweet(Tweet tweet, Account account) {
-        tweet.setAccount(account);
+    private static void setFavesSetForTweet(Manager manager, Tweet tweet) {
+        ArrayList<Account> favesSet = new ArrayList<>();
+        for (String userName : tweet.getFaveSetUserName())
+            favesSet.add(manager.searchByUserName(userName));
+        tweet.setFavesSet(favesSet);
+    }
+
+    private static void setAccountForTweet(Manager manager, Tweet tweet, Account account) {
+        tweet.setAccount(manager.searchByUserName(tweet.getOwnerUserName()));
         for (Tweet comment : tweet.getComments()) {
-            setAccountForTweet(comment, account);
+            setAccountForTweet(manager, comment, manager.searchByUserName(comment.getOwnerUserName()));
+            if (comment.isRetweet()) {
+                comment.setRetweeter(account);
+            }
         }
     }
 }

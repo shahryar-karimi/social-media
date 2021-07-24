@@ -9,29 +9,28 @@
       "emailAddress": "a",
       "phoneNumber": "a",
       "bio": "a",
-      "isOnline": true,
+      "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "online",
+      "lastSeen": "2021-07-25 00:28:11",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
       "followersUserName": [
         "b"
       ],
-      "followingsUserName": [
-        "b"
-      ],
+      "followingsUserName": [],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 3,
+        "indexOfTweet": 2,
         "currentTweet": {
-          "tweetText": "b1",
-          "time": "2021-07-24 19:51:11",
-          "favesSet": [],
+          "tweetText": "a3",
+          "ownerUserName": "a",
+          "time": "2021-07-25 00:24:22",
+          "faveSetUserName": [],
           "comments": [],
-          "retweet": 0,
+          "retweet": 1,
           "isRetweet": false
         }
       },
@@ -59,7 +58,7 @@
       },
       "explorerPage": {
         "random": {
-          "seed": 227618508232465,
+          "seed": 278508446841895,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
@@ -68,103 +67,31 @@
       "myTweets": [
         {
           "tweetText": "a1",
-          "time": "2021-07-24 19:41:02",
-          "favesSet": [],
+          "ownerUserName": "a",
+          "time": "2021-07-25 00:24:16",
+          "faveSetUserName": [],
           "comments": [],
-          "retweet": 0,
+          "retweet": 1,
           "isRetweet": false
         },
         {
           "tweetText": "a2",
-          "time": "2021-07-24 19:41:04",
-          "favesSet": [
-            {
-              "firstName": "b",
-              "lastName": "b",
-              "userName": "b",
-              "id": "@b98",
-              "password": "b",
-              "emailAddress": "b",
-              "phoneNumber": "",
-              "bio": "b",
-              "isOnline": false,
-              "birthdayDate": "",
-              "lastSeen": "2021-07-24 19:52:29",
-              "isPagePublic": true,
-              "isActive": true,
-              "lastSeenSituation": "every one",
-              "followersUserName": [
-                "a"
-              ],
-              "followingsUserName": [
-                "a"
-              ],
-              "blackListsUserName": [],
-              "mutedPeoplesUSerName": [],
-              "friendsListsUserName": {},
-              "timeLinePage": {
-                "indexOfTweet": 3,
-                "currentTweet": {
-                  "tweetText": "b1",
-                  "time": "2021-07-24 19:51:11",
-                  "favesSet": [],
-                  "comments": [],
-                  "retweet": 0,
-                  "isRetweet": false
-                }
-              },
-              "settingPage": {},
-              "personalPage": {
-                "notification": {
-                  "requests": [],
-                  "indexOfCurrentRequest": -1,
-                  "systemMessages": [
-                    "a followed you"
-                  ],
-                  "indexOfCurrentSystemMessage": 0
-                },
-                "info": {}
-              },
-              "messagesPage": {
-                "chatRooms": [
-                  {
-                    "listenerUserName": "b",
-                    "messages": [],
-                    "unreadMessages": 0,
-                    "indexOfShowPage": 0
-                  }
-                ]
-              },
-              "explorerPage": {
-                "random": {
-                  "seed": 174664333842882,
-                  "nextNextGaussian": 0.0,
-                  "haveNextNextGaussian": false
-                }
-              },
-              "menuPage": {},
-              "myTweets": [
-                {
-                  "tweetText": "b1",
-                  "time": "2021-07-24 19:51:11",
-                  "favesSet": [],
-                  "comments": [],
-                  "retweet": 0,
-                  "isRetweet": false
-                }
-              ]
-            }
+          "ownerUserName": "a",
+          "time": "2021-07-25 00:24:18",
+          "faveSetUserName": [
+            "b"
           ],
           "comments": [],
-          "retweet": 0,
+          "retweet": 1,
           "isRetweet": false
         },
         {
           "tweetText": "a3",
-          "time": "2021-07-24 19:41:06",
-          "favesSet": [],
+          "ownerUserName": "a",
+          "time": "2021-07-25 00:24:22",
+          "faveSetUserName": [],
           "comments": [],
-          "retweet": 0,
+          "retweet": 1,
           "isRetweet": false
         }
       ]
@@ -176,17 +103,15 @@
       "id": "@b98",
       "password": "b",
       "emailAddress": "b",
-      "phoneNumber": "",
+      "phoneNumber": "b",
       "bio": "b",
       "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "2021-07-24 19:58:11",
+      "lastSeen": "2021-07-25 00:30:57",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
-      "followersUserName": [
-        "a"
-      ],
+      "followersUserName": [],
       "followingsUserName": [
         "a"
       ],
@@ -194,14 +119,15 @@
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 3,
+        "indexOfTweet": 7,
         "currentTweet": {
           "tweetText": "b1",
-          "time": "2021-07-24 19:51:11",
-          "favesSet": [],
+          "ownerUserName": "b",
+          "time": "2021-07-25 00:30:18",
+          "faveSetUserName": [],
           "comments": [],
-          "retweet": 0,
-          "isRetweet": false
+          "retweet": 1,
+          "isRetweet": true
         }
       },
       "settingPage": {},
@@ -209,10 +135,8 @@
         "notification": {
           "requests": [],
           "indexOfCurrentRequest": -1,
-          "systemMessages": [
-            "a followed you"
-          ],
-          "indexOfCurrentSystemMessage": 0
+          "systemMessages": [],
+          "indexOfCurrentSystemMessage": -1
         },
         "info": {}
       },
@@ -228,7 +152,7 @@
       },
       "explorerPage": {
         "random": {
-          "seed": 174664333842882,
+          "seed": 189832447666429,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
@@ -236,12 +160,49 @@
       "menuPage": {},
       "myTweets": [
         {
-          "tweetText": "b1",
-          "time": "2021-07-24 19:51:11",
-          "favesSet": [],
+          "tweetText": "a2",
+          "ownerUserName": "a",
+          "time": "2021-07-25 00:25:08",
+          "faveSetUserName": [],
           "comments": [],
-          "retweet": 0,
+          "retweet": 1,
+          "isRetweet": true
+        },
+        {
+          "tweetText": "b1",
+          "ownerUserName": "b",
+          "time": "2021-07-25 00:25:41",
+          "faveSetUserName": [],
+          "comments": [],
+          "retweet": 1,
           "isRetweet": false
+        },
+        {
+          "tweetText": "a3",
+          "ownerUserName": "a",
+          "time": "2021-07-25 00:25:55",
+          "faveSetUserName": [],
+          "comments": [],
+          "retweet": 1,
+          "isRetweet": true
+        },
+        {
+          "tweetText": "a1",
+          "ownerUserName": "a",
+          "time": "2021-07-25 00:28:28",
+          "faveSetUserName": [],
+          "comments": [],
+          "retweet": 1,
+          "isRetweet": true
+        },
+        {
+          "tweetText": "b1",
+          "ownerUserName": "b",
+          "time": "2021-07-25 00:30:18",
+          "faveSetUserName": [],
+          "comments": [],
+          "retweet": 1,
+          "isRetweet": true
         }
       ]
     }

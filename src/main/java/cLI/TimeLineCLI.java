@@ -1,6 +1,7 @@
 package cLI;
 
 import logic.Account;
+import logic.Manager;
 import logic.Singleton;
 import logic.pages.TimeLinePage;
 import logic.Tweet;
@@ -131,7 +132,7 @@ public class TimeLineCLI extends CLI {
         Tweet currentTweet = timeLinePage.getCurrentTweet();
         Account tweetsAccount = currentTweet.getAccount();
         if (tweetsAccount.isActive()) {
-            timeLinePage.getManager().goToInfoPage(tweetsAccount, timeLinePage.getAccount());
+            timeLinePage.getManager().goToInfoPage(tweetsAccount.getPersonalPage().getInfo(), timeLinePage.getAccount());
         }
     }
 

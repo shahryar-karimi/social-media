@@ -77,7 +77,6 @@ public class PersonalPage extends Page {
             if (!follower.isMute(account))
                 follower.getTimeLinePage().addTweet(tweet);
         }
-        account.getTimeLinePage().addTweet(tweet);
         manager.save();
     }
 

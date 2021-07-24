@@ -1,6 +1,7 @@
 package cLI;
 
 import logic.Account;
+import logic.Manager;
 import logic.Singleton;
 import logic.pages.ExplorerPage;
 import logic.pages.TimeLinePage;
@@ -77,7 +78,7 @@ public class ExplorerCLI extends CLI {
         if (account == null || !account.isActive()) {
             System.err.println("Account not found!");
         } else {
-            explorerPage.getManager().goToInfoPage(account, explorerPage.getAccount());
+            explorerPage.getManager().goToInfoPage(account.getPersonalPage().getInfo(), explorerPage.getAccount());
         }
     }
 }

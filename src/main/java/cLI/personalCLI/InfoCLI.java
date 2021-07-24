@@ -133,7 +133,7 @@ public class InfoCLI extends CLI {
             } else {
                 Account follower = info.getAccount().searchFollowerByUserName(input);
                 if (follower != null && follower.isActive()) {
-                    info.getManager().goToInfoPage(follower, visitor);
+                    info.getManager().goToInfoPage(follower.getPersonalPage().getInfo(), visitor);
                 } else {
                     System.err.println("This user name not found!\nplease try another one:");
                 }
@@ -163,7 +163,7 @@ public class InfoCLI extends CLI {
             } else {
                 Account following = info.getAccount().searchFollowingByUserName(input);
                 if (following != null && following.isActive()) {
-                    info.getManager().goToInfoPage(following, visitor);
+                    info.getManager().goToInfoPage(following.getPersonalPage().getInfo(), visitor);
                 } else {
                     System.err.println("This user name not found!\nplease try another one:");
                 }

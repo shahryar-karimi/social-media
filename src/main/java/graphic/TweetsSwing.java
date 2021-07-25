@@ -4,7 +4,6 @@ import logic.Account;
 import logic.Tweet;
 
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
 
 public class TweetsSwing extends JPanel{

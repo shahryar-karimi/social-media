@@ -1,33 +1,65 @@
-utility/DateLabelFormatter.java
- utility.DateLabelFormatter
-utility/AppProperties.java
- utility.AppProperties
-cLI/ConsoleColors.java
- cLI.ConsoleColors
-graphic/GraphicPages.java
- graphic.GraphicPages
-graphic/pages/login/SignUpPanel.java
- graphic.pages.login.SignUpPanel
-cLI/CLI.java
- cLI.CLI
-logic/Logger/MyLogger.java
- logic.Logger.MyLogger
-graphic/pages/login/LoginPanel.java
- graphic.pages.login.LoginPanel
-logic/Logger/Level.java
- logic.Logger.Level
-graphic/MyFrame.java
- graphic.MyFrame
-Main.java
- Main
-graphic/pages/messages/MessageSwing.java
- graphic.pages.messages.MessageSwing
-graphic/pages/messages/ChatRoomSwing.java
- graphic.pages.messages.ChatRoomSwing
 graphic/pages/personalPage/EditProfilePageSwing.java
  graphic.pages.personalPage.EditProfilePageSwing
 logic/pages/messenger/MessagesPage.java
  logic.pages.messenger.MessagesPage
+graphic/pages/messages/MessageSwing.java
+ graphic.pages.messages.MessageSwing
+graphic/pages/messages/ChatRoomSwing.java
+ graphic.pages.messages.ChatRoomSwing
+logic/Manager.java
+ logic.Manager
+graphic/TweetsSwing.java
+ graphic.TweetsSwing
+logic/pages/messenger/ChatRoom.java
+ logic.pages.messenger.ChatRoom
+graphic/pages/login/LoginPanel.java
+ graphic.pages.login.LoginPanel
+graphic/pages/login/LoginSwing.java
+ graphic.pages.login.LoginSwing
+graphic/MyFrame.java
+ graphic.MyFrame
+logic/Account.java
+ logic.Account
+cLI/ConsoleColors.java
+ cLI.ConsoleColors
+graphic/pages/menuPage/MenuSwing.java
+ graphic.pages.menuPage.MenuSwing
+logic/pages/personal/PersonalPage.java
+ logic.pages.personal.PersonalPage
+graphic/pages/personalPage/InfoPageSwing.java
+ graphic.pages.personalPage.InfoPageSwing
+graphic/GraphicPages.java
+ graphic.GraphicPages
+graphic/pages/personalPage/notification/systemMessage/SystemMessagePanel.java
+ graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel
+graphic/GraphicManager.java
+ graphic.GraphicManager
+cLI/messengerCLI/ChatRoomCLI.java
+ cLI.messengerCLI.ChatRoomCLI
+logic/pages/SettingPage.java
+ logic.pages.SettingPage
+graphic/FooterPanel.java
+ graphic.FooterPanel
+graphic/pages/personalPage/notification/request/SingleRequest.java
+ graphic.pages.personalPage.notification.request.SingleRequest
+graphic/pages/setting/SettingSwing.java
+ graphic.pages.setting.SettingSwing
+cLI/personalCLI/PersonalPageCLI.java
+ cLI.personalCLI.PersonalPageCLI
+cLI/MenuCLI.java
+ cLI.MenuCLI
+cLI/LoginCLI.java
+ cLI.LoginCLI
+logic/pages/LoginPage.java
+ logic.pages.LoginPage
+cLI/personalCLI/InfoCLI.java
+ cLI.personalCLI.InfoCLI
+graphic/pages/messages/MessengerSwing.java
+ graphic.pages.messages.MessengerSwing
+graphic/pages/explorer/ExplorerSwing.java
+ graphic.pages.explorer.ExplorerSwing
+graphic/pages/Swing.java
+ graphic.pages.Swing
 graphic/pages/timeline/CommentSwing.java
  graphic.pages.timeline.CommentSwing
  graphic.pages.timeline.CommentSwing$1
@@ -50,82 +82,52 @@ graphic/pages/AccountsListSwing.java
  graphic.pages.AccountsListSwing$2
 logic/pages/personal/Notification.java
  logic.pages.personal.Notification
-logic/Manager.java
- logic.Manager
 graphic/pages/personalPage/PersonalPageSwing.java
  graphic.pages.personalPage.PersonalPageSwing
-cLI/messengerCLI/MessagesCLI.java
- cLI.messengerCLI.MessagesCLI
 logic/pages/messenger/Message.java
  logic.pages.messenger.Message
-logic/pages/messenger/ChatRoom.java
- logic.pages.messenger.ChatRoom
+graphic/pages/login/SignUpPanel.java
+ graphic.pages.login.SignUpPanel
 logic/pages/MenuPage.java
  logic.pages.MenuPage
-graphic/pages/login/LoginSwing.java
- graphic.pages.login.LoginSwing
+Main.java
+ Main
+logic/Logger/Level.java
+ logic.Logger.Level
 graphic/pages/personalPage/notification/NotificationSwing.java
  graphic.pages.personalPage.notification.NotificationSwing
-logic/Account.java
- logic.Account
-graphic/pages/menuPage/MenuSwing.java
- graphic.pages.menuPage.MenuSwing
-logic/pages/personal/PersonalPage.java
- logic.pages.personal.PersonalPage
+utility/DateLabelFormatter.java
+ utility.DateLabelFormatter
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
-graphic/pages/personalPage/InfoPageSwing.java
- graphic.pages.personalPage.InfoPageSwing
 logic/Tweet.java
  logic.Tweet
+utility/AppProperties.java
+ utility.AppProperties
 logic/pages/TimeLinePage.java
  logic.pages.TimeLinePage
-graphic/pages/personalPage/notification/systemMessage/SystemMessagePanel.java
- graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel
-graphic/TweetsSwing.java
- graphic.TweetsSwing
-cLI/messengerCLI/ChatRoomCLI.java
- cLI.messengerCLI.ChatRoomCLI
-logic/pages/SettingPage.java
- logic.pages.SettingPage
-graphic/FooterPanel.java
- graphic.FooterPanel
+graphic/pages/timeline/comment/CommentsSwing.java
+ graphic.pages.timeline.comment.CommentsSwing
+logic/Logger/MyLogger.java
+ logic.Logger.MyLogger
 logic/Singleton.java
  logic.Singleton
 cLI/ExplorerCLI.java
  cLI.ExplorerCLI
-graphic/pages/personalPage/notification/request/SingleRequest.java
- graphic.pages.personalPage.notification.request.SingleRequest
-graphic/pages/setting/SettingSwing.java
- graphic.pages.setting.SettingSwing
-cLI/personalCLI/PersonalPageCLI.java
- cLI.personalCLI.PersonalPageCLI
+cLI/CLI.java
+ cLI.CLI
 cLI/SettingCLI.java
  cLI.SettingCLI
 logic/pages/personal/Info.java
  logic.pages.personal.Info
 logic/CommandProcessor.java
  logic.CommandProcessor
-cLI/MenuCLI.java
- cLI.MenuCLI
 graphic/pages/personalPage/notification/request/RequestsPanel.java
  graphic.pages.personalPage.notification.request.RequestsPanel
-cLI/LoginCLI.java
- cLI.LoginCLI
-logic/pages/LoginPage.java
- logic.pages.LoginPage
 cLI/TimeLineCLI.java
  cLI.TimeLineCLI
-cLI/personalCLI/InfoCLI.java
- cLI.personalCLI.InfoCLI
-graphic/pages/messages/MessengerSwing.java
- graphic.pages.messages.MessengerSwing
-graphic/pages/explorer/ExplorerSwing.java
- graphic.pages.explorer.ExplorerSwing
-graphic/pages/Swing.java
- graphic.pages.Swing
-graphic/GraphicManager.java
- graphic.GraphicManager
+cLI/messengerCLI/MessagesCLI.java
+ cLI.messengerCLI.MessagesCLI
 graphic/pages/timeline/TimeLineSwing.java
  graphic.pages.timeline.TimeLineSwing
  graphic.pages.timeline.TimeLineSwing$1

@@ -3,18 +3,46 @@ package graphic.pages.timeline;
 import graphic.FooterPanel;
 import graphic.pages.Swing;
 import graphic.pages.personalPage.PersonalPageSwing;
+import logic.Tweet;
 import logic.pages.Page;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class CommentSwing extends Swing {
+    private final Tweet tweet;
 
-    public CommentSwing(Page page) { //Tweet tweet
+    JButton sendBtn = new JButton();
+    JButton nextBtn = new JButton();
+    JButton previousBtn = new JButton();
+    JButton commentBtn = new JButton();
+    JButton retweetBtn = new JButton();
+    JButton shareBtn = new JButton();
+    JButton likeBtn = new JButton();
+    JButton[] buttons = {sendBtn, nextBtn, previousBtn, commentBtn, retweetBtn, shareBtn, likeBtn};
+
+    JLabel commentsLbl = new JLabel();
+    JLabel newCommentLbl = new JLabel();
+    JLabel nameLbl = new JLabel();
+    JLabel dateLbl = new JLabel();
+    JLabel commentQtyLbl = new JLabel();
+    JLabel likeQtyLbl = new JLabel();
+    JLabel retweetQtyLbl = new JLabel();
+
+    JScrollPane jScrollPane1 = new JScrollPane();
+    JTextArea newCommentTxtArea = new JTextArea();
+
+    JScrollPane jScrollPane3 = new JScrollPane();
+    JTextArea tweetTxtArea = new JTextArea();
+
+    public CommentSwing(Page page, Tweet tweet) { //Tweet tweet
         super();
-        //this.tweet = tweet;
+        this.tweet = tweet;
         this.page = page;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
+        for (JButton button : buttons)
+            button.addActionListener(this);
         addSwing(this);
         run();
     }
@@ -28,47 +56,23 @@ public class CommentSwing extends Swing {
 
     @Override
     public void showGraphic() {
-        JPanel jPanel1 = new javax.swing.JPanel();
-        JPanel tweetPnl = new javax.swing.JPanel();
-        JPanel commentsPnl = new javax.swing.JPanel();
-        JPanel tweetPanel = new javax.swing.JPanel();
+        JPanel jPanel1 = new JPanel();
+        JPanel tweetPnl = new JPanel();
+        JPanel commentsPnl = new JPanel();
+        JPanel tweetPanel = new JPanel();
 
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        JLabel commentsLbl = new javax.swing.JLabel();
-        JLabel newCommentLbl = new javax.swing.JLabel();
-        JLabel nameLbl = new javax.swing.JLabel();
-        JLabel dateLbl = new javax.swing.JLabel();
-        JLabel commentQtyLbl = new javax.swing.JLabel();
-        JLabel likeQtyLbl = new javax.swing.JLabel();
-        JLabel retweetQtyLbl = new javax.swing.JLabel();
+        tweetPnl.setBackground(new Color(204, 204, 204));
 
-        JButton sendBtn = new javax.swing.JButton();
-        JButton nextBtn = new javax.swing.JButton();
-        JButton previousBtn = new javax.swing.JButton();
-        JButton commentBtn = new javax.swing.JButton();
-        JButton retweetBtn = new javax.swing.JButton();
-        JButton shareBtn = new javax.swing.JButton();
-        JButton likeBtn = new javax.swing.JButton();
-
-
-        JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
-        JTextArea newCommentTxtArea = new javax.swing.JTextArea();
-
-        JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
-        JTextArea tweetTxtArea = new javax.swing.JTextArea();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        tweetPnl.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout tweetPnlLayout = new javax.swing.GroupLayout(tweetPnl);
+        GroupLayout tweetPnlLayout = new GroupLayout(tweetPnl);
         tweetPnl.setLayout(tweetPnlLayout);
         tweetPnlLayout.setHorizontalGroup(
-                tweetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                tweetPnlLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGap(0, 569, Short.MAX_VALUE)
         );
         tweetPnlLayout.setVerticalGroup(
-                tweetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                tweetPnlLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGap(0, 226, Short.MAX_VALUE)
         );
 
@@ -128,7 +132,7 @@ public class CommentSwing extends Swing {
 
         dateLbl.setText("Date");
 
-        commentBtn.setIcon(new javax.swing.ImageIcon("src/main/resources/pictures/comments.png")); // comment
+        commentBtn.setIcon(new ImageIcon("src/main/resources/pictures/comments.png")); // comment
         commentBtn.setToolTipText("comment");
         commentBtn.setMaximumSize(new java.awt.Dimension(580, 580));
         commentBtn.setPreferredSize(new java.awt.Dimension(34, 34));
@@ -152,7 +156,7 @@ public class CommentSwing extends Swing {
             }
         });
 
-        likeQtyLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        likeQtyLbl.setHorizontalAlignment(SwingConstants.CENTER);
         likeQtyLbl.setText("QtyLbl");
         likeQtyLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         likeQtyLbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,7 +171,7 @@ public class CommentSwing extends Swing {
             }
         });
 
-        retweetBtn.setIcon(new javax.swing.ImageIcon("src/main/resources/pictures/retweet.png")); // retweet
+        retweetBtn.setIcon(new ImageIcon("src/main/resources/pictures/retweet.png")); // retweet
         retweetBtn.setToolTipText("retweet");
         retweetBtn.setMaximumSize(new java.awt.Dimension(580, 580));
         retweetBtn.setPreferredSize(new java.awt.Dimension(34, 34));
@@ -177,10 +181,10 @@ public class CommentSwing extends Swing {
             }
         });
 
-        retweetQtyLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        retweetQtyLbl.setHorizontalAlignment(SwingConstants.CENTER);
         retweetQtyLbl.setText("QtyLbl");
 
-        shareBtn.setIcon(new javax.swing.ImageIcon("src/main/resources/pictures/paper-plane.png")); // share
+        shareBtn.setIcon(new ImageIcon("src/main/resources/pictures/paper-plane.png")); // share
         shareBtn.setToolTipText("share");
         shareBtn.setMaximumSize(new java.awt.Dimension(580, 580));
         shareBtn.setPreferredSize(new java.awt.Dimension(34, 34));
@@ -190,7 +194,7 @@ public class CommentSwing extends Swing {
             }
         });
 
-        likeBtn.setIcon(new javax.swing.ImageIcon("src/main/resources/pictures/green-like.png")); // like
+        likeBtn.setIcon(new ImageIcon("src/main/resources/pictures/green-like.png")); // like
         likeBtn.setToolTipText("like");
         likeBtn.setMaximumSize(new java.awt.Dimension(580, 580));
         likeBtn.setPreferredSize(new java.awt.Dimension(34, 34));
@@ -200,54 +204,54 @@ public class CommentSwing extends Swing {
             }
         });
 
-        javax.swing.GroupLayout tweetPanelLayout = new javax.swing.GroupLayout(tweetPanel);
+        GroupLayout tweetPanelLayout = new GroupLayout(tweetPanel);
         tweetPanel.setLayout(tweetPanelLayout);
         tweetPanelLayout.setHorizontalGroup(
-                tweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                tweetPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(tweetPanelLayout.createSequentialGroup()
                                 .addGap(15, 15, 15)
-                                .addGroup(tweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(tweetPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(tweetPanelLayout.createSequentialGroup()
-                                                .addComponent(commentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(commentBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(commentQtyLbl)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(likeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(likeBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(likeQtyLbl)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(retweetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(retweetBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(retweetQtyLbl)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(shareBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(shareBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(tweetPanelLayout.createSequentialGroup()
-                                                .addGroup(tweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(tweetPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                                         .addGroup(tweetPanelLayout.createSequentialGroup()
-                                                                .addComponent(nameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(dateLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(nameLbl, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(dateLbl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 15, Short.MAX_VALUE))))
         );
         tweetPanelLayout.setVerticalGroup(
-                tweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                tweetPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(tweetPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(tweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(tweetPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                         .addComponent(nameLbl)
                                         .addComponent(dateLbl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(tweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(tweetPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(tweetPanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(tweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(retweetBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(shareBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(likeBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(commentBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(tweetPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(retweetBtn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(shareBtn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(likeBtn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(commentBtn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(tweetPanelLayout.createSequentialGroup()
                                                 .addGap(16, 16, 16)
                                                 .addComponent(commentQtyLbl))
@@ -260,82 +264,82 @@ public class CommentSwing extends Swing {
                                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout commentsPnlLayout = new javax.swing.GroupLayout(commentsPnl);
+        GroupLayout commentsPnlLayout = new GroupLayout(commentsPnl);
         commentsPnl.setLayout(commentsPnlLayout);
         commentsPnlLayout.setHorizontalGroup(
-                commentsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                commentsPnlLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(commentsPnlLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(previousBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(commentsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(previousBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(commentsPnlLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(commentsPnlLayout.createSequentialGroup()
-                                                .addGroup(commentsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(commentsPnlLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(newCommentLbl))
                                                 .addGap(194, 194, 194))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, commentsPnlLayout.createSequentialGroup()
-                                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(GroupLayout.Alignment.LEADING, commentsPnlLayout.createSequentialGroup()
+                                                .addComponent(tweetPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(nextBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                                 .addContainerGap(71, Short.MAX_VALUE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commentsPnlLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, commentsPnlLayout.createSequentialGroup()
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sendBtn, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
                                 .addGap(96, 96, 96))
                         .addGroup(commentsPnlLayout.createSequentialGroup()
                                 .addGap(229, 229, 229)
                                 .addComponent(commentsLbl)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         commentsPnlLayout.setVerticalGroup(
-                commentsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                commentsPnlLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(commentsPnlLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(commentsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(commentsPnlLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(sendBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                         .addGroup(commentsPnlLayout.createSequentialGroup()
                                                 .addComponent(commentsLbl)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(newCommentLbl)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(commentsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(commentsPnlLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(commentsPnlLayout.createSequentialGroup()
                                                 .addGap(42, 42, 42)
-                                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(tweetPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 93, Short.MAX_VALUE))
                                         .addGroup(commentsPnlLayout.createSequentialGroup()
                                                 .addGap(159, 159, 159)
-                                                .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commentsPnlLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(previousBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(nextBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(GroupLayout.Alignment.TRAILING, commentsPnlLayout.createSequentialGroup()
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(previousBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                                 .addGap(217, 217, 217))))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(tweetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(tweetPnl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(24, 24, 24)
-                                                .addComponent(commentsPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(commentsPnl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addComponent(tweetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tweetPnl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(commentsPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(commentsPnl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(97, Short.MAX_VALUE))
         );
 

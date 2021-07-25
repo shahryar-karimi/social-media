@@ -9,28 +9,38 @@
       "emailAddress": "a",
       "phoneNumber": "a",
       "bio": "a",
-      "isOnline": false,
+      "isOnline": true,
       "birthdayDate": "",
-      "lastSeen": "2021-07-25 00:28:11",
+      "lastSeen": "online",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
       "followersUserName": [
-        "b"
+        "b",
+        "yasaman"
       ],
-      "followingsUserName": [],
+      "followingsUserName": [
+        "yasaman",
+        "yasamin",
+        "shahab",
+        "yaser",
+        "shahryar"
+      ],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 2,
+        "indexOfTweet": 5,
         "currentTweet": {
-          "tweetText": "a3",
+          "tweetText": "salam shahryar",
           "ownerUserName": "a",
-          "time": "2021-07-25 00:24:22",
-          "faveSetUserName": [],
+          "time": "2021-07-25 01:49:25",
+          "faveSetUserName": [
+            "a",
+            "b"
+          ],
           "comments": [],
-          "retweet": 1,
+          "retweet": 0,
           "isRetweet": false
         }
       },
@@ -40,9 +50,10 @@
           "requests": [],
           "indexOfCurrentRequest": -1,
           "systemMessages": [
-            "b followed you"
+            "b followed you",
+            "yasaman followed you"
           ],
-          "indexOfCurrentSystemMessage": 0
+          "indexOfCurrentSystemMessage": 1
         },
         "info": {}
       },
@@ -93,6 +104,38 @@
           "comments": [],
           "retweet": 1,
           "isRetweet": false
+        },
+        {
+          "tweetText": "salam yasaman",
+          "ownerUserName": "a",
+          "time": "2021-07-25 01:48:53",
+          "faveSetUserName": [
+            "a"
+          ],
+          "comments": [],
+          "retweet": 1,
+          "isRetweet": false
+        },
+        {
+          "tweetText": "salam yasaman",
+          "ownerUserName": "a",
+          "time": "2021-07-25 01:49:11",
+          "faveSetUserName": [],
+          "comments": [],
+          "retweet": 1,
+          "isRetweet": true
+        },
+        {
+          "tweetText": "salam shahryar",
+          "ownerUserName": "a",
+          "time": "2021-07-25 01:49:25",
+          "faveSetUserName": [
+            "a",
+            "b"
+          ],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
         }
       ]
     },
@@ -107,7 +150,7 @@
       "bio": "b",
       "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "2021-07-25 00:30:57",
+      "lastSeen": "2021-07-25 01:50:30",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
@@ -119,15 +162,18 @@
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 7,
+        "indexOfTweet": 10,
         "currentTweet": {
-          "tweetText": "b1",
-          "ownerUserName": "b",
-          "time": "2021-07-25 00:30:18",
-          "faveSetUserName": [],
+          "tweetText": "salam shahryar",
+          "ownerUserName": "a",
+          "time": "2021-07-25 01:49:25",
+          "faveSetUserName": [
+            "a",
+            "b"
+          ],
           "comments": [],
-          "retweet": 1,
-          "isRetweet": true
+          "retweet": 0,
+          "isRetweet": false
         }
       },
       "settingPage": {},
@@ -205,6 +251,305 @@
           "isRetweet": true
         }
       ]
+    },
+    {
+      "firstName": "yasaman",
+      "lastName": "kazemi",
+      "userName": "yasaman",
+      "id": "@yasaman-1394974140",
+      "password": "yasaman",
+      "emailAddress": "yasaman@gmail.com",
+      "phoneNumber": "123",
+      "bio": "salam",
+      "isOnline": true,
+      "birthdayDate": "",
+      "lastSeen": "online",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "a"
+      ],
+      "followingsUserName": [
+        "a"
+      ],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": 5,
+        "currentTweet": {
+          "tweetText": "salam shahryar",
+          "ownerUserName": "a",
+          "time": "2021-07-25 01:49:25",
+          "faveSetUserName": [
+            "a",
+            "b"
+          ],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
+        }
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "yasaman",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 168501941211722,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
+    },
+    {
+      "firstName": "shahryar",
+      "lastName": "karimi",
+      "userName": "shahryar",
+      "id": "@shahryar-752582668",
+      "password": "shahryar",
+      "emailAddress": "shahryar@gmail.com",
+      "phoneNumber": "1234",
+      "bio": "salam salaaaaaam\nhamegi salaaaaaaaam",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-07-25 01:57:18",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "a"
+      ],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": -1
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "shahryar",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 208258104039716,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
+    },
+    {
+      "firstName": "shahab",
+      "lastName": "shahab",
+      "userName": "shahab",
+      "id": "@shahab-903575971",
+      "password": "shahab",
+      "emailAddress": "shahab@gmail.com",
+      "phoneNumber": "12345",
+      "bio": "shahab hastam\nnisti dar haddam",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-07-25 01:54:03",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "a"
+      ],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": -1
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "shahab",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 255419847747195,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
+    },
+    {
+      "firstName": "yasamin",
+      "lastName": "yasamin",
+      "userName": "yasamin",
+      "id": "@yasamin-1394973892",
+      "password": "yasamin",
+      "emailAddress": "yasamin@gmail.com",
+      "phoneNumber": "1",
+      "bio": "k t yasamin",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-07-25 01:54:49",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "a"
+      ],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": -1
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "yasamin",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 47628413981082,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
+    },
+    {
+      "firstName": "yaser",
+      "lastName": "yaser",
+      "userName": "yaser",
+      "id": "@yaser114749528",
+      "password": "yaser",
+      "emailAddress": "yaser@gmail.com",
+      "phoneNumber": "123456",
+      "bio": "bagher nistam",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-07-25 01:55:40",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "a"
+      ],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": -1
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "yaser",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 135664491141722,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
     }
   ]
 }

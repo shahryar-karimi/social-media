@@ -27,6 +27,8 @@ public class TimeLineSwing extends Swing {
     private JButton refresh;
     private TweetsSwing tweetPanel;
     private final boolean isComment;
+    private JLabel timeLineLbl = new JLabel();
+    private JLabel newTweetLbl = new JLabel();
 
     public TimeLineSwing(TimeLinePage timeLinePage, boolean isComment) {
         super();
@@ -107,14 +109,12 @@ public class TimeLineSwing extends Swing {
             //Todo forward a message
             updatePage();
             dispose();
-            new CommentSwing(page);
+            new CommentSwing(page, ((TimeLinePage) page).getCurrentTweet());
         });
     }
 
     @Override
     public void showGraphic() {
-        JLabel timeLineLbl = new JLabel();
-        JLabel newTweetLbl = new JLabel();
         JPanel jPanel1 = new JPanel();
         newTweetTxtArea = new JTextArea();
         sendBtn = new JButton();
@@ -295,5 +295,73 @@ public class TimeLineSwing extends Swing {
         } else if (e.getSource() == refresh) {
             updatePage();
         }
+    }
+
+    public JTextArea getNewTweetTxtArea() {
+        return newTweetTxtArea;
+    }
+
+    public void setNewTweetTxtArea(JTextArea newTweetTxtArea) {
+        this.newTweetTxtArea = newTweetTxtArea;
+    }
+
+    public JButton getSendBtn() {
+        return sendBtn;
+    }
+
+    public void setSendBtn(JButton sendBtn) {
+        this.sendBtn = sendBtn;
+    }
+
+    public JButton getNextBtn() {
+        return nextBtn;
+    }
+
+    public void setNextBtn(JButton nextBtn) {
+        this.nextBtn = nextBtn;
+    }
+
+    public JButton getPreviousBtn() {
+        return previousBtn;
+    }
+
+    public void setPreviousBtn(JButton previousBtn) {
+        this.previousBtn = previousBtn;
+    }
+
+    public JButton getRefresh() {
+        return refresh;
+    }
+
+    public void setRefresh(JButton refresh) {
+        this.refresh = refresh;
+    }
+
+    public TweetsSwing getTweetPanel() {
+        return tweetPanel;
+    }
+
+    public void setTweetPanel(TweetsSwing tweetPanel) {
+        this.tweetPanel = tweetPanel;
+    }
+
+    public boolean isComment() {
+        return isComment;
+    }
+
+    public JLabel getTimeLineLbl() {
+        return timeLineLbl;
+    }
+
+    public void setTimeLineLbl(JLabel timeLineLbl) {
+        this.timeLineLbl = timeLineLbl;
+    }
+
+    public JLabel getNewTweetLbl() {
+        return newTweetLbl;
+    }
+
+    public void setNewTweetLbl(JLabel newTweetLbl) {
+        this.newTweetLbl = newTweetLbl;
     }
 }

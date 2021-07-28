@@ -99,8 +99,8 @@ public class Manager {
 
     public void goToInfoPage(Info info, Account visitor) {
         save();
-        InfoCLI infoCLI = new InfoCLI(info, visitor);
-        infoCLI.run();
+//        InfoCLI infoCLI = new InfoCLI(info, visitor);
+//        infoCLI.run();
         graphicManager.goToInfoPage(info, visitor);
     }
 

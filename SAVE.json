@@ -9,9 +9,9 @@
       "emailAddress": "a",
       "phoneNumber": "a",
       "bio": "a",
-      "isOnline": true,
+      "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "online",
+      "lastSeen": "2021-07-28 23:13:38",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
@@ -150,7 +150,7 @@
       "bio": "b",
       "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "2021-07-25 01:50:30",
+      "lastSeen": "2021-07-28 23:18:08",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
@@ -249,6 +249,17 @@
           "comments": [],
           "retweet": 1,
           "isRetweet": true
+        },
+        {
+          "tweetText": "hello there",
+          "ownerUserName": "b",
+          "time": "2021-07-28 23:14:11",
+          "faveSetUserName": [
+            "b"
+          ],
+          "comments": [],
+          "retweet": 0,
+          "isRetweet": false
         }
       ]
     },

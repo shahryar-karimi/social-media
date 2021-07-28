@@ -11,6 +11,7 @@ import graphic.pages.personalPage.InfoPageSwing;
 import graphic.pages.timeline.TimeLineSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
+import graphic.pages.timeline.TimeLineSwing2;
 import logic.Account;
 import logic.Manager;
 import logic.pages.LoginPage;
@@ -58,7 +59,8 @@ public class GraphicManager {
     }
 
     public void goToTimeLinePage(Account account) {
-        new TimeLineSwing(account.getTimeLinePage(), false);
+//        new TimeLineSwing(account.getTimeLinePage(), false);
+        new TimeLineSwing2(account.getTimeLinePage());
     }
 
     public void goToExplorerPage(Account account) {

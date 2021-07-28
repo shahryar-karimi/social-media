@@ -88,7 +88,6 @@ public class PersonalPageSwing extends Swing {
                         .addComponent(jScrollPane1)
         );
 
-
         jPanel3.setBackground(new Color(200, 200, 200));
 
         jLabel1.setText("My Tweets");

@@ -1,12 +1,11 @@
 package graphic.pages.timeline;
 
 import graphic.FooterPanel;
-import graphic.TweetsSwing;
+import graphic.tweet.TweetsPanel;
 import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import logic.Account;
-import logic.Manager;
 import logic.Tweet;
 import logic.pages.TimeLinePage;
 
@@ -25,7 +24,7 @@ public class TimeLineSwing extends Swing {
     private JButton previousBtn;
     // TODO add refresh button to panel
     private JButton refresh;
-    private TweetsSwing tweetPanel;
+    private TweetsPanel tweetPanel;
     private final boolean isComment;
     private JLabel timeLineLbl = new JLabel();
     private JLabel newTweetLbl = new JLabel();
@@ -47,7 +46,7 @@ public class TimeLineSwing extends Swing {
     }
 
     private void initTweet() {
-        tweetPanel = new TweetsSwing(page.getAccount(), ((TimeLinePage) page).getCurrentTweet());
+        tweetPanel = new TweetsPanel(page.getAccount(), ((TimeLinePage) page).getCurrentTweet());
         if (tweetPanel.getTweet().isRetweet()) {
             tweetPanel.getNameLbl().setText(page.getAccount().getUserName() + " Retweeted from: " + tweetPanel.getTweet().getAccount());
         }
@@ -58,12 +57,12 @@ public class TimeLineSwing extends Swing {
             }
 
             public void mouseEntered(MouseEvent evt) {
-                TweetsSwing.mouseEntered(tweetPanel.getNameLbl());
+                TweetsPanel.mouseEntered(tweetPanel.getNameLbl());
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                TweetsSwing.mouseExited(tweetPanel.getNameLbl());
+                TweetsPanel.mouseExited(tweetPanel.getNameLbl());
             }
         });
         tweetPanel.getLikeBtn().addActionListener(e -> {
@@ -97,12 +96,12 @@ public class TimeLineSwing extends Swing {
             }
 
             public void mouseEntered(MouseEvent evt) {
-                TweetsSwing.mouseEntered(tweetPanel.getLikeQtyLbl());
+                TweetsPanel.mouseEntered(tweetPanel.getLikeQtyLbl());
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                TweetsSwing.mouseExited(tweetPanel.getLikeQtyLbl());
+                TweetsPanel.mouseExited(tweetPanel.getLikeQtyLbl());
             }
         });
         tweetPanel.getCommentBtn().addActionListener(e -> {
@@ -231,7 +230,6 @@ public class TimeLineSwing extends Swing {
                                 .addContainerGap(88, Short.MAX_VALUE)
                                 .addComponent(footerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
-
         updatePage();
         this.setVisible(true);
         this.pack();
@@ -337,11 +335,11 @@ public class TimeLineSwing extends Swing {
         this.refresh = refresh;
     }
 
-    public TweetsSwing getTweetPanel() {
+    public TweetsPanel getTweetPanel() {
         return tweetPanel;
     }
 
-    public void setTweetPanel(TweetsSwing tweetPanel) {
+    public void setTweetPanel(TweetsPanel tweetPanel) {
         this.tweetPanel = tweetPanel;
     }
 

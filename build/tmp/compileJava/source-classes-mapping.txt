@@ -42,8 +42,8 @@ graphic/pages/menuPage/MenuSwing.java
  graphic.pages.menuPage.MenuSwing
 logic/pages/personal/PersonalPage.java
  logic.pages.personal.PersonalPage
-graphic/pages/personalPage/InfoPageSwing.java
- graphic.pages.personalPage.InfoPageSwing
+cLI/messengerCLI/MessagesCLI.java
+ cLI.messengerCLI.MessagesCLI
 graphic/pages/personalPage/notification/systemMessage/SystemMessagePanel.java
  graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel
 graphic/GraphicManager.java
@@ -72,8 +72,8 @@ cLI/personalCLI/InfoCLI.java
  cLI.personalCLI.InfoCLI
 graphic/pages/messages/MessengerSwing.java
  graphic.pages.messages.MessengerSwing
-graphic/pages/explorer/ExplorerSwing.java
- graphic.pages.explorer.ExplorerSwing
+cLI/TimeLineCLI.java
+ cLI.TimeLineCLI
 graphic/pages/Swing.java
  graphic.pages.Swing
 graphic/pages/timeline/CommentSwing.java
@@ -92,20 +92,16 @@ logic/pages/Page.java
  logic.pages.Page
 cLI/personalCLI/NotificationsCLI.java
  cLI.personalCLI.NotificationsCLI
-graphic/pages/AccountsListSwing.java
- graphic.pages.AccountsListSwing
- graphic.pages.AccountsListSwing$1
- graphic.pages.AccountsListSwing$2
+graphic/pages/explorer/ExplorerSwing.java
+ graphic.pages.explorer.ExplorerSwing
 graphic/tweet/TweetsPanel.java
  graphic.tweet.TweetsPanel
 logic/pages/personal/Notification.java
  logic.pages.personal.Notification
-graphic/pages/timeline/MainPanel.java
- graphic.pages.timeline.MainPanel
- graphic.pages.timeline.MainPanel$1
- graphic.pages.timeline.MainPanel$2
-graphic/pages/personalPage/PersonalPageSwing.java
- graphic.pages.personalPage.PersonalPageSwing
+graphic/pages/explorer/ExplorerPanel.java
+ graphic.pages.explorer.ExplorerPanel
+graphic/pages/explorer/RandomTweetsPanel.java
+ graphic.pages.explorer.RandomTweetsPanel
 logic/pages/messenger/Message.java
  logic.pages.messenger.Message
 logic/pages/MenuPage.java
@@ -132,10 +128,21 @@ logic/CommandProcessor.java
  logic.CommandProcessor
 graphic/pages/personalPage/notification/request/RequestsPanel.java
  graphic.pages.personalPage.notification.request.RequestsPanel
-cLI/TimeLineCLI.java
- cLI.TimeLineCLI
-cLI/messengerCLI/MessagesCLI.java
- cLI.messengerCLI.MessagesCLI
+graphic/pages/explorer/SearchPanel.java
+ graphic.pages.explorer.SearchPanel
+ graphic.pages.explorer.SearchPanel$1
+graphic/pages/AccountsListSwing.java
+ graphic.pages.AccountsListSwing
+ graphic.pages.AccountsListSwing$1
+ graphic.pages.AccountsListSwing$2
+graphic/pages/personalPage/InfoPageSwing.java
+ graphic.pages.personalPage.InfoPageSwing
+graphic/pages/timeline/MainPanel.java
+ graphic.pages.timeline.MainPanel
+ graphic.pages.timeline.MainPanel$1
+ graphic.pages.timeline.MainPanel$2
+graphic/pages/personalPage/PersonalPageSwing.java
+ graphic.pages.personalPage.PersonalPageSwing
 graphic/pages/timeline/TimeLineSwing.java
  graphic.pages.timeline.TimeLineSwing
  graphic.pages.timeline.TimeLineSwing$1

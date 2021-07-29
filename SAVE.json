@@ -11,7 +11,7 @@
       "bio": "a",
       "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "2021-07-28 23:13:38",
+      "lastSeen": "2021-07-30 01:44:29",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
@@ -61,6 +61,12 @@
         "chatRooms": [
           {
             "listenerUserName": "a",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          },
+          {
+            "listenerUserName": "yasaman",
             "messages": [],
             "unreadMessages": 0,
             "indexOfShowPage": 0
@@ -162,13 +168,12 @@
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 10,
+        "indexOfTweet": 11,
         "currentTweet": {
-          "tweetText": "salam shahryar",
-          "ownerUserName": "a",
-          "time": "2021-07-25 01:49:25",
+          "tweetText": "hello there",
+          "ownerUserName": "b",
+          "time": "2021-07-28 23:14:11",
           "faveSetUserName": [
-            "a",
             "b"
           ],
           "comments": [],
@@ -318,6 +323,12 @@
         "chatRooms": [
           {
             "listenerUserName": "yasaman",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          },
+          {
+            "listenerUserName": "a",
             "messages": [],
             "unreadMessages": 0,
             "indexOfShowPage": 0

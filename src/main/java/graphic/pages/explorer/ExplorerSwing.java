@@ -2,7 +2,6 @@ package graphic.pages.explorer;
 
 import graphic.FooterPanel;
 import graphic.pages.Swing;
-import graphic.pages.personalPage.PersonalPageSwing;
 import logic.pages.ExplorerPage;
 
 import javax.swing.*;
@@ -27,7 +26,7 @@ public class ExplorerSwing extends Swing {
 
     @Override
     public void showGraphic() {
-        //TODO
+
     }
 
     @Override

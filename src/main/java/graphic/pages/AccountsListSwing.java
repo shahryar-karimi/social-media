@@ -59,14 +59,15 @@ public class AccountsListSwing extends Swing {
         ArrayList<String> stars = getStars(accounts);
 
         stars.forEach((star) -> {
-            String starName = stars.toString().toLowerCase(Locale.ROOT);
-            if (starName.contains(searchTerm.toLowerCase())) {
+            String starName = star.toLowerCase(Locale.ROOT);
+            if (starName.startsWith(searchTerm.toLowerCase())) {
                 filteredItems.addElement(star);
             }
         });
 
         defaultListModel = filteredItems;
         myJList.setModel(defaultListModel);
+        myJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     @Override
@@ -90,8 +91,9 @@ public class AccountsListSwing extends Swing {
         searchLabel.setText(AppProperties.getInstance().getProperty("Search"));
 
         searchTxt.addKeyListener(new KeyAdapter() {
-            public void keyReleased(KeyEvent evt) {
-                searchTxtKeyReleased(evt);
+            @Override
+            public void keyReleased(KeyEvent e) {
+                searchTxtKeyReleased(e);
             }
         });
 

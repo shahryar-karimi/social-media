@@ -65,6 +65,11 @@ public class MenuSwing extends Swing implements ActionListener {
     }
 
     @Override
+    public void updateGraphic() {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttons[0]) {
             mainFrame.dispose();

@@ -61,6 +61,11 @@ public class LoginSwing extends Swing {
     }
 
     @Override
+    public void updateGraphic() {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginPanel.getLoginButton()) {
             login();

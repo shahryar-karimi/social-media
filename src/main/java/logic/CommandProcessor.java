@@ -1,6 +1,7 @@
 package logic;
 
 import logic.Logger.MyLogger;
+import utility.Loop;
 
 public class CommandProcessor {
 
@@ -17,7 +18,7 @@ public class CommandProcessor {
     }
 
     public void loadManager() {
-        setManager(Singleton.loading());
+        setManager(Singleton.load());
         if (getManager() == null) setManager(new Manager());
     }
 

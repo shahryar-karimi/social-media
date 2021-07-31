@@ -4,10 +4,8 @@ import graphic.FooterPanel;
 import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
 import logic.Account;
-import logic.pages.TimeLinePage;
 import logic.pages.messenger.ChatRoom;
 import logic.pages.personal.Info;
-import logic.pages.personal.PersonalPage;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,22 +13,20 @@ import java.awt.event.ActionEvent;
 public class InfoPageSwing extends Swing {
 
     private final Account visitor;
-    private final JLabel followersQuantityLbl = new JLabel();
-    private final JLabel followingsQuantityLbl = new JLabel();
-    private final JLabel lastSeenLbl = new JLabel();
-    private final JTextArea bioTxtArea = new JTextArea();
-    private final JTextArea tweetTxtArea = new JTextArea();
-    private final JButton followOrNotBtn = new JButton();
-    private final JButton addOrRemoveListBtn = new JButton();
-    private final JButton blockBtn = new JButton();
-    private final JButton sendMessageBtn = new JButton();
-    private final JButton reportBtn1 = new JButton();
-    private final JButton muteBtn = new JButton();
-    private final JButton followersBtn = new JButton();
-    private final JButton followingsBtn = new JButton();
-    private final JButton[] buttons =
-            {followOrNotBtn, addOrRemoveListBtn, blockBtn, sendMessageBtn,
-                    reportBtn1, muteBtn, followersBtn, followingsBtn};
+    private JLabel followersQuantityLbl;
+    private JLabel followingsQuantityLbl;
+    private JLabel lastSeenLbl;
+    private JTextArea bioTxtArea;
+    private JTextArea tweetTxtArea;
+    private JButton followOrNotBtn;
+    private JButton addOrRemoveListBtn;
+    private JButton blockBtn;
+    private JButton sendMessageBtn;
+    private JButton reportBtn1;
+    private JButton muteBtn;
+    private JButton followersBtn;
+    private JButton followingsBtn;
+    private JButton[] buttons;
 
     public InfoPageSwing(Info info, Account visitor) {
         super();
@@ -52,6 +48,21 @@ public class InfoPageSwing extends Swing {
 
     @Override
     public void showGraphic() {
+        this.followersQuantityLbl = new JLabel();
+        this.followingsQuantityLbl = new JLabel();
+        this.lastSeenLbl = new JLabel();
+        this.bioTxtArea = new JTextArea();
+        this.tweetTxtArea = new JTextArea();
+        this.followOrNotBtn = new JButton();
+        this.addOrRemoveListBtn = new JButton();
+        this.blockBtn = new JButton();
+        this.sendMessageBtn = new JButton();
+        this.reportBtn1 = new JButton();
+        this.muteBtn = new JButton();
+        this.followersBtn = new JButton();
+        this.followingsBtn = new JButton();
+        this.buttons = new JButton[]{followOrNotBtn, addOrRemoveListBtn, blockBtn, sendMessageBtn,
+                        reportBtn1, muteBtn, followersBtn, followingsBtn};
 
         JPanel jPanel1 = new JPanel();
 
@@ -242,11 +253,6 @@ public class InfoPageSwing extends Swing {
     @Override
     public void actionPerformed(ActionEvent e) {
         Account owner = page.getAccount();
-//        JButton sendMessageBtn = new JButton();
-//        JButton reportBtn1 = new JButton();
-//        JButton muteBtn = new JButton();
-//        JButton followersBtn = new JButton();
-//        JButton followingsBtn = new JButton();
         if (e.getSource() == followOrNotBtn) {
             if (visitor.isFollow(owner)) {
                 JOptionPane.showMessageDialog(null, visitor.unFollow(owner, true), "Info page", JOptionPane.INFORMATION_MESSAGE);
@@ -295,10 +301,11 @@ public class InfoPageSwing extends Swing {
             this.dispose();
             new AccountsListSwing(page, owner.getFollowings());
         }
-        updatePage();
+        updateGraphic();
     }
 
-    public void updatePage() {
+    @Override
+    public void updateGraphic() {
         followersQuantityLbl.setText(page.getAccount().getFollowers().size() + "");
         followingsQuantityLbl.setText(page.getAccount().getFollowings().size() + "");
         lastSeenLbl.setText(page.getAccount().getLastSeen(visitor));

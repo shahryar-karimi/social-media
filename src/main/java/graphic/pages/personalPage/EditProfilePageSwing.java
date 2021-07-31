@@ -169,6 +169,16 @@ public class EditProfilePageSwing extends Swing {
 
     }
 
+    @Override
+    public void updateGraphic() {
+        firstNameT.setText("");
+        lastNameT.setText("");
+        passwordT.setText("");
+        emailT.setText("");
+        phoneNumberT.setText("");
+        bioT.setText("");
+    }
+
     public boolean isValidString(String s) {
         return s != null && !s.isBlank();
     }

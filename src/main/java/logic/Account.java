@@ -97,7 +97,7 @@ public class Account {
         this.blackListsUserName = blackListsUserName;
     }
 
-    public ArrayList<String> getMutedPeoplesUSerName() {
+    public ArrayList<String> getMutedPeoplesUserName() {
         return mutedPeoplesUSerName;
     }
 
@@ -534,5 +534,39 @@ public class Account {
         }
     }
 
+    public void update(Account newAccount) {
+        this.firstName = newAccount.firstName;
+        this.lastName = newAccount.lastName;
+        this.password = newAccount.password;
+        this.emailAddress = newAccount.emailAddress;
+        this.phoneNumber = newAccount.phoneNumber;
+        this.bio = newAccount.bio;
+        this.isOnline = newAccount.isOnline;
+        this.birthdayDate = newAccount.birthdayDate;
+        this.lastSeen = newAccount.lastSeen;
+        this.isPagePublic = newAccount.isPagePublic;
+        this.isActive = newAccount.isActive;
+        this.lastSeenSituation = newAccount.lastSeenSituation;
 
+        this.followersUserName = newAccount.followersUserName;
+        this.followingsUserName = newAccount.followingsUserName;
+        this.blackListsUserName = newAccount.blackListsUserName;
+        this.mutedPeoplesUSerName = newAccount.mutedPeoplesUSerName;
+        this.friendsListsUserName = newAccount.friendsListsUserName;
+
+        this.followers = newAccount.followers;
+        this.followings = newAccount.followings;
+        this.blackList = newAccount.blackList;
+        this.mutedPeople = newAccount.mutedPeople;
+        this.friendsList = newAccount.friendsList;
+
+        this.timeLinePage = newAccount.timeLinePage;
+        this.settingPage = newAccount.settingPage;
+        this.personalPage = newAccount.personalPage;
+        this.messagesPage = newAccount.messagesPage;
+        this.explorerPage = newAccount.explorerPage;
+        this.menuPage = newAccount.menuPage;
+
+        this.myTweets = newAccount.myTweets;
+    }
 }

@@ -2,6 +2,7 @@ package graphic.tweet;
 
 import logic.Account;
 import logic.Tweet;
+import utility.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,22 +46,22 @@ public class TweetsPanel extends JPanel{
 
         dateLbl.setText(tweet.getTime());
 
-        likeBtn.setIcon(new ImageIcon("src/main/resources/pictures/green-like.png")); // like
+        likeBtn.setIcon(ImageLoader.getTweetsIcons().get("green-like"));
         likeBtn.setToolTipText("like");
         likeBtn.setMaximumSize(new Dimension(580, 580));
         likeBtn.setPreferredSize(new Dimension(34, 34));
 
-        commentBtn.setIcon(new ImageIcon("src/main/resources/pictures/comments.png")); // comment
+        commentBtn.setIcon(ImageLoader.getTweetsIcons().get("comments"));
         commentBtn.setToolTipText("comment");
         commentBtn.setMaximumSize(new Dimension(580, 580));
         commentBtn.setPreferredSize(new Dimension(34, 34));
 
-        retweetBtn.setIcon(new ImageIcon("src/main/resources/pictures/retweet.png")); // retweet
+        retweetBtn.setIcon(ImageLoader.getTweetsIcons().get("retweet"));
         retweetBtn.setToolTipText("retweet");
         retweetBtn.setMaximumSize(new Dimension(580, 580));
         retweetBtn.setPreferredSize(new Dimension(34, 34));
 
-        shareBtn.setIcon(new ImageIcon("src/main/resources/pictures/paper-plane.png")); // share
+        shareBtn.setIcon(ImageLoader.getTweetsIcons().get("paper-plane"));
         shareBtn.setToolTipText("share");
         shareBtn.setMaximumSize(new Dimension(580, 580));
         shareBtn.setPreferredSize(new Dimension(34, 34));
@@ -131,9 +132,9 @@ public class TweetsPanel extends JPanel{
     public void updatePage() {
         likeQtyLbl.setText(tweet.getFavesSet().size() + "");
         if (tweet.faveSetContains(visitor)) {
-            likeBtn.setIcon(new ImageIcon("src/main/resources/pictures/red-like.png"));
+            likeBtn.setIcon(ImageLoader.getTweetsIcons().get("red-like"));
         } else {
-            likeBtn.setIcon(new ImageIcon("src/main/resources/pictures/green-like.png"));
+            likeBtn.setIcon(ImageLoader.getTweetsIcons().get("green-like"));
         }
         retweetQtyLbl.setText(tweet.getRetweet() + "");
         commentQtyLbl.setText(tweet.getComments().size() + "");

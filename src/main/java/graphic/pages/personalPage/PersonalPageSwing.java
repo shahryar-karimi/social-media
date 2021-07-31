@@ -32,8 +32,8 @@ public class PersonalPageSwing extends Swing {
     private final JPanel jPanel3 = new JPanel();
     private final JScrollPane jScrollPane1 = new JScrollPane();
     private final JScrollPane jScrollPane4 = new JScrollPane();
-    private final JTextArea jTextArea1 = new JTextArea();
-    private final JTextArea jTextArea4 = new JTextArea();
+    private final JTextArea newTweetTxt = new JTextArea();
+    private final JTextArea myTweetsView = new JTextArea();
     private final JLabel jLabel1 = new JLabel();
 
     public PersonalPageSwing(PersonalPage personalPage) {
@@ -57,16 +57,16 @@ public class PersonalPageSwing extends Swing {
     public void showGraphic() {
 
         sendBtn.addActionListener(this);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        newTweetTxt.setColumns(20);
+        newTweetTxt.setRows(5);
+        jScrollPane1.setViewportView(newTweetTxt);
 
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jTextArea4.setEditable(false);
-        jScrollPane4.setViewportView(jTextArea4);
-        jTextArea4.setText(((PersonalPage) page).showMyTweets());
+        myTweetsView.setColumns(20);
+        myTweetsView.setRows(5);
+        myTweetsView.setEditable(false);
+        jScrollPane4.setViewportView(myTweetsView);
+        myTweetsView.setText(((PersonalPage) page).showMyTweets());
 
 
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
@@ -182,6 +182,12 @@ public class PersonalPageSwing extends Swing {
         this.pack();
     }
 
+    @Override
+    public void updateGraphic() {
+        myTweetsView.setText(((PersonalPage) page).showMyTweets());
+        newTweetTxt.setText("");
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -203,13 +209,13 @@ public class PersonalPageSwing extends Swing {
         } else if (e.getSource() == buttons[5]) { // create list
 
         } else if (e.getSource() == sendBtn) {
-            String newTweetTxt = jTextArea1.getText();
+            String newTweetTxt = this.newTweetTxt.getText();
             if (newTweetTxt != null && !newTweetTxt.isBlank()) {
                 newTweet = ((PersonalPage) page).writeNewTweet(newTweetTxt);
                 ((PersonalPage) page).sendingATweet(newTweet, true);
             }
-            jTextArea4.setText(((PersonalPage) page).showMyTweets());
-            jTextArea1.setText("");
+            myTweetsView.setText(((PersonalPage) page).showMyTweets());
+            this.newTweetTxt.setText("");
         }
     }
 }

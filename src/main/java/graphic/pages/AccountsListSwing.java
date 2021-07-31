@@ -15,25 +15,18 @@ import java.util.Locale;
 
 public class AccountsListSwing extends Swing {
 
-    private final JList<String> myJList;
+    private JList<String> myJList = new JList<>();
     private JTextField searchTxt;
-    private DefaultListModel<String> defaultListModel = new DefaultListModel<>();
+    private DefaultListModel<String> defaultListModel;
     private final LinkedList<Account> accounts;
 
     public AccountsListSwing(Page page, LinkedList<Account> accounts) {
         super();
-        myJList = new JList<>();
-        myJList.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                myJListMouseClicked(evt);
-            }
-        });
         this.page = page;
         this.accounts = accounts;
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         addSwing(this);
         run();
-        this.bindData();
     }
 
     private ArrayList<String> getStars(LinkedList<Account> accounts) {
@@ -78,13 +71,18 @@ public class AccountsListSwing extends Swing {
 
     @Override
     public void showGraphic() {
-        JMenuItem jMenuItem1 = new JMenuItem();
+        defaultListModel = new DefaultListModel<>();
+        myJList = new JList<>();
+        myJList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                myJListMouseClicked(evt);
+            }
+        });
+        bindData();
         Panel panel1 = new Panel();
         JLabel searchLabel = new JLabel();
         searchTxt = new JTextField();
         JScrollPane jScrollPane1 = new JScrollPane();
-
-        jMenuItem1.setText("jMenuItem1");
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,7 +91,7 @@ public class AccountsListSwing extends Swing {
         searchTxt.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                searchTxtKeyReleased(e);
+                searchTxtKeyReleased();
             }
         });
 
@@ -149,13 +147,18 @@ public class AccountsListSwing extends Swing {
 
     }
 
+    @Override
+    public void updateGraphic() {
+        searchTxtKeyReleased();
+    }
+
     private void myJListMouseClicked(MouseEvent evt) {
         getManager().getSwings().pop().dispose();
         Account account = page.getManager().searchByUserName(myJList.getSelectedValue());
         page.getManager().goToInfoPage(account.getPersonalPage().getInfo(), page.getAccount());
     }
 
-    private void searchTxtKeyReleased(KeyEvent evt) {
+    private void searchTxtKeyReleased() {
         searchFilter(searchTxt.getText());
     }
 

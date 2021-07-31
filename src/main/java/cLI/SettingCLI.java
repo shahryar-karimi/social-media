@@ -147,7 +147,6 @@ public class SettingCLI extends CLI {
 
     private void processDeleteAccount() {
         settingPage.deleteAccount();
-        settingPage.getManager().getAccounts().remove(settingPage.getAccount());
         Singleton.save(settingPage.getManager());
         settingPage.getManager().goToLoginPage();
         System.exit(0);

@@ -8,7 +8,7 @@ import java.util.Properties;
 public class AppProperties {
 
     private final String FILENAME = "src/main/resources/conf.properties";
-    private  static final AppProperties properties_file = new AppProperties();
+    private static final AppProperties properties_file = new AppProperties();
     private Properties prop = new Properties();
     private String msg = "";
 
@@ -17,7 +17,7 @@ public class AppProperties {
         try {
             fileReader = new FileReader(FILENAME);
             prop.load(fileReader);
-        }  catch (IOException e) {
+        } catch (IOException e) {
             msg = "Error accessing properties file";
             e.printStackTrace();
         } finally {
@@ -30,9 +30,11 @@ public class AppProperties {
             }
         }
     }
-    public String getProperty(String key){
+
+    public String getProperty(String key) {
         return prop.getProperty(key);
     }
+
     public static AppProperties getInstance() {
         return properties_file;
     }

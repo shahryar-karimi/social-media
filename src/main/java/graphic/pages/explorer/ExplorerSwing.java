@@ -30,6 +30,11 @@ public class ExplorerSwing extends Swing {
     }
 
     @Override
+    public void updateGraphic() {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
 
     }

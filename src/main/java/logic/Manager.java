@@ -1,18 +1,23 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import cLI.personalCLI.InfoCLI;
 import graphic.GraphicManager;
 import logic.Logger.MyLogger;
 import logic.pages.personal.Info;
+import utility.Loop;
 
 public class Manager {
     private LinkedList<Account> accounts;
-    private transient GraphicManager graphicManager;
+    private transient GraphicManager graphicManager = new GraphicManager();
+    private static final Object locker = new Object();
+    private transient Loop loop;
 
     public Manager() {
         accounts = new LinkedList<>();
+        loop = new Loop(this);
     }
 
     public void setAccounts(LinkedList<Account> accounts) {
@@ -20,10 +25,33 @@ public class Manager {
     }
 
     public Account createAnAccount(String firstName, String lastName, String userName, String password, String emailAddress, String phoneNumber, String bio) {
-        Account newAccount = new Account(this, firstName, lastName, userName, password, emailAddress, phoneNumber, bio);
-        accounts.add(newAccount);
-        save();
-        return newAccount;
+        synchronized (locker) {
+            Account newAccount = new Account(this, firstName, lastName, userName, password, emailAddress, phoneNumber, bio);
+            accounts.add(newAccount);
+            save();
+            return newAccount;
+        }
+    }
+
+    public void deleteAccount(Account account) {
+        synchronized (locker) {
+            LinkedList<Account> followings = account.getFollowings();
+            LinkedList<Account> followers = account.getFollowers();
+            LinkedList<Tweet> tweets = account.getMyTweets();
+            LinkedList<Account> blackList = account.getBlackList();
+            ArrayList<Account> mutedPeople = account.getMutedPeople();
+            while (!followings.isEmpty())
+                account.unFollow(followings.get(0), false);
+            while (!followers.isEmpty())
+                followers.get(0).unFollow(account, false);
+            while (!tweets.isEmpty())
+                tweets.pop();
+            while (!blackList.isEmpty())
+                blackList.pop();
+            while (!mutedPeople.isEmpty())
+                mutedPeople.remove(0);
+            accounts.remove(account);
+        }
     }
 
     public LinkedList<Account> getAccounts() {
@@ -31,10 +59,12 @@ public class Manager {
     }
 
     public Account searchByUserName(String userName) {
-        if (userName == null) return null;
-        for (Account account : this.accounts)
-            if (account.getUserName().equals(userName)) return account;
-        return null;
+        synchronized (locker) {
+            if (userName == null) return null;
+            for (Account account : this.accounts)
+                if (account.getUserName().equals(userName)) return account;
+            return null;
+        }
     }
 
     public boolean isCorrectPassword(Account account, String password) {
@@ -43,6 +73,31 @@ public class Manager {
 
     public void save() {
         Singleton.save(this);
+    }
+
+    public void update() {
+        synchronized (locker) {
+            Manager manager = Singleton.load();
+            first:
+            for (Account newAccount : manager.getAccounts()) {
+                for (Account oldAccount : accounts) {
+                    if (oldAccount.equals(newAccount)) {
+                        oldAccount.update(newAccount);
+                        continue first;
+                    }
+                }
+                accounts.add(newAccount);
+            }
+            first:
+            for (Account oldAccount : accounts) {
+                for (Account newAccount : manager.getAccounts()) {
+                    if (oldAccount.equals(newAccount)) {
+                        continue first;
+                    }
+                }
+                deleteAccount(oldAccount);
+            }
+        }
     }
 
     public void quit(Account account) {
@@ -63,13 +118,13 @@ public class Manager {
 
     public void goToLoginPage() {
         save();
-        graphicManager = new GraphicManager();
         graphicManager.goToLoginPage(this);
     }
 
     public void goToMenuPage(Account account) {
         save();
         graphicManager.goToMenuPage(account);
+        loop.start();
     }
 
     public void gotoPersonalPage(Account account) {
@@ -105,9 +160,11 @@ public class Manager {
     }
 
     public Account searchByEmail(String email) {
-        for (Account account : accounts)
-            if (email.equals(account.getEmailAddress())) return account;
-        return null;
+        synchronized (locker) {
+            for (Account account : accounts)
+                if (email.equals(account.getEmailAddress())) return account;
+            return null;
+        }
     }
 
     public GraphicManager getGraphicManager() {

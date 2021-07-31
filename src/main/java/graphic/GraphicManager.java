@@ -4,14 +4,12 @@ import cLI.ExplorerCLI;
 import cLI.SettingCLI;
 import cLI.messengerCLI.ChatRoomCLI;
 import cLI.messengerCLI.MessagesCLI;
-import cLI.personalCLI.InfoCLI;
 import graphic.pages.menuPage.MenuSwing;
 import graphic.pages.Swing;
 import graphic.pages.personalPage.InfoPageSwing;
-import graphic.pages.timeline.TimeLineSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
-import graphic.pages.timeline.TimeLineSwing2;
+import graphic.pages.timeline.TimeLineSwing;
 import logic.Account;
 import logic.Manager;
 import logic.pages.LoginPage;
@@ -42,7 +40,9 @@ public class GraphicManager {
             swings.pop().dispose();
         }
         if (!swings.isEmpty()) {
-            swings.peek().run();
+            Swing swing = swings.peek();
+            swing.updateGraphic();
+            swing.run();
         }
     }
 
@@ -59,8 +59,7 @@ public class GraphicManager {
     }
 
     public void goToTimeLinePage(Account account) {
-//        new TimeLineSwing(account.getTimeLinePage(), false);
-        new TimeLineSwing2(account.getTimeLinePage());
+        new TimeLineSwing(account.getTimeLinePage());
     }
 
     public void goToExplorerPage(Account account) {

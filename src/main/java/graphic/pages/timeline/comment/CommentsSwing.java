@@ -1,18 +1,16 @@
 package graphic.pages.timeline.comment;
 
 import graphic.pages.Swing;
-import graphic.pages.timeline.TimeLineSwing;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class CommentsSwing extends Swing {
 
-    private TimeLineSwing timeLineSwing;
     private JPanel tweetPanel;
 
-    public CommentsSwing(TimeLineSwing timeLineSwing) {
-        this.timeLineSwing = timeLineSwing;
+    public CommentsSwing() {
+
     }
 
     @Override
@@ -22,6 +20,11 @@ public class CommentsSwing extends Swing {
 
     @Override
     public void showGraphic() {
+
+    }
+
+    @Override
+    public void updateGraphic() {
 
     }
 

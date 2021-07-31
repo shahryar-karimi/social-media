@@ -14,23 +14,28 @@ import java.util.LinkedList;
 
 public class Singleton {
     private static Gson gson;
+    private static final Object locker = new Object();
 
     private Singleton() {
     }
 
     public static Gson getGson() {
-        if (gson == null) gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson;
+        synchronized (locker) {
+            if (gson == null) gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson;
+        }
     }
 
     public static void save(Manager manager) {
-        try {
-            saving(manager);
-            FileWriter fileWriter = new FileWriter("SAVE.json");
-            getGson().toJson(manager, fileWriter);
-            fileWriter.flush();
-        } catch (Exception e) {
-            System.err.println("Didn't save program");
+        synchronized (locker) {
+            try {
+                saving(manager);
+                FileWriter fileWriter = new FileWriter("SAVE.json");
+                getGson().toJson(manager, fileWriter);
+                fileWriter.flush();
+            } catch (Exception e) {
+                System.err.println("Didn't save program");
+            }
         }
     }
 
@@ -46,16 +51,18 @@ public class Singleton {
         }
     }
 
-    public static Manager loading() {
-        Manager manager = null;
-        try {
-            FileReader fileReader = new FileReader("SAVE.json");
-            manager = getGson().fromJson(fileReader, Manager.class);
-            if (manager != null) loadManager(manager);
-        } catch (Exception e) {
-            System.err.println("Didn't load");
+    public static Manager load() {
+        synchronized (locker) {
+            Manager manager = null;
+            try {
+                FileReader fileReader = new FileReader("SAVE.json");
+                manager = getGson().fromJson(fileReader, Manager.class);
+                if (manager != null) loadManager(manager);
+            } catch (Exception e) {
+                System.err.println("Didn't load");
+            }
+            return manager;
         }
-        return manager;
     }
 
     private static void loadManager(Manager manager) {
@@ -163,7 +170,7 @@ public class Singleton {
 
     private static void loadMutedPeople(Manager manager, Account account) {
         ArrayList<Account> mutedPeople = new ArrayList<>();
-        for (String userName : account.getMutedPeoplesUSerName()) {
+        for (String userName : account.getMutedPeoplesUserName()) {
             mutedPeople.add(manager.searchByUserName(userName));
         }
         account.setMutedPeople(mutedPeople);

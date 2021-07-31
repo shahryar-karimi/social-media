@@ -31,4 +31,6 @@ public abstract class Swing extends MyFrame implements ActionListener {
     public abstract void run();
 
     public abstract void showGraphic();
+
+    public abstract void updateGraphic();
 }

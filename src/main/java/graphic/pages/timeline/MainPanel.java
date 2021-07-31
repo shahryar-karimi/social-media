@@ -73,14 +73,14 @@ public class MainPanel extends JPanel implements ActionListener {
         });
         tweetPanel.getRetweetBtn().addActionListener(e -> {
             timeLine.retweet();
-            updatePage();
+            updateGraphic();
         });
         tweetPanel.getShareBtn().addActionListener(e -> {
             //Todo forward a message (build a list from accounts and choose from them)
         });
         tweetPanel.getLikeQtyLbl().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                updatePage();
+                updateGraphic();
                 new AccountsListSwing(timeLine, new LinkedList<>(tweetPanel.getTweet().getFavesSet()));
             }
 
@@ -95,7 +95,7 @@ public class MainPanel extends JPanel implements ActionListener {
         });
         tweetPanel.getCommentBtn().addActionListener(e -> {
             //Todo forward a message
-            updatePage();
+            updateGraphic();
             new CommentSwing(this.timeLine, timeLine.getCurrentTweet());
         });
     }
@@ -119,11 +119,11 @@ public class MainPanel extends JPanel implements ActionListener {
             if (!follower.isMute(account))
                 follower.getTimeLinePage().addTweet(tweet);
         }
-        updatePage();
+        updateGraphic();
         timeLine.getManager().save();
     }
 
-    public void updatePage() {
+    public void updateGraphic() {
         nextBtn.setEnabled(true);
         previousBtn.setEnabled(true);
         if (timeLine.getIndexOfTweet() == 0) {
@@ -228,20 +228,24 @@ public class MainPanel extends JPanel implements ActionListener {
         return refresh;
     }
 
+    public void setTimeLine(TimeLinePage timeLine) {
+        this.timeLine = timeLine;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == nextBtn) {
             String result = timeLine.goNextTweet(timeLine.getTweets(), timeLine.getIndexOfTweet());
             if (!result.isBlank())
                 JOptionPane.showMessageDialog(null, result, "Next tweet", JOptionPane.ERROR_MESSAGE);
-            updatePage();
+            updateGraphic();
         } else if (e.getSource() == previousBtn) {
             String result = timeLine.goPreviousTweet(timeLine.getTweets(), timeLine.getIndexOfTweet());
             if (!result.isBlank())
                 JOptionPane.showMessageDialog(null, result, "Previous tweet", JOptionPane.ERROR_MESSAGE);
-            updatePage();
+            updateGraphic();
         } else if (e.getSource() == refresh) {
-            updatePage();
+            updateGraphic();
         }
     }
 }

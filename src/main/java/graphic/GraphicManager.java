@@ -4,6 +4,7 @@ import cLI.ExplorerCLI;
 import cLI.SettingCLI;
 import cLI.messengerCLI.ChatRoomCLI;
 import cLI.messengerCLI.MessagesCLI;
+import graphic.pages.explorer.ExplorerSwing;
 import graphic.pages.menuPage.MenuSwing;
 import graphic.pages.Swing;
 import graphic.pages.personalPage.InfoPageSwing;
@@ -63,8 +64,9 @@ public class GraphicManager {
     }
 
     public void goToExplorerPage(Account account) {
-        ExplorerCLI explorerCLI = new ExplorerCLI(account.getExplorerPage());
-        explorerCLI.run();
+        new ExplorerSwing(account.getExplorerPage());
+//        ExplorerCLI explorerCLI = new ExplorerCLI(account.getExplorerPage());
+//        explorerCLI.run();
     }
 
     public void goToSettingPage(Account account) {

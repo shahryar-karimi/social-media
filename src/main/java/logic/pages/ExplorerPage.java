@@ -37,12 +37,12 @@ public class ExplorerPage extends Page {
                 "5.back";
     }
 
-    public LinkedList<Tweet> randomTweets(Manager manager) {
+    public LinkedList<Tweet> getRandomTweets() {
         LinkedList<Tweet> explorerTweets = new LinkedList<>();
         LinkedList<Account> explorerAccount = new LinkedList<>();
         for (Account managerAccount : manager.getAccounts()) {
             if (managerAccount.isPagePublic() && managerAccount.isActive() &&
-                    managerAccount.getMyTweets().size() > 1 && !managerAccount.hasBlocked(account)) {
+                    managerAccount.getMyTweets().size() > 1 && !managerAccount.hasBlocked(account) && !account.isMute(managerAccount)) {
                 explorerAccount.add(managerAccount);
             }
         }

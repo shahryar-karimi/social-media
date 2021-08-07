@@ -1032,3 +1032,166 @@
 2021-07-31 23:24:08 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "b"
 2021-07-31 23:24:23 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "b"
 2021-07-31 23:24:24 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "b"
+2021-08-07 20:03:56 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 20:03:57 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 20:39:40 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 20:39:41 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 20:39:51 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 20:39:52 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:39:54 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 20:40:54 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:41:00 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 20:41:22 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:41:24 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 20:42:02 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:42:04 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 20:42:18 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:42:19 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 20:43:18 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:43:20 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 20:43:25 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 20:43:32 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:43:34 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 20:45:15 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 20:45:16 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 20:45:20 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 20:45:21 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:45:24 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 20:45:42 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:45:51 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 20:49:28 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 20:49:28 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 20:49:33 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 20:49:34 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:49:35 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 20:49:47 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:49:49 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 20:49:54 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:49:55 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 20:49:57 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:49:58 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 20:50:02 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 20:50:03 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 20:50:09 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:03:14 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:03:15 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:03:20 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:03:21 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:03:22 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 21:03:44 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:03:46 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 21:04:33 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:04:35 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 21:04:40 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:04:41 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 21:06:50 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:06:50 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:06:54 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:06:55 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:06:56 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 21:07:00 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:07:01 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 21:07:05 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:07:06 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 21:07:09 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:07:51 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:07:52 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:07:57 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:07:57 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:07:59 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 21:08:01 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:08:02 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 21:08:05 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:08:06 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "a"
+2021-08-07 21:08:10 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:08:11 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 21:08:17 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:08:19 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:08:34 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:08:35 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Time line run for account "a"
+2021-08-07 21:08:39 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:08:44 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:08:58 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:09:44 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:09:44 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:09:48 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:09:49 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:09:50 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:10:00 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:10:33 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:10:34 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:10:39 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:10:40 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:10:41 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:12:38 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:12:39 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:12:45 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:12:46 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:12:49 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:17:33 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:17:34 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:17:38 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:17:39 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:17:40 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:22:18 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:22:19 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:22:24 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:22:24 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:22:25 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:22:40 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:22:53 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:22:53 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:22:57 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:22:58 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:22:59 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:23:04 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "b"
+2021-08-07 21:23:09 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:23:11 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:23:15 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:23:20 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "b"
+2021-08-07 21:23:29 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:23:31 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "b"
+2021-08-07 21:23:33 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:23:46 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:25:55 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:25:56 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:26:00 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:26:01 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:26:02 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:26:06 - DEBUG - graphic.pages.personalPage.PersonalPageSwing - run - Personal page run for account "b"
+2021-08-07 21:26:07 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:26:45 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:26:50 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:26:54 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:26:59 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:27:09 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:33:59 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:34:00 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:34:03 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:34:04 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:34:04 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:35:14 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:35:15 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:35:19 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:35:20 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:35:21 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:35:33 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:41:05 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:41:06 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:41:12 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:41:13 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:41:14 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:41:28 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:41:30 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:46:09 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:46:10 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:46:14 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:46:14 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:46:16 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:46:57 - DEBUG - logic.Manager - exit - Program ended
+2021-08-07 21:47:09 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-07 21:47:09 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-07 21:47:13 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-07 21:47:14 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-07 21:47:16 - DEBUG - graphic.pages.explorer.ExplorerSwing - run - explorer run for account "a"
+2021-08-07 21:48:52 - DEBUG - logic.Manager - exit - Program ended

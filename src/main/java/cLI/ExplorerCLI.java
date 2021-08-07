@@ -1,7 +1,6 @@
 package cLI;
 
 import logic.Account;
-import logic.Manager;
 import logic.Singleton;
 import logic.pages.ExplorerPage;
 import logic.pages.TimeLinePage;
@@ -60,7 +59,7 @@ public class ExplorerCLI extends CLI {
     }
 
     private void processShowRandomTweets() {
-        LinkedList<Tweet> explorerTweets = explorerPage.randomTweets(explorerPage.getManager());
+        LinkedList<Tweet> explorerTweets = explorerPage.getRandomTweets();
         if (explorerTweets == null) {
             System.out.println(ConsoleColors.RED + "There is nothing here" + ConsoleColors.RESET);
             return;

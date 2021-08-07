@@ -7,8 +7,6 @@ import java.awt.event.ActionEvent;
 
 public class CommentsSwing extends Swing {
 
-    private JPanel tweetPanel;
-
     public CommentsSwing() {
 
     }

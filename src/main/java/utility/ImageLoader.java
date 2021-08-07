@@ -13,7 +13,7 @@ public class ImageLoader {
     }
 
     private static void initOthers() {
-        others.put("refresh", new ImageIcon("src/main/resources/pictures/icons8-refresh.png"));
+        others.put("refresh", new ImageIcon("src/main/resources/pictures/refresh.png"));
     }
 
     private static void initTweetsIcons() {

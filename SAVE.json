@@ -9,9 +9,9 @@
       "emailAddress": "a",
       "phoneNumber": "a",
       "bio": "a",
-      "isOnline": true,
+      "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "online",
+      "lastSeen": "2021-08-07 21:48:52",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
@@ -60,7 +60,7 @@
       },
       "explorerPage": {
         "random": {
-          "seed": 78125385260195,
+          "seed": 272943221585035,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
@@ -80,7 +80,9 @@
           "tweetText": "aabb",
           "ownerUserName": "a",
           "time": "2021-07-31 17:41:09",
-          "faveSetUserName": [],
+          "faveSetUserName": [
+            "a"
+          ],
           "comments": [],
           "retweet": 0,
           "isRetweet": false

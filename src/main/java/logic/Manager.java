@@ -13,11 +13,11 @@ public class Manager {
     private LinkedList<Account> accounts;
     private transient GraphicManager graphicManager = new GraphicManager();
     private static final Object locker = new Object();
-    private transient Loop loop;
+//    private transient Loop loop;
 
     public Manager() {
         accounts = new LinkedList<>();
-        loop = new Loop(this);
+//        loop = new Loop(this);
     }
 
     public void setAccounts(LinkedList<Account> accounts) {
@@ -124,7 +124,7 @@ public class Manager {
     public void goToMenuPage(Account account) {
         save();
         graphicManager.goToMenuPage(account);
-        loop.start();
+//        loop.start();
     }
 
     public void gotoPersonalPage(Account account) {

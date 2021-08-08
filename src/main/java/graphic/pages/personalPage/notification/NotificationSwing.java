@@ -7,6 +7,8 @@ import graphic.pages.personalPage.notification.request.RequestsPanel;
 import graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel;
 import logic.pages.personal.Notification;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class NotificationSwing extends Swing {
@@ -34,8 +36,14 @@ public class NotificationSwing extends Swing {
     @Override
     public void showGraphic() {
         //TODO
-        this.add(requestsPanel);
-        this.add(systemMessagePanel);
+        JPanel centerPanel = new JPanel();
+        centerPanel.setPreferredSize(new Dimension(600, 700));
+        centerPanel.setLayout(null);
+        centerPanel.add(requestsPanel);
+        centerPanel.add(systemMessagePanel);
+        this.setLayout(new BorderLayout());
+        this.add(centerPanel, BorderLayout.CENTER);
+        this.add(footerPanel, BorderLayout.SOUTH);
     }
 
     @Override

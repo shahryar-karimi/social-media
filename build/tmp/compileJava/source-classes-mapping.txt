@@ -48,8 +48,8 @@ logic/pages/personal/PersonalPage.java
  logic.pages.personal.PersonalPage
 graphic/pages/personalPage/InfoPageSwing.java
  graphic.pages.personalPage.InfoPageSwing
-graphic/pages/personalPage/notification/systemMessage/SystemMessagePanel.java
- graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel
+graphic/pages/personalPage/PersonalPageSwing.java
+ graphic.pages.personalPage.PersonalPageSwing
 cLI/messengerCLI/MessagesCLI.java
  cLI.messengerCLI.MessagesCLI
 cLI/messengerCLI/ChatRoomCLI.java
@@ -60,8 +60,8 @@ graphic/FooterPanel.java
  graphic.FooterPanel
 cLI/TimeLineCLI.java
  cLI.TimeLineCLI
-graphic/pages/personalPage/notification/request/SingleRequest.java
- graphic.pages.personalPage.notification.request.SingleRequest
+graphic/pages/explorer/ExplorerPanel.java
+ graphic.pages.explorer.ExplorerPanel
 graphic/pages/setting/SettingSwing.java
  graphic.pages.setting.SettingSwing
 cLI/personalCLI/PersonalPageCLI.java
@@ -76,8 +76,8 @@ cLI/personalCLI/InfoCLI.java
  cLI.personalCLI.InfoCLI
 graphic/pages/messages/MessengerSwing.java
  graphic.pages.messages.MessengerSwing
-graphic/pages/personalPage/notification/request/RequestsPanel.java
- graphic.pages.personalPage.notification.request.RequestsPanel
+graphic/pages/explorer/random/RandomTweetsPanel.java
+ graphic.pages.explorer.random.RandomTweetsPanel
 graphic/pages/Swing.java
  graphic.pages.Swing
 graphic/pages/timeline/CommentSwing.java
@@ -110,14 +110,16 @@ graphic/pages/timeline/MainPanel.java
  graphic.pages.timeline.MainPanel
  graphic.pages.timeline.MainPanel$1
  graphic.pages.timeline.MainPanel$2
-graphic/pages/personalPage/PersonalPageSwing.java
- graphic.pages.personalPage.PersonalPageSwing
+graphic/pages/personalPage/notification/systemMessage/SystemMessagePanel.java
+ graphic.pages.personalPage.notification.systemMessage.SystemMessagePanel
 logic/pages/messenger/Message.java
  logic.pages.messenger.Message
 logic/pages/MenuPage.java
  logic.pages.MenuPage
-graphic/pages/personalPage/notification/NotificationSwing.java
- graphic.pages.personalPage.notification.NotificationSwing
+graphic/pages/explorer/random/MainPanel.java
+ graphic.pages.explorer.random.MainPanel
+ graphic.pages.explorer.random.MainPanel$1
+ graphic.pages.explorer.random.MainPanel$2
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
 logic/Tweet.java
@@ -144,11 +146,9 @@ graphic/pages/explorer/ExplorerSwing.java
 graphic/pages/explorer/search/MainPanel.java
  graphic.pages.explorer.search.MainPanel
  graphic.pages.explorer.search.MainPanel$1
-graphic/pages/explorer/ExplorerPanel.java
- graphic.pages.explorer.ExplorerPanel
-graphic/pages/explorer/random/MainPanel.java
- graphic.pages.explorer.random.MainPanel
- graphic.pages.explorer.random.MainPanel$1
- graphic.pages.explorer.random.MainPanel$2
-graphic/pages/explorer/random/RandomTweetsPanel.java
- graphic.pages.explorer.random.RandomTweetsPanel
+graphic/pages/personalPage/notification/NotificationSwing.java
+ graphic.pages.personalPage.notification.NotificationSwing
+graphic/pages/personalPage/notification/request/RequestsPanel.java
+ graphic.pages.personalPage.notification.request.RequestsPanel
+graphic/pages/personalPage/notification/request/SingleRequest.java
+ graphic.pages.personalPage.notification.request.SingleRequest

@@ -9,9 +9,9 @@
       "emailAddress": "a",
       "phoneNumber": "a",
       "bio": "a",
-      "isOnline": false,
+      "isOnline": true,
       "birthdayDate": "",
-      "lastSeen": "2021-08-07 21:48:52",
+      "lastSeen": "online",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
@@ -42,9 +42,10 @@
           "requests": [],
           "indexOfCurrentRequest": -1,
           "systemMessages": [
-            "b followed you"
+            "b followed you",
+            "Your request from c has declined"
           ],
-          "indexOfCurrentSystemMessage": 0
+          "indexOfCurrentSystemMessage": 1
         },
         "info": {}
       },
@@ -60,7 +61,7 @@
       },
       "explorerPage": {
         "random": {
-          "seed": 272943221585035,
+          "seed": 48616187718899,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
@@ -134,9 +135,9 @@
       "emailAddress": "b",
       "phoneNumber": "b",
       "bio": "b",
-      "isOnline": true,
+      "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "online",
+      "lastSeen": "2021-08-08 04:31:06",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
@@ -144,7 +145,8 @@
         "a"
       ],
       "followingsUserName": [
-        "a"
+        "a",
+        "c"
       ],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
@@ -169,7 +171,7 @@
           "systemMessages": [
             "a followed you"
           ],
-          "indexOfCurrentSystemMessage": 0
+          "indexOfCurrentSystemMessage": 1
         },
         "info": {}
       },
@@ -185,7 +187,7 @@
       },
       "explorerPage": {
         "random": {
-          "seed": 4094637012141,
+          "seed": 254984895746373,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
@@ -202,6 +204,120 @@
           "isRetweet": false
         }
       ]
+    },
+    {
+      "firstName": "c",
+      "lastName": "c",
+      "userName": "c",
+      "id": "@c99",
+      "password": "c",
+      "emailAddress": "c",
+      "phoneNumber": "c",
+      "bio": "c",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-08-08 04:30:55",
+      "isPagePublic": false,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "b"
+      ],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": -1
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you",
+            "a unfollowed you",
+            "b followed you",
+            "b unfollowed you",
+            "b followed you"
+          ],
+          "indexOfCurrentSystemMessage": 4
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "c",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 159382271920355,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
+    },
+    {
+      "firstName": "d",
+      "lastName": "d",
+      "userName": "d",
+      "id": "@d100",
+      "password": "d",
+      "emailAddress": "d",
+      "phoneNumber": "d",
+      "bio": "d",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-08-08 04:28:13",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": -1
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [],
+          "indexOfCurrentSystemMessage": -1
+        },
+        "info": {}
+      },
+      "messagesPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "d",
+            "messages": [],
+            "unreadMessages": 0,
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 200949778977503,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
     }
   ]
 }

@@ -44,6 +44,7 @@ public class MainPanel extends JPanel implements ActionListener {
     private void initTweetsPanel() {
         tweetPanel = new TweetsPanel(timeLine.getAccount(), timeLine.getCurrentTweet());
         tweetPanel.setPreferredSize(new Dimension(428, 283));
+        if (tweetPanel.getTweet() == null) return;
         if (tweetPanel.getTweet().isRetweet()) {
             tweetPanel.getNameLbl().setText(timeLine.getAccount().getUserName() + " Retweeted from: " + tweetPanel.getTweet().getAccount());
         }
@@ -132,6 +133,7 @@ public class MainPanel extends JPanel implements ActionListener {
             nextBtn.setEnabled(false);
         }
         newTweetPanel.updateGraphic();
+        if (tweetPanel.getTweet() == null) return;
         tweetPanel.changeTweet(timeLine.getCurrentTweet());
     }
 

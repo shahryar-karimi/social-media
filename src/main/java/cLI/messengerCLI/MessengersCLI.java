@@ -2,34 +2,32 @@ package cLI.messengerCLI;
 
 import logic.Account;
 import cLI.*;
-import logic.Manager;
 import logic.Singleton;
 import logic.pages.messenger.ChatRoom;
 import logic.pages.messenger.Message;
-import logic.pages.messenger.MessagesPage;
+import logic.pages.messenger.MessengersPage;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class MessagesCLI extends CLI {
+public class MessengersCLI extends CLI {
 
-    private final MessagesPage messagesPage;
+    private final MessengersPage messengersPage;
 
-    public MessagesCLI(MessagesPage messagesPage) {
+    public MessengersCLI(MessengersPage messengersPage) {
         super();
-        this.messagesPage = messagesPage;
+        this.messengersPage = messengersPage;
     }
 
     private String chooseFromMenu() {
-        System.out.println(MessagesPage.showCLIPage());
+        System.out.println(MessengersPage.showCLIPage());
         System.out.println("Enter your command:");
         String result = scanner.nextLine();
         while (!result.equals("saved messages") && !result.equals("new chat") && !result.equals("write message") &&
-                messagesPage.searchChatRoomsByUserName(result) == null && !result.equals("back") &&
+                messengersPage.searchChatRoomsByUserName(result) == null && !result.equals("back") &&
                 !result.equals("quit") && !result.equals("exit")
         ) {
             System.err.println("Wrong input please try again!");
-            System.out.println(MessagesPage.showCLIPage());
+            System.out.println(MessengersPage.showCLIPage());
             result = scanner.nextLine();
         }
         return result;
@@ -39,26 +37,26 @@ public class MessagesCLI extends CLI {
     public void run() {
         String input;
         while (true) {
-            System.out.println(ConsoleColors.GREEN + messagesPage.showPage() + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.GREEN + messengersPage.showPage() + ConsoleColors.RESET);
             input = chooseFromMenu();
             if (input.equals("saved messages")) {
-                processEnterToThisChatRoom(messagesPage.searchChatRoomByListener(messagesPage.getAccount()));
+                messengersPage.getManager().goToChatroom(messengersPage.searchChatRoomByListener(messengersPage.getAccount()));
             } else if (input.equals("new chat")) {
                 processBuildNewChatRoom();
             } else if (input.equals("write message")) {
                 processWritingMessage();
-            } else if (messagesPage.searchChatRoomsByUserName(input) != null) {
-                processEnterToThisChatRoom(messagesPage.searchChatRoomsByUserName(input));
+            } else if (messengersPage.searchChatRoomsByUserName(input) != null) {
+                messengersPage.getManager().goToChatroom(messengersPage.searchChatRoomsByUserName(input));
             } else if (input.equals("back")) {
                 break;
             } else if (input.equals("quit")) {
-                messagesPage.getAccount().setOnline(false);
-                Singleton.save(messagesPage.getManager());
-                messagesPage.getManager().goToLoginPage();
+                messengersPage.getAccount().setOnline(false);
+                Singleton.save(messengersPage.getManager());
+                messengersPage.getManager().goToLoginPage();
                 System.exit(0);
             } else if (input.equals("exit")) {
-                messagesPage.getAccount().setOnline(false);
-                Singleton.save(messagesPage.getManager());
+                messengersPage.getAccount().setOnline(false);
+                Singleton.save(messengersPage.getManager());
                 System.exit(0);
             }
         }
@@ -66,7 +64,7 @@ public class MessagesCLI extends CLI {
 
     private void processWritingMessage() {
         ChatRoom chatRoom = new ChatRoom();
-        chatRoom.setAccount(messagesPage.getAccount());
+        chatRoom.setAccount(messengersPage.getAccount());
         ChatRoomCLI chatRoomCLI = new ChatRoomCLI(chatRoom);
         Message message = chatRoomCLI.processWriteNewMessage();
         if (message == null) return;
@@ -84,26 +82,22 @@ public class MessagesCLI extends CLI {
             if (s.equals("end")) break;
             result += s + "\n";
         }
-        String [] lines = result.split("\n");
-        System.out.println(ConsoleColors.YELLOW + messagesPage.writeMessage(lines, message) + ConsoleColors.RESET);
-    }
-
-    private void processEnterToThisChatRoom(ChatRoom chatRoom) {
-        ChatRoomCLI chatRoomCLI = new ChatRoomCLI(chatRoom);
-        chatRoomCLI.run();
+        String[] lines = result.split("\n");
+        System.out.println(ConsoleColors.YELLOW + messengersPage.writeMessage(lines, message) + ConsoleColors.RESET);
     }
 
     private void processBuildNewChatRoom() {
         System.out.println("Enter user name that you want to chat:");
         String userName = scanner.nextLine();
-        Account listener = messagesPage.getManager().searchByUserName(userName);
+        LinkedList<Account> fol = new LinkedList<>(messengersPage.getAccount().getFollowers());
+        fol.addAll(messengersPage.getAccount().getFollowings());
+        Account listener = messengersPage.getManager().search(fol, userName);
         if (listener == null) {
             System.err.println("Listener not found!");
             return;
         }
-        if (messagesPage.buildNewChatRoom(listener)) {
-            ChatRoom newChatRoom1 = messagesPage.searchChatRoomByListener(listener);
-            processEnterToThisChatRoom(newChatRoom1);
-        } else System.err.println("You can not send message to this account!");
+        ChatRoom newChatRoom1 = messengersPage.buildNewChatRoom(listener);
+        if (newChatRoom1 != null) messengersPage.getManager().goToChatroom(newChatRoom1);
+        else System.err.println("You can not send message to this account!");
     }
 }

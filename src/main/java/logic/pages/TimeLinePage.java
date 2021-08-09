@@ -175,10 +175,10 @@ public class TimeLinePage extends Page {
     public String forward(LinkedList<Account> accounts) {
         String result = "";
         for (Account account : accounts) {
-            ChatRoom anotherChatRoom = this.account.getMessagesPage().searchChatRoomByListener(account);
+            ChatRoom anotherChatRoom = this.account.getMessengersPage().searchChatRoomByListener(account);
             if (anotherChatRoom == null) {
-                if (this.account.getMessagesPage().buildNewChatRoom(account)) {
-                    anotherChatRoom = this.account.getMessagesPage().searchChatRoomByListener(account);
+                anotherChatRoom = this.account.getMessengersPage().buildNewChatRoom(account);
+                if (anotherChatRoom != null) {
                     if (anotherChatRoom.sendTweet(currentTweet))
                         result += "Message sent to " + account + " successfully\n";
                     else result += "Failed to send message to " + account + "\n";

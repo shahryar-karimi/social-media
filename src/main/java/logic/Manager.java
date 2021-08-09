@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import cLI.personalCLI.InfoCLI;
 import graphic.GraphicManager;
 import logic.Logger.MyLogger;
+import logic.pages.messenger.ChatRoom;
 import logic.pages.personal.Info;
 import utility.Loop;
 
@@ -58,13 +59,17 @@ public class Manager {
         return accounts;
     }
 
-    public Account searchByUserName(String userName) {
+    public Account search(LinkedList<Account> accounts, String userName) {
         synchronized (locker) {
             if (userName == null) return null;
-            for (Account account : this.accounts)
+            for (Account account : accounts)
                 if (account.getUserName().equals(userName)) return account;
             return null;
         }
+    }
+
+    public Account searchByUserName(String userName) {
+        return search(accounts, userName);
     }
 
     public boolean isCorrectPassword(Account account, String password) {
@@ -154,9 +159,12 @@ public class Manager {
 
     public void goToInfoPage(Info info, Account visitor) {
         save();
-//        InfoCLI infoCLI = new InfoCLI(info, visitor);
-//        infoCLI.run();
         graphicManager.goToInfoPage(info, visitor);
+    }
+
+    public void goToChatroom(ChatRoom chatRoom) {
+        save();
+        graphicManager.goToChatRoom(chatRoom);
     }
 
     public Account searchByEmail(String email) {

@@ -39,17 +39,17 @@ public class ExplorerPage extends Page {
 
     public LinkedList<Tweet> getRandomTweets() {
         LinkedList<Tweet> explorerTweets = new LinkedList<>();
-        LinkedList<Account> explorerAccount = new LinkedList<>();
+        LinkedList<Account> explorerAccounts = new LinkedList<>();
         for (Account managerAccount : manager.getAccounts()) {
             if (managerAccount.isPagePublic() && managerAccount.isActive() &&
-                    managerAccount.getMyTweets().size() > 1 && !managerAccount.hasBlocked(account) && !account.isMute(managerAccount)) {
-                explorerAccount.add(managerAccount);
+                    managerAccount.getMyTweets().size() > 0 && !managerAccount.hasBlocked(account) && !account.isMute(managerAccount)) {
+                explorerAccounts.add(managerAccount);
             }
         }
-        if (explorerAccount.isEmpty()) return null;
+        if (explorerAccounts.isEmpty()) return explorerTweets;
         for (int i = 0; i < 10; i++) {
-            int index = random.nextInt(explorerAccount.size());
-            Account account = explorerAccount.get(index);
+            int index = random.nextInt(explorerAccounts.size());
+            Account account = explorerAccounts.get(index);
             Tweet newTweet = account.getMyTweets().get(random.nextInt(account.getMyTweets().size()));
             explorerTweets.add(newTweet);
         }

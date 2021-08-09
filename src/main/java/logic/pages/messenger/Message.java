@@ -5,7 +5,7 @@ import logic.Account;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Message {
+public class Message implements Comparable<Message>{
     private String text;
     private String ownerUserName;
     private transient Account owner;
@@ -126,5 +126,10 @@ public class Message {
 
     public boolean isSelected() {
         return isSelected;
+    }
+
+    @Override
+    public int compareTo(Message another) {
+        return time.compareTo(another.time);
     }
 }

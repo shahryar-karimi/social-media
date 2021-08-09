@@ -24,6 +24,10 @@ public abstract class Swing extends MyFrame implements ActionListener {
         return manager;
     }
 
+    public Page getPage() {
+        return page;
+    }
+
     public void addSwing(Swing swing) {
         getManager().addSwing(swing);
     }

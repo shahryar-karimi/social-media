@@ -30,6 +30,7 @@ public class MainPanel extends JPanel implements ActionListener {
 
     private void initTweetsPanel() {
         tweetsPanel.setPreferredSize(new Dimension(428, 283));
+        if (tweetsPanel.getTweet() == null) return;
         if (tweetsPanel.getTweet().isRetweet()) {
             tweetsPanel.getNameLbl().setText(timeLine.getAccount().getUserName() + " Retweeted from: " + tweetsPanel.getTweet().getAccount());
         }

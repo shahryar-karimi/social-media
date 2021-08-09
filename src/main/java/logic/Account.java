@@ -1,7 +1,7 @@
 package logic;
 
 import logic.pages.*;
-import logic.pages.messenger.MessagesPage;
+import logic.pages.messenger.MessengersPage;
 import logic.pages.personal.PersonalPage;
 
 import java.time.LocalDateTime;
@@ -42,7 +42,7 @@ public class Account {
     private TimeLinePage timeLinePage;
     private SettingPage settingPage;
     private PersonalPage personalPage;
-    private MessagesPage messagesPage;
+    private MessengersPage messengersPage;
     private ExplorerPage explorerPage;
     private MenuPage menuPage;
 
@@ -81,7 +81,7 @@ public class Account {
         this.timeLinePage = new TimeLinePage(this, manager, true);
         this.settingPage = new SettingPage(this, manager);
         this.personalPage = new PersonalPage(this, manager);
-        this.messagesPage = new MessagesPage(this, manager);
+        this.messengersPage = new MessengersPage(this, manager);
         this.explorerPage = new ExplorerPage(this, manager);
         this.menuPage = new MenuPage(this, manager);
         this.myTweets = new LinkedList<>();
@@ -153,12 +153,12 @@ public class Account {
         this.personalPage = personalPage;
     }
 
-    public MessagesPage getMessagesPage() {
-        return messagesPage;
+    public MessengersPage getMessengersPage() {
+        return messengersPage;
     }
 
-    public void setMessagesPage(MessagesPage messagesPage) {
-        this.messagesPage = messagesPage;
+    public void setMessagesPage(MessengersPage messengersPage) {
+        this.messengersPage = messengersPage;
     }
 
     public ExplorerPage getExplorerPage() {
@@ -563,7 +563,7 @@ public class Account {
         this.timeLinePage = newAccount.timeLinePage;
         this.settingPage = newAccount.settingPage;
         this.personalPage = newAccount.personalPage;
-        this.messagesPage = newAccount.messagesPage;
+        this.messengersPage = newAccount.messengersPage;
         this.explorerPage = newAccount.explorerPage;
         this.menuPage = newAccount.menuPage;
 

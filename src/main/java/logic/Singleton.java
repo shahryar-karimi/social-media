@@ -42,7 +42,7 @@ public class Singleton {
     private static void saving(Manager manager) {
         for (Account account : manager.getAccounts()) {
             account.setAllLists();
-            for (ChatRoom chatRoom : account.getMessagesPage().getChatRooms()) {
+            for (ChatRoom chatRoom : account.getMessengersPage().getChatRooms()) {
                 for (Message message : chatRoom.getMessages()) {
                     if (message.getOwner().equals(account))
                         message.setOwnerUserName(account.getUserName());
@@ -68,41 +68,26 @@ public class Singleton {
     private static void loadManager(Manager manager) {
         for (Account account : manager.getAccounts()) {
             loadFollower(manager, account);
-
             loadFollowing(manager, account);
-
             loadBlackList(manager, account);
-
             loadMutedPeople(manager, account);
-
             loadFriendsLists(manager, account);
-
             loadPersonalPage(manager, account);
-
             loadMenuPage(manager, account);
-
             loadMessagesPage(manager, account);
-
             loadTimeLinePage(manager, account);
-
             loadExplorerPage(manager, account);
-
             loadSettingPage(manager, account);
-
             loadInfo(manager, account);
-
             loadNotifications(manager, account);
-
             loadChatRooms(manager, account);
-
             loadTweets(manager, account);
-
             loadMessages(manager, account);
         }
     }
 
     private static void loadChatRooms(Manager manager, Account account) {
-        for (ChatRoom chatRoom : account.getMessagesPage().getChatRooms()) {
+        for (ChatRoom chatRoom : account.getMessengersPage().getChatRooms()) {
             chatRoom.setManager(manager);
             chatRoom.setAccount(account);
             chatRoom.setListener(manager.searchByUserName(chatRoom.getListenerUserName()));
@@ -142,8 +127,8 @@ public class Singleton {
     }
 
     private static void loadMessagesPage(Manager manager, Account account) {
-        account.getMessagesPage().setAccount(account);
-        account.getMessagesPage().setManager(manager);
+        account.getMessengersPage().setAccount(account);
+        account.getMessengersPage().setManager(manager);
     }
 
     private static void loadMenuPage(Manager manager, Account account) {
@@ -201,14 +186,19 @@ public class Singleton {
     }
 
     private static void loadMessages(Manager manager, Account account) {
-        for (ChatRoom chatRoom : account.getMessagesPage().getChatRooms()) {
-            for (Message message : chatRoom.getMessages()) {
+        LinkedList<Message> messages;
+        ArrayList<ChatRoom> chatRooms = account.getMessengersPage().getChatRooms();
+        for (ChatRoom chatRoom : chatRooms) {
+            messages = chatRoom.getMessages();
+            for (Message message : messages) {
                 if (message.getOwnerUserName().equals(account.getUserName()))
                     message.setOwner(account);
                 else
                     message.setOwner(manager.searchByUserName(chatRoom.getListenerUserName()));
             }
+            Collections.sort(messages);
         }
+        Collections.sort(chatRooms);
     }
 
     private static void loadTweets(Manager manager, Account account) {

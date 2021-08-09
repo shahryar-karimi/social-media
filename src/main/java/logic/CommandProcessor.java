@@ -3,11 +3,14 @@ package logic;
 import logic.Logger.MyLogger;
 import utility.Loop;
 
+import javax.swing.*;
+
 public class CommandProcessor {
 
     private Manager manager;
 
-    public CommandProcessor() {}
+    public CommandProcessor() {
+    }
 
     public Manager getManager() {
         return manager;
@@ -29,6 +32,6 @@ public class CommandProcessor {
     }
 
     private void runFrame() {
-        manager.goToLoginPage();
+        SwingUtilities.invokeLater(() -> manager.goToLoginPage());
     }
 }

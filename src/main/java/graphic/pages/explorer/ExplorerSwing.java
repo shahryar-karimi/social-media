@@ -42,7 +42,7 @@ public class ExplorerSwing extends Swing {
 
     private void initPanels() {
         MainPanel mainPanel = explorerPanel.getSearchPanel().getMainPanel();
-        JList<String> myJList = mainPanel.getMyJList();
+        JList<String> myJList = mainPanel.getMyScrollPane().getMyJList();
         myJList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

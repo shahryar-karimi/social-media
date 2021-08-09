@@ -6,14 +6,14 @@ import logic.pages.Page;
 
 import java.util.ArrayList;
 
-public class MessagesPage extends Page {
+public class MessengersPage extends Page {
 
     ArrayList<ChatRoom> chatRooms;
 
-    public MessagesPage() {
+    public MessengersPage() {
     }
 
-    public MessagesPage(Account account, Manager manager) {
+    public MessengersPage(Account account, Manager manager) {
         super(account, manager);
         account.setMessagesPage(this);
         chatRooms = new ArrayList<>();
@@ -21,20 +21,37 @@ public class MessagesPage extends Page {
         chatRooms.remove(0);
     }
 
-    public boolean buildNewChatRoom(Account listener) {
+    public void goToChatRoom(ChatRoom chatRoom) {
+        manager.getGraphicManager().goToChatRoom(chatRoom);
+    }
+
+    public ChatRoom buildNewChatRoom(Account listener) {
         if (listener != null && account.isValidToSendMessage(listener)) {
-            new ChatRoom(manager, account, listener.getUserName());
+            ChatRoom myChatRoom = new ChatRoom(manager, account, listener.getUserName());
             new ChatRoom(manager, listener, account.getUserName());
-            return true;
+            return myChatRoom;
         }
-        return false;
+        return null;
+    }
+
+    public String sendMessage(Message message, ChatRoom chatRoom) {
+        if (chatRoom == null) {
+            chatRoom = buildNewChatRoom(account);
+            if (chatRoom == null) {
+                return "You can't send message to " + account;
+            }
+        }
+        if (!chatRoom.sendMessage(message)) {
+            return "Failed to send message to " + account;
+        }
+        return "Message sent to " + account;
     }
 
     public String writeMessage(String[] lines, Message message) {
         String result = "";
         if (lines[0].equals("send to all")) {
             for (Account following : account.getFollowings()) {
-                result += sendingMessage(message, following) + "\n";
+                result += sendMessage(message, searchChatRoomsByUserName(following.getUserName())) + "\n";
             }
         } else {
             for (String line : lines) {
@@ -45,7 +62,7 @@ public class MessagesPage extends Page {
                         result += "Account " + line + " not found" + "\n";
                         continue;
                     }
-                    result += sendingMessage(message, account) + "\n";
+                    result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
 
                 } else if (line.charAt(0) == 'l') {
                     line = line.substring(2);
@@ -55,7 +72,7 @@ public class MessagesPage extends Page {
                         continue;
                     }
                     for (Account account : list) {
-                        result += sendingMessage(message, account) + "\n";
+                        result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
                     }
                 } else {
                     result += "Wrong input for \"" + line + "\"\n";
@@ -63,22 +80,6 @@ public class MessagesPage extends Page {
             }
         }
         return result;
-    }
-
-    private String sendingMessage(Message message, Account account) {
-        String result = "";
-        ChatRoom chatRoom = searchChatRoomByListener(account);
-        if (chatRoom == null) {
-            if (buildNewChatRoom(account)) {
-                chatRoom = searchChatRoomByListener(account);
-            } else {
-                return "You can't send message to " + account;
-            }
-        }
-        if (!chatRoom.sendMessage(message)) {
-            return "Failed to send message to " + account;
-        }
-        return "Message sent to " + account;
     }
 
     public ArrayList<ChatRoom> getChatRooms() {

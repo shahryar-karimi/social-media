@@ -62,7 +62,7 @@ public class InfoPageSwing extends Swing {
         this.followersBtn = new JButton();
         this.followingsBtn = new JButton();
         this.buttons = new JButton[]{followOrNotBtn, addOrRemoveListBtn, blockBtn, sendMessageBtn,
-                        reportBtn1, muteBtn, followersBtn, followingsBtn};
+                reportBtn1, muteBtn, followersBtn, followingsBtn};
 
         JPanel jPanel1 = new JPanel();
 
@@ -274,11 +274,10 @@ public class InfoPageSwing extends Swing {
                 JOptionPane.showMessageDialog(null, visitor.block(owner), "Block process", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (e.getSource() == sendMessageBtn) {
-            ChatRoom chatRoom = visitor.getMessagesPage().searchChatRoomByListener(owner);
+            ChatRoom chatRoom = visitor.getMessengersPage().searchChatRoomByListener(owner);
             if (chatRoom == null) {
-                if (visitor.getMessagesPage().buildNewChatRoom(owner)) {
-                    chatRoom = visitor.getMessagesPage().searchChatRoomByListener(owner);
-                } else {
+                chatRoom = visitor.getMessengersPage().buildNewChatRoom(owner);
+                if (chatRoom == null) {
                     JOptionPane.showMessageDialog(null, "You can not send message to this account", "sending message", JOptionPane.ERROR_MESSAGE);
                     return;
                 }

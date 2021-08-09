@@ -1,12 +1,12 @@
 package graphic;
 
-import cLI.ExplorerCLI;
 import cLI.SettingCLI;
 import cLI.messengerCLI.ChatRoomCLI;
-import cLI.messengerCLI.MessagesCLI;
+import cLI.messengerCLI.MessengersCLI;
 import graphic.pages.explorer.ExplorerSwing;
 import graphic.pages.menuPage.MenuSwing;
 import graphic.pages.Swing;
+import graphic.pages.messages.messenger.MessengerSwing;
 import graphic.pages.personalPage.InfoPageSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
@@ -75,8 +75,9 @@ public class GraphicManager {
     }
 
     public void goToMessagesPage(Account account) {
-        MessagesCLI messagesCLI = new MessagesCLI(account.getMessagesPage());
-        messagesCLI.run();
+        new MessengerSwing(account.getMessengersPage());
+//        MessengersCLI messengersCLI = new MessengersCLI(account.getMessengersPage());
+//        messengersCLI.run();
     }
 
     public void goToInfoPage(Info info, Account visitor) {

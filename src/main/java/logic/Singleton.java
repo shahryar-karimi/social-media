@@ -187,7 +187,7 @@ public class Singleton {
 
     private static void loadMessages(Manager manager, Account account) {
         LinkedList<Message> messages;
-        ArrayList<ChatRoom> chatRooms = account.getMessengersPage().getChatRooms();
+        LinkedList<ChatRoom> chatRooms = account.getMessengersPage().getChatRooms();
         for (ChatRoom chatRoom : chatRooms) {
             messages = chatRoom.getMessages();
             for (Message message : messages) {

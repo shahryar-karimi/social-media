@@ -13,7 +13,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
     private String listenerUserName;
     private transient Account listener;
     private LinkedList<Message> messages;
-    private int unreadMessages;
     private Message selectedMessage;
     private int indexOfShowPage;
 
@@ -40,7 +39,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
             if (message.getOwner().equals(listener)) {
                 if (!message.isSeen()) {
                     message.setSeen(true);
-                    unreadMessages--;
                     listener.getMessengersPage().searchChatRoomByListener(account).getMessages().get(i).setSeen(true);
                 }
             }
@@ -61,16 +59,11 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
         this.messages = messages;
     }
 
-    public void setUnreadMessages(int unreadMessages) {
-        this.unreadMessages = unreadMessages;
-    }
-
     public String showPage() {
         String result = "==================================================\n";
         for (Message message : messages) {
             if (message.getOwner().equals(listener)) {
                 message.setSeen(true);
-                unreadMessages--;
             }
             result += message + "\n==================================================\n";
         }
@@ -100,7 +93,11 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
     }
 
     public int getUnreadMessages() {
-        return unreadMessages;
+        int counter = 0;
+        for (Message message : messages)
+            if (message.getOwnerUserName().equals(listenerUserName) && !message.isSeen())
+                counter++;
+        return counter;
     }
 
     public Message getSelectedMessage() {
@@ -134,7 +131,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
             }
             ChatRoom listenerChatRoom = listener.getMessengersPage().searchChatRoomByListener(account);
             listenerChatRoom.messages.add(message);
-            listenerChatRoom.unreadMessages++;
             indexOfShowPage = 0;
             return true;
         } else {
@@ -203,11 +199,15 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
         } else if (chatRoom.messages.isEmpty()) {
             return 1;
         }
-        return messages.peek().compareTo(chatRoom.messages.peek());
+        return chatRoom.messages.getLast().compareTo(messages.getLast());
     }
 
     @Override
     public String toString() {
         return getListenerUserName();
+    }
+
+    public String getString() {
+        return getListenerUserName() + " " + getListener().getLastSeen(getAccount()) + " : " + getUnreadMessages();
     }
 }

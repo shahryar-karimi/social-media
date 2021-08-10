@@ -9,32 +9,24 @@
       "emailAddress": "a",
       "phoneNumber": "a",
       "bio": "a",
-      "isOnline": true,
+      "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "online",
+      "lastSeen": "2021-08-11 00:40:20",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
       "followersUserName": [
-        "b"
+        "c"
       ],
       "followingsUserName": [
-        "b"
+        "b",
+        "c"
       ],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 0,
-        "currentTweet": {
-          "tweetText": "hi",
-          "ownerUserName": "a",
-          "time": "2021-08-08 20:59:15",
-          "faveSetUserName": [],
-          "comments": [],
-          "retweet": 0,
-          "isRetweet": false
-        }
+        "indexOfTweet": -1
       },
       "settingPage": {},
       "personalPage": {
@@ -42,7 +34,7 @@
           "requests": [],
           "indexOfCurrentRequest": -1,
           "systemMessages": [
-            "b followed you"
+            "c followed you"
           ],
           "indexOfCurrentSystemMessage": 0
         },
@@ -51,38 +43,187 @@
       "messengersPage": {
         "chatRooms": [
           {
-            "listenerUserName": "a",
-            "messages": [],
-            "unreadMessages": 0,
+            "listenerUserName": "b",
+            "messages": [
+              {
+                "text": "hello every one",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:14:43",
+                "isForward": false,
+                "isSeen": true,
+                "index": 0,
+                "isSelected": false
+              },
+              {
+                "text": "hey are you there?",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:20:18",
+                "isForward": false,
+                "isSeen": true,
+                "index": 1,
+                "isSelected": false
+              },
+              {
+                "text": "did you message c?",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:22:17",
+                "isForward": false,
+                "isSeen": true,
+                "index": 2,
+                "isSelected": false
+              },
+              {
+                "text": "?????????",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:38:48",
+                "isForward": false,
+                "isSeen": true,
+                "index": 3,
+                "isSelected": false
+              },
+              {
+                "text": "b",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:39:59",
+                "isForward": false,
+                "isSeen": true,
+                "index": 4,
+                "isSelected": false
+              }
+            ],
             "indexOfShowPage": 0
           },
           {
-            "listenerUserName": "b",
-            "messages": [],
-            "unreadMessages": 0,
+            "listenerUserName": "c",
+            "messages": [
+              {
+                "text": "hi c",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:21:51",
+                "isForward": false,
+                "isSeen": true,
+                "index": 0,
+                "isSelected": false
+              },
+              {
+                "text": "hi a how you doin",
+                "ownerUserName": "c",
+                "time": "2021-08-11 00:37:51",
+                "isForward": false,
+                "isSeen": true,
+                "index": 1,
+                "isSelected": false
+              },
+              {
+                "text": "c",
+                "ownerUserName": "c",
+                "time": "2021-08-11 00:39:32",
+                "isForward": false,
+                "isSeen": true,
+                "index": 2,
+                "isSelected": false
+              }
+            ],
+            "indexOfShowPage": 0
+          },
+          {
+            "listenerUserName": "a",
+            "messages": [
+              {
+                "text": "hello my dear",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:06:50",
+                "isForward": false,
+                "isSeen": true,
+                "index": 0,
+                "isSelected": false
+              },
+              {
+                "text": "how you doin",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:07:01",
+                "isForward": false,
+                "isSeen": true,
+                "index": 1,
+                "isSelected": false
+              },
+              {
+                "text": "I\u0027m texting my self",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:07:13",
+                "isForward": false,
+                "isSeen": true,
+                "index": 2,
+                "isSelected": false
+              },
+              {
+                "text": "that is so cool",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:07:19",
+                "isForward": false,
+                "isSeen": true,
+                "index": 3,
+                "isSelected": false
+              },
+              {
+                "text": "oh awsome",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:07:25",
+                "isForward": false,
+                "isSeen": true,
+                "index": 4,
+                "isSelected": false
+              },
+              {
+                "text": "can i do it?",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:07:36",
+                "isForward": false,
+                "isSeen": true,
+                "index": 5,
+                "isSelected": false
+              },
+              {
+                "text": "yes you can do any thing",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:07:44",
+                "isForward": false,
+                "isSeen": true,
+                "index": 6,
+                "isSelected": false
+              },
+              {
+                "text": "any thing you want",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:07:54",
+                "isForward": false,
+                "isSeen": true,
+                "index": 7,
+                "isSelected": false
+              },
+              {
+                "text": "hi a",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:13:47",
+                "isForward": false,
+                "isSeen": true,
+                "index": 8,
+                "isSelected": false
+              }
+            ],
             "indexOfShowPage": 0
           }
         ]
       },
       "explorerPage": {
         "random": {
-          "seed": 210366180605088,
+          "seed": 8763592234485,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }
       },
       "menuPage": {},
-      "myTweets": [
-        {
-          "tweetText": "hi",
-          "ownerUserName": "a",
-          "time": "2021-08-08 20:59:15",
-          "faveSetUserName": [],
-          "comments": [],
-          "retweet": 0,
-          "isRetweet": false
-        }
-      ]
+      "myTweets": []
     },
     {
       "firstName": "b",
@@ -95,30 +236,19 @@
       "bio": "b",
       "isOnline": false,
       "birthdayDate": "",
-      "lastSeen": "2021-08-08 21:25:52",
+      "lastSeen": "2021-08-11 00:40:03",
       "isPagePublic": true,
       "isActive": true,
       "lastSeenSituation": "every one",
       "followersUserName": [
         "a"
       ],
-      "followingsUserName": [
-        "a"
-      ],
+      "followingsUserName": [],
       "blackListsUserName": [],
       "mutedPeoplesUSerName": [],
       "friendsListsUserName": {},
       "timeLinePage": {
-        "indexOfTweet": 0,
-        "currentTweet": {
-          "tweetText": "hi",
-          "ownerUserName": "a",
-          "time": "2021-08-08 20:59:15",
-          "faveSetUserName": [],
-          "comments": [],
-          "retweet": 0,
-          "isRetweet": false
-        }
+        "indexOfTweet": -1
       },
       "settingPage": {},
       "personalPage": {
@@ -135,22 +265,167 @@
       "messengersPage": {
         "chatRooms": [
           {
-            "listenerUserName": "b",
-            "messages": [],
-            "unreadMessages": 0,
+            "listenerUserName": "a",
+            "messages": [
+              {
+                "text": "hello every one",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:14:43",
+                "isForward": false,
+                "isSeen": true,
+                "index": 0,
+                "isSelected": false
+              },
+              {
+                "text": "hey are you there?",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:20:18",
+                "isForward": false,
+                "isSeen": true,
+                "index": 1,
+                "isSelected": false
+              },
+              {
+                "text": "did you message c?",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:22:17",
+                "isForward": false,
+                "isSeen": true,
+                "index": 2,
+                "isSelected": false
+              },
+              {
+                "text": "?????????",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:38:48",
+                "isForward": false,
+                "isSeen": true,
+                "index": 3,
+                "isSelected": false
+              },
+              {
+                "text": "b",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:39:59",
+                "isForward": false,
+                "isSeen": true,
+                "index": 4,
+                "isSelected": false
+              }
+            ],
             "indexOfShowPage": 0
           },
           {
-            "listenerUserName": "a",
-            "messages": [],
-            "unreadMessages": 1,
+            "listenerUserName": "b",
+            "messages": [
+              {
+                "text": "hello every one",
+                "ownerUserName": "b",
+                "time": "2021-08-11 00:14:43",
+                "isForward": false,
+                "isSeen": true,
+                "index": 0,
+                "isSelected": false
+              }
+            ],
             "indexOfShowPage": 0
           }
         ]
       },
       "explorerPage": {
         "random": {
-          "seed": 172212350057729,
+          "seed": 95076062981654,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
+    },
+    {
+      "firstName": "c",
+      "lastName": "c",
+      "userName": "c",
+      "id": "@c99",
+      "password": "c",
+      "emailAddress": "c",
+      "phoneNumber": "c",
+      "bio": "c",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-08-11 00:39:37",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "a"
+      ],
+      "followingsUserName": [
+        "a"
+      ],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": -1
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
+        },
+        "info": {}
+      },
+      "messengersPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "c",
+            "messages": [],
+            "indexOfShowPage": 0
+          },
+          {
+            "listenerUserName": "a",
+            "messages": [
+              {
+                "text": "hi c",
+                "ownerUserName": "a",
+                "time": "2021-08-11 00:21:51",
+                "isForward": false,
+                "isSeen": true,
+                "index": 0,
+                "isSelected": false
+              },
+              {
+                "text": "hi a how you doin",
+                "ownerUserName": "c",
+                "time": "2021-08-11 00:37:51",
+                "isForward": false,
+                "isSeen": true,
+                "index": 1,
+                "isSelected": false
+              },
+              {
+                "text": "c",
+                "ownerUserName": "c",
+                "time": "2021-08-11 00:39:32",
+                "isForward": false,
+                "isSeen": true,
+                "index": 2,
+                "isSelected": false
+              }
+            ],
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 107477474477948,
           "nextNextGaussian": 0.0,
           "haveNextNextGaussian": false
         }

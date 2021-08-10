@@ -1,26 +1,26 @@
 package graphic.pages.explorer.random;
 
+import graphic.pages.explorer.ExplorerSwing;
 import logic.pages.ExplorerPage;
 import utility.ImageLoader;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class RandomTweetsPanel extends JPanel {
     private MainPanel mainPanel;
-    private ExplorerPage explorerPage;
+//    private ExplorerPage explorerPage;
+    private ExplorerSwing explorerSwing;
     private JButton searchBtn;
     private JButton refresh;
 
-    public RandomTweetsPanel(ExplorerPage explorerPage) {
-        this.explorerPage = explorerPage;
-        this.mainPanel = new MainPanel(explorerPage);
+    public RandomTweetsPanel(ExplorerSwing explorerSwing) {
+        this.explorerSwing = explorerSwing;
+        this.mainPanel = new MainPanel(explorerSwing);
         showGraphic();
     }
 
     public void showGraphic() {
-        mainPanel = new MainPanel(explorerPage);
+        mainPanel = new MainPanel(explorerSwing);
         searchBtn = new JButton();
         refresh = new JButton();
         refresh.setIcon(ImageLoader.getOthers().get("refresh"));

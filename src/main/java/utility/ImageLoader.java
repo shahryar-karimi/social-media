@@ -14,6 +14,8 @@ public class ImageLoader {
 
     private static void initOthers() {
         others.put("refresh", new ImageIcon("src/main/resources/pictures/refresh.png"));
+        others.put("unSeen", new ImageIcon("src/main/resources/pictures/tick.png"));
+        others.put("seen", new ImageIcon("src/main/resources/pictures/double-tick.png"));
     }
 
     private static void initTweetsIcons() {

@@ -1,5 +1,6 @@
 package graphic.pages.explorer.search;
 
+import graphic.pages.explorer.ExplorerSwing;
 import logic.pages.ExplorerPage;
 
 import javax.swing.*;
@@ -8,15 +9,15 @@ import java.awt.*;
 public class SearchPanel extends JPanel{
     private MainPanel mainPanel;
     private JLabel label;
-    private ExplorerPage explorerPage;
-
-    public SearchPanel(ExplorerPage explorerPage) {
-        this.explorerPage = explorerPage;
+//    private ExplorerPage explorerPage;
+    private ExplorerSwing explorerSwing;
+    public SearchPanel(ExplorerSwing explorerSwing) {
+        this.explorerSwing = explorerSwing;
         showGraphic();
     }
 
     public void showGraphic() {
-        mainPanel = new MainPanel(explorerPage, explorerPage.getManager().getAccounts());
+        mainPanel = new MainPanel(explorerSwing.getPage().getManager().getAccounts());
         label = new javax.swing.JLabel();
 
         label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 18)); // NOI18N

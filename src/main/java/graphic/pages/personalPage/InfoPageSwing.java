@@ -108,8 +108,11 @@ public class InfoPageSwing extends Swing {
 
         sendMessageBtn.setText("Send Message");
 
-        if (page.getAccount().isPagePublic()) {
+        if (page.getAccount().isPagePublic() || visitor.isFollow(page.getAccount())) {
             tweetTxtArea.setText(page.getAccount().getPersonalPage().showMyTweets());
+        } else {
+            tweetTxtArea.setText("");
+            tweetTxtArea.setEnabled(false);
         }
         tweetTxtArea.setEditable(false);
         tweetTxtArea.setColumns(20);

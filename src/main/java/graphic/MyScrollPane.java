@@ -3,15 +3,15 @@ package graphic;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
+import java.util.LinkedList;
 
 public abstract class MyScrollPane<T> extends JScrollPane {
     private JList<String> myJList;
     private DefaultListModel<String> defaultListModel;
-    private final List<T> list;
+    private LinkedList<T> list;
     private final boolean isSingleSelection;
 
-    public MyScrollPane(List<T> list, boolean isSingleSelection) {
+    public MyScrollPane(LinkedList<T> list, boolean isSingleSelection) {
         super();
         this.list = list;
         this.isSingleSelection = isSingleSelection;
@@ -59,6 +59,14 @@ public abstract class MyScrollPane<T> extends JScrollPane {
 
     public void setMyJList(JList<String> myJList) {
         this.myJList = myJList;
+    }
+
+    public LinkedList<T> getList() {
+        return list;
+    }
+
+    public void setList(LinkedList<T> list) {
+        this.list = list;
     }
 
     public void setDefaultListModel(DefaultListModel<String> defaultListModel) {

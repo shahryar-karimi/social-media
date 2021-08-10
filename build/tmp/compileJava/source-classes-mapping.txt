@@ -1,31 +1,38 @@
+graphic/pages/login/SignUpPanel.java
+ graphic.pages.login.SignUpPanel
+Main.java
+ Main
+cLI/CLI.java
+ cLI.CLI
+utility/DateLabelFormatter.java
+ utility.DateLabelFormatter
+graphic/MyScrollPane.java
+ graphic.MyScrollPane
+ graphic.MyScrollPane$1
 utility/ImageLoader.java
  utility.ImageLoader
-cLI/TimeLineCLI.java
- cLI.TimeLineCLI
-graphic/pages/messages/MessageSwing.java
- graphic.pages.messages.MessageSwing
-logic/Logger/MyLogger.java
- logic.Logger.MyLogger
-graphic/pages/messages/ChatRoomSwing.java
- graphic.pages.messages.ChatRoomSwing
-logic/Logger/Level.java
- logic.Logger.Level
-graphic/tweet/NewTweetPanel.java
- graphic.tweet.NewTweetPanel
 graphic/pages/login/LoginPanel.java
  graphic.pages.login.LoginPanel
 utility/AppProperties.java
  utility.AppProperties
-utility/DateLabelFormatter.java
- utility.DateLabelFormatter
+logic/Logger/MyLogger.java
+ logic.Logger.MyLogger
 graphic/MyFrame.java
  graphic.MyFrame
-graphic/pages/login/SignUpPanel.java
- graphic.pages.login.SignUpPanel
+graphic/tweet/NewTweetPanel.java
+ graphic.tweet.NewTweetPanel
+logic/Logger/Level.java
+ logic.Logger.Level
 cLI/ConsoleColors.java
  cLI.ConsoleColors
-cLI/CLI.java
- cLI.CLI
+graphic/pages/messages/chatRoom/SouthPanel.java
+ graphic.pages.messages.chatRoom.SouthPanel
+graphic/pages/explorer/search/MainPanel.java
+ graphic.pages.explorer.search.MainPanel
+ graphic.pages.explorer.search.MainPanel$1
+ graphic.pages.explorer.search.MainPanel$2
+cLI/TimeLineCLI.java
+ cLI.TimeLineCLI
 cLI/messengerCLI/MessengersCLI.java
  cLI.messengerCLI.MessengersCLI
 graphic/pages/personalPage/EditProfilePageSwing.java
@@ -34,8 +41,8 @@ graphic/pages/explorer/random/MainPanel.java
  graphic.pages.explorer.random.MainPanel
  graphic.pages.explorer.random.MainPanel$1
  graphic.pages.explorer.random.MainPanel$2
-graphic/pages/personalPage/notification/request/RequestsPanel.java
- graphic.pages.personalPage.notification.request.RequestsPanel
+graphic/pages/messages/chatRoom/MainPanel.java
+ graphic.pages.messages.chatRoom.MainPanel
 logic/Manager.java
  logic.Manager
 logic/pages/messenger/ChatRoom.java
@@ -44,6 +51,8 @@ utility/Loop.java
  utility.Loop
 graphic/pages/login/LoginSwing.java
  graphic.pages.login.LoginSwing
+graphic/pages/messages/chatRoom/NorthPanel.java
+ graphic.pages.messages.chatRoom.NorthPanel
 logic/Account.java
  logic.Account
 graphic/pages/menuPage/MenuSwing.java
@@ -76,10 +85,8 @@ cLI/LoginCLI.java
  cLI.LoginCLI
 logic/pages/LoginPage.java
  logic.pages.LoginPage
-graphic/pages/explorer/search/MainPanel.java
- graphic.pages.explorer.search.MainPanel
- graphic.pages.explorer.search.MainPanel$1
- graphic.pages.explorer.search.MainPanel$2
+graphic/pages/timeline/TimeLineSwing.java
+ graphic.pages.timeline.TimeLineSwing
 cLI/personalCLI/InfoCLI.java
  cLI.personalCLI.InfoCLI
 graphic/pages/explorer/ExplorerSwing.java
@@ -125,19 +132,18 @@ logic/pages/messenger/MessengersPage.java
  logic.pages.messenger.MessengersPage
 logic/pages/MenuPage.java
  logic.pages.MenuPage
-Main.java
- Main
-graphic/MyScrollPane.java
- graphic.MyScrollPane
- graphic.MyScrollPane$1
+graphic/pages/messages/chatRoom/ChatRoomSwing.java
+ graphic.pages.messages.chatRoom.ChatRoomSwing
 graphic/pages/personalPage/notification/NotificationSwing.java
  graphic.pages.personalPage.notification.NotificationSwing
-graphic/pages/timeline/TimeLineSwing.java
- graphic.pages.timeline.TimeLineSwing
+graphic/pages/messages/chatRoom/CenterPanel.java
+ graphic.pages.messages.chatRoom.CenterPanel
 logic/pages/ExplorerPage.java
  logic.pages.ExplorerPage
 logic/Tweet.java
  logic.Tweet
+graphic/pages/messages/MessagePanel.java
+ graphic.pages.messages.MessagePanel
 logic/pages/TimeLinePage.java
  logic.pages.TimeLinePage
 graphic/pages/timeline/comment/CommentsSwing.java
@@ -154,11 +160,11 @@ logic/pages/personal/Info.java
  logic.pages.personal.Info
 logic/CommandProcessor.java
  logic.CommandProcessor
+graphic/pages/personalPage/notification/request/RequestsPanel.java
+ graphic.pages.personalPage.notification.request.RequestsPanel
 graphic/pages/messages/messenger/NewChatFrame.java
  graphic.pages.messages.messenger.NewChatFrame
  graphic.pages.messages.messenger.NewChatFrame$1
-graphic/pages/messages/messenger/MessengerSwing.java
- graphic.pages.messages.messenger.MessengerSwing
 graphic/pages/messages/messenger/MainPanel.java
  graphic.pages.messages.messenger.MainPanel
  graphic.pages.messages.messenger.MainPanel$1
@@ -166,3 +172,5 @@ graphic/pages/messages/messenger/NewMessageFrame.java
  graphic.pages.messages.messenger.NewMessageFrame
  graphic.pages.messages.messenger.NewMessageFrame$1
  graphic.pages.messages.messenger.NewMessageFrame$2
+graphic/pages/messages/messenger/MessengerSwing.java
+ graphic.pages.messages.messenger.MessengerSwing

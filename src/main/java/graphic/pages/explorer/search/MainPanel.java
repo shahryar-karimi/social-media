@@ -14,13 +14,11 @@ import java.util.Locale;
 public class MainPanel extends JPanel {
     private LinkedList<Account> accounts;
     private MyScrollPane<Account> myScrollPane;
-    private final ExplorerPage explorerPage;
 
     private JTextField searchField;
     private JButton cancel;
 
-    public MainPanel(ExplorerPage explorerPage, LinkedList<Account> accounts) {
-        this.explorerPage = explorerPage;
+    public MainPanel(LinkedList<Account> accounts) {
         this.accounts = accounts;
         showGraphic();
     }

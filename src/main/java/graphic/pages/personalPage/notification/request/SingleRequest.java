@@ -27,6 +27,7 @@ public class SingleRequest extends JPanel {
         color();
         addDetails(label);
         this.setBorder(new LineBorder(Color.BLACK, 1));
+        this.setSize(new Dimension(300, 50));
     }
 
     private void addDetails(JLabel label) {

@@ -13,10 +13,10 @@ public class ExplorerPanel extends JPanel implements ActionListener {
     private CardLayout cardLayout;
     private RandomTweetsPanel randomTweetsPanel;
     private SearchPanel searchPanel;
-    private ExplorerPage explorerPage;
+    private ExplorerSwing explorerSwing;
 
-    public ExplorerPanel(ExplorerPage explorerPage) {
-        this.explorerPage = explorerPage;
+    public ExplorerPanel(ExplorerSwing explorerSwing) {
+        this.explorerSwing = explorerSwing;
         this.setBounds(0, 0, 600, 800);
         this.cardLayout = new CardLayout();
         this.setLayout(cardLayout);
@@ -24,8 +24,8 @@ public class ExplorerPanel extends JPanel implements ActionListener {
     }
 
     public void showGraphic() {
-        randomTweetsPanel = new RandomTweetsPanel(explorerPage);
-        searchPanel = new SearchPanel(explorerPage);
+        randomTweetsPanel = new RandomTweetsPanel(explorerSwing);
+        searchPanel = new SearchPanel(explorerSwing);
         this.add(randomTweetsPanel, "random tweets");
         this.add(searchPanel, "search");
         addAction();

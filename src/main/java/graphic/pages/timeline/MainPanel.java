@@ -125,12 +125,17 @@ public class MainPanel extends JPanel implements ActionListener {
     }
 
     public void updateGraphic() {
-        nextBtn.setEnabled(true);
-        previousBtn.setEnabled(true);
-        if (timeLine.getIndexOfTweet() == 0) {
-            previousBtn.setEnabled(false);
-        } else if (timeLine.getIndexOfTweet() == (timeLine.getTweets().size() - 1)) {
+        if (timeLine.getTweets().isEmpty()) {
             nextBtn.setEnabled(false);
+            previousBtn.setEnabled(false);
+        } else {
+            nextBtn.setEnabled(true);
+            previousBtn.setEnabled(true);
+            if (timeLine.getIndexOfTweet() == 0) {
+                previousBtn.setEnabled(false);
+            } else if (timeLine.getIndexOfTweet() == (timeLine.getTweets().size() - 1)) {
+                nextBtn.setEnabled(false);
+            }
         }
         newTweetPanel.updateGraphic();
         if (tweetPanel.getTweet() == null) return;

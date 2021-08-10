@@ -21,6 +21,7 @@ public class Message implements Comparable<Message>{
     public Message(String text, Account owner, boolean isForward) {
         this.text = text;
         this.owner = owner;
+        this.ownerUserName = owner.getUserName();
         this.isForward = isForward;
         this.isSeen = false;
         this.isSelected = false;

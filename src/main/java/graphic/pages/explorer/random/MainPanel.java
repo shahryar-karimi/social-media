@@ -1,6 +1,7 @@
 package graphic.pages.explorer.random;
 
 import graphic.pages.AccountsListSwing;
+import graphic.pages.explorer.ExplorerSwing;
 import graphic.pages.timeline.CommentSwing;
 import graphic.tweet.TweetsPanel;
 import logic.Account;
@@ -19,12 +20,12 @@ public class MainPanel extends JPanel implements ActionListener {
     private JButton nextBtn;
     private JButton previousBtn;
     private TweetsPanel tweetsPanel;
-    private final ExplorerPage explorerPage;
+    private final ExplorerSwing explorerSwing;
     private final TimeLinePage timeLine;
 
-    public MainPanel(ExplorerPage explorerPage) {
-        this.explorerPage = explorerPage;
-        timeLine = new TimeLinePage(explorerPage.getAccount(), explorerPage.getManager(), false);
+    public MainPanel(ExplorerSwing explorerSwing) {
+        this.explorerSwing = explorerSwing;
+        timeLine = new TimeLinePage(explorerSwing.getPage().getAccount(), explorerSwing.getPage().getManager(), false);
         showGraphic();
     }
 
@@ -38,6 +39,7 @@ public class MainPanel extends JPanel implements ActionListener {
             public void mouseClicked(MouseEvent evt) {
                 Account account = timeLine.getManager().searchByUserName(tweetsPanel.getNameLbl().getText());
                 timeLine.getManager().goToInfoPage(account.getPersonalPage().getInfo(), timeLine.getAccount());
+                explorerSwing.dispose();
             }
 
             public void mouseEntered(MouseEvent evt) {
@@ -88,7 +90,7 @@ public class MainPanel extends JPanel implements ActionListener {
     }
 
     public void showGraphic() {
-        timeLine.setTweets(explorerPage.getRandomTweets());
+        timeLine.setTweets(((ExplorerPage) explorerSwing.getPage()).getRandomTweets());
         tweetsPanel = new TweetsPanel(timeLine.getAccount(), timeLine.getCurrentTweet());
         initTweetsPanel();
         nextBtn = new JButton();
@@ -140,18 +142,23 @@ public class MainPanel extends JPanel implements ActionListener {
     }
 
     public void updateGraphic() {
-        nextBtn.setEnabled(true);
-        previousBtn.setEnabled(true);
-        if (timeLine.getIndexOfTweet() == 0) {
-            previousBtn.setEnabled(false);
-        } else if (timeLine.getIndexOfTweet() == (timeLine.getTweets().size() - 1)) {
+        if (timeLine.getTweets().isEmpty()) {
             nextBtn.setEnabled(false);
+            previousBtn.setEnabled(false);
+        } else {
+            nextBtn.setEnabled(true);
+            previousBtn.setEnabled(true);
+            if (timeLine.getIndexOfTweet() == 0) {
+                previousBtn.setEnabled(false);
+            } else if (timeLine.getIndexOfTweet() == (timeLine.getTweets().size() - 1)) {
+                nextBtn.setEnabled(false);
+            }
         }
         tweetsPanel.changeTweet(timeLine.getCurrentTweet());
     }
 
     public void refresh() {
-        timeLine.setTweets(explorerPage.getRandomTweets());
+        timeLine.setTweets(((ExplorerPage) explorerSwing.getPage()).getRandomTweets());
         updateGraphic();
     }
 

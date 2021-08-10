@@ -35,7 +35,7 @@ public class RequestsPanel extends JPanel implements ActionListener {
     private void setScrollPanel() {
         scrollPane.setBounds(0, 70, 300, 630);
         scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.PAGE_AXIS));
-//        scrollPanel.setSize(300, 630);
+        scrollPanel.setSize(REQUEST_WIDTH, REQUEST_HEIGHT * requests.size());
         for (SingleRequest request : requests)
             scrollPanel.add(request);
     }

@@ -5,10 +5,11 @@ import logic.Manager;
 import logic.pages.Page;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class MessengersPage extends Page {
 
-    ArrayList<ChatRoom> chatRooms;
+    LinkedList<ChatRoom> chatRooms;
 
     public MessengersPage() {
     }
@@ -16,13 +17,9 @@ public class MessengersPage extends Page {
     public MessengersPage(Account account, Manager manager) {
         super(account, manager);
         account.setMessagesPage(this);
-        chatRooms = new ArrayList<>();
+        chatRooms = new LinkedList<>();
         chatRooms.add(new ChatRoom(manager, account, account.getUserName()));
         chatRooms.remove(0);
-    }
-
-    public void goToChatRoom(ChatRoom chatRoom) {
-        manager.getGraphicManager().goToChatRoom(chatRoom);
     }
 
     public ChatRoom buildNewChatRoom(Account listener) {
@@ -82,11 +79,11 @@ public class MessengersPage extends Page {
         return result;
     }
 
-    public ArrayList<ChatRoom> getChatRooms() {
+    public LinkedList<ChatRoom> getChatRooms() {
         return chatRooms;
     }
 
-    public void setChatRooms(ArrayList<ChatRoom> chatRooms) {
+    public void setChatRooms(LinkedList<ChatRoom> chatRooms) {
         this.chatRooms = chatRooms;
     }
 

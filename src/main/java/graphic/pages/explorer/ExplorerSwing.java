@@ -34,7 +34,7 @@ public class ExplorerSwing extends Swing {
 
     @Override
     public void showGraphic() {
-        explorerPanel = new ExplorerPanel((ExplorerPage) page);
+        explorerPanel = new ExplorerPanel(this);
         this.setLayout(new BorderLayout());
         initPanels();
         this.setVisible(true);
@@ -57,6 +57,7 @@ public class ExplorerSwing extends Swing {
                     explorerPage.getManager().goToInfoPage(account.getPersonalPage().getInfo(), explorerPage.getAccount());
                     mainPanel.refresh();
                 }
+                dispose();
             }
         });
         this.add(explorerPanel, BorderLayout.CENTER);

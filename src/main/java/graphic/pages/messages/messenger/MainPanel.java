@@ -10,15 +10,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 
 public class MainPanel extends JPanel implements ActionListener {
-    private MyScrollPane<ChatRoom> scrollPane;
+    private MyScrollPane<String> scrollPane;
     private final MessengerSwing messengerSwing;
     //todo add action listener for buttons
     private JButton newChat;
     private JButton newMessage;
+
+    private LinkedList<String> chatRoomsView =  new LinkedList<>();
 
     public MainPanel(MessengerSwing messengerSwing) {
         this.messengerSwing = messengerSwing;
@@ -27,7 +31,11 @@ public class MainPanel extends JPanel implements ActionListener {
     }
 
     private void initialize() {
-        scrollPane = new MyScrollPane<>(((MessengersPage) messengerSwing.getPage()).getChatRooms(), true) {
+        LinkedList<ChatRoom> chatRooms = ((MessengersPage) messengerSwing.getPage()).getChatRooms();
+        Collections.sort(chatRooms);
+        for (ChatRoom chatRoom : chatRooms)
+            chatRoomsView.add(chatRoom.getString());
+        scrollPane = new MyScrollPane<>(chatRoomsView, true) {
             @Override
             public void listClicked(MouseEvent e) {
                 listMouseClicked();
@@ -68,7 +76,7 @@ public class MainPanel extends JPanel implements ActionListener {
     }
 
     private void listMouseClicked() {
-        String userName = scrollPane.getMyJList().getSelectedValue();
+        String userName = scrollPane.getMyJList().getSelectedValue().split("\\s")[0];
         ChatRoom newChatRoom1 = ((MessengersPage) messengerSwing.getPage()).searchChatRoomsByUserName(userName);
         messengerSwing.dispose();
         messengerSwing.getPage().getManager().goToChatroom(newChatRoom1);
@@ -94,6 +102,10 @@ public class MainPanel extends JPanel implements ActionListener {
     public void updateGraphic() {
         LinkedList<Account> accounts = getAccountList((MessengersPage) messengerSwing.getPage());
         newChat.setEnabled(!accounts.isEmpty());
+        chatRoomsView.clear();
+        for (ChatRoom chatRoom : ((MessengersPage) messengerSwing.getPage()).getChatRooms())
+            chatRoomsView.add(chatRoom.getString());
+        scrollPane.setList(chatRoomsView);
         scrollPane.updateGraphic();
     }
 

@@ -171,7 +171,8 @@ public class TweetsPanel extends JPanel {
 
     public void changeTweet(Tweet tweet) {
         this.tweet = tweet;
-        getTweetPanel();
+        if (tweet == null) getNullPanel();
+        else getTweetPanel();
         updatePage();
     }
 

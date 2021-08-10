@@ -1,11 +1,10 @@
 package graphic;
 
 import cLI.SettingCLI;
-import cLI.messengerCLI.ChatRoomCLI;
-import cLI.messengerCLI.MessengersCLI;
 import graphic.pages.explorer.ExplorerSwing;
 import graphic.pages.menuPage.MenuSwing;
 import graphic.pages.Swing;
+import graphic.pages.messages.chatRoom.ChatRoomSwing;
 import graphic.pages.messages.messenger.MessengerSwing;
 import graphic.pages.personalPage.InfoPageSwing;
 import graphic.pages.login.LoginSwing;
@@ -89,8 +88,7 @@ public class GraphicManager {
     }
 
     public void goToChatRoom(ChatRoom chatRoom) {
-        ChatRoomCLI chatRoomCLI = new ChatRoomCLI(chatRoom);
-        chatRoomCLI.run();
+        new ChatRoomSwing(chatRoom);
     }
 
     public Stack<Swing> getSwings() {

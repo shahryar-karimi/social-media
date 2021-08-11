@@ -15,7 +15,6 @@ import java.awt.event.ActionEvent;
 
 public class PersonalPageSwing extends Swing {
 
-    Tweet newTweet = new Tweet();
     private final JButton[] buttons = new JButton[]{
             new JButton(AppProperties.getInstance().getProperty("edit-profile")),
             new JButton(AppProperties.getInstance().getProperty("my-followings")),
@@ -211,7 +210,7 @@ public class PersonalPageSwing extends Swing {
         } else if (e.getSource() == sendBtn) {
             String newTweetTxt = this.newTweetTxt.getText();
             if (newTweetTxt != null && !newTweetTxt.isBlank()) {
-                newTweet = ((PersonalPage) page).writeNewTweet(newTweetTxt);
+                Tweet newTweet = ((PersonalPage) page).writeNewTweet(newTweetTxt);
                 ((PersonalPage) page).sendingATweet(newTweet, true);
             }
             myTweetsView.setText(((PersonalPage) page).showMyTweets());

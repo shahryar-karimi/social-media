@@ -1,14 +1,21 @@
 package graphic.tweet;
 
+import graphic.pages.AccountsListSwing;
+import graphic.pages.Swing;
 import logic.Account;
 import logic.Tweet;
 import utility.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 
 public class TweetsPanel extends JPanel {
 
+    private Swing swing;
     private Tweet tweet;
     private Account visitor;
     private JLabel nameLbl = new JLabel();
@@ -25,9 +32,12 @@ public class TweetsPanel extends JPanel {
     private JScrollPane jScrollPane1 = new JScrollPane();
     private JTextArea tweetTxtArea = new JTextArea();
 
-    public TweetsPanel(Account visitor, Tweet tweet) {
-        this.tweet = tweet;
+    public TweetsPanel(Account visitor, Tweet tweet, Swing swing) {
         this.visitor = visitor;
+        this.tweet = tweet;
+        this.swing = swing;
+        setPreferredSize(new Dimension(428, 283));
+        setDetails();
         if (tweet == null) getNullPanel();
         else getTweetPanel();
     }
@@ -95,7 +105,7 @@ public class TweetsPanel extends JPanel {
         commentQtyLbl.setText("" + tweet.getComments().size());
 
         retweetQtyLbl.setHorizontalAlignment(SwingConstants.CENTER);
-        retweetQtyLbl.setText("" + tweet.getRetweet());
+        retweetQtyLbl.setText("" + tweet.getRetweetQty());
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
@@ -159,7 +169,7 @@ public class TweetsPanel extends JPanel {
             } else {
                 likeBtn.setIcon(ImageLoader.getTweetsIcons().get("green-like"));
             }
-            retweetQtyLbl.setText(tweet.getRetweet() + "");
+            retweetQtyLbl.setText(tweet.getRetweetQty() + "");
             commentQtyLbl.setText(tweet.getComments().size() + "");
             nameLbl.setText(tweet.getAccount().getUserName());
             if (tweet.isRetweet()) {
@@ -238,5 +248,94 @@ public class TweetsPanel extends JPanel {
 
     public void setVisitor(Account visitor) {
         this.visitor = visitor;
+    }
+
+    public void setDetails() {
+        addLabelsMouseListener();
+        addBtnsActionListener();
+    }
+
+    protected void addBtnsActionListener() {
+        commentBtn.addActionListener(this::commentBtnActionPerformed);
+        likeBtn.addActionListener(this::likeBtnActionPerformed);
+        retweetBtn.addActionListener(this::retweetBtnActionPerformed);
+        shareBtn.addActionListener(this::shareBtnActionPerformed);
+    }
+
+    private void commentBtnActionPerformed(ActionEvent e) {
+        swing.updateGraphic();
+        swing.dispose();
+        swing.getPage().getManager().goToComments(tweet);
+    }
+
+    private void shareBtnActionPerformed(ActionEvent e) {
+        //Todo forward a message (build a list from accounts and choose from them)
+    }
+
+    public void nameLblMouseClicked() {
+        swing.updateGraphic();
+        Account account;
+        if (tweet.isRetweet()) {
+            account = tweet.getRetweeter();
+        } else {
+            account = tweet.getAccount();
+        }
+        swing.dispose();
+        swing.getPage().getManager().goToInfoPage(account.getPersonalPage().getInfo(), visitor);
+    }
+
+    private void retweetBtnActionPerformed(ActionEvent e) {
+        tweet.retweet(visitor);
+        swing.updateGraphic();
+    }
+
+    private void likeBtnActionPerformed(ActionEvent e) {
+        boolean flag = tweet.fave(visitor);
+        updatePage();
+        if (flag) {
+            getLikeBtn().setIcon(ImageLoader.getTweetsIcons().get("red-like"));
+        } else {
+            getLikeBtn().setIcon(ImageLoader.getTweetsIcons().get("green-like"));
+        }
+    }
+
+    private void addLabelsMouseListener() {
+        nameLbl.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                nameLblMouseClicked();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                TweetsPanel.mouseEntered(nameLbl);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                TweetsPanel.mouseExited(nameLbl);
+            }
+        });
+        likeQtyLbl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                likeQtyLblMouseClicked();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                TweetsPanel.mouseEntered(likeQtyLbl);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                TweetsPanel.mouseExited(likeQtyLbl);
+            }
+        });
+    }
+
+    private void likeQtyLblMouseClicked() {
+        swing.updateGraphic();
+        swing.dispose();
+        new AccountsListSwing(swing.getPage(), new LinkedList<>(tweet.getFavesSet()));
     }
 }

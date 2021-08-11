@@ -149,7 +149,7 @@ public class TimeLineCLI extends CLI {
     }
 
     private void processRetweet() {
-        timeLinePage.retweet();
+//        timeLinePage.getCurrentTweet().retweet();
         System.out.println("Current tweet retweeted");
         showCurrentTweet();
     }

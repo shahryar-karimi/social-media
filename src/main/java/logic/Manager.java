@@ -3,12 +3,11 @@ package logic;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import cLI.personalCLI.InfoCLI;
 import graphic.GraphicManager;
 import logic.Logger.MyLogger;
+import logic.pages.TimeLinePage;
 import logic.pages.messenger.ChatRoom;
 import logic.pages.personal.Info;
-import utility.Loop;
 
 public class Manager {
     private LinkedList<Account> accounts;
@@ -165,6 +164,13 @@ public class Manager {
     public void goToChatroom(ChatRoom chatRoom) {
         save();
         graphicManager.goToChatRoom(chatRoom);
+    }
+
+    public void goToComments(Tweet tweet) {
+        save();
+        TimeLinePage timeLinePage = new TimeLinePage(tweet.getAccount(), this, false);
+        timeLinePage.setTweets(tweet.getComments());
+        graphicManager.goToComment(timeLinePage, tweet);
     }
 
     public Account searchByEmail(String email) {

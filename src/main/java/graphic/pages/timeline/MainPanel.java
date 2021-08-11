@@ -1,6 +1,6 @@
 package graphic.pages.timeline;
 
-import graphic.pages.AccountsListSwing;
+import graphic.pages.Swing;
 import graphic.tweet.NewTweetPanel;
 import graphic.tweet.TweetsPanel;
 import logic.Account;
@@ -11,12 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.LinkedList;
 
 public class MainPanel extends JPanel implements ActionListener {
-    private TimeLinePage timeLine;
     private TweetsPanel tweetPanel;
     private NewTweetPanel newTweetPanel;
     private JButton nextBtn;
@@ -24,10 +20,19 @@ public class MainPanel extends JPanel implements ActionListener {
     private JButton refresh;
     private JLabel header;
 
+    private TimeLinePage timeLine;
+    private Swing swing;
+    private Tweet topTweet;
 
-    public MainPanel(TimeLinePage timeLine) {
-        this.timeLine = timeLine;
+    public MainPanel(Swing swing) {
+        this.swing = swing;
+        this.timeLine = (TimeLinePage) swing.getPage();
         showGraphic();
+    }
+
+    public MainPanel(Swing swing, Tweet topTweet) {
+        this(swing);
+        this.topTweet = topTweet;
     }
 
     private void addAction() {
@@ -37,68 +42,8 @@ public class MainPanel extends JPanel implements ActionListener {
     }
 
     private void initPanels() {
-        initTweetsPanel();
+        tweetPanel = new TweetsPanel(timeLine.getAccount(), timeLine.getCurrentTweet(), swing);
         initNewTweetPanel();
-    }
-
-    private void initTweetsPanel() {
-        tweetPanel = new TweetsPanel(timeLine.getAccount(), timeLine.getCurrentTweet());
-        tweetPanel.setPreferredSize(new Dimension(428, 283));
-        if (tweetPanel.getTweet() == null) return;
-        if (tweetPanel.getTweet().isRetweet()) {
-            tweetPanel.getNameLbl().setText(timeLine.getAccount().getUserName() + " Retweeted from: " + tweetPanel.getTweet().getAccount());
-        }
-        tweetPanel.getNameLbl().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                Account account = timeLine.getManager().searchByUserName(tweetPanel.getNameLbl().getText());
-                timeLine.getManager().goToInfoPage(account.getPersonalPage().getInfo(), timeLine.getAccount());
-            }
-
-            public void mouseEntered(MouseEvent evt) {
-                TweetsPanel.mouseEntered(tweetPanel.getNameLbl());
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                TweetsPanel.mouseExited(tweetPanel.getNameLbl());
-            }
-        });
-        tweetPanel.getLikeBtn().addActionListener(e -> {
-            timeLine.fave();
-            tweetPanel.updatePage();
-            if (timeLine.getCurrentTweet().faveSetContains(timeLine.getAccount())) {
-                tweetPanel.getLikeBtn().setIcon(new ImageIcon("src/main/resources/pictures/red-like.png")); // like
-            } else {
-                tweetPanel.getLikeBtn().setIcon(new ImageIcon("src/main/resources/pictures/green-like.png")); // like
-            }
-        });
-        tweetPanel.getRetweetBtn().addActionListener(e -> {
-            timeLine.retweet();
-            updateGraphic();
-        });
-        tweetPanel.getShareBtn().addActionListener(e -> {
-            //Todo forward a message (build a list from accounts and choose from them)
-        });
-        tweetPanel.getLikeQtyLbl().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                updateGraphic();
-                new AccountsListSwing(timeLine, new LinkedList<>(tweetPanel.getTweet().getFavesSet()));
-            }
-
-            public void mouseEntered(MouseEvent evt) {
-                TweetsPanel.mouseEntered(tweetPanel.getLikeQtyLbl());
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                TweetsPanel.mouseExited(tweetPanel.getLikeQtyLbl());
-            }
-        });
-        tweetPanel.getCommentBtn().addActionListener(e -> {
-            //Todo forward a message
-            updateGraphic();
-            new CommentSwing(this.timeLine, timeLine.getCurrentTweet());
-        });
     }
 
     private void initNewTweetPanel() {
@@ -115,17 +60,21 @@ public class MainPanel extends JPanel implements ActionListener {
     public void sendingATweet(Tweet tweet) {
         tweet.setTime();
         Account account = timeLine.getAccount();
-        account.addTweet(tweet);
-        for (Account follower : account.getFollowers()) {
-            if (!follower.isMute(account))
-                follower.getTimeLinePage().addTweet(tweet);
+        if (topTweet == null) {
+            account.addTweet(tweet);
+            for (Account follower : account.getFollowers()) {
+                if (!follower.isMute(account))
+                    follower.getTimeLinePage().addTweet(tweet);
+            }
+        } else {
+            topTweet.addComment(tweet);
         }
         updateGraphic();
         timeLine.getManager().save();
     }
 
     public void updateGraphic() {
-        if (timeLine.getTweets().isEmpty()) {
+        if (timeLine.getTweets().size() < 2) {
             nextBtn.setEnabled(false);
             previousBtn.setEnabled(false);
         } else {
@@ -149,11 +98,11 @@ public class MainPanel extends JPanel implements ActionListener {
         previousBtn = new javax.swing.JButton();
         refresh = new JButton();
 
-        setPreferredSize(new java.awt.Dimension(600, 700));
+        setPreferredSize(new Dimension(542, 492));
 
         newTweetPanel.showGraphic();
 
-        header.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 18)); // NOI18N
+        header.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 18));
         header.setText("Timeline");
 
         nextBtn.setText(">>");
@@ -169,49 +118,46 @@ public class MainPanel extends JPanel implements ActionListener {
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(35, 35, 35)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(header)
+                                                                .addGap(204, 204, 204))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(newTweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(66, 66, 66)))
+                                                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
                                                 .addComponent(previousBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(33, 33, 33)
-                                                                .addComponent(newTweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(0, 29, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(255, 255, 255)
-                                                .addComponent(header)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap())
+                                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
+                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addComponent(nextBtn)
-                                                                .addGap(319, 319, 319))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addComponent(previousBtn)
-                                                                .addGap(322, 322, 322))))
+                                                .addGap(291, 291, 291)
+                                                .addComponent(nextBtn))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(37, 37, 37)
-                                                .addComponent(newTweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(37, 37, 37)
-                                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addContainerGap(189, Short.MAX_VALUE))))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(newTweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tweetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(291, 291, 291)
+                                                                .addComponent(previousBtn)))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }
 
@@ -233,6 +179,10 @@ public class MainPanel extends JPanel implements ActionListener {
 
     public JButton getRefresh() {
         return refresh;
+    }
+
+    public JLabel getHeader() {
+        return header;
     }
 
     public void setTimeLine(TimeLinePage timeLine) {

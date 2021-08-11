@@ -10,9 +10,12 @@ import graphic.pages.personalPage.InfoPageSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
 import graphic.pages.timeline.TimeLineSwing;
+import graphic.pages.timeline.comment.CommentsSwing;
 import logic.Account;
 import logic.Manager;
+import logic.Tweet;
 import logic.pages.LoginPage;
+import logic.pages.TimeLinePage;
 import logic.pages.messenger.ChatRoom;
 import logic.pages.personal.Info;
 
@@ -64,8 +67,6 @@ public class GraphicManager {
 
     public void goToExplorerPage(Account account) {
         new ExplorerSwing(account.getExplorerPage());
-//        ExplorerCLI explorerCLI = new ExplorerCLI(account.getExplorerPage());
-//        explorerCLI.run();
     }
 
     public void goToSettingPage(Account account) {
@@ -75,8 +76,6 @@ public class GraphicManager {
 
     public void goToMessagesPage(Account account) {
         new MessengerSwing(account.getMessengersPage());
-//        MessengersCLI messengersCLI = new MessengersCLI(account.getMessengersPage());
-//        messengersCLI.run();
     }
 
     public void goToInfoPage(Info info, Account visitor) {
@@ -85,6 +84,10 @@ public class GraphicManager {
         } else {
             JOptionPane.showMessageDialog(null, "Page not found\nYou are blocked or page is deActive", "Change frame", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public void goToComment(TimeLinePage timeLinePage, Tweet tweet) {
+        new CommentsSwing(timeLinePage, tweet);
     }
 
     public void goToChatRoom(ChatRoom chatRoom) {

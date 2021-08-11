@@ -11,7 +11,7 @@ public class TimeLinePage extends Page {
 
     private transient LinkedList<Tweet> tweets;
     private int indexOfTweet;
-    private Tweet currentTweet;
+    private transient Tweet currentTweet;
 
     public TimeLinePage() {
     }
@@ -137,25 +137,15 @@ public class TimeLinePage extends Page {
         setIndexOfTweet(tweets.size() - 1);
     }
 
-    public void retweet() {
-        Tweet retweetTweet = currentTweet.clone();
-        retweetTweet.setTime();
-        retweetTweet.setRetweeter(account);
-        retweetTweet.setRetweet(true);
-        currentTweet.setRetweet(currentTweet.getRetweet() + 1);
-        retweetTweet.setRetweet(currentTweet.getRetweet());
-        account.getPersonalPage().sendingATweet(retweetTweet, false);
-    }
-
     public void blockUser() {
         this.account.block(currentTweet.getAccount());
-        for (int i = 0; i < getTweets().size(); i++) {
-            if (getTweets().get(i).getAccount().equals(account)) {
-                getTweets().remove(i);
+        for (int i = 0; i < tweets.size(); i++) {
+            if (tweets.get(i).getAccount().equals(account)) {
+                tweets.remove(i);
                 i--;
             }
         }
-        setIndexOfTweet(getTweets().size() - 1);
+        setIndexOfTweet(tweets.size() - 1);
     }
 
     public void muteUser() {

@@ -7,10 +7,7 @@ import logic.pages.messenger.Message;
 
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Singleton {
     private static Gson gson;
@@ -33,6 +30,7 @@ public class Singleton {
                 FileWriter fileWriter = new FileWriter("SAVE.json");
                 getGson().toJson(manager, fileWriter);
                 fileWriter.flush();
+                fileWriter.close();
             } catch (Exception e) {
                 System.err.println("Didn't save program");
             }
@@ -84,6 +82,9 @@ public class Singleton {
             loadTweets(manager, account);
             loadMessages(manager, account);
         }
+        for (Account account : manager.getAccounts()) {
+            loadRetweetedTweets(account);
+        }
     }
 
     private static void loadChatRooms(Manager manager, Account account) {
@@ -124,6 +125,7 @@ public class Singleton {
         tweets.addAll(account.getMyTweets());
         Collections.sort(tweets);
         account.getTimeLinePage().setTweets(tweets);
+        account.getTimeLinePage().setIndexOfTweet(account.getTimeLinePage().getIndexOfTweet());
     }
 
     private static void loadMessagesPage(Manager manager, Account account) {
@@ -203,27 +205,39 @@ public class Singleton {
 
     private static void loadTweets(Manager manager, Account account) {
         for (Tweet tweet : account.getMyTweets()) {
+            tweet.setSubTweets(new LinkedList<>());
             setAccountForTweet(manager, tweet, manager.searchByUserName(tweet.getOwnerUserName()));
             setFavesSetForTweet(manager, tweet);
-            if (tweet.isRetweet()) {
-                tweet.setRetweeter(account);
-            }
+            ManageTweets.addTweet(tweet);
         }
     }
 
     private static void setFavesSetForTweet(Manager manager, Tweet tweet) {
-        ArrayList<Account> favesSet = new ArrayList<>();
-        for (String userName : tweet.getFaveSetUserName())
-            favesSet.add(manager.searchByUserName(userName));
-        tweet.setFavesSet(favesSet);
+        if (!tweet.isRetweet()) {
+            ArrayList<Account> favesSet = new ArrayList<>();
+            for (String userName : tweet.getFaveSetUserName())
+                favesSet.add(manager.searchByUserName(userName));
+            tweet.setFavesSet(favesSet);
+        }
     }
 
     private static void setAccountForTweet(Manager manager, Tweet tweet, Account account) {
-        tweet.setAccount(manager.searchByUserName(tweet.getOwnerUserName()));
+        tweet.setAccount(account);
         for (Tweet comment : tweet.getComments()) {
-            setAccountForTweet(manager, comment, manager.searchByUserName(comment.getOwnerUserName()));
             if (comment.isRetweet()) {
                 comment.setRetweeter(account);
+            }
+            setAccountForTweet(manager, comment, manager.searchByUserName(comment.getOwnerUserName()));
+        }
+    }
+
+    private static void loadRetweetedTweets(Account account) {
+        for (Tweet tweet : account.getMyTweets()) {
+            if (tweet.isRetweet()) {
+                tweet.setSuperTweet(Objects.requireNonNull(ManageTweets.searchTweetById(tweet.getSuperTweetId())));
+                tweet.setRetweeter(account);
+                tweet.getSuperTweet().getSubTweets().add(tweet);
+                tweet.setFavesSet(tweet.getSuperTweet().getFavesSet());
             }
         }
     }

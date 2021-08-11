@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 
 public class ChatRoomSwing extends Swing {
-    //TODO
     private MainPanel mainPanel;
 
     public ChatRoomSwing(ChatRoom chatRoom) {

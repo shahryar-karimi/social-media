@@ -21,12 +21,6 @@ class ManageTweets {
         tweets.add(tweet);
         tweet.setTweetId(counter++);
     }
-
-    public static void printAll() {
-        for (Tweet tweet : tweets) {
-            System.out.println(tweet);
-        }
-    }
 }
 
 public class Tweet implements Comparable<Tweet> {

@@ -106,11 +106,16 @@ public class MainPanel extends JPanel {
         int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete your account?",
                 "Delete Account", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (result == 0) {
-            ((SettingPage) settingSwing.getPage()).deleteAccount();
-            settingSwing.getManager().getSwings().empty();
-            settingSwing.dispose();
-            settingSwing.getPage().getManager().goToLoginPage();
+            System.out.println(1); // 1 = no
+        } else if (result == 2) {
+            System.out.println(2);
+        } else {
+            System.out.println(0); // 0 = yes
         }
+        ((SettingPage) settingSwing.getPage()).deleteAccount();
+        settingSwing.getManager().getSwings().empty();
+        settingSwing.dispose();
+        settingSwing.getPage().getManager().goToLoginPage();
     }
 
     private void showGraphic() {

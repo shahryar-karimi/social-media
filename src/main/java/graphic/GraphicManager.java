@@ -1,6 +1,5 @@
 package graphic;
 
-import cLI.SettingCLI;
 import graphic.pages.explorer.ExplorerSwing;
 import graphic.pages.menuPage.MenuSwing;
 import graphic.pages.Swing;
@@ -71,8 +70,6 @@ public class GraphicManager {
     }
 
     public void goToSettingPage(Account account) {
-//        SettingCLI settingCLI = new SettingCLI(account.getSettingPage());
-//        settingCLI.run();
         new SettingSwing(account.getSettingPage());
     }
 

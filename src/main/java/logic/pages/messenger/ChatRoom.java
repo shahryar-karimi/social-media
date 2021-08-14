@@ -1,6 +1,5 @@
 package logic.pages.messenger;
 
-import cLI.ConsoleColors;
 import logic.Account;
 import logic.Manager;
 import logic.Tweet;
@@ -14,7 +13,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
     private transient Account listener;
     private LinkedList<Message> messages;
     private Message selectedMessage;
-    private int indexOfShowPage;
 
     public ChatRoom() {
     }
@@ -25,29 +23,7 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
         if (listenerUserName.equals(account.getUserName())) this.listener = account;
         else this.listener = manager.searchByUserName(listenerUserName);
         this.messages = new LinkedList<>();
-        this.indexOfShowPage = 0;
         this.account.getMessengersPage().addChatRoom(this);
-    }
-
-    public String showIndexTenPage() {
-        if (messages.size() == 0) return "There is nothing here yet please send your first message";
-        if (indexOfShowPage * 10 > messages.size() - 1) return null;
-        String result = "==================================================\n";
-        int size = messages.size() - 10 * indexOfShowPage;
-        for (int i = Math.max(size - 10, 0); i < size && i < messages.size(); i++) {
-            Message message = messages.get(i);
-            if (message.getOwner().equals(listener)) {
-                if (!message.isSeen()) {
-                    message.setSeen(true);
-                    listener.getMessengersPage().searchChatRoomByListener(account).getMessages().get(i).setSeen(true);
-                }
-            }
-            if (message.getOwner().equals(account))
-                result += ConsoleColors.PURPLE + message + ConsoleColors.RESET + "\n==================================================\n";
-            else
-                result += ConsoleColors.YELLOW + message + ConsoleColors.RESET + "\n==================================================\n";
-        }
-        return result;
     }
 
     public void setListener(Account listener) {
@@ -57,27 +33,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
 
     public void setMessages(LinkedList<Message> messages) {
         this.messages = messages;
-    }
-
-    public String showPage() {
-        String result = "==================================================\n";
-        for (Message message : messages) {
-            if (message.getOwner().equals(listener)) {
-                message.setSeen(true);
-            }
-            result += message + "\n==================================================\n";
-        }
-        return result;
-    }
-
-    public static String showCLIPage() {
-        return "1.write message\n" +
-                "2.select message\n" +
-                "3.show all messages\n" +
-                "4.next ten message\n" +
-                "5.previous ten message\n" +
-                "6.back\n" +
-                "7.exit";
     }
 
     public Account getListener() {
@@ -131,7 +86,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
             }
             ChatRoom listenerChatRoom = listener.getMessengersPage().searchChatRoomByListener(account);
             listenerChatRoom.messages.add(message);
-            indexOfShowPage = 0;
             return true;
         } else {
             return false;
@@ -172,22 +126,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
             else result += "Failed to create a chat room with " + account + "\n";
         }
         return result;
-    }
-
-    public String nextTenMessage() {
-        if (indexOfShowPage * 10 + 10 < messages.size()) {
-            indexOfShowPage++;
-            return "Next ten message:";
-        }
-        return "This is the last ten message:";
-    }
-
-    public String previousTenMessage() {
-        if (indexOfShowPage * 10 - 10 > -1) {
-            indexOfShowPage--;
-            return "previous ten message:";
-        }
-        return "This is the first ten message:";
     }
 
     @Override

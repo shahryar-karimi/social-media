@@ -1,10 +1,10 @@
 package graphic.pages.setting;
 
-import cLI.personalCLI.PersonalPageCLI;
 import logic.Account;
 import logic.pages.Page;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class EditPassFrame extends JFrame {
@@ -44,7 +44,7 @@ public class EditPassFrame extends JFrame {
         update.setEnabled(false);
         update.addActionListener(this::updatePass);
 
-        header.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        header.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         header.setText("Edit Password");
 
@@ -99,7 +99,7 @@ public class EditPassFrame extends JFrame {
 
     private void updatePass(ActionEvent e) {
         String newPass = newPassField.getText();
-        mainPanel.getSettingSwing().getMyLogger().info(PersonalPageCLI.class.getName(), "processEditPassword",
+        mainPanel.getSettingSwing().getMyLogger().info(EditPassFrame.class.getName(), "processEditPassword",
                 "an account with user name \"" + account.toString() + "\"" +
                         " edited his/her password from \"" + account.getPassword() + "\"" +
                         " to \"" + newPass + "\"");

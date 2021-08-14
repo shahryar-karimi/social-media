@@ -19,7 +19,7 @@ public class CenterPanel extends JPanel {
 
     public void showGraphic() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(new Color(0, 0, 125));
+        this.setBackground(new Color(125, 125, 125));
         int height = chatRoom.getMessages().size() * 100;
         this.setPreferredSize(new Dimension(520, height));
         for (Message message : chatRoom.getMessages())

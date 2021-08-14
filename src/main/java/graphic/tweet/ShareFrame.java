@@ -29,6 +29,9 @@ public class ShareFrame extends JFrame {
         for (String followingUserName : account.getFollowingsUserName()) {
             myList.add("a " + followingUserName);
         }
+        for (String followingUserName : account.getFollowersUserName()) {
+            myList.add("a " + followingUserName);
+        }
         selectingPanel = new SelectingPanel(myList, tweetsPanel.getSwing());
         shareBtn = new javax.swing.JButton();
         header = new javax.swing.JLabel();

@@ -218,6 +218,9 @@ public class Singleton {
             for (String userName : tweet.getFaveSetUserName())
                 favesSet.add(manager.searchByUserName(userName));
             tweet.setFavesSet(favesSet);
+            for (Tweet comment : tweet.getComments()) {
+                setFavesSetForTweet(manager, comment);
+            }
         }
     }
 

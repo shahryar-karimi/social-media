@@ -31,8 +31,6 @@ graphic/pages/explorer/search/MainPanel.java
  graphic.pages.explorer.search.MainPanel
  graphic.pages.explorer.search.MainPanel$1
  graphic.pages.explorer.search.MainPanel$2
-cLI/ExplorerCLI.java
- cLI.ExplorerCLI
 cLI/messengerCLI/MessengersCLI.java
  cLI.messengerCLI.MessengersCLI
 graphic/pages/personalPage/EditProfilePageSwing.java
@@ -45,6 +43,8 @@ graphic/pages/messages/messenger/NewMessageFrame.java
  graphic.pages.messages.messenger.NewMessageFrame$2
 logic/Manager.java
  logic.Manager
+graphic/pages/messages/chatRoom/MainPanel.java
+ graphic.pages.messages.chatRoom.MainPanel
 logic/pages/messenger/ChatRoom.java
  logic.pages.messenger.ChatRoom
 utility/Loop.java
@@ -75,8 +75,10 @@ graphic/pages/explorer/search/SearchPanel.java
  graphic.pages.explorer.search.SearchPanel
 graphic/pages/personalPage/notification/request/SingleRequest.java
  graphic.pages.personalPage.notification.request.SingleRequest
-graphic/pages/setting/SettingSwing.java
- graphic.pages.setting.SettingSwing
+graphic/pages/messages/chatRoom/CenterPanel.java
+ graphic.pages.messages.chatRoom.CenterPanel
+graphic/pages/timeline/TimeLineSwing.java
+ graphic.pages.timeline.TimeLineSwing
 cLI/personalCLI/PersonalPageCLI.java
  cLI.personalCLI.PersonalPageCLI
 cLI/MenuCLI.java
@@ -145,6 +147,8 @@ graphic/pages/timeline/comment/CommentsSwing.java
  graphic.pages.timeline.comment.CommentsSwing
 logic/Singleton.java
  logic.Singleton
+cLI/ExplorerCLI.java
+ cLI.ExplorerCLI
 graphic/pages/explorer/random/RandomTweetsPanel.java
  graphic.pages.explorer.random.RandomTweetsPanel
 graphic/pages/timeline/comment/center/CenterPanel.java
@@ -161,9 +165,9 @@ cLI/TimeLineCLI.java
  cLI.TimeLineCLI
 graphic/pages/messages/messenger/MessengerSwing.java
  graphic.pages.messages.messenger.MessengerSwing
-graphic/pages/messages/chatRoom/MainPanel.java
- graphic.pages.messages.chatRoom.MainPanel
-graphic/pages/timeline/TimeLineSwing.java
- graphic.pages.timeline.TimeLineSwing
-graphic/pages/messages/chatRoom/CenterPanel.java
- graphic.pages.messages.chatRoom.CenterPanel
+graphic/pages/setting/EditPassFrame.java
+ graphic.pages.setting.EditPassFrame
+graphic/pages/setting/SettingSwing.java
+ graphic.pages.setting.SettingSwing
+graphic/pages/setting/MainPanel.java
+ graphic.pages.setting.MainPanel

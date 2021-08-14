@@ -28,6 +28,10 @@ public abstract class Swing extends MyFrame implements ActionListener {
         return page;
     }
 
+    public MyLogger getMyLogger() {
+        return myLogger;
+    }
+
     public void addSwing(Swing swing) {
         getManager().addSwing(swing);
     }

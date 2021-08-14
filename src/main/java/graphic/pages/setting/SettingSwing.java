@@ -2,16 +2,18 @@ package graphic.pages.setting;
 
 import graphic.FooterPanel;
 import graphic.pages.Swing;
-import graphic.pages.personalPage.PersonalPageSwing;
 import logic.pages.SettingPage;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class SettingSwing extends Swing {
+    private MainPanel mainPanel;
 
     public SettingSwing(SettingPage settingPage) {
         super();
         this.page = settingPage;
+        mainPanel = new MainPanel(this);
         footerPanel = new FooterPanel(getManager(), page.getManager(), page.getAccount());
         addSwing(this);
         run();
@@ -26,7 +28,10 @@ public class SettingSwing extends Swing {
 
     @Override
     public void showGraphic() {
-        //TODO
+        this.setLayout(new BorderLayout());
+        this.add(mainPanel, BorderLayout.CENTER);
+        this.add(footerPanel, BorderLayout.SOUTH);
+        this.setVisible(true);
     }
 
     @Override

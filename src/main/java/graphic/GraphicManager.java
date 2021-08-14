@@ -9,6 +9,7 @@ import graphic.pages.messages.messenger.MessengerSwing;
 import graphic.pages.personalPage.InfoPageSwing;
 import graphic.pages.login.LoginSwing;
 import graphic.pages.personalPage.PersonalPageSwing;
+import graphic.pages.setting.SettingSwing;
 import graphic.pages.timeline.TimeLineSwing;
 import graphic.pages.timeline.comment.CommentsSwing;
 import logic.Account;
@@ -70,8 +71,9 @@ public class GraphicManager {
     }
 
     public void goToSettingPage(Account account) {
-        SettingCLI settingCLI = new SettingCLI(account.getSettingPage());
-        settingCLI.run();
+//        SettingCLI settingCLI = new SettingCLI(account.getSettingPage());
+//        settingCLI.run();
+        new SettingSwing(account.getSettingPage());
     }
 
     public void goToMessagesPage(Account account) {

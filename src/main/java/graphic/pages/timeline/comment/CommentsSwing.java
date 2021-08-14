@@ -34,6 +34,7 @@ public class CommentsSwing extends Swing {
 
     @Override
     public void showGraphic() {
+        updateGraphic();
         this.setLayout(new BorderLayout());
         this.add(centerPanel, BorderLayout.CENTER);
         this.add(footerPanel, BorderLayout.SOUTH);

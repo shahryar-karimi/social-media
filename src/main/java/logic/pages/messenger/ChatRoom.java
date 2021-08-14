@@ -9,11 +9,10 @@ import logic.pages.Page;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class ChatRoom extends Page {
+public class ChatRoom extends Page implements Comparable<ChatRoom> {
     private String listenerUserName;
     private transient Account listener;
     private LinkedList<Message> messages;
-    private int unreadMessages;
     private Message selectedMessage;
     private int indexOfShowPage;
 
@@ -26,8 +25,8 @@ public class ChatRoom extends Page {
         if (listenerUserName.equals(account.getUserName())) this.listener = account;
         else this.listener = manager.searchByUserName(listenerUserName);
         this.messages = new LinkedList<>();
-        this.account.getMessagesPage().addChatRoom(this);
         this.indexOfShowPage = 0;
+        this.account.getMessengersPage().addChatRoom(this);
     }
 
     public String showIndexTenPage() {
@@ -40,8 +39,7 @@ public class ChatRoom extends Page {
             if (message.getOwner().equals(listener)) {
                 if (!message.isSeen()) {
                     message.setSeen(true);
-                    unreadMessages--;
-                    listener.getMessagesPage().searchChatRoomByListener(account).getMessages().get(i).setSeen(true);
+                    listener.getMessengersPage().searchChatRoomByListener(account).getMessages().get(i).setSeen(true);
                 }
             }
             if (message.getOwner().equals(account))
@@ -54,14 +52,11 @@ public class ChatRoom extends Page {
 
     public void setListener(Account listener) {
         this.listener = listener;
+        this.listenerUserName = listener.getUserName();
     }
 
     public void setMessages(LinkedList<Message> messages) {
         this.messages = messages;
-    }
-
-    public void setUnreadMessages(int unreadMessages) {
-        this.unreadMessages = unreadMessages;
     }
 
     public String showPage() {
@@ -69,7 +64,6 @@ public class ChatRoom extends Page {
         for (Message message : messages) {
             if (message.getOwner().equals(listener)) {
                 message.setSeen(true);
-                unreadMessages--;
             }
             result += message + "\n==================================================\n";
         }
@@ -87,6 +81,10 @@ public class ChatRoom extends Page {
     }
 
     public Account getListener() {
+        if (listener == null) {
+            if (listenerUserName.equals(account.getUserName())) this.listener = account;
+            else this.listener = manager.searchByUserName(listenerUserName);
+        }
         return listener;
     }
 
@@ -95,7 +93,11 @@ public class ChatRoom extends Page {
     }
 
     public int getUnreadMessages() {
-        return unreadMessages;
+        int counter = 0;
+        for (Message message : messages)
+            if (message.getOwnerUserName().equals(listenerUserName) && !message.isSeen())
+                counter++;
+        return counter;
     }
 
     public Message getSelectedMessage() {
@@ -127,9 +129,8 @@ public class ChatRoom extends Page {
                 message.setSeen(true);
                 return true;
             }
-            ChatRoom listenerChatRoom = listener.getMessagesPage().searchChatRoomByListener(account);
+            ChatRoom listenerChatRoom = listener.getMessengersPage().searchChatRoomByListener(account);
             listenerChatRoom.messages.add(message);
-            listenerChatRoom.unreadMessages++;
             indexOfShowPage = 0;
             return true;
         } else {
@@ -158,10 +159,10 @@ public class ChatRoom extends Page {
         message.setForward(true);
         String result = "";
         for (Account account : accounts) {
-            ChatRoom anotherChatRoom = account.getMessagesPage().searchChatRoomByListener(account);
+            ChatRoom anotherChatRoom = account.getMessengersPage().searchChatRoomByListener(account);
             if (anotherChatRoom == null) {
-                if (account.getMessagesPage().buildNewChatRoom(account)) {
-                    anotherChatRoom = account.getMessagesPage().searchChatRoomByListener(account);
+                anotherChatRoom = account.getMessengersPage().buildNewChatRoom(account);
+                if (anotherChatRoom != null) {
                     if (anotherChatRoom.sendMessage(message))
                         result += "Message sent to " + account + " successfully\n";
                     else result += "Failed to send message to " + account + "\n";
@@ -187,5 +188,26 @@ public class ChatRoom extends Page {
             return "previous ten message:";
         }
         return "This is the first ten message:";
+    }
+
+    @Override
+    public int compareTo(ChatRoom chatRoom) {
+        if (messages.isEmpty() && chatRoom.messages.isEmpty()) {
+            return 0;
+        } else if (messages.isEmpty()) {
+            return -1;
+        } else if (chatRoom.messages.isEmpty()) {
+            return 1;
+        }
+        return chatRoom.messages.getLast().compareTo(messages.getLast());
+    }
+
+    @Override
+    public String toString() {
+        return getListenerUserName();
+    }
+
+    public String getString() {
+        return getListenerUserName() + " " + getListener().getLastSeen(getAccount()) + " : " + getUnreadMessages();
     }
 }

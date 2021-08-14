@@ -26,26 +26,11 @@ public class SettingPage extends Page {
     }
 
     public void deleteAccount() {
-        LinkedList<Account> followings = account.getFollowings();
-        LinkedList<Account> followers = account.getFollowers();
-        LinkedList<Tweet> tweets = account.getMyTweets();
-        LinkedList<Account> blackList = account.getBlackList();
-        ArrayList<Account> mutedPeople = account.getMutedPeople();
-        while (!followings.isEmpty())
-            account.unFollow(followings.get(0), false);
-        while (!followers.isEmpty())
-            followers.get(0).unFollow(account, false);
-        while (!tweets.isEmpty())
-            tweets.pop();
-        while (!blackList.isEmpty())
-            blackList.pop();
-        while (!mutedPeople.isEmpty())
-            mutedPeople.remove(0);
+        manager.deleteAccount(account);
     }
 
-    public String setPagePrivacy(boolean isPagePublic) {
+    public void setPagePrivacy(boolean isPagePublic) {
         account.setPagePublic(isPagePublic);
-        return "your page set " + ((isPagePublic) ? "public" : "private");
     }
 
     public String showPrivacyMenu() {
@@ -61,11 +46,7 @@ public class SettingPage extends Page {
         account.setLastSeenSituation(lastSeenSituation);
     }
 
-    public void setActivity(String activity) {
-        if (activity.equals("active")) {
-            account.setActive(true);
-        } else {
-            account.setActive(false);
-        }
+    public void setActivity(boolean activity) {
+        account.setActive(activity);
     }
 }

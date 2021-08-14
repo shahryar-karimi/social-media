@@ -106,7 +106,7 @@ public class Notification extends Page {
         indexOfCurrentSystemMessage--;
     }
 
-    public String  acceptRequest(Account requester) {
+    public String acceptRequest(Account requester) {
         String message = requester.follow(account);
         if (message.equals("You followed this page successfully!")) {
             removeRequest(indexOfCurrentRequest);

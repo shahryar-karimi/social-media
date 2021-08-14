@@ -1,7 +1,7 @@
 package logic;
 
 import logic.pages.*;
-import logic.pages.messenger.MessagesPage;
+import logic.pages.messenger.MessengersPage;
 import logic.pages.personal.PersonalPage;
 
 import java.time.LocalDateTime;
@@ -42,7 +42,7 @@ public class Account {
     private TimeLinePage timeLinePage;
     private SettingPage settingPage;
     private PersonalPage personalPage;
-    private MessagesPage messagesPage;
+    private MessengersPage messengersPage;
     private ExplorerPage explorerPage;
     private MenuPage menuPage;
 
@@ -81,7 +81,7 @@ public class Account {
         this.timeLinePage = new TimeLinePage(this, manager, true);
         this.settingPage = new SettingPage(this, manager);
         this.personalPage = new PersonalPage(this, manager);
-        this.messagesPage = new MessagesPage(this, manager);
+        this.messengersPage = new MessengersPage(this, manager);
         this.explorerPage = new ExplorerPage(this, manager);
         this.menuPage = new MenuPage(this, manager);
         this.myTweets = new LinkedList<>();
@@ -97,7 +97,7 @@ public class Account {
         this.blackListsUserName = blackListsUserName;
     }
 
-    public ArrayList<String> getMutedPeoplesUSerName() {
+    public ArrayList<String> getMutedPeoplesUserName() {
         return mutedPeoplesUSerName;
     }
 
@@ -153,12 +153,12 @@ public class Account {
         this.personalPage = personalPage;
     }
 
-    public MessagesPage getMessagesPage() {
-        return messagesPage;
+    public MessengersPage getMessengersPage() {
+        return messengersPage;
     }
 
-    public void setMessagesPage(MessagesPage messagesPage) {
-        this.messagesPage = messagesPage;
+    public void setMessagesPage(MessengersPage messengersPage) {
+        this.messengersPage = messengersPage;
     }
 
     public ExplorerPage getExplorerPage() {
@@ -328,6 +328,7 @@ public class Account {
 
     public void addTweet(Tweet tweet) {
         myTweets.add(tweet);
+        timeLinePage.addTweet(tweet);
     }
 
     //setter
@@ -533,5 +534,39 @@ public class Account {
         }
     }
 
+    public void update(Account newAccount) {
+        this.firstName = newAccount.firstName;
+        this.lastName = newAccount.lastName;
+        this.password = newAccount.password;
+        this.emailAddress = newAccount.emailAddress;
+        this.phoneNumber = newAccount.phoneNumber;
+        this.bio = newAccount.bio;
+        this.isOnline = newAccount.isOnline;
+        this.birthdayDate = newAccount.birthdayDate;
+        this.lastSeen = newAccount.lastSeen;
+        this.isPagePublic = newAccount.isPagePublic;
+        this.isActive = newAccount.isActive;
+        this.lastSeenSituation = newAccount.lastSeenSituation;
 
+        this.followersUserName = newAccount.followersUserName;
+        this.followingsUserName = newAccount.followingsUserName;
+        this.blackListsUserName = newAccount.blackListsUserName;
+        this.mutedPeoplesUSerName = newAccount.mutedPeoplesUSerName;
+        this.friendsListsUserName = newAccount.friendsListsUserName;
+
+        this.followers = newAccount.followers;
+        this.followings = newAccount.followings;
+        this.blackList = newAccount.blackList;
+        this.mutedPeople = newAccount.mutedPeople;
+        this.friendsList = newAccount.friendsList;
+
+        this.timeLinePage = newAccount.timeLinePage;
+        this.settingPage = newAccount.settingPage;
+        this.personalPage = newAccount.personalPage;
+        this.messengersPage = newAccount.messengersPage;
+        this.explorerPage = newAccount.explorerPage;
+        this.menuPage = newAccount.menuPage;
+
+        this.myTweets = newAccount.myTweets;
+    }
 }

@@ -1,22 +1,23 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
-import cLI.*;
-import cLI.messengerCLI.MessagesCLI;
-import cLI.personalCLI.InfoCLI;
-import graphic.pages.LoginGraphic;
-import graphic.pages.MenuGraphic;
-import graphic.pages.login.LoginSwing;
-import graphic.pages.personalPage.PersonalPageSwing;
+import graphic.GraphicManager;
 import logic.Logger.MyLogger;
-import logic.pages.LoginPage;
+import logic.pages.TimeLinePage;
+import logic.pages.messenger.ChatRoom;
+import logic.pages.personal.Info;
 
 public class Manager {
     private LinkedList<Account> accounts;
+    private transient GraphicManager graphicManager = new GraphicManager();
+    private static final Object locker = new Object();
+//    private transient Loop loop;
 
     public Manager() {
-        this.accounts = new LinkedList<>();
+        accounts = new LinkedList<>();
+//        loop = new Loop(this);
     }
 
     public void setAccounts(LinkedList<Account> accounts) {
@@ -24,21 +25,50 @@ public class Manager {
     }
 
     public Account createAnAccount(String firstName, String lastName, String userName, String password, String emailAddress, String phoneNumber, String bio) {
-        Account newAccount = new Account(this, firstName, lastName, userName, password, emailAddress, phoneNumber, bio);
-        accounts.add(newAccount);
-        save();
-        return newAccount;
+        synchronized (locker) {
+            Account newAccount = new Account(this, firstName, lastName, userName, password, emailAddress, phoneNumber, bio);
+            accounts.add(newAccount);
+            save();
+            return newAccount;
+        }
+    }
+
+    public void deleteAccount(Account account) {
+        synchronized (locker) {
+            LinkedList<Account> followings = account.getFollowings();
+            LinkedList<Account> followers = account.getFollowers();
+            LinkedList<Tweet> tweets = account.getMyTweets();
+            LinkedList<Account> blackList = account.getBlackList();
+            ArrayList<Account> mutedPeople = account.getMutedPeople();
+            while (!followings.isEmpty())
+                account.unFollow(followings.get(0), false);
+            while (!followers.isEmpty())
+                followers.get(0).unFollow(account, false);
+            while (!tweets.isEmpty())
+                tweets.pop();
+            while (!blackList.isEmpty())
+                blackList.pop();
+            while (!mutedPeople.isEmpty())
+                mutedPeople.remove(0);
+            accounts.remove(account);
+        }
     }
 
     public LinkedList<Account> getAccounts() {
         return accounts;
     }
 
+    public Account search(LinkedList<Account> accounts, String userName) {
+        synchronized (locker) {
+            if (userName == null) return null;
+            for (Account account : accounts)
+                if (account.getUserName().equals(userName)) return account;
+            return null;
+        }
+    }
+
     public Account searchByUserName(String userName) {
-        if (userName == null) return null;
-        for (Account account : accounts)
-            if (account.getUserName().equals(userName)) return account;
-        return null;
+        return search(accounts, userName);
     }
 
     public boolean isCorrectPassword(Account account, String password) {
@@ -49,10 +79,37 @@ public class Manager {
         Singleton.save(this);
     }
 
+    public void update() {
+        synchronized (locker) {
+            Manager manager = Singleton.load();
+            first:
+            for (Account newAccount : manager.getAccounts()) {
+                for (Account oldAccount : accounts) {
+                    if (oldAccount.equals(newAccount)) {
+                        oldAccount.update(newAccount);
+                        continue first;
+                    }
+                }
+                accounts.add(newAccount);
+            }
+            first:
+            for (Account oldAccount : accounts) {
+                for (Account newAccount : manager.getAccounts()) {
+                    if (oldAccount.equals(newAccount)) {
+                        continue first;
+                    }
+                }
+                deleteAccount(oldAccount);
+            }
+        }
+    }
+
     public void quit(Account account) {
         account.setOnline(false);
+        MyLogger logger = MyLogger.getLogger();
+        logger.debug(Manager.class.getName(), "quit", "Program ended");
+        save();
         goToLoginPage();
-        System.exit(0);
     }
 
     public void exit(Account account) {
@@ -65,57 +122,70 @@ public class Manager {
 
     public void goToLoginPage() {
         save();
-        new LoginSwing(new LoginPage(this));
+        graphicManager.goToLoginPage(this);
     }
 
     public void goToMenuPage(Account account) {
         save();
-        MenuGraphic menuGraphic = new MenuGraphic(account.getMenuPage());
-        menuGraphic.run();
+        graphicManager.goToMenuPage(account);
+//        loop.start();
     }
 
     public void gotoPersonalPage(Account account) {
         save();
-        new PersonalPageSwing(account.getPersonalPage());
+        graphicManager.gotoPersonalPage(account);
     }
 
     public void goToTimeLinePage(Account account) {
         save();
-        TimeLineCLI timeLineCLI = new TimeLineCLI(account.getTimeLinePage());
-        timeLineCLI.run();
+        graphicManager.goToTimeLinePage(account);
     }
 
     public void goToExplorerPage(Account account) {
         save();
-        ExplorerCLI explorerCLI = new ExplorerCLI(account.getExplorerPage());
-        explorerCLI.run();
+        graphicManager.goToExplorerPage(account);
     }
 
     public void goToSettingPage(Account account) {
         save();
-        SettingCLI settingCLI = new SettingCLI(account.getSettingPage());
-        settingCLI.run();
+        graphicManager.goToSettingPage(account);
     }
 
     public void goToMessagesPage(Account account) {
         save();
-        MessagesCLI messagesCLI = new MessagesCLI(account.getMessagesPage());
-        messagesCLI.run();
+        graphicManager.goToMessagesPage(account);
     }
 
-    public void goToInfoPage(Account infosAccount, Account visitor) {
+    public void goToInfoPage(Info info, Account visitor) {
         save();
-        if (!infosAccount.hasBlocked(visitor) && infosAccount.isActive()) {
-            InfoCLI infoCLI = new InfoCLI(infosAccount.getPersonalPage().getInfo(), visitor);
-            infoCLI.run();
-        } else {
-            System.err.println("Page not found\nYou are blocked or page is deActive");
-        }
+        graphicManager.goToInfoPage(info, visitor);
+    }
+
+    public void goToChatroom(ChatRoom chatRoom) {
+        save();
+        graphicManager.goToChatRoom(chatRoom);
+    }
+
+    public void goToComments(Tweet tweet) {
+        save();
+        TimeLinePage timeLinePage = new TimeLinePage(tweet.getAccount(), this, false);
+        timeLinePage.setTweets(tweet.getComments());
+        graphicManager.goToComment(timeLinePage, tweet);
     }
 
     public Account searchByEmail(String email) {
-        for (Account account : accounts)
-            if (email.equals(account.getEmailAddress())) return account;
-        return null;
+        synchronized (locker) {
+            for (Account account : accounts)
+                if (email.equals(account.getEmailAddress())) return account;
+            return null;
+        }
+    }
+
+    public GraphicManager getGraphicManager() {
+        return graphicManager;
+    }
+
+    public void setGraphicManager(GraphicManager graphicManager) {
+        this.graphicManager = graphicManager;
     }
 }

@@ -11,7 +11,7 @@ public class TimeLinePage extends Page {
 
     private transient LinkedList<Tweet> tweets;
     private int indexOfTweet;
-    private Tweet currentTweet;
+    private transient Tweet currentTweet;
 
     public TimeLinePage() {
     }
@@ -79,19 +79,21 @@ public class TimeLinePage extends Page {
 
     public String goNextTweet(LinkedList<Tweet> tweets, int indexOfTweet) {
         String message = "";
-        indexOfTweet++;
         if (tweets.size() == 0) {
             message = "There is nothing here!";
             return message;
         } else {
+            indexOfTweet++;
             Tweet nextTweet = showTweetByIndex(tweets, indexOfTweet);
             if (nextTweet == null) {
                 indexOfTweet--;
-                message = "There is no more for you\nThis is the last one:\n";
+                message = "There is no more for you\nThis is the last one\n";
             }
             this.currentTweet = showTweetByIndex(tweets, indexOfTweet);
+            this.indexOfTweet = indexOfTweet;
         }
-        return message + this.currentTweet + " " + indexOfTweet;
+//        return message + this.currentTweet + " " + indexOfTweet;
+        return message;
     }
 
     public String goPreviousTweet(LinkedList<Tweet> tweets, int indexOfTweet) {
@@ -107,8 +109,10 @@ public class TimeLinePage extends Page {
                 message = "There is no more for you\nThis is the first one:\n";
             }
             currentTweet = showTweetByIndex(tweets, indexOfTweet);
+            this.indexOfTweet = indexOfTweet;
         }
-        return message + currentTweet + " " + indexOfTweet;
+//        return message + currentTweet + " " + indexOfTweet;
+        return message;
     }
 
     public String fave() {
@@ -118,7 +122,7 @@ public class TimeLinePage extends Page {
         } else if (currentTweet == null) {
             return "Failed to fave current tweet\nCurrent tweet not found";
         } else {
-            currentTweet.getFavesSet().remove(account);
+            currentTweet.removeFave(account);
             return "Current tweet disliked successfully";
         }
     }
@@ -133,23 +137,15 @@ public class TimeLinePage extends Page {
         setIndexOfTweet(tweets.size() - 1);
     }
 
-    public void retweet() {
-        Tweet retweetTweet = currentTweet.clone();
-        retweetTweet.setRetweet(true);
-        currentTweet.setRetweet(currentTweet.getRetweet() + 1);
-        retweetTweet.setRetweet(currentTweet.getRetweet());
-        account.getPersonalPage().sendingATweet(retweetTweet, false);
-    }
-
     public void blockUser() {
         this.account.block(currentTweet.getAccount());
-        for (int i = 0; i < getTweets().size(); i++) {
-            if (getTweets().get(i).getAccount().equals(account)) {
-                getTweets().remove(i);
+        for (int i = 0; i < tweets.size(); i++) {
+            if (tweets.get(i).getAccount().equals(account)) {
+                tweets.remove(i);
                 i--;
             }
         }
-        setIndexOfTweet(getTweets().size() - 1);
+        setIndexOfTweet(tweets.size() - 1);
     }
 
     public void muteUser() {
@@ -169,10 +165,10 @@ public class TimeLinePage extends Page {
     public String forward(LinkedList<Account> accounts) {
         String result = "";
         for (Account account : accounts) {
-            ChatRoom anotherChatRoom = this.account.getMessagesPage().searchChatRoomByListener(account);
+            ChatRoom anotherChatRoom = this.account.getMessengersPage().searchChatRoomByListener(account);
             if (anotherChatRoom == null) {
-                if (this.account.getMessagesPage().buildNewChatRoom(account)) {
-                    anotherChatRoom = this.account.getMessagesPage().searchChatRoomByListener(account);
+                anotherChatRoom = this.account.getMessengersPage().buildNewChatRoom(account);
+                if (anotherChatRoom != null) {
                     if (anotherChatRoom.sendTweet(currentTweet))
                         result += "Message sent to " + account + " successfully\n";
                     else result += "Failed to send message to " + account + "\n";

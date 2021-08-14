@@ -24,6 +24,14 @@ public abstract class Swing extends MyFrame implements ActionListener {
         return manager;
     }
 
+    public Page getPage() {
+        return page;
+    }
+
+    public MyLogger getMyLogger() {
+        return myLogger;
+    }
+
     public void addSwing(Swing swing) {
         getManager().addSwing(swing);
     }
@@ -31,4 +39,6 @@ public abstract class Swing extends MyFrame implements ActionListener {
     public abstract void run();
 
     public abstract void showGraphic();
+
+    public abstract void updateGraphic();
 }

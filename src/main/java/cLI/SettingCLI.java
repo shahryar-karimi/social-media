@@ -69,11 +69,11 @@ public class SettingCLI extends CLI {
     private void processPageActivity() {
         System.out.println("Do you want to set your page active or de active?");
         String activity = scanner.nextLine();
-        while (!activity.equals("active") && !activity.equals("de active")) {
-            System.err.println("Wrong input\nplease just say \"active\" or \"de active\"");
+        while (!activity.equals("activate") && !activity.equals("deactivate")) {
+            System.err.println("Wrong input\nplease just say \"activate\" or \"deactivate\"");
             activity = scanner.nextLine();
         }
-        settingPage.setActivity(activity);
+        settingPage.setActivity(activity.equals("activate"));
     }
 
     private void processLastSeenPrivacy() {
@@ -113,8 +113,7 @@ public class SettingCLI extends CLI {
             System.err.println("Wrong input\nplease just say \"public\" or \"private\"");
             result = scanner.nextLine();
         }
-        if (result.equals("public")) System.out.println(settingPage.setPagePrivacy(true));
-        else System.out.println(settingPage.setPagePrivacy(false));
+        settingPage.setPagePrivacy(result.equals("public"));
     }
 
     private String chooseFromPrivacyMenu() {
@@ -147,8 +146,6 @@ public class SettingCLI extends CLI {
 
     private void processDeleteAccount() {
         settingPage.deleteAccount();
-        settingPage.getManager().getAccounts().remove(settingPage.getAccount());
-        Singleton.save(settingPage.getManager());
         settingPage.getManager().goToLoginPage();
         System.exit(0);
     }

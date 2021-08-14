@@ -4,6 +4,7 @@ package graphic.pages.personalPage;
 import graphic.FooterPanel;
 import graphic.pages.AccountsListSwing;
 import graphic.pages.Swing;
+import graphic.pages.personalPage.notification.NotificationSwing;
 import logic.Tweet;
 import logic.pages.personal.PersonalPage;
 import utility.AppProperties;
@@ -13,9 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class PersonalPageSwing extends Swing {
-//    private final PersonalPage personalPage;
 
-    Tweet newTweet = new Tweet();
     private final JButton[] buttons = new JButton[]{
             new JButton(AppProperties.getInstance().getProperty("edit-profile")),
             new JButton(AppProperties.getInstance().getProperty("my-followings")),
@@ -32,8 +31,8 @@ public class PersonalPageSwing extends Swing {
     private final JPanel jPanel3 = new JPanel();
     private final JScrollPane jScrollPane1 = new JScrollPane();
     private final JScrollPane jScrollPane4 = new JScrollPane();
-    private final JTextArea jTextArea1 = new JTextArea();
-    private final JTextArea jTextArea4 = new JTextArea();
+    private final JTextArea newTweetTxt = new JTextArea();
+    private final JTextArea myTweetsView = new JTextArea();
     private final JLabel jLabel1 = new JLabel();
 
     public PersonalPageSwing(PersonalPage personalPage) {
@@ -56,21 +55,17 @@ public class PersonalPageSwing extends Swing {
     @Override
     public void showGraphic() {
 
-//        FooterPanel footerPanel = new FooterPanel(getManager());
-
-//        this.dispose();
-
         sendBtn.addActionListener(this);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        newTweetTxt.setColumns(20);
+        newTweetTxt.setRows(5);
+        jScrollPane1.setViewportView(newTweetTxt);
 
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jTextArea4.setEditable(false);
-        jScrollPane4.setViewportView(jTextArea4);
-        jTextArea4.append(((PersonalPage) page).showMyTweets());
+        myTweetsView.setColumns(20);
+        myTweetsView.setRows(5);
+        myTweetsView.setEditable(false);
+        jScrollPane4.setViewportView(myTweetsView);
+        myTweetsView.setText(((PersonalPage) page).showMyTweets());
 
 
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
@@ -92,7 +87,6 @@ public class PersonalPageSwing extends Swing {
                         .addComponent(jScrollPane1)
         );
 
-
         jPanel3.setBackground(new Color(200, 200, 200));
 
         jLabel1.setText("My Tweets");
@@ -107,7 +101,7 @@ public class PersonalPageSwing extends Swing {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
                 jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -135,7 +129,7 @@ public class PersonalPageSwing extends Swing {
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,100))
                                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -184,6 +178,13 @@ public class PersonalPageSwing extends Swing {
 
 
         this.setVisible(true);
+        this.pack();
+    }
+
+    @Override
+    public void updateGraphic() {
+        myTweetsView.setText(((PersonalPage) page).showMyTweets());
+        newTweetTxt.setText("");
     }
 
 
@@ -201,19 +202,19 @@ public class PersonalPageSwing extends Swing {
         } else if (e.getSource() == buttons[3]) {
             this.dispose();
             new AccountsListSwing(page, ((PersonalPage) page).myBlackList());
-        } else if (e.getSource() == buttons[4]) {
-
-        } else if (e.getSource() == buttons[5]) {
+        } else if (e.getSource() == buttons[4]) { // notification
+            this.dispose();
+            new NotificationSwing(((PersonalPage) page).getNotification());
+        } else if (e.getSource() == buttons[5]) { // create list
 
         } else if (e.getSource() == sendBtn) {
-            String newTweetTxt = jTextArea1.getText();
+            String newTweetTxt = this.newTweetTxt.getText();
             if (newTweetTxt != null && !newTweetTxt.isBlank()) {
-                newTweet = ((PersonalPage) page).writeNewTweet(newTweetTxt);
+                Tweet newTweet = ((PersonalPage) page).writeNewTweet(newTweetTxt);
                 ((PersonalPage) page).sendingATweet(newTweet, true);
             }
-            jTextArea4.setText("");
-            jTextArea4.append(((PersonalPage) page).showMyTweets());
-            jTextArea1.setText("");
+            myTweetsView.setText(((PersonalPage) page).showMyTweets());
+            this.newTweetTxt.setText("");
         }
     }
 }

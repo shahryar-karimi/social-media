@@ -4,7 +4,6 @@ import cLI.CLI;
 import cLI.ConsoleColors;
 import cLI.messengerCLI.ChatRoomCLI;
 import logic.Account;
-import logic.Manager;
 import logic.Singleton;
 import logic.pages.personal.Info;
 import logic.pages.messenger.ChatRoom;
@@ -65,6 +64,7 @@ public class InfoCLI extends CLI {
             }
         }
     }
+
     private String chooseFromMenu() {
         if (isOwnPage) System.out.println(Info.menuForActionOwner());
         else System.out.println(Info.menuForActions());
@@ -133,7 +133,7 @@ public class InfoCLI extends CLI {
             } else {
                 Account follower = info.getAccount().searchFollowerByUserName(input);
                 if (follower != null && follower.isActive()) {
-                    info.getManager().goToInfoPage(follower, visitor);
+                    info.getManager().goToInfoPage(follower.getPersonalPage().getInfo(), visitor);
                 } else {
                     System.err.println("This user name not found!\nplease try another one:");
                 }
@@ -163,7 +163,7 @@ public class InfoCLI extends CLI {
             } else {
                 Account following = info.getAccount().searchFollowingByUserName(input);
                 if (following != null && following.isActive()) {
-                    info.getManager().goToInfoPage(following, visitor);
+                    info.getManager().goToInfoPage(following.getPersonalPage().getInfo(), visitor);
                 } else {
                     System.err.println("This user name not found!\nplease try another one:");
                 }
@@ -172,11 +172,10 @@ public class InfoCLI extends CLI {
     }
 
     private void processSendMessage() {
-        ChatRoom chatRoom = visitor.getMessagesPage().searchChatRoomByListener(info.getAccount());
+        ChatRoom chatRoom = visitor.getMessengersPage().searchChatRoomByListener(info.getAccount());
         if (chatRoom == null) {
-            if (visitor.getMessagesPage().buildNewChatRoom(info.getAccount())) {
-                chatRoom = visitor.getMessagesPage().searchChatRoomByListener(info.getAccount());
-            } else {
+            chatRoom = visitor.getMessengersPage().buildNewChatRoom(info.getAccount());
+            if (chatRoom == null) {
                 System.err.println("You can not send message to this account");
                 return;
             }

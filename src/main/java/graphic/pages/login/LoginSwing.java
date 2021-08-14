@@ -2,6 +2,7 @@ package graphic.pages.login;
 
 import graphic.pages.Swing;
 import logic.Account;
+import logic.Manager;
 import logic.pages.LoginPage;
 
 import javax.swing.*;
@@ -57,6 +58,11 @@ public class LoginSwing extends Swing {
         this.add(mainPanel);
 //        this.pack();
         this.setVisible(true);
+    }
+
+    @Override
+    public void updateGraphic() {
+
     }
 
     @Override

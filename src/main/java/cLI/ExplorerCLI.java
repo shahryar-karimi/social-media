@@ -59,7 +59,7 @@ public class ExplorerCLI extends CLI {
     }
 
     private void processShowRandomTweets() {
-        LinkedList<Tweet> explorerTweets = explorerPage.randomTweets(explorerPage.getManager());
+        LinkedList<Tweet> explorerTweets = explorerPage.getRandomTweets();
         if (explorerTweets == null) {
             System.out.println(ConsoleColors.RED + "There is nothing here" + ConsoleColors.RESET);
             return;
@@ -77,7 +77,7 @@ public class ExplorerCLI extends CLI {
         if (account == null || !account.isActive()) {
             System.err.println("Account not found!");
         } else {
-            explorerPage.getManager().goToInfoPage(account, explorerPage.getAccount());
+            explorerPage.getManager().goToInfoPage(account.getPersonalPage().getInfo(), explorerPage.getAccount());
         }
     }
 }

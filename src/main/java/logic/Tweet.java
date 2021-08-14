@@ -6,24 +6,51 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class Tweet implements Comparable{
+class ManageTweets {
+    private static int counter = 0;
+    public static final HashSet<Tweet> tweets = new HashSet<>();
+
+    public static Tweet searchTweetById(int tweetId) {
+        for (Tweet tweet : tweets)
+            if (tweet.getTweetId() == tweetId)
+                return tweet;
+        return null;
+    }
+
+    public static void addTweet(Tweet tweet) {
+        tweets.add(tweet);
+        tweet.setTweetId(counter++);
+    }
+}
+
+public class Tweet implements Comparable<Tweet> {
     private String tweetText;
     private transient Account account;
+    private String ownerUserName;
     private String time;
-    private ArrayList<Account> favesSet;
+    private transient ArrayList<Account> favesSet;
+    private ArrayList<String> faveSetUserName;
     private LinkedList<Tweet> comments;
-    private int retweet;
-    private boolean isRetweet;
+    private int retweetQty;
+    private transient Tweet superTweet;
+    private transient Account retweeter;
+    private transient LinkedList<Tweet> subTweets;
+    private int tweetId;
+    private int superTweetId = -1;
+    private String superTweetOwnerUserName;
 
     public Tweet() {
     }
 
     public Tweet(Account account) {
         this.account = account;
-        this.isRetweet = false;
+        this.ownerUserName = account.getUserName();
         this.favesSet = new ArrayList<>();
+        this.faveSetUserName = new ArrayList<>();
         this.comments = new LinkedList<>();
-        this.retweet = 0;
+        this.retweetQty = 0;
+        this.subTweets = new LinkedList<>();
+        ManageTweets.addTweet(this);
     }
 
     public Tweet(Account account, String tweetText) {
@@ -38,6 +65,7 @@ public class Tweet implements Comparable{
 
     public void setAccount(Account account) {
         this.account = account;
+        this.ownerUserName = account.getUserName();
     }
 
     public void addComment(Tweet newComment) {
@@ -46,6 +74,11 @@ public class Tweet implements Comparable{
 
     public void addFave(Account account) {
         favesSet.add(account);
+        if (isRetweet()) {
+            getSuperTweet().faveSetUserName.add(account.getUserName());
+        } else {
+            faveSetUserName.add(account.getUserName());
+        }
     }
 
     public String getTweetText() {
@@ -94,20 +127,22 @@ public class Tweet implements Comparable{
         this.time = LocalDateTime.now().toString().replace('T', ' ').substring(0, 19);
     }
 
-    public int getRetweet() {
-        return retweet;
+    public int getRetweetQty() {
+        return retweetQty;
     }
 
-    public void setRetweet(int retweet) {
-        this.retweet = retweet;
-    }
-
-    public void setRetweet(boolean retweet) {
-        isRetweet = retweet;
+    public void setRetweetQty(int retweetQty) {
+        if (isRetweet()) {
+            getSuperTweet().setRetweetQty(retweetQty);
+        } else {
+            this.retweetQty = retweetQty;
+            for (Tweet subTweet : subTweets)
+                subTweet.retweetQty = retweetQty;
+        }
     }
 
     public boolean isRetweet() {
-        return isRetweet;
+        return superTweetId != -1;
     }
 
     @Override
@@ -117,9 +152,9 @@ public class Tweet implements Comparable{
                 "    Details:\n" +
                 "    Time : " + getTime() + "\n" +
                 "    Likes : " + getFavesSet().size() + "\n" +
-                "    Retweet : " + getRetweet() + "\n" +
+                "    Retweet : " + getRetweetQty() + "\n" +
                 "    comments : " + getComments().size();
-        if (isRetweet) result = "Retweet : \n" + result;
+        if (isRetweet()) result = "Retweet : \n" + result;
         else result = "Tweet : \n" + result;
         return result;
     }
@@ -129,12 +164,12 @@ public class Tweet implements Comparable{
         if (this == o) return true;
         if (!(o instanceof Tweet)) return false;
         Tweet tweet = (Tweet) o;
-        return getTweetText().equals(tweet.getTweetText()) && (getAccount().equals(tweet.getAccount()) || getAccount() == null && tweet.getAccount() == null) && getTime().equals(tweet.getTime()) && getFavesSet().equals(tweet.getFavesSet()) && getComments().equals(tweet.getComments());
+        return getTweetId() == tweet.getTweetId();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTweetText(), getAccount(), getTime(), getFavesSet(), getComments());
+        return Objects.hash(getTweetId());
     }
 
     @Override
@@ -145,9 +180,114 @@ public class Tweet implements Comparable{
         return newTweet;
     }
 
+    public String getOwnerUserName() {
+        return ownerUserName;
+    }
+
+    public void setOwnerUserName(String ownerUserName) {
+        this.ownerUserName = ownerUserName;
+    }
+
+    public ArrayList<String> getFaveSetUserName() {
+        return faveSetUserName;
+    }
+
+    public void setFaveSetUserName(ArrayList<String> faveSetUserName) {
+        this.faveSetUserName = faveSetUserName;
+    }
+
     @Override
-    public int compareTo(Object o) {
-        Tweet anotherTweet = (Tweet) o;
+    public int compareTo(Tweet anotherTweet) {
         return time.compareTo(anotherTweet.getTime());
+    }
+
+    public void removeFave(Account account) {
+        favesSet.remove(account);
+        if (isRetweet()) {
+            getSuperTweet().faveSetUserName.remove(account.getUserName());
+        } else {
+            faveSetUserName.remove(account.getUserName());
+        }
+    }
+
+    public void retweet(Account retweeter) {
+        Tweet retweetTweet = this.clone();
+        retweetTweet.setTime();
+        retweetTweet.setSuperTweet(this);
+        retweetTweet.setRetweeter(retweeter);
+        if (isRetweet()) {
+            getSuperTweet().subTweets.add(retweetTweet);
+        } else {
+            subTweets.add(retweetTweet);
+        }
+        retweetTweet.setRetweetQty(this.getRetweetQty() + 1);
+        retweeter.getPersonalPage().sendingATweet(retweetTweet, false);
+    }
+
+    public boolean fave(Account account) {
+        if (faveSetContains(account)) {
+            removeFave(account);
+            return false;
+        } else {
+            addFave(account);
+            return true;
+        }
+    }
+
+    public void setSuperTweet(Tweet superTweet) {
+        if (superTweet.isRetweet()) {
+            this.superTweet = superTweet.getSuperTweet();
+            this.superTweetId = superTweet.getSuperTweet().tweetId;
+            this.superTweetOwnerUserName = superTweet.getSuperTweet().getOwnerUserName();
+        } else {
+            this.superTweet = superTweet;
+            this.superTweetId = superTweet.tweetId;
+            this.superTweetOwnerUserName = superTweet.getOwnerUserName();
+        }
+    }
+
+    public Tweet getSuperTweet() {
+        if (superTweet.isRetweet()) return superTweet.getSuperTweet();
+        else return superTweet;
+    }
+
+    public Account getRetweeter() {
+        return retweeter;
+    }
+
+    public void setRetweeter(Account retweeter) {
+        this.retweeter = retweeter;
+    }
+
+    public LinkedList<Tweet> getSubTweets() {
+        return subTweets;
+    }
+
+    public void setSubTweets(LinkedList<Tweet> subTweets) {
+        this.subTweets = subTweets;
+    }
+
+    public int getTweetId() {
+        return tweetId;
+    }
+
+    public int getSuperTweetId() {
+        return superTweetId;
+    }
+
+    public void setSuperTweetId(int superTweetId) {
+        this.superTweetId = superTweetId;
+    }
+
+    public String getSuperTweetOwnerUserName() {
+        return superTweetOwnerUserName;
+    }
+
+    public void setSuperTweetOwnerUserName(String superTweetOwnerUserName) {
+        this.superTweetOwnerUserName = superTweetOwnerUserName;
+    }
+
+    public void setTweetId(int tweetId) {
+        this.tweetId = tweetId;
     }
 }

@@ -72,3 +72,10 @@
 2021-08-14 18:39:45 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
 2021-08-14 18:39:46 - DEBUG - graphic.pages.setting.SettingSwing - run - setting run for account "a"
 2021-08-14 18:39:53 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-14 19:03:15 - DEBUG - logic.CommandProcessor - run - program started
+2021-08-14 19:03:16 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran
+2021-08-14 19:03:24 - INFO - graphic.pages.login.LoginSwing - enterTo - an account with user name "a" logged in
+2021-08-14 19:03:24 - DEBUG - graphic.pages.menuPage.MenuSwing - run - Menu page ran for account "a"
+2021-08-14 19:03:27 - DEBUG - graphic.pages.setting.SettingSwing - run - setting run for account "a"
+2021-08-14 19:03:52 - INFO - cLI.personalCLI.PersonalPageCLI - processEditPassword - an account with user name "a" edited his/her password from "a" to "a"
+2021-08-14 19:04:00 - DEBUG - graphic.pages.login.LoginSwing - run - login page ran

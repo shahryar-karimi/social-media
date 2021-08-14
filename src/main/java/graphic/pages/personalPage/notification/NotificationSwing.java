@@ -35,7 +35,6 @@ public class NotificationSwing extends Swing {
 
     @Override
     public void showGraphic() {
-        //TODO
         JPanel centerPanel = new JPanel();
         centerPanel.setPreferredSize(new Dimension(600, 700));
         centerPanel.setLayout(null);

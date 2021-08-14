@@ -6,10 +6,11 @@ import logic.pages.Page;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class MessengersPage extends Page {
 
-    LinkedList<ChatRoom> chatRooms;
+    private LinkedList<ChatRoom> chatRooms;
 
     public MessengersPage() {
     }
@@ -57,24 +58,28 @@ public class MessengersPage extends Page {
                     Account account = getManager().searchByUserName(line);
                     if (account == null) {
                         result += "Account " + line + " not found" + "\n";
-                        continue;
+                    } else {
+                        result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
                     }
-                    result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
-
                 } else if (line.charAt(0) == 'l') {
                     line = line.substring(2);
                     ArrayList<Account> list = getAccount().getFriendsList().get(line);
-                    if (list == null) {
-                        result += "List \"" + line + "\" not found" + "\n";
-                        continue;
-                    }
-                    for (Account account : list) {
-                        result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
-                    }
+                    result += sendMessageToList(message, line, list);
                 } else {
                     result += "Wrong input for \"" + line + "\"\n";
                 }
             }
+        }
+        return result;
+    }
+
+    private String sendMessageToList(Message message, String line, ArrayList<Account> list) {
+        if (list == null) {
+            return  "List \"" + line + "\" not found" + "\n";
+        }
+        String result = "";
+        for (Account account : list) {
+            result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
         }
         return result;
     }

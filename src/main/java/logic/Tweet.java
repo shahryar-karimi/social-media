@@ -1,5 +1,7 @@
 package logic;
 
+import logic.pages.messenger.ChatRoom;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -289,5 +291,19 @@ public class Tweet implements Comparable<Tweet> {
 
     public void setTweetId(int tweetId) {
         this.tweetId = tweetId;
+    }
+
+    public String forward(Account owner, Account otherAccount) {
+        ChatRoom chatRoom = owner.getMessengersPage().searchChatRoomByListener(otherAccount);
+        if (chatRoom == null) {
+            chatRoom = owner.getMessengersPage().buildNewChatRoom(otherAccount);
+            if (chatRoom != null) {
+                if (chatRoom.sendTweet(this))
+                    return "Message sent to " + otherAccount + " successfully\n";
+                else return "Failed to send message to " + otherAccount + "\n";
+            } else return "Failed to create a chat room with " + otherAccount + "\n";
+        } else if (chatRoom.sendTweet(this))
+            return "message sent to " + otherAccount + "\n";
+        else return "Failed to create a chat room with " + otherAccount + "\n";
     }
 }

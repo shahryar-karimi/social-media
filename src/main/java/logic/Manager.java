@@ -2,11 +2,13 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import graphic.GraphicManager;
 import logic.Logger.MyLogger;
 import logic.pages.TimeLinePage;
 import logic.pages.messenger.ChatRoom;
+import logic.pages.messenger.MessengersPage;
 import logic.pages.personal.Info;
 
 public class Manager {
@@ -40,6 +42,7 @@ public class Manager {
             LinkedList<Tweet> tweets = account.getMyTweets();
             LinkedList<Account> blackList = account.getBlackList();
             ArrayList<Account> mutedPeople = account.getMutedPeople();
+            MessengersPage messenger = account.getMessengersPage();
             while (!followings.isEmpty())
                 account.unFollow(followings.get(0), false);
             while (!followers.isEmpty())
@@ -50,6 +53,14 @@ public class Manager {
                 blackList.pop();
             while (!mutedPeople.isEmpty())
                 mutedPeople.remove(0);
+            for (ChatRoom chatRoom : messenger.getChatRooms()) {
+                Account listener = chatRoom.getListener();
+                if (!listener.getUserName().equals(account.getUserName())) {
+                    MessengersPage otherMessenger = listener.getMessengersPage();
+                    ChatRoom otherChatRoom = otherMessenger.searchChatRoomsByUserName(chatRoom.getAccount().getUserName());
+                    otherMessenger.getChatRooms().remove(otherChatRoom);
+                }
+            }
             accounts.remove(account);
         }
     }
@@ -58,7 +69,7 @@ public class Manager {
         return accounts;
     }
 
-    public Account search(LinkedList<Account> accounts, String userName) {
+    public Account search(List<Account> accounts, String userName) {
         synchronized (locker) {
             if (userName == null) return null;
             for (Account account : accounts)

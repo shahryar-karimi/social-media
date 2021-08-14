@@ -18,7 +18,6 @@ import java.util.LinkedList;
 public class MainPanel extends JPanel implements ActionListener {
     private MyScrollPane<String> scrollPane;
     private final MessengerSwing messengerSwing;
-    //todo add action listener for buttons
     private JButton newChat;
     private JButton newMessage;
 

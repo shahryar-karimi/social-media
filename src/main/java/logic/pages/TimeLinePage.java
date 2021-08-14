@@ -3,7 +3,6 @@ package logic.pages;
 import logic.Account;
 import logic.Manager;
 import logic.Tweet;
-import logic.pages.messenger.ChatRoom;
 
 import java.util.LinkedList;
 
@@ -92,7 +91,6 @@ public class TimeLinePage extends Page {
             this.currentTweet = showTweetByIndex(tweets, indexOfTweet);
             this.indexOfTweet = indexOfTweet;
         }
-//        return message + this.currentTweet + " " + indexOfTweet;
         return message;
     }
 
@@ -111,7 +109,6 @@ public class TimeLinePage extends Page {
             currentTweet = showTweetByIndex(tweets, indexOfTweet);
             this.indexOfTweet = indexOfTweet;
         }
-//        return message + currentTweet + " " + indexOfTweet;
         return message;
     }
 
@@ -165,17 +162,7 @@ public class TimeLinePage extends Page {
     public String forward(LinkedList<Account> accounts) {
         String result = "";
         for (Account account : accounts) {
-            ChatRoom anotherChatRoom = this.account.getMessengersPage().searchChatRoomByListener(account);
-            if (anotherChatRoom == null) {
-                anotherChatRoom = this.account.getMessengersPage().buildNewChatRoom(account);
-                if (anotherChatRoom != null) {
-                    if (anotherChatRoom.sendTweet(currentTweet))
-                        result += "Message sent to " + account + " successfully\n";
-                    else result += "Failed to send message to " + account + "\n";
-                } else result += "Failed to create a chat room with " + account + "\n";
-            } else if (anotherChatRoom.sendTweet(currentTweet))
-                result += "message sent to " + account + "\n";
-            else result += "Failed to create a chat room with " + account + "\n";
+            result += currentTweet.forward(this.account, account);
         }
         return result;
     }

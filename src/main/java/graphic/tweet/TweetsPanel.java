@@ -269,7 +269,7 @@ public class TweetsPanel extends JPanel {
     }
 
     private void shareBtnActionPerformed(ActionEvent e) {
-        //Todo forward a message (build a list from accounts and choose from them)
+        new ShareFrame(this);
     }
 
     public void nameLblMouseClicked() {
@@ -337,5 +337,9 @@ public class TweetsPanel extends JPanel {
         swing.updateGraphic();
         swing.dispose();
         new AccountsListSwing(swing.getPage(), new LinkedList<>(tweet.getFavesSet()));
+    }
+
+    public Swing getSwing() {
+        return swing;
     }
 }

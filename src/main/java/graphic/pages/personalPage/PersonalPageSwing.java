@@ -206,7 +206,7 @@ public class PersonalPageSwing extends Swing {
             this.dispose();
             new NotificationSwing(((PersonalPage) page).getNotification());
         } else if (e.getSource() == buttons[5]) { // create list
-
+            new CreatingListFrame(this);
         } else if (e.getSource() == sendBtn) {
             String newTweetTxt = this.newTweetTxt.getText();
             if (newTweetTxt != null && !newTweetTxt.isBlank()) {

@@ -1,3 +1,58 @@
 {
-  "accounts": []
+  "accounts": [
+    {
+      "firstName": "b",
+      "lastName": "b",
+      "userName": "b",
+      "id": "@b98",
+      "password": "b",
+      "emailAddress": "b",
+      "phoneNumber": "b",
+      "bio": "b",
+      "isOnline": false,
+      "birthdayDate": "",
+      "lastSeen": "2021-08-15 00:56:57",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": 0
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you"
+          ],
+          "indexOfCurrentSystemMessage": 0
+        },
+        "info": {}
+      },
+      "messengersPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "b",
+            "messages": [],
+            "indexOfShowPage": 0
+          }
+        ]
+      },
+      "explorerPage": {
+        "random": {
+          "seed": 147734357055610,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        }
+      },
+      "menuPage": {},
+      "myTweets": []
+    }
+  ]
 }

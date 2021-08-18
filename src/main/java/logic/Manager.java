@@ -1,20 +1,21 @@
 package logic;
 
+import view.controller.GraphicManager;
+import model.Account;
+import model.Logger.MyLogger;
+import model.Tweet;
+import model.pages.TimeLinePage;
+import model.pages.messenger.ChatRoom;
+import model.pages.messenger.MessengersPage;
+import model.pages.personal.Info;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-
-import graphic.GraphicManager;
-import logic.Logger.MyLogger;
-import logic.pages.TimeLinePage;
-import logic.pages.messenger.ChatRoom;
-import logic.pages.messenger.MessengersPage;
-import logic.pages.personal.Info;
 
 public class Manager {
     private LinkedList<Account> accounts;
-    private transient GraphicManager graphicManager = new GraphicManager();
-    private static final Object locker = new Object();
+    private static final GraphicManager graphicManager = new GraphicManager();
+    public static final Object locker = new Object();
 //    private transient Loop loop;
 
     public Manager() {
@@ -24,15 +25,6 @@ public class Manager {
 
     public void setAccounts(LinkedList<Account> accounts) {
         this.accounts = accounts;
-    }
-
-    public Account createAnAccount(String firstName, String lastName, String userName, String password, String emailAddress, String phoneNumber, String bio) {
-        synchronized (locker) {
-            Account newAccount = new Account(this, firstName, lastName, userName, password, emailAddress, phoneNumber, bio);
-            accounts.add(newAccount);
-            save();
-            return newAccount;
-        }
     }
 
     public void deleteAccount(Account account) {
@@ -69,21 +61,13 @@ public class Manager {
         return accounts;
     }
 
-    public Account search(List<Account> accounts, String userName) {
+    public Account searchByUserName(String userName) {
         synchronized (locker) {
             if (userName == null) return null;
             for (Account account : accounts)
                 if (account.getUserName().equals(userName)) return account;
             return null;
         }
-    }
-
-    public Account searchByUserName(String userName) {
-        return search(accounts, userName);
-    }
-
-    public boolean isCorrectPassword(Account account, String password) {
-        return password.equals(account.getPassword());
     }
 
     public void save() {
@@ -121,6 +105,13 @@ public class Manager {
         logger.debug(Manager.class.getName(), "quit", "Program ended");
         save();
         goToLoginPage();
+    }
+
+    public void home(Account account) {
+        graphicManager.home();
+        save();
+        goToMenuPage(account);
+
     }
 
     public void exit(Account account) {
@@ -172,7 +163,7 @@ public class Manager {
         graphicManager.goToInfoPage(info, visitor);
     }
 
-    public void goToChatroom(ChatRoom chatRoom) {
+    public void goToChatRoom(ChatRoom chatRoom) {
         save();
         graphicManager.goToChatRoom(chatRoom);
     }
@@ -194,9 +185,5 @@ public class Manager {
 
     public GraphicManager getGraphicManager() {
         return graphicManager;
-    }
-
-    public void setGraphicManager(GraphicManager graphicManager) {
-        this.graphicManager = graphicManager;
     }
 }

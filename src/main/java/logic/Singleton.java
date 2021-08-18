@@ -2,8 +2,10 @@ package logic;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import logic.pages.messenger.ChatRoom;
-import logic.pages.messenger.Message;
+import model.Account;
+import model.Tweet;
+import model.pages.messenger.ChatRoom;
+import model.pages.messenger.Message;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -208,7 +210,7 @@ public class Singleton {
             tweet.setSubTweets(new LinkedList<>());
             setAccountForTweet(manager, tweet, manager.searchByUserName(tweet.getOwnerUserName()));
             setFavesSetForTweet(manager, tweet);
-            ManageTweets.addTweet(tweet);
+            TweetManager.addTweet(tweet);
         }
     }
 
@@ -237,7 +239,7 @@ public class Singleton {
     private static void loadRetweetedTweets(Account account) {
         for (Tweet tweet : account.getMyTweets()) {
             if (tweet.isRetweet()) {
-                tweet.setSuperTweet(Objects.requireNonNull(ManageTweets.searchTweetById(tweet.getSuperTweetId())));
+                tweet.setSuperTweet(Objects.requireNonNull(TweetManager.searchTweetById(tweet.getSuperTweetId())));
                 tweet.setRetweeter(account);
                 tweet.getSuperTweet().getSubTweets().add(tweet);
                 tweet.setFavesSet(tweet.getSuperTweet().getFavesSet());

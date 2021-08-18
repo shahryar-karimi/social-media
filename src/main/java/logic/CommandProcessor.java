@@ -1,7 +1,6 @@
 package logic;
 
-import logic.Logger.MyLogger;
-import utility.Loop;
+import model.Logger.MyLogger;
 
 import javax.swing.*;
 

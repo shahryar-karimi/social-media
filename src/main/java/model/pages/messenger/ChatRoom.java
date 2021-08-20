@@ -1,7 +1,7 @@
 package model.pages.messenger;
 
-import model.Account;
 import logic.Manager;
+import model.Account;
 import model.Tweet;
 import model.pages.Page;
 
@@ -12,7 +12,6 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
     private String listenerUserName;
     private transient Account listener;
     private LinkedList<Message> messages;
-    private Message selectedMessage;
 
     public ChatRoom() {
     }
@@ -50,36 +49,23 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
     public int getUnreadMessages() {
         int counter = 0;
         for (Message message : messages)
-            if (message.getOwnerUserName().equals(listenerUserName) && !message.isSeen())
+            if (message.getSenderUserName().equals(listenerUserName) && !message.isSeen())
                 counter++;
         return counter;
-    }
-
-    public Message getSelectedMessage() {
-        return selectedMessage;
     }
 
     public LinkedList<Message> getMessages() {
         return messages;
     }
 
-    public void setListenerUserName(String listenerUserName) {
-        this.listenerUserName = listenerUserName;
-    }
-
-    public void setSelectedMessage(Message selectedMessage) {
-        this.selectedMessage = selectedMessage;
-    }
-
     public Message writeNewMessage(String messageText) {
-        return new Message(messageText, account);
+        return new Message(messageText, account.getUserName());
     }
 
     public boolean sendMessage(Message message) {
         seenBothWay();
         if (account.isValidToSendMessage(listener)) {
             message.setTime();
-            message.setIndex(messages.size());
             messages.add(message);
             if (listener.equals(account)) {
                 message.setSeen(true);
@@ -95,7 +81,7 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
 
     public boolean sendTweet(Tweet tweet) {
         seenBothWay();
-        Message message = new Message(tweet.toString(), account);
+        Message message = writeNewMessage(tweet.toString());
         return sendMessage(message);
     }
 
@@ -110,7 +96,7 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
         if (isMine) {
             for (int i = messages.size() - 1; i >= 0; i--) {
                 Message message = messages.get(i);
-                if (message.getOwnerUserName().equals(chatRoom.getListenerUserName())) {
+                if (message.getSenderUserName().equals(chatRoom.getListenerUserName())) {
                     message.setSeen(true);
                 } else {
                     break;
@@ -119,42 +105,31 @@ public class ChatRoom extends Page implements Comparable<ChatRoom> {
         } else {
             for (int i = messages.size() - 1; i >= 0; i--) {
                 Message message = messages.get(i);
-                if (message.getOwnerUserName().equals(chatRoom.getAccount().getUserName())) {
+                if (message.getSenderUserName().equals(chatRoom.getAccount().getUserName()))
                     message.setSeen(true);
-                } else {
-                    break;
-                }
+                else break;
             }
         }
     }
 
-    public void selectMessage(int index) {
-        if (index < messages.size() && index >= 0) {
-            setSelectedMessage(messages.get(index));
-            selectedMessage.setSelected(true);
-        }
-    }
-
-    public void deselectMessage() {
-        selectedMessage.setSelected(false);
-        setSelectedMessage(null);
-    }
-
     public String forwardMessage(ArrayList<Account> accounts, Message message) {
-        message.setForward(true);
+        message.setSenderUserName(account.getUserName());
         String result = "";
         for (Account account : accounts) {
-            ChatRoom anotherChatRoom = account.getMessengersPage().searchChatRoomByListener(account);
+            ChatRoom anotherChatRoom = account.getMessengersPage().searchChatRoomByListener(this.account);
             if (anotherChatRoom == null) {
-                anotherChatRoom = account.getMessengersPage().buildNewChatRoom(account);
+                anotherChatRoom = account.getMessengersPage().buildNewChatRoom(this.account);
                 if (anotherChatRoom != null) {
-                    if (anotherChatRoom.sendMessage(message))
+                    if (sendMessage(message))
                         result += "Message sent to " + account + " successfully\n";
-                    else result += "Failed to send message to " + account + "\n";
-                } else result += "Failed to create a chat room with " + account + "\n";
-            } else if (anotherChatRoom.sendMessage(message))
+                    else
+                        result += "Failed to send message to " + account + "\n";
+                } else
+                    result += "Failed to create a chat room with " + account + "\n";
+            } else if (sendMessage(message))
                 result += "message sent to " + account + "\n";
-            else result += "Failed to create a chat room with " + account + "\n";
+            else
+                result += "Failed to create a chat room with " + account + "\n";
         }
         return result;
     }

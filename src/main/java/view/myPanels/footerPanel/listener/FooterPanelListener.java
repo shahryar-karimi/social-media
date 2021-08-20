@@ -1,9 +1,9 @@
-package view.panels.footerPanel.listener;
+package view.myPanels.footerPanel.listener;
 
 import event.Event;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.event.FooterPanelEvent;
 import listener.FormListener;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.event.FooterPanelEvent;
 
 public class FooterPanelListener extends FormListener {
     public FooterPanelListener(FooterPanelController controller) {

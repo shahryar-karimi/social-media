@@ -1,21 +1,17 @@
 package model.pages.personal;
 
-import model.Account;
 import logic.Manager;
+import model.Account;
 import model.pages.Page;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Notification extends Page {
-    //each request = a user name for an account
     private ArrayList<String> requests;
     private int indexOfCurrentRequest;
     private LinkedList<String> systemMessages;
     private int indexOfCurrentSystemMessage;
-
-    public Notification() {
-    }
 
     public Notification(Account account, Manager manager) {
         super(account, manager);
@@ -42,14 +38,6 @@ public class Notification extends Page {
         }
     }
 
-    public int getIndexOfCurrentRequest() {
-        return indexOfCurrentRequest;
-    }
-
-    public int getIndexOfCurrentSystemMessage() {
-        return indexOfCurrentSystemMessage;
-    }
-
     public void setIndexOfCurrentSystemMessage(int indexOfCurrentSystemMessage) {
         this.indexOfCurrentSystemMessage = indexOfCurrentSystemMessage;
     }
@@ -62,48 +50,8 @@ public class Notification extends Page {
         return requests;
     }
 
-    public void setRequests(ArrayList<String> requests) {
-        this.requests = requests;
-    }
-
     public LinkedList<String> getSystemMessages() {
         return systemMessages;
-    }
-
-    public void setSystemMessages(LinkedList<String> systemMessages) {
-        this.systemMessages = systemMessages;
-    }
-
-    public String showPage() {
-        return "1.requests\n" +
-                "2.system messages\n" +
-                "3.back\n" +
-                "4.quit\n" +
-                "5.exit";
-    }
-
-    public String showCurrentRequest() {
-        return requests.get(indexOfCurrentRequest);
-    }
-
-    public String showCurrentSystemMessage() {
-        return systemMessages.get(indexOfCurrentSystemMessage);
-    }
-
-    public void goNextRequest() {
-        indexOfCurrentRequest++;
-    }
-
-    public void goNextSystemMessage() {
-        indexOfCurrentSystemMessage++;
-    }
-
-    public void goPreviousRequest() {
-        indexOfCurrentRequest--;
-    }
-
-    public void goPreviousSystemMessage() {
-        indexOfCurrentSystemMessage--;
     }
 
     public void acceptRequest(Account requester) {

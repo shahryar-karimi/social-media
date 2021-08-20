@@ -15,7 +15,7 @@ public class Account {
     private String firstName;
     private String lastName;
     private String userName;
-    private String id;
+    private final int id;
     private String password;
     private String emailAddress;
     private String phoneNumber;
@@ -26,8 +26,6 @@ public class Account {
     private boolean isPagePublic;
     private boolean isActive;
     private String lastSeenSituation;
-
-    //lists
 
     private LinkedList<String> followersUserName;
     private LinkedList<String> followingsUserName;
@@ -41,8 +39,6 @@ public class Account {
     private transient ArrayList<Account> mutedPeople;
     private transient HashMap<String, ArrayList<Account>> friendsList;
 
-    //pages
-
     private TimeLinePage timeLinePage;
     private SettingPage settingPage;
     private PersonalPage personalPage;
@@ -50,17 +46,13 @@ public class Account {
     private ExplorerPage explorerPage;
     private MenuPage menuPage;
 
-    //tweets
+    private final LinkedList<Tweet> myTweets;
 
-    private LinkedList<Tweet> myTweets;
-
-
-    //constructors
-    public Account(Manager manager, String firstName, String lastName, String userName, String password, String emailAddress, String phoneNumber, String bio) {
+    public Account(Manager manager, String firstName, String lastName, String userName, int id, String password, String emailAddress, String phoneNumber, String bio) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
-        this.id = "@" + userName + userName.hashCode();
+        this.id = id;
         this.password = password;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
@@ -91,46 +83,24 @@ public class Account {
         this.myTweets = new LinkedList<>();
     }
 
-    //getter
-
     public LinkedList<String> getBlackListsUserName() {
         return blackListsUserName;
-    }
-
-    public void setBlackListsUserName(LinkedList<String> blackListsUserName) {
-        this.blackListsUserName = blackListsUserName;
     }
 
     public ArrayList<String> getMutedPeoplesUserName() {
         return mutedPeoplesUSerName;
     }
 
-    public void setMutedPeoplesUSerName(ArrayList<String> mutedPeoplesUSerName) {
-        this.mutedPeoplesUSerName = mutedPeoplesUSerName;
-    }
-
     public HashMap<String, ArrayList<String>> getFriendsListsUserName() {
         return friendsListsUserName;
-    }
-
-    public void setFriendsListsUserName(HashMap<String, ArrayList<String>> friendsListsUserName) {
-        this.friendsListsUserName = friendsListsUserName;
     }
 
     public LinkedList<String> getFollowersUserName() {
         return followersUserName;
     }
 
-    public void setFollowersUserName(LinkedList<String> followersUserName) {
-        this.followersUserName = followersUserName;
-    }
-
     public LinkedList<String> getFollowingsUserName() {
         return followingsUserName;
-    }
-
-    public void setFollowingsUserName(LinkedList<String> followingsUserName) {
-        this.followingsUserName = followingsUserName;
     }
 
     public TimeLinePage getTimeLinePage() {
@@ -205,10 +175,6 @@ public class Account {
         return bio;
     }
 
-    public boolean isOnline() {
-        return isOnline;
-    }
-
     public String getLastSeen() {
         return lastSeen;
     }
@@ -246,7 +212,7 @@ public class Account {
         return phoneNumber;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -266,7 +232,6 @@ public class Account {
         return lastSeenSituation;
     }
 
-    //add and remove
     public void setAllLists() {
         followingsUserName = new LinkedList<>();
         followersUserName = new LinkedList<>();
@@ -327,16 +292,10 @@ public class Account {
         return "You unfollowed this page";
     }
 
-    public void removeAnAccountFromBlackList(Account account) {
-        blackList.remove(account);
-    }
-
     public void addTweet(Tweet tweet) {
         myTweets.add(tweet);
         timeLinePage.addTweet(tweet);
     }
-
-    //setter
 
     public void setFriendsList(HashMap<String, ArrayList<Account>> friendsList) {
         this.friendsList = friendsList;
@@ -348,10 +307,6 @@ public class Account {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setFollowers(LinkedList<Account> followers) {
@@ -370,16 +325,8 @@ public class Account {
         this.mutedPeople = mutedPeople;
     }
 
-    public void setMyTweets(LinkedList<Tweet> myTweets) {
-        this.myTweets = myTweets;
-    }
-
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    public void setLastSeen(String lastSeen) {
-        this.lastSeen = lastSeen;
     }
 
     public void setPagePublic(boolean pagePublic) {
@@ -424,7 +371,6 @@ public class Account {
         else lastSeen = LocalDateTime.now().toString().replace('T', ' ').substring(0, 19);
     }
 
-    //other
     @Override
     public String toString() {
         return userName;
@@ -435,30 +381,12 @@ public class Account {
         if (this == o) return true;
         if (!(o instanceof Account)) return false;
         Account account = (Account) o;
-        return getUserName().equals(account.getUserName()) && getId().equals(account.getId());
+        return getUserName().equals(account.getUserName()) && getId() == account.getId();
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getUserName(), getId());
-    }
-
-    public String showFollowers() {
-        String result = "";
-        for (Account follower : followers) {
-            if (follower.isActive)
-                result += follower.toString() + "\n";
-        }
-        return result;
-    }
-
-    public String showFollowings() {
-        String result = "";
-        for (Account following : followings) {
-            if (following.isActive)
-                result += following.toString() + "\n";
-        }
-        return result;
     }
 
     public String unBlock(Account account) {
@@ -518,12 +446,6 @@ public class Account {
         return null;
     }
 
-    public Account searchFollowerByUserName(String userName) {
-        for (Account follower : followers)
-            if (follower.getUserName().equals(userName) && follower.isActive) return follower;
-        return null;
-    }
-
     public boolean isValidToSendMessage(Account account) {
         if (account.equals(this)) return true;
         return (isFollow(account) || account.isFollow(this)) &&
@@ -537,41 +459,5 @@ public class Account {
         } else {
             return "Failed to send request";
         }
-    }
-
-    public void update(Account newAccount) {
-        this.firstName = newAccount.firstName;
-        this.lastName = newAccount.lastName;
-        this.password = newAccount.password;
-        this.emailAddress = newAccount.emailAddress;
-        this.phoneNumber = newAccount.phoneNumber;
-        this.bio = newAccount.bio;
-        this.isOnline = newAccount.isOnline;
-        this.birthDate = newAccount.birthDate;
-        this.lastSeen = newAccount.lastSeen;
-        this.isPagePublic = newAccount.isPagePublic;
-        this.isActive = newAccount.isActive;
-        this.lastSeenSituation = newAccount.lastSeenSituation;
-
-        this.followersUserName = newAccount.followersUserName;
-        this.followingsUserName = newAccount.followingsUserName;
-        this.blackListsUserName = newAccount.blackListsUserName;
-        this.mutedPeoplesUSerName = newAccount.mutedPeoplesUSerName;
-        this.friendsListsUserName = newAccount.friendsListsUserName;
-
-        this.followers = newAccount.followers;
-        this.followings = newAccount.followings;
-        this.blackList = newAccount.blackList;
-        this.mutedPeople = newAccount.mutedPeople;
-        this.friendsList = newAccount.friendsList;
-
-        this.timeLinePage = newAccount.timeLinePage;
-        this.settingPage = newAccount.settingPage;
-        this.personalPage = newAccount.personalPage;
-        this.messengersPage = newAccount.messengersPage;
-        this.explorerPage = newAccount.explorerPage;
-        this.menuPage = newAccount.menuPage;
-
-        this.myTweets = newAccount.myTweets;
     }
 }

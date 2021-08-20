@@ -4,6 +4,7 @@ import model.Account;
 import model.pages.messenger.ChatRoom;
 import model.pages.personal.Info;
 import view.controller.MainGraphicController;
+import view.pages.personalPage.info.view.ChangeListFrame;
 
 public class InfoController extends MainGraphicController {
 
@@ -57,7 +58,7 @@ public class InfoController extends MainGraphicController {
     }
 
     public String changeList(Account owner, Account visitor) {
-        //todo add and remove from list
+        new ChangeListFrame(owner, visitor);
         return null;
     }
 }

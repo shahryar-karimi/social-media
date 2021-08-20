@@ -2,9 +2,9 @@ package view.pages.setting.view;
 
 import view.pages.Swing;
 import view.pages.setting.listener.SettingListener;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +16,7 @@ public class SettingSwing extends Swing {
         super();
         this.listener = listener;
         mainPanel = new MainPanel(this);
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         addSwing(this);
         run();
     }
@@ -24,7 +24,7 @@ public class SettingSwing extends Swing {
     @Override
     public void run() {
         myLogger.debug(SettingSwing.class.getName(), "run",
-                "setting run for account \"" + getPage().getAccount().toString() + "\"");
+                "setting run for account \"" + getListener().getController().getPage().getAccount().toString() + "\"");
         showGraphic();
     }
 

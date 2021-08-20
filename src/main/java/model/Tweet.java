@@ -92,10 +92,6 @@ public class Tweet implements Comparable<Tweet> {
         this.favesSet = favesSet;
     }
 
-    public void setTweetText(String tweetText) {
-        this.tweetText = tweetText;
-    }
-
     public String getTime() {
         return time;
     }
@@ -169,16 +165,8 @@ public class Tweet implements Comparable<Tweet> {
         return ownerUserName;
     }
 
-    public void setOwnerUserName(String ownerUserName) {
-        this.ownerUserName = ownerUserName;
-    }
-
     public ArrayList<String> getFaveSetUserName() {
         return faveSetUserName;
-    }
-
-    public void setFaveSetUserName(ArrayList<String> faveSetUserName) {
-        this.faveSetUserName = faveSetUserName;
     }
 
     @Override
@@ -258,18 +246,6 @@ public class Tweet implements Comparable<Tweet> {
 
     public int getSuperTweetId() {
         return superTweetId;
-    }
-
-    public void setSuperTweetId(int superTweetId) {
-        this.superTweetId = superTweetId;
-    }
-
-    public String getSuperTweetOwnerUserName() {
-        return superTweetOwnerUserName;
-    }
-
-    public void setSuperTweetOwnerUserName(String superTweetOwnerUserName) {
-        this.superTweetOwnerUserName = superTweetOwnerUserName;
     }
 
     public void setTweetId(int tweetId) {

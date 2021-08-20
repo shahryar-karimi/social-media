@@ -4,7 +4,7 @@ import model.Account;
 import view.pages.messages.messenger.events.NewChatListEvent;
 import view.pages.messages.messenger.events.OpenChatRoomEvent;
 import view.pages.messages.messenger.events.SetChatRoomsViewEvent;
-import view.panels.MyScrollPane;
+import view.myPanels.MyScrollPane;
 
 import javax.swing.*;
 import java.awt.*;

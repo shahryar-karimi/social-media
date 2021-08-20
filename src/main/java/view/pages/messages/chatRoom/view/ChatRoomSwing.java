@@ -3,9 +3,9 @@ package view.pages.messages.chatRoom.view;
 import model.pages.messenger.ChatRoom;
 import view.pages.Swing;
 import view.pages.messages.chatRoom.listener.ChatRoomListener;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,9 +16,9 @@ public class ChatRoomSwing extends Swing {
     public ChatRoomSwing(ChatRoomListener listener) {
         super();
         this.listener = listener;
-        ((ChatRoom) getPage()).seenBothWay();
+        ((ChatRoom) getListener().getController().getPage()).seenBothWay();
         mainPanel = new MainPanel(this);
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         addSwing(this);
         run();
     }
@@ -26,7 +26,7 @@ public class ChatRoomSwing extends Swing {
     @Override
     public void run() {
         myLogger.debug(ChatRoomSwing.class.getName(), "run",
-                "chat room page run for account \"" + getPage().getAccount().toString() + "\"");
+                "chat room page run for account \"" + getListener().getController().getPage().getAccount().toString() + "\"");
         showGraphic();
     }
 

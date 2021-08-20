@@ -6,10 +6,9 @@ import java.util.Properties;
 
 public class AppProperties {
 
-    private final String FILENAME = "src/main/resources/conf.properties";
+    private static final String FILENAME = "src/main/resources/conf.properties";
     private static final AppProperties properties_file = new AppProperties();
-    private Properties prop = new Properties();
-    private String msg = "";
+    private final Properties prop = new Properties();
 
     private AppProperties() {
         FileReader fileReader = null;
@@ -17,7 +16,6 @@ public class AppProperties {
             fileReader = new FileReader(FILENAME);
             prop.load(fileReader);
         } catch (IOException e) {
-            msg = "Error accessing properties file";
             e.printStackTrace();
         } finally {
             if (fileReader != null) {

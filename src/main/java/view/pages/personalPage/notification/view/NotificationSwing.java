@@ -9,9 +9,9 @@ import view.pages.personalPage.notification.listener.NotificationListener;
 import view.pages.personalPage.notification.view.request.RequestsPanel;
 import view.pages.personalPage.notification.view.request.SingleRequest;
 import view.pages.personalPage.notification.view.systemMessage.SystemMessagePanel;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +26,7 @@ public class NotificationSwing extends Swing {
         this.listener = listener;
         this.requestsPanel = new RequestsPanel(((Notification) listener.getController().getPage()).getRequests());
         this.systemMessagePanel = new SystemMessagePanel((Notification) listener.getController().getPage());
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         for (SingleRequest request : requestsPanel.getRequests()) {
             request.getAccept().addActionListener(this);
             request.getDecline().addActionListener(this);

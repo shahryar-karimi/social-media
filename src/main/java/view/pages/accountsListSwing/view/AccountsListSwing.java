@@ -2,13 +2,13 @@ package view.pages.accountsListSwing.view;
 
 import model.Account;
 import utility.AppProperties;
+import view.myPanels.MyScrollPane;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 import view.pages.Swing;
 import view.pages.accountsListSwing.event.ClickEvent;
 import view.pages.accountsListSwing.listener.ClickListener;
-import view.panels.MyScrollPane;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +28,7 @@ public class AccountsListSwing extends Swing {
         super();
         this.listener = listener;
         this.accounts = accounts;
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(listener.getController().getPage())));
         addSwing(this);
         run();
     }

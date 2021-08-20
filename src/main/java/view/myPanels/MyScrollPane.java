@@ -1,4 +1,4 @@
-package view.panels;
+package view.myPanels;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -51,14 +51,6 @@ public abstract class MyScrollPane<T> extends JScrollPane {
 
     public JList<String> getMyJList() {
         return myJList;
-    }
-
-    public DefaultListModel<String> getDefaultListModel() {
-        return defaultListModel;
-    }
-
-    public void setMyJList(JList<String> myJList) {
-        this.myJList = myJList;
     }
 
     public List<T> getList() {

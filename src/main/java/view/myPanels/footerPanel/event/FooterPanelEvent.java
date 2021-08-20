@@ -1,4 +1,4 @@
-package view.panels.footerPanel.event;
+package view.myPanels.footerPanel.event;
 
 import event.Event;
 

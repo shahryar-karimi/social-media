@@ -3,9 +3,9 @@ package view.pages.timeline.view;
 import model.pages.TimeLinePage;
 import view.pages.Swing;
 import view.pages.timeline.listener.TimeLineListener;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -18,7 +18,7 @@ public class TimeLineSwing extends Swing {
         super();
         this.listener = listener;
         timeLinePanel = new TimeLinePanel(this);
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         addSwing(this);
         run();
     }
@@ -26,7 +26,7 @@ public class TimeLineSwing extends Swing {
     @Override
     public void run() {
         myLogger.debug(TimeLineSwing.class.getName(), "run",
-                "Time line run for account \"" + getPage().getAccount().toString() + "\"");
+                "Time line run for account \"" + getListener().getController().getPage().getAccount().toString() + "\"");
         showGraphic();
     }
 
@@ -41,7 +41,7 @@ public class TimeLineSwing extends Swing {
     }
 
     public void updateGraphic() {
-        timeLinePanel.getMainPanel().setTimeLine((TimeLinePage) getPage());
+        timeLinePanel.getMainPanel().setTimeLine((TimeLinePage) getListener().getController().getPage());
         timeLinePanel.updateGraphic();
     }
 

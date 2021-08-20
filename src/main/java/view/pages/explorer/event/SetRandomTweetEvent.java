@@ -4,7 +4,7 @@ import event.Event;
 import model.pages.TimeLinePage;
 
 public class SetRandomTweetEvent extends Event {
-    private TimeLinePage timeLine;
+    private final TimeLinePage timeLine;
 
     public SetRandomTweetEvent(Object source, TimeLinePage timeLine) {
         super(source);

@@ -49,7 +49,7 @@ public class CenterPanel extends JPanel {
     }
 
     public void updateGraphic() {
-        mainPanel.setTimeLine((TimeLinePage) commentsSwing.getPage());
+        mainPanel.setTimeLine((TimeLinePage) commentsSwing.getListener().getController().getPage());
         mainPanel.updateGraphic();
     }
 }

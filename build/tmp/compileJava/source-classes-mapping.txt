@@ -1,73 +1,72 @@
-view/pages/personalPage/creatingList/events/CreateListEvent.java
- view.pages.personalPage.creatingList.events.CreateListEvent
-view/pages/accountsListSwing/event/ClickEvent.java
- view.pages.accountsListSwing.event.ClickEvent
-model/Logger/Level.java
- model.Logger.Level
-utility/DateLabelFormatter.java
- utility.DateLabelFormatter
-event/Event.java
- event.Event
-view/panels/footerPanel/event/FooterPanelEvent.java
- view.panels.footerPanel.event.FooterPanelEvent
-view/panels/MyScrollPane.java
- view.panels.MyScrollPane
- view.panels.MyScrollPane$1
-utility/AppProperties.java
- utility.AppProperties
-view/pages/personalPage/notification/view/request/SingleRequest.java
- view.pages.personalPage.notification.view.request.SingleRequest
-view/pages/personalPage/editProfile/event/EditProfileEvent.java
- view.pages.personalPage.editProfile.event.EditProfileEvent
-view/pages/login/event/SignUpEvent.java
- view.pages.login.event.SignUpEvent
-view/panels/SelectingPanel.java
- view.panels.SelectingPanel
- view.panels.SelectingPanel$1
 view/pages/personalPage/event/SendBtnEvent.java
  view.pages.personalPage.event.SendBtnEvent
-view/pages/login/event/LoginEvent.java
- view.pages.login.event.LoginEvent
-Main.java
- Main
-utility/ImageLoader.java
- utility.ImageLoader
-model/Logger/MyLogger.java
- model.Logger.MyLogger
-view/pages/menuPage/event/MenuEvent.java
- view.pages.menuPage.event.MenuEvent
-view/tweet/newTweetPanel/view/NewTweetPanel.java
- view.tweet.newTweetPanel.view.NewTweetPanel
-view/MyFrame.java
- view.MyFrame
-view/pages/messages/messenger/events/NewChatListEvent.java
- view.pages.messages.messenger.events.NewChatListEvent
-view/pages/explorer/view/search/MainPanel.java
- view.pages.explorer.view.search.MainPanel
- view.pages.explorer.view.search.MainPanel$1
- view.pages.explorer.view.search.MainPanel$2
-view/pages/login/view/SignUpPanel.java
- view.pages.login.view.SignUpPanel
-view/pages/login/view/LoginPanel.java
- view.pages.login.view.LoginPanel
+view/pages/personalPage/editProfile/event/EditProfileEvent.java
+ view.pages.personalPage.editProfile.event.EditProfileEvent
 view/pages/personalPage/notification/view/request/RequestsPanel.java
  view.pages.personalPage.notification.view.request.RequestsPanel
 view/pages/messages/chatRoom/events/SendMessageEvent.java
  view.pages.messages.chatRoom.events.SendMessageEvent
-view/pages/messages/messenger/events/BuildNewChatRoomEvent.java
- view.pages.messages.messenger.events.BuildNewChatRoomEvent
-view/pages/messages/messenger/events/OpenChatRoomEvent.java
- view.pages.messages.messenger.events.OpenChatRoomEvent
-view/pages/messages/messenger/events/SetChatRoomsViewEvent.java
- view.pages.messages.messenger.events.SetChatRoomsViewEvent
-view/pages/messages/messenger/events/SendSeveralMessageEvent.java
- view.pages.messages.messenger.events.SendSeveralMessageEvent
-view/pages/messages/chatRoom/view/SouthPanel.java
- view.pages.messages.chatRoom.view.SouthPanel
-view/pages/messages/messenger/view/MessengerSwing.java
- view.pages.messages.messenger.view.MessengerSwing
+view/pages/setting/events/UpdatePasswordEvent.java
+ view.pages.setting.events.UpdatePasswordEvent
 view/pages/setting/events/SettingPrivacyEvent.java
  view.pages.setting.events.SettingPrivacyEvent
+utility/Loop.java
+ utility.Loop
+view/pages/login/view/SignUpPanel.java
+ view.pages.login.view.SignUpPanel
+view/pages/setting/events/DeleteAccountEvent.java
+ view.pages.setting.events.DeleteAccountEvent
+view/pages/menuPage/event/MenuEvent.java
+ view.pages.menuPage.event.MenuEvent
+view/pages/messages/messenger/events/BuildNewChatRoomEvent.java
+ view.pages.messages.messenger.events.BuildNewChatRoomEvent
+event/Event.java
+ event.Event
+view/pages/messages/chatRoom/view/SouthPanel.java
+ view.pages.messages.chatRoom.view.SouthPanel
+view/pages/login/view/LoginPanel.java
+ view.pages.login.view.LoginPanel
+view/myPanels/footerPanel/event/FooterPanelEvent.java
+ view.myPanels.footerPanel.event.FooterPanelEvent
+view/pages/messages/messenger/events/NewChatListEvent.java
+ view.pages.messages.messenger.events.NewChatListEvent
+view/pages/setting/events/SettingLastSeenEvent.java
+ view.pages.setting.events.SettingLastSeenEvent
+view/pages/personalPage/notification/view/request/SingleRequest.java
+ view.pages.personalPage.notification.view.request.SingleRequest
+view/pages/login/event/SignUpEvent.java
+ view.pages.login.event.SignUpEvent
+view/pages/login/event/LoginEvent.java
+ view.pages.login.event.LoginEvent
+view/pages/accountsListSwing/event/ClickEvent.java
+ view.pages.accountsListSwing.event.ClickEvent
+view/tweet/newTweetPanel/view/NewTweetPanel.java
+ view.tweet.newTweetPanel.view.NewTweetPanel
+view/pages/messages/messenger/events/SetChatRoomsViewEvent.java
+ view.pages.messages.messenger.events.SetChatRoomsViewEvent
+model/pages/messenger/Message.java
+ model.pages.messenger.Message
+view/pages/setting/events/CheckPasswordEvent.java
+ view.pages.setting.events.CheckPasswordEvent
+view/pages/messages/messenger/events/OpenChatRoomEvent.java
+ view.pages.messages.messenger.events.OpenChatRoomEvent
+view/pages/messages/messenger/events/SendSeveralMessageEvent.java
+ view.pages.messages.messenger.events.SendSeveralMessageEvent
+view/pages/setting/events/SettingActivityEvent.java
+ view.pages.setting.events.SettingActivityEvent
+view/pages/messages/chatRoom/events/ForwardEvent.java
+ view.pages.messages.chatRoom.events.ForwardEvent
+view/pages/personalPage/creatingList/events/CreateListEvent.java
+ view.pages.personalPage.creatingList.events.CreateListEvent
+view/MyFrame.java
+ view.MyFrame
+view/myPanels/SelectingPanel.java
+ view.myPanels.SelectingPanel
+ view.myPanels.SelectingPanel$1
+view/pages/messages/messenger/view/MessengerSwing.java
+ view.pages.messages.messenger.view.MessengerSwing
+view/myPanels/footerPanel/view/FooterPanel.java
+ view.myPanels.footerPanel.view.FooterPanel
 view/pages/timeline/controller/TimeLineController.java
  view.pages.timeline.controller.TimeLineController
 view/pages/personalPage/notification/view/NotificationSwing.java
@@ -76,8 +75,6 @@ logic/Manager.java
  logic.Manager
 model/pages/personal/Notification.java
  model.pages.personal.Notification
-view/panels/footerPanel/view/FooterPanel.java
- view.panels.footerPanel.view.FooterPanel
 view/pages/timeline/view/MainPanel.java
  view.pages.timeline.view.MainPanel
 view/tweet/tweetsPanel/controller/TweetsPanelController.java
@@ -98,36 +95,36 @@ view/pages/explorer/event/SetRandomTweetEvent.java
  view.pages.explorer.event.SetRandomTweetEvent
 view/tweet/share/listener/ShareListener.java
  view.tweet.share.listener.ShareListener
-view/pages/setting/events/SettingActivityEvent.java
- view.pages.setting.events.SettingActivityEvent
+view/pages/messages/chatRoom/view/ForwardFrame.java
+ view.pages.messages.chatRoom.view.ForwardFrame
 view/pages/menuPage/view/MenuSwing.java
  view.pages.menuPage.view.MenuSwing
 view/pages/messages/chatRoom/listener/ChatRoomListener.java
  view.pages.messages.chatRoom.listener.ChatRoomListener
 view/pages/explorer/view/random/RandomTweetsPanel.java
  view.pages.explorer.view.random.RandomTweetsPanel
-view/panels/footerPanel/listener/FooterPanelListener.java
- view.panels.footerPanel.listener.FooterPanelListener
 view/tweet/share/view/ShareFrame.java
  view.tweet.share.view.ShareFrame
 view/tweet/share/controller/ShareController.java
  view.tweet.share.controller.ShareController
-view/controller/MainGraphicController.java
- view.controller.MainGraphicController
+view/pages/setting/view/MainPanel.java
+ view.pages.setting.view.MainPanel
 model/pages/SettingPage.java
  model.pages.SettingPage
 view/pages/messages/messenger/controller/MessengersController.java
  view.pages.messages.messenger.controller.MessengersController
 view/pages/personalPage/editProfile/controller/EditProfileController.java
  view.pages.personalPage.editProfile.controller.EditProfileController
+view/pages/explorer/view/search/MainPanel.java
+ view.pages.explorer.view.search.MainPanel
+ view.pages.explorer.view.search.MainPanel$1
+ view.pages.explorer.view.search.MainPanel$2
 model/pages/LoginPage.java
  model.pages.LoginPage
 view/pages/messages/chatRoom/view/CenterPanel.java
  view.pages.messages.chatRoom.view.CenterPanel
 view/pages/personalPage/info/controller/InfoController.java
  view.pages.personalPage.info.controller.InfoController
-model/pages/messenger/Message.java
- model.pages.messenger.Message
 view/pages/personalPage/creatingList/controller/CreateListController.java
  view.pages.personalPage.creatingList.controller.CreateListController
 view/tweet/tweetsPanel/view/TweetsPanel.java
@@ -136,24 +133,18 @@ view/tweet/tweetsPanel/view/TweetsPanel.java
  view.tweet.tweetsPanel.view.TweetsPanel$2
 view/pages/personalPage/creatingList/listener/CreateListListener.java
  view.pages.personalPage.creatingList.listener.CreateListListener
-view/pages/setting/events/DeleteAccountEvent.java
- view.pages.setting.events.DeleteAccountEvent
-logic/Singleton.java
- logic.Singleton
 view/pages/personalPage/info/view/InfoPageSwing.java
  view.pages.personalPage.info.view.InfoPageSwing
-logic/TweetManager.java
- logic.TweetManager
-view/pages/personalPage/PersonalPageSwing.java
- view.pages.personalPage.PersonalPageSwing
+view/pages/setting/listener/SettingListener.java
+ view.pages.setting.listener.SettingListener
+view/pages/setting/controller/SettingController.java
+ view.pages.setting.controller.SettingController
 view/pages/personalPage/info/listener/InfoListener.java
  view.pages.personalPage.info.listener.InfoListener
 view/pages/timeline/view/comment/center/CenterPanel.java
  view.pages.timeline.view.comment.center.CenterPanel
 view/tweet/share/event/ShareEvent.java
  view.tweet.share.event.ShareEvent
-view/pages/messages/MessagePanel.java
- view.pages.messages.MessagePanel
 view/pages/personalPage/notification/view/systemMessage/SystemMessagePanel.java
  view.pages.personalPage.notification.view.systemMessage.SystemMessagePanel
 view/pages/explorer/view/random/MainPanel.java
@@ -170,8 +161,8 @@ view/pages/personalPage/info/events/InfoEvent.java
  view.pages.personalPage.info.events.InfoEvent
 view/pages/personalPage/controller/ProfileController.java
  view.pages.personalPage.controller.ProfileController
-utility/Loop.java
- utility.Loop
+model/logger/MyLogger.java
+ model.logger.MyLogger
 view/pages/accountsListSwing/controller/ClickController.java
  view.pages.accountsListSwing.controller.ClickController
 model/Account.java
@@ -193,8 +184,6 @@ view/pages/personalPage/creatingList/CreatingListFrame.java
  view.pages.personalPage.creatingList.CreatingListFrame
  view.pages.personalPage.creatingList.CreatingListFrame$1
  view.pages.personalPage.creatingList.CreatingListFrame$2
-view/panels/footerPanel/controller/FooterPanelController.java
- view.panels.footerPanel.controller.FooterPanelController
 view/pages/explorer/controller/ExplorerController.java
  view.pages.explorer.controller.ExplorerController
 view/pages/Swing.java
@@ -210,12 +199,19 @@ view/pages/timeline/listener/TimeLineListener.java
  view.pages.timeline.listener.TimeLineListener
 view/pages/menuPage/controller/MenuController.java
  view.pages.menuPage.controller.MenuController
-view/pages/login/view/LoginSwing.java
- view.pages.login.view.LoginSwing
+logic/DBManger.java
+ logic.DBManger
+logic/TweetManager.java
+ logic.TweetManager
+view/pages/personalPage/info/view/ChangeListFrame.java
+ view.pages.personalPage.info.view.ChangeListFrame
 view/pages/personalPage/editProfile/listener/EditProfileListener.java
  view.pages.personalPage.editProfile.listener.EditProfileListener
 view/pages/login/listener/RegistrationListener.java
  view.pages.login.listener.RegistrationListener
+view/myPanels/MyScrollPane.java
+ view.myPanels.MyScrollPane
+ view.myPanels.MyScrollPane$1
 view/pages/personalPage/editProfile/view/EditProfilePageSwing.java
  view.pages.personalPage.editProfile.view.EditProfilePageSwing
 model/pages/Page.java
@@ -224,6 +220,10 @@ view/pages/messages/chatRoom/view/MainPanel.java
  view.pages.messages.chatRoom.view.MainPanel
 view/pages/accountsListSwing/listener/ClickListener.java
  view.pages.accountsListSwing.listener.ClickListener
+view/myPanels/footerPanel/listener/FooterPanelListener.java
+ view.myPanels.footerPanel.listener.FooterPanelListener
+Main.java
+ Main
 model/pages/messenger/MessengersPage.java
  model.pages.messenger.MessengersPage
 model/pages/messenger/ChatRoom.java
@@ -237,8 +237,10 @@ model/pages/ExplorerPage.java
 view/pages/messages/messenger/view/NewChatFrame.java
  view.pages.messages.messenger.view.NewChatFrame
  view.pages.messages.messenger.view.NewChatFrame$1
-view/pages/login/controller/RegistrationController.java
- view.pages.login.controller.RegistrationController
+view/pages/setting/view/SettingSwing.java
+ view.pages.setting.view.SettingSwing
+utility/DateLabelFormatter.java
+ utility.DateLabelFormatter
 view/pages/explorer/view/ExplorerPanel.java
  view.pages.explorer.view.ExplorerPanel
 view/pages/accountsListSwing/view/AccountsListSwing.java
@@ -249,8 +251,10 @@ view/pages/timeline/view/comment/CommentsSwing.java
  view.pages.timeline.view.comment.CommentsSwing
 listener/FormListener.java
  listener.FormListener
-logic/CommandProcessor.java
- logic.CommandProcessor
+model/logger/Level.java
+ model.logger.Level
+view/pages/setting/view/EditPassFrame.java
+ view.pages.setting.view.EditPassFrame
 view/pages/messages/chatRoom/controller/ChatRoomController.java
  view.pages.messages.chatRoom.controller.ChatRoomController
 view/tweet/tweetsPanel/listener/TweetsPanelListener.java
@@ -259,23 +263,25 @@ view/pages/personalPage/notification/controller/NotificationController.java
  view.pages.personalPage.notification.controller.NotificationController
 view/pages/timeline/view/TimeLinePanel.java
  view.pages.timeline.view.TimeLinePanel
+utility/AppProperties.java
+ utility.AppProperties
 controller/MainController.java
  controller.MainController
-view/pages/setting/events/SettingLastSeenEvent.java
- view.pages.setting.events.SettingLastSeenEvent
+view/pages/messages/message/view/MessagePanel.java
+ view.pages.messages.message.view.MessagePanel
+logic/CommandProcessor.java
+ logic.CommandProcessor
+view/pages/personalPage/PersonalPageSwing.java
+ view.pages.personalPage.PersonalPageSwing
+utility/ImageLoader.java
+ utility.ImageLoader
+view/myPanels/footerPanel/controller/FooterPanelController.java
+ view.myPanels.footerPanel.controller.FooterPanelController
+view/controller/MainGraphicController.java
+ view.controller.MainGraphicController
 view/controller/GraphicManager.java
  view.controller.GraphicManager
-view/pages/setting/listener/SettingListener.java
- view.pages.setting.listener.SettingListener
-view/pages/setting/view/MainPanel.java
- view.pages.setting.view.MainPanel
-view/pages/setting/controller/SettingController.java
- view.pages.setting.controller.SettingController
-view/pages/setting/view/EditPassFrame.java
- view.pages.setting.view.EditPassFrame
-view/pages/setting/events/UpdatePasswordEvent.java
- view.pages.setting.events.UpdatePasswordEvent
-view/pages/setting/view/SettingSwing.java
- view.pages.setting.view.SettingSwing
-view/pages/setting/events/CheckPasswordEvent.java
- view.pages.setting.events.CheckPasswordEvent
+view/pages/login/view/LoginSwing.java
+ view.pages.login.view.LoginSwing
+view/pages/login/controller/RegistrationController.java
+ view.pages.login.controller.RegistrationController

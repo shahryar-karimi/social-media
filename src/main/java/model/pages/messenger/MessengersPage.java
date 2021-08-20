@@ -1,7 +1,7 @@
 package model.pages.messenger;
 
-import model.Account;
 import logic.Manager;
+import model.Account;
 import model.pages.Page;
 
 import java.util.ArrayList;
@@ -9,10 +9,7 @@ import java.util.LinkedList;
 
 public class MessengersPage extends Page {
 
-    private LinkedList<ChatRoom> chatRooms;
-
-    public MessengersPage() {
-    }
+    private final LinkedList<ChatRoom> chatRooms;
 
     public MessengersPage(Account account, Manager manager) {
         super(account, manager);
@@ -44,63 +41,8 @@ public class MessengersPage extends Page {
         return "Message sent to " + account;
     }
 
-    public String writeMessage(String[] lines, Message message) {
-        String result = "";
-        if (lines[0].equals("send to all")) {
-            for (Account following : account.getFollowings()) {
-                result += sendMessage(message, searchChatRoomsByUserName(following.getUserName())) + "\n";
-            }
-        } else {
-            for (String line : lines) {
-                if (line.charAt(0) == 'a') {
-                    line = line.substring(2);
-                    Account account = getManager().searchByUserName(line);
-                    if (account == null) {
-                        result += "Account " + line + " not found" + "\n";
-                    } else {
-                        result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
-                    }
-                } else if (line.charAt(0) == 'l') {
-                    line = line.substring(2);
-                    ArrayList<Account> list = getAccount().getFriendsList().get(line);
-                    result += sendMessageToList(message, line, list);
-                } else {
-                    result += "Wrong input for \"" + line + "\"\n";
-                }
-            }
-        }
-        return result;
-    }
-
-    private String sendMessageToList(Message message, String line, ArrayList<Account> list) {
-        if (list == null) {
-            return  "List \"" + line + "\" not found" + "\n";
-        }
-        String result = "";
-        for (Account account : list) {
-            result += sendMessage(message, searchChatRoomsByUserName(account.getUserName())) + "\n";
-        }
-        return result;
-    }
-
     public LinkedList<ChatRoom> getChatRooms() {
         return chatRooms;
-    }
-
-    public void setChatRooms(LinkedList<ChatRoom> chatRooms) {
-        this.chatRooms = chatRooms;
-    }
-
-    public String showPage() {
-        String result = "";
-        for (ChatRoom chatRoom : chatRooms) {
-            if (chatRoom.getListenerUserName().equals(account.getUserName())) {
-                result += "Saved messages\n";
-                continue;
-            }
-            result += chatRoom.getListenerUserName() + " " + chatRoom.getUnreadMessages() + "\n";
-        }
-        return result;
     }
 
     public ChatRoom searchChatRoomsByUserName(String userName) {
@@ -115,16 +57,6 @@ public class MessengersPage extends Page {
         for (ChatRoom chatRoom : chatRooms)
             if (chatRoom.getListenerUserName().equals(listener.getUserName())) return chatRoom;
         return null;
-    }
-
-    public static String showCLIPage() {
-        return "1.saved messages\n" +
-                "2.new chat\n" +
-                "3.Enter user name\n" +
-                "4.write message\n" +
-                "5.back\n" +
-                "6.quit\n" +
-                "7.exit";
     }
 
     public void addChatRoom(ChatRoom chatRoom) {

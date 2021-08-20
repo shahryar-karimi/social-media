@@ -1,7 +1,7 @@
 package model.pages;
 
-import model.Account;
 import logic.Manager;
+import model.Account;
 import model.Tweet;
 
 import java.util.LinkedList;
@@ -9,35 +9,13 @@ import java.util.Random;
 
 public class ExplorerPage extends Page {
 
-    private Random random;
-
-    public ExplorerPage() {
-    }
-
     public ExplorerPage(Account account, Manager manager) {
         super(account, manager);
-        random = new Random();
         account.setExplorerPage(this);
     }
 
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
-    public static String showPage() {
-        return  "Explorer:\n" +
-                "1.search\n" +
-                "2.random tweets\n" +
-                "3.quit\n" +
-                "4.exit\n" +
-                "5.back";
-    }
-
     public LinkedList<Tweet> getRandomTweets() {
+        Random random = new Random();
         LinkedList<Tweet> explorerTweets = new LinkedList<>();
         LinkedList<Account> explorerAccounts = new LinkedList<>();
         for (Account managerAccount : manager.getAccounts()) {

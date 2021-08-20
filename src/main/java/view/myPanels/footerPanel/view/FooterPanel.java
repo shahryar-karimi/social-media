@@ -1,8 +1,8 @@
-package view.panels.footerPanel.view;
+package view.myPanels.footerPanel.view;
 
-import view.panels.footerPanel.event.FooterPanelEvent;
-import view.panels.footerPanel.listener.FooterPanelListener;
 import utility.AppProperties;
+import view.myPanels.footerPanel.event.FooterPanelEvent;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
 
 import javax.swing.*;
 

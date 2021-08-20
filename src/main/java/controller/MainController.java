@@ -1,6 +1,6 @@
 package controller;
 
-import model.Logger.MyLogger;
+import model.logger.MyLogger;
 import model.pages.Page;
 
 public abstract class MainController {

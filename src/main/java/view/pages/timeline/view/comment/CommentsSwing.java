@@ -4,9 +4,9 @@ import model.Tweet;
 import view.pages.Swing;
 import view.pages.timeline.listener.TimeLineListener;
 import view.pages.timeline.view.comment.center.CenterPanel;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +19,7 @@ public class CommentsSwing extends Swing {
         super();
         this.listener = listener;
         this.topTweet = topTweet;
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         centerPanel = new CenterPanel(this);
         addSwing(this);
         run();

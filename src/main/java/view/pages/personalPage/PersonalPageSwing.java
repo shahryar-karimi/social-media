@@ -18,9 +18,9 @@ import view.pages.personalPage.listener.ProfileListener;
 import view.pages.personalPage.notification.controller.NotificationController;
 import view.pages.personalPage.notification.listener.NotificationListener;
 import view.pages.personalPage.notification.view.NotificationSwing;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,7 +49,7 @@ public class PersonalPageSwing extends Swing {
     public PersonalPageSwing(ProfileListener listener) {
         super();
         this.listener = listener;
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         for (JButton button : buttons)
             button.addActionListener(this);
         addSwing(this);
@@ -59,7 +59,7 @@ public class PersonalPageSwing extends Swing {
     @Override
     public void run() {
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
-                "Personal page run for account \"" + getPage().getAccount().toString() + "\"");
+                "Personal page run for account \"" + getListener().getController().getPage().getAccount().toString() + "\"");
         showGraphic();
     }
 
@@ -76,7 +76,7 @@ public class PersonalPageSwing extends Swing {
         myTweetsView.setRows(5);
         myTweetsView.setEditable(false);
         jScrollPane4.setViewportView(myTweetsView);
-        myTweetsView.setText(((PersonalPage) getPage()).showMyTweets());
+        myTweetsView.setText(((PersonalPage) getListener().getController().getPage()).showMyTweets());
 
 
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
@@ -194,7 +194,7 @@ public class PersonalPageSwing extends Swing {
 
     @Override
     public void updateGraphic() {
-        myTweetsView.setText(((PersonalPage) getPage()).showMyTweets());
+        myTweetsView.setText(((PersonalPage) getListener().getController().getPage()).showMyTweets());
         newTweetTxt.setText("");
     }
 
@@ -203,28 +203,28 @@ public class PersonalPageSwing extends Swing {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttons[0]) {
             this.dispose();
-            new EditProfilePageSwing(new EditProfileListener(new EditProfileController((PersonalPage) getPage())));
+            new EditProfilePageSwing(new EditProfileListener(new EditProfileController((PersonalPage) getListener().getController().getPage())));
         } else if (e.getSource() == buttons[1]) {
             this.dispose();
-            new AccountsListSwing(((PersonalPage) getPage()).myFollowings(), new ClickListener(new ClickController(getPage())));
+            new AccountsListSwing(((PersonalPage) getListener().getController().getPage()).myFollowings(), new ClickListener(new ClickController(getListener().getController().getPage())));
         } else if (e.getSource() == buttons[2]) {
             this.dispose();
-            new AccountsListSwing(((PersonalPage) getPage()).myFollowers(), new ClickListener(new ClickController(getPage())));
+            new AccountsListSwing(((PersonalPage) getListener().getController().getPage()).myFollowers(), new ClickListener(new ClickController(getListener().getController().getPage())));
         } else if (e.getSource() == buttons[3]) {
             this.dispose();
-            new AccountsListSwing(((PersonalPage) getPage()).myBlackList(), new ClickListener(new ClickController(getPage())));
+            new AccountsListSwing(((PersonalPage) getListener().getController().getPage()).myBlackList(), new ClickListener(new ClickController(getListener().getController().getPage())));
         } else if (e.getSource() == buttons[4]) { // notification
             this.dispose();
-            new NotificationSwing(new NotificationListener(new NotificationController(((PersonalPage) getPage()).getNotification())));
+            new NotificationSwing(new NotificationListener(new NotificationController(((PersonalPage) getListener().getController().getPage()).getNotification())));
         } else if (e.getSource() == buttons[5]) { // create list
-            new CreatingListFrame(new CreateListListener(new CreateListController((PersonalPage) getPage())));
+            new CreatingListFrame(new CreateListListener(new CreateListController((PersonalPage) getListener().getController().getPage())));
         } else if (e.getSource() == sendBtn) {
             String newTweetTxt = this.newTweetTxt.getText();
             if (newTweetTxt != null && !newTweetTxt.isBlank()) {
                 SendBtnEvent event = new SendBtnEvent(this, newTweetTxt);
                 listener.eventOccurred(event);
             }
-            myTweetsView.setText(((PersonalPage) getPage()).showMyTweets());
+            myTweetsView.setText(((PersonalPage) getListener().getController().getPage()).showMyTweets());
             this.newTweetTxt.setText("");
         }
     }

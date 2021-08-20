@@ -5,17 +5,16 @@ import com.google.gson.GsonBuilder;
 import model.Account;
 import model.Tweet;
 import model.pages.messenger.ChatRoom;
-import model.pages.messenger.Message;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.*;
 
-public class Singleton {
+public class DBManger {
     private static Gson gson;
     private static final Object locker = new Object();
 
-    private Singleton() {
+    private DBManger() {
     }
 
     public static Gson getGson() {
@@ -40,15 +39,8 @@ public class Singleton {
     }
 
     private static void saving(Manager manager) {
-        for (Account account : manager.getAccounts()) {
+        for (Account account : manager.getAccounts())
             account.setAllLists();
-            for (ChatRoom chatRoom : account.getMessengersPage().getChatRooms()) {
-                for (Message message : chatRoom.getMessages()) {
-                    if (message.getOwner().equals(account))
-                        message.setOwnerUserName(account.getUserName());
-                }
-            }
-        }
     }
 
     public static Manager load() {
@@ -82,7 +74,7 @@ public class Singleton {
             loadNotifications(manager, account);
             loadChatRooms(manager, account);
             loadTweets(manager, account);
-            loadMessages(manager, account);
+            loadMessages(account);
         }
         for (Account account : manager.getAccounts()) {
             loadRetweetedTweets(account);
@@ -189,18 +181,10 @@ public class Singleton {
         account.setFollowers(followers);
     }
 
-    private static void loadMessages(Manager manager, Account account) {
-        LinkedList<Message> messages;
+    private static void loadMessages(Account account) {
         LinkedList<ChatRoom> chatRooms = account.getMessengersPage().getChatRooms();
         for (ChatRoom chatRoom : chatRooms) {
-            messages = chatRoom.getMessages();
-            for (Message message : messages) {
-                if (message.getOwnerUserName().equals(account.getUserName()))
-                    message.setOwner(account);
-                else
-                    message.setOwner(manager.searchByUserName(chatRoom.getListenerUserName()));
-            }
-            Collections.sort(messages);
+            Collections.sort(chatRoom.getMessages());
         }
         Collections.sort(chatRooms);
     }

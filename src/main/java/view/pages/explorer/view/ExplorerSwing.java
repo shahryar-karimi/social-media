@@ -4,9 +4,9 @@ import view.pages.Swing;
 import view.pages.accountsListSwing.event.ClickEvent;
 import view.pages.explorer.listener.ExplorerListener;
 import view.pages.explorer.view.search.MainPanel;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,7 @@ public class ExplorerSwing extends Swing {
     public ExplorerSwing(ExplorerListener listener) {
         super();
         this.listener = listener;
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(listener.getController().getPage())));
         explorerPanel = new ExplorerPanel(this);
         this.setLayout(new BorderLayout());
         initPanels();
@@ -31,7 +31,7 @@ public class ExplorerSwing extends Swing {
     @Override
     public void run() {
         myLogger.debug(ExplorerSwing.class.getName(), "run",
-                "explorer run for account \"" + getPage().getAccount().toString() + "\"");
+                "explorer run for account \"" + listener.getController().getPage().getAccount().toString() + "\"");
         showGraphic();
     }
 

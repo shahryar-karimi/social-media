@@ -1,7 +1,7 @@
 package view.pages.explorer.view.search;
 
 import model.Account;
-import view.panels.MyScrollPane;
+import view.myPanels.MyScrollPane;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;

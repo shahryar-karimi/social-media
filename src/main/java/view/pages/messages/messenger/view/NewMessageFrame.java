@@ -1,10 +1,9 @@
 package view.pages.messages.messenger.view;
 
 import model.pages.messenger.ChatRoom;
-import model.pages.messenger.Message;
 import model.pages.messenger.MessengersPage;
 import view.pages.messages.messenger.events.SendSeveralMessageEvent;
-import view.panels.MyScrollPane;
+import view.myPanels.MyScrollPane;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
@@ -38,7 +37,7 @@ public class NewMessageFrame extends JFrame {
         textArea = new JTextArea();
         sendBtn = new JButton();
         choosePanel = new JPanel();
-        MessengersPage messengersPage = ((MessengersPage) messengerSwing.getPage());
+        MessengersPage messengersPage = ((MessengersPage) messengerSwing.getListener().getController().getPage());
         myScrollPane = new MyScrollPane<>(messengersPage.getChatRooms(), false) {
             @Override
             public void listClicked(MouseEvent e) {

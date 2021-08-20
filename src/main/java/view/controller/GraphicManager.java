@@ -1,42 +1,43 @@
 package view.controller;
 
+import logic.Manager;
+import model.Account;
+import model.Tweet;
+import model.pages.LoginPage;
+import model.pages.TimeLinePage;
+import model.pages.messenger.ChatRoom;
+import model.pages.personal.Info;
+import view.pages.Swing;
 import view.pages.explorer.controller.ExplorerController;
 import view.pages.explorer.listener.ExplorerListener;
 import view.pages.explorer.view.ExplorerSwing;
+import view.pages.login.controller.RegistrationController;
 import view.pages.login.listener.RegistrationListener;
+import view.pages.login.view.LoginSwing;
 import view.pages.menuPage.controller.MenuController;
 import view.pages.menuPage.listener.MenuListener;
 import view.pages.menuPage.view.MenuSwing;
-import view.pages.Swing;
 import view.pages.messages.chatRoom.controller.ChatRoomController;
 import view.pages.messages.chatRoom.listener.ChatRoomListener;
 import view.pages.messages.chatRoom.view.ChatRoomSwing;
 import view.pages.messages.messenger.controller.MessengersController;
 import view.pages.messages.messenger.listener.MessengersListener;
 import view.pages.messages.messenger.view.MessengerSwing;
+import view.pages.personalPage.PersonalPageSwing;
 import view.pages.personalPage.controller.ProfileController;
 import view.pages.personalPage.info.controller.InfoController;
 import view.pages.personalPage.info.listener.InfoListener;
 import view.pages.personalPage.info.view.InfoPageSwing;
-import view.pages.login.view.LoginSwing;
-import view.pages.personalPage.PersonalPageSwing;
 import view.pages.personalPage.listener.ProfileListener;
-import view.pages.setting.view.SettingSwing;
 import view.pages.setting.controller.SettingController;
 import view.pages.setting.listener.SettingListener;
+import view.pages.setting.view.SettingSwing;
 import view.pages.timeline.controller.TimeLineController;
 import view.pages.timeline.listener.TimeLineListener;
 import view.pages.timeline.view.TimeLineSwing;
 import view.pages.timeline.view.comment.CommentsSwing;
-import model.Account;
-import logic.Manager;
-import model.Tweet;
-import model.pages.LoginPage;
-import model.pages.TimeLinePage;
-import model.pages.messenger.ChatRoom;
-import model.pages.personal.Info;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.util.Stack;
 
 public class GraphicManager {
@@ -68,7 +69,7 @@ public class GraphicManager {
     }
 
     public void goToLoginPage(Manager manager) {
-        new LoginSwing(new RegistrationListener(new LoginPage(manager)));
+        new LoginSwing(new RegistrationListener(new RegistrationController(new LoginPage(manager))));
     }
 
     public void goToMenuPage(Account account) {

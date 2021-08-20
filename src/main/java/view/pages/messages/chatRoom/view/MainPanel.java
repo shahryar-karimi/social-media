@@ -19,14 +19,14 @@ public class MainPanel extends JPanel {
     }
 
     public void showGraphic() {
-        northPanel = new NorthPanel(chatRoomSwing.getPage().getAccount(),
-                ((ChatRoom) chatRoomSwing.getPage()).getListener());
+        northPanel = new NorthPanel(chatRoomSwing.getListener().getController().getPage().getAccount(),
+                ((ChatRoom) chatRoomSwing.getListener().getController().getPage()).getListener());
         centerPanel = new CenterPanel(chatRoomSwing);
         JScrollPane scrollPane = new JScrollPane(centerPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        Account listener = ((ChatRoom) chatRoomSwing.getPage()).getListener();
-        Account account = chatRoomSwing.getPage().getAccount();
+        Account listener = ((ChatRoom) chatRoomSwing.getListener().getController().getPage()).getListener();
+        Account account = chatRoomSwing.getListener().getController().getPage().getAccount();
         boolean isBlocked = listener.hasBlocked(account);
         boolean isFollow = listener.isFollow(account) || account.isFollow(listener);
         boolean isMe = listener.getUserName().equals(account.getUserName());
@@ -65,7 +65,7 @@ public class MainPanel extends JPanel {
             SendMessageEvent event = new SendMessageEvent(this, text);
             chatRoomSwing.getListener().eventOccurred(event);
             southPanel.refresh();
-            centerPanel.sendMessage();
+            centerPanel.refresh();
         });
     }
 

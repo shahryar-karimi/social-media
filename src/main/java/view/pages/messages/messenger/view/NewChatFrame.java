@@ -2,7 +2,7 @@ package view.pages.messages.messenger.view;
 
 import model.Account;
 import view.pages.messages.messenger.events.BuildNewChatRoomEvent;
-import view.panels.MyScrollPane;
+import view.myPanels.MyScrollPane;
 
 import javax.swing.*;
 import java.awt.*;

@@ -28,7 +28,7 @@ public class MainPanel extends JPanel implements ActionListener {
 
     public MainPanel(Swing swing) {
         this.swing = swing;
-        this.timeLine = (TimeLinePage) swing.getPage();
+        this.timeLine = (TimeLinePage) swing.getListener().getController().getPage();
         showGraphic();
     }
 

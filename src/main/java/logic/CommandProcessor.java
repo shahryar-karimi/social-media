@@ -1,6 +1,6 @@
 package logic;
 
-import model.Logger.MyLogger;
+import model.logger.MyLogger;
 
 import javax.swing.*;
 
@@ -20,7 +20,7 @@ public class CommandProcessor {
     }
 
     public void loadManager() {
-        setManager(Singleton.load());
+        setManager(DBManger.load());
         if (getManager() == null) setManager(new Manager());
     }
 

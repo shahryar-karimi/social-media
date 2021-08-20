@@ -1,3 +1,364 @@
 {
-  "accounts": []
+  "accounts": [
+    {
+      "firstName": "b",
+      "lastName": "b",
+      "userName": "b",
+      "id": 0,
+      "password": "b",
+      "emailAddress": "b",
+      "phoneNumber": "b",
+      "bio": "b",
+      "isOnline": false,
+      "birthDate": "",
+      "lastSeen": "2021-08-20 15:20:51",
+      "isPagePublic": false,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [
+        "a",
+        "c"
+      ],
+      "followingsUserName": [],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": 0
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [
+            "a followed you",
+            "a unfollowed you",
+            "a followed you",
+            "c followed you"
+          ],
+          "indexOfCurrentSystemMessage": 3
+        },
+        "info": {}
+      },
+      "messengersPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "b",
+            "messages": []
+          },
+          {
+            "listenerUserName": "a",
+            "messages": [
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "a",
+                "time": "2021-08-19 20:29:33",
+                "isSeen": true
+              },
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "a",
+                "time": "2021-08-19 20:29:38",
+                "isSeen": true
+              },
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "b",
+                "time": "2021-08-19 20:30:23",
+                "isSeen": true
+              },
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "b",
+                "time": "2021-08-19 20:31:30",
+                "isSeen": true
+              },
+              {
+                "text": "salam b",
+                "ownerUserName": "a",
+                "senderUserName": "a",
+                "time": "2021-08-20 15:11:51",
+                "isSeen": true
+              },
+              {
+                "text": "1",
+                "ownerUserName": "b",
+                "senderUserName": "b",
+                "time": "2021-08-20 15:12:15",
+                "isSeen": false
+              },
+              {
+                "text": "Tweet : \n    b :\nb1\n    Details:\n    Time : 2021-08-20 15:13:11\n    Likes : 1\n    Retweet : 1\n    comments : 1",
+                "ownerUserName": "b",
+                "senderUserName": "b",
+                "time": "2021-08-20 15:14:35",
+                "isSeen": false
+              },
+              {
+                "text": "salam b",
+                "ownerUserName": "a",
+                "senderUserName": "b",
+                "time": "2021-08-20 15:15:49",
+                "isSeen": false
+              }
+            ]
+          }
+        ]
+      },
+      "explorerPage": {},
+      "menuPage": {},
+      "myTweets": [
+        {
+          "tweetText": "b1",
+          "ownerUserName": "b",
+          "time": "2021-08-20 15:13:11",
+          "faveSetUserName": [
+            "b"
+          ],
+          "comments": [
+            {
+              "tweetText": "b1.1",
+              "ownerUserName": "b",
+              "time": "2021-08-20 15:13:40",
+              "faveSetUserName": [],
+              "comments": [
+                {
+                  "tweetText": "b1.1.1",
+                  "ownerUserName": "b",
+                  "time": "2021-08-20 15:13:51",
+                  "faveSetUserName": [],
+                  "comments": [],
+                  "retweetQty": 0,
+                  "tweetId": 4,
+                  "superTweetId": -1
+                }
+              ],
+              "retweetQty": 0,
+              "tweetId": 3,
+              "superTweetId": -1
+            }
+          ],
+          "retweetQty": 1,
+          "tweetId": 1,
+          "superTweetId": -1
+        },
+        {
+          "tweetText": "b2",
+          "ownerUserName": "b",
+          "time": "2021-08-20 15:13:21",
+          "faveSetUserName": [
+            "b"
+          ],
+          "comments": [],
+          "retweetQty": 0,
+          "tweetId": 2,
+          "superTweetId": -1
+        },
+        {
+          "tweetText": "b1",
+          "ownerUserName": "b",
+          "time": "2021-08-20 15:14:11",
+          "faveSetUserName": [],
+          "comments": [
+            {
+              "tweetText": "b1.1",
+              "ownerUserName": "b",
+              "time": "2021-08-20 15:13:40",
+              "faveSetUserName": [],
+              "comments": [
+                {
+                  "tweetText": "b1.1.1",
+                  "ownerUserName": "b",
+                  "time": "2021-08-20 15:13:51",
+                  "faveSetUserName": [],
+                  "comments": [],
+                  "retweetQty": 0,
+                  "tweetId": 4,
+                  "superTweetId": -1
+                }
+              ],
+              "retweetQty": 0,
+              "tweetId": 3,
+              "superTweetId": -1
+            }
+          ],
+          "retweetQty": 1,
+          "tweetId": 5,
+          "superTweetId": 1,
+          "superTweetOwnerUserName": "b"
+        }
+      ]
+    },
+    {
+      "firstName": "a",
+      "lastName": "a",
+      "userName": "a",
+      "id": 1,
+      "password": "a",
+      "emailAddress": "a",
+      "phoneNumber": "a",
+      "bio": "a",
+      "isOnline": false,
+      "birthDate": "",
+      "lastSeen": "2021-08-20 15:11:57",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [],
+      "followingsUserName": [
+        "b"
+      ],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": 3
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [],
+          "indexOfCurrentSystemMessage": -1
+        },
+        "info": {}
+      },
+      "messengersPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "a",
+            "messages": []
+          },
+          {
+            "listenerUserName": "b",
+            "messages": [
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "a",
+                "time": "2021-08-19 20:29:33",
+                "isSeen": true
+              },
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "a",
+                "time": "2021-08-19 20:29:38",
+                "isSeen": true
+              },
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "b",
+                "time": "2021-08-19 20:30:23",
+                "isSeen": true
+              },
+              {
+                "text": "hi b",
+                "ownerUserName": "a",
+                "senderUserName": "b",
+                "time": "2021-08-19 20:31:30",
+                "isSeen": true
+              },
+              {
+                "text": "salam b",
+                "ownerUserName": "a",
+                "senderUserName": "a",
+                "time": "2021-08-20 15:11:51",
+                "isSeen": true
+              },
+              {
+                "text": "1",
+                "ownerUserName": "b",
+                "senderUserName": "b",
+                "time": "2021-08-20 15:12:15",
+                "isSeen": false
+              },
+              {
+                "text": "Tweet : \n    b :\nb1\n    Details:\n    Time : 2021-08-20 15:13:11\n    Likes : 1\n    Retweet : 1\n    comments : 1",
+                "ownerUserName": "b",
+                "senderUserName": "b",
+                "time": "2021-08-20 15:14:35",
+                "isSeen": false
+              },
+              {
+                "text": "salam b",
+                "ownerUserName": "a",
+                "senderUserName": "b",
+                "time": "2021-08-20 15:15:49",
+                "isSeen": false
+              }
+            ]
+          }
+        ]
+      },
+      "explorerPage": {},
+      "menuPage": {},
+      "myTweets": [
+        {
+          "tweetText": "nima khare",
+          "ownerUserName": "a",
+          "time": "2021-08-20 15:09:34",
+          "faveSetUserName": [],
+          "comments": [],
+          "retweetQty": 0,
+          "tweetId": 0,
+          "superTweetId": -1
+        }
+      ]
+    },
+    {
+      "firstName": "c",
+      "lastName": "c",
+      "userName": "c",
+      "id": 2,
+      "password": "c",
+      "emailAddress": "c",
+      "phoneNumber": "c",
+      "bio": "c",
+      "isOnline": false,
+      "birthDate": "",
+      "lastSeen": "2021-08-20 15:19:46",
+      "isPagePublic": true,
+      "isActive": true,
+      "lastSeenSituation": "every one",
+      "followersUserName": [],
+      "followingsUserName": [
+        "b"
+      ],
+      "blackListsUserName": [],
+      "mutedPeoplesUSerName": [],
+      "friendsListsUserName": {},
+      "timeLinePage": {
+        "indexOfTweet": 2
+      },
+      "settingPage": {},
+      "personalPage": {
+        "notification": {
+          "requests": [],
+          "indexOfCurrentRequest": -1,
+          "systemMessages": [],
+          "indexOfCurrentSystemMessage": -1
+        },
+        "info": {}
+      },
+      "messengersPage": {
+        "chatRooms": [
+          {
+            "listenerUserName": "c",
+            "messages": []
+          }
+        ]
+      },
+      "explorerPage": {},
+      "menuPage": {},
+      "myTweets": []
+    }
+  ]
 }

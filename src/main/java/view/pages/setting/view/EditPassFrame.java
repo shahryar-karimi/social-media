@@ -94,13 +94,13 @@ public class EditPassFrame extends JFrame {
 
     private void updatePass(ActionEvent e) {
         String newPass = newPassField.getText();
-        String lastPass = settingSwing.getPage().getAccount().getPassword();
+        String lastPass = settingSwing.getListener().getController().getPage().getAccount().getPassword();
         UpdatePasswordEvent event = new UpdatePasswordEvent(this, newPass);
         String msg = settingSwing.getListener().eventOccurred(event);
         dispose();
         JOptionPane.showMessageDialog(null, msg, "Editing Password", JOptionPane.PLAIN_MESSAGE);
         settingSwing.getMyLogger().info(EditPassFrame.class.getName(), "processEditPassword",
-                "an account with user name \"" + settingSwing.getPage().getAccount().getUserName() + "\"" +
+                "an account with user name \"" + settingSwing.getListener().getController().getPage().getAccount().getUserName() + "\"" +
                         " edited his/her password from \"" + lastPass + "\"" + " to \"" + newPass + "\"");
     }
 

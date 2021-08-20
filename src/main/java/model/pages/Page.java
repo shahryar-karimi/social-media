@@ -1,7 +1,7 @@
 package model.pages;
 
-import model.Account;
 import logic.Manager;
+import model.Account;
 
 public abstract class Page {
     protected transient Account account;

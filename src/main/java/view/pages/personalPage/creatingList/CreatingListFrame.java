@@ -2,7 +2,7 @@ package view.pages.personalPage.creatingList;
 
 import view.pages.personalPage.creatingList.events.CreateListEvent;
 import view.pages.personalPage.creatingList.listener.CreateListListener;
-import view.panels.SelectingPanel;
+import view.myPanels.SelectingPanel;
 
 import javax.swing.*;
 import java.awt.*;

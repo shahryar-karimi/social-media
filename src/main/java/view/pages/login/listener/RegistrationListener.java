@@ -2,14 +2,13 @@ package view.pages.login.listener;
 
 import event.Event;
 import listener.FormListener;
-import model.pages.LoginPage;
 import view.pages.login.controller.RegistrationController;
 import view.pages.login.event.LoginEvent;
 import view.pages.login.event.SignUpEvent;
 
 public class RegistrationListener extends FormListener {
-    public RegistrationListener(LoginPage page) {
-        this.controller = new RegistrationController(page);
+    public RegistrationListener(RegistrationController controller) {
+        this.controller = controller;
     }
 
     @Override

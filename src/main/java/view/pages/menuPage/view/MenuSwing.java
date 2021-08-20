@@ -36,7 +36,7 @@ public class MenuSwing extends Swing implements ActionListener {
     @Override
     public void run() {
         myLogger.debug(MenuSwing.class.getName(), "run",
-                "Menu page ran for account \"" + getPage().getAccount().getUserName() + "\"");
+                "Menu page ran for account \"" + getListener().getController().getPage().getAccount().getUserName() + "\"");
         showGraphic();
     }
 

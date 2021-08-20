@@ -1,7 +1,7 @@
-package view.panels.footerPanel.controller;
+package view.myPanels.footerPanel.controller;
 
-import view.controller.MainGraphicController;
 import model.pages.Page;
+import view.controller.MainGraphicController;
 
 public class FooterPanelController extends MainGraphicController {
     public FooterPanelController(Page page) {

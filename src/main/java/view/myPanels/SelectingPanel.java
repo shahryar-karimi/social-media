@@ -1,4 +1,4 @@
-package view.panels;
+package view.myPanels;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -6,17 +6,17 @@ import java.util.HashSet;
 import java.util.List;
 
 public class SelectingPanel extends JPanel {
-    private MyScrollPane<String> selectingSP;
-    private JScrollPane selectedSP;
-    private JLabel selectedLbl;
-    private JLabel selectingLbl;
-    private JTextArea selectedTextArea;
-    private HashSet<String> selectedAccountsSet;
+    private final MyScrollPane<String> selectingSP;
+    private final JScrollPane selectedSP;
+    private final JLabel selectedLbl;
+    private final JLabel selectingLbl;
+    private final JTextArea selectedTextArea;
+    private final HashSet<String> selectedAccountsSet;
 
     public SelectingPanel(List<String> list) {
-        selectedLbl = new javax.swing.JLabel();
-        selectingLbl = new javax.swing.JLabel();
-        selectedSP = new javax.swing.JScrollPane();
+        selectedLbl = new JLabel();
+        selectingLbl = new JLabel();
+        selectedSP = new JScrollPane();
         selectedTextArea = new JTextArea();
         selectedAccountsSet = new HashSet<>();
         selectingSP = new MyScrollPane<>(list, false) {
@@ -46,33 +46,33 @@ public class SelectingPanel extends JPanel {
 
         selectingLbl.setText("Select people you want to add : ");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(selectedLbl)
-                                        .addComponent(selectedSP, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(selectingLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(selectedSP, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(selectingLbl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(selectingSP))
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(selectedLbl)
                                         .addComponent(selectingLbl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(selectedSP, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(selectedSP, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                         .addComponent(selectingSP))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }
 
@@ -82,5 +82,13 @@ public class SelectingPanel extends JPanel {
 
     public MyScrollPane<String> getSelectingSP() {
         return selectingSP;
+    }
+
+    public JLabel getSelectedLbl() {
+        return selectedLbl;
+    }
+
+    public JLabel getSelectingLbl() {
+        return selectingLbl;
     }
 }

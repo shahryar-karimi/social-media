@@ -1,12 +1,9 @@
 package model.pages;
 
-import model.Account;
 import logic.Manager;
+import model.Account;
 
-public class LoginPage extends Page{
-
-    public LoginPage() {
-    }
+public class LoginPage extends Page {
 
     public LoginPage(Manager manager) {
         this.manager = manager;
@@ -22,7 +19,7 @@ public class LoginPage extends Page{
 
     public Account createAnAccount(String firstName, String lastName, String userName, String password, String emailAddress, String phoneNumber, String bio) {
         synchronized (Manager.locker) {
-            Account newAccount = new Account(manager, firstName, lastName, userName, password, emailAddress, phoneNumber, bio);
+            Account newAccount = new Account(manager, firstName, lastName, userName, manager.getAccounts().size(), password, emailAddress, phoneNumber, bio);
             manager.getAccounts().add(newAccount);
             manager.save();
             return newAccount;

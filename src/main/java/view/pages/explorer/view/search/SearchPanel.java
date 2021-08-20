@@ -16,7 +16,7 @@ public class SearchPanel extends JPanel {
 
     public void showGraphic() {
 
-        mainPanel = new MainPanel(explorerSwing.getPage().getManager().getAccounts());
+        mainPanel = new MainPanel(explorerSwing.getListener().getController().getPage().getManager().getAccounts());
         JLabel label = new JLabel();
 
         label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 18)); // NOI18N

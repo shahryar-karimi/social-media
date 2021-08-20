@@ -1,6 +1,5 @@
 package view.pages.setting.view;
 
-import model.pages.SettingPage;
 import view.pages.setting.events.DeleteAccountEvent;
 import view.pages.setting.events.SettingActivityEvent;
 import view.pages.setting.events.SettingLastSeenEvent;
@@ -44,7 +43,7 @@ public class MainPanel extends JPanel {
         header.setHorizontalAlignment(JLabel.CENTER);
 
         privacyCb.setModel(new DefaultComboBoxModel<>(new String[]{"public", "private"}));
-        if (settingSwing.getPage().getAccount().isPagePublic()) privacyCb.setSelectedItem("public");
+        if (settingSwing.getListener().getController().getPage().getAccount().isPagePublic()) privacyCb.setSelectedItem("public");
         else privacyCb.setSelectedItem("private");
         privacyCb.addActionListener(this::privacyActionPerformed);
 
@@ -52,9 +51,9 @@ public class MainPanel extends JPanel {
         lastSeenLbl.setText("Last seen : ");
 
         lastSeenCb.setModel(new DefaultComboBoxModel<>(new String[]{"every one", "followings", "no one"}));
-        if (settingSwing.getPage().getAccount().getLastSeenSituation().equals("every one"))
+        if (settingSwing.getListener().getController().getPage().getAccount().getLastSeenSituation().equals("every one"))
             lastSeenCb.setSelectedItem("every one");
-        else if (settingSwing.getPage().getAccount().getLastSeenSituation().equals("followings"))
+        else if (settingSwing.getListener().getController().getPage().getAccount().getLastSeenSituation().equals("followings"))
             lastSeenCb.setSelectedItem("followings");
         else
             lastSeenCb.setSelectedItem("no one");
@@ -67,7 +66,7 @@ public class MainPanel extends JPanel {
         activityLbl.setText("Activity : ");
 
         activityCb.setModel(new DefaultComboBoxModel<>(new String[]{"Activate", "Deactivate"}));
-        if (settingSwing.getPage().getAccount().isActive())
+        if (settingSwing.getListener().getController().getPage().getAccount().isActive())
             activityCb.setSelectedItem("Activate");
         else
             activityCb.setSelectedItem("Deactivate");
@@ -112,7 +111,7 @@ public class MainPanel extends JPanel {
             settingSwing.getListener().eventOccurred(event);
             settingSwing.getManager().getSwings().empty();
             settingSwing.dispose();
-            settingSwing.getPage().getManager().goToLoginPage();
+            settingSwing.getListener().getController().getPage().getManager().goToLoginPage();
         }
     }
 

@@ -8,6 +8,6 @@ public class MyFrame extends JFrame {
         this.setLayout(null);
         this.setSize(600, 800);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 }

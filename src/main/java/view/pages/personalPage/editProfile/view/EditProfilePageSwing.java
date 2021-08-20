@@ -9,9 +9,9 @@ import view.pages.Swing;
 import view.pages.personalPage.PersonalPageSwing;
 import view.pages.personalPage.editProfile.event.EditProfileEvent;
 import view.pages.personalPage.editProfile.listener.EditProfileListener;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,7 +30,7 @@ public class EditProfilePageSwing extends Swing {
     public EditProfilePageSwing(EditProfileListener listener) {
         super();
         this.listener = listener;
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         addSwing(this);
         run();
     }
@@ -39,7 +39,7 @@ public class EditProfilePageSwing extends Swing {
     public void run() {
         this.setVisible(true);
         myLogger.debug(PersonalPageSwing.class.getName(), "run",
-                "Edit Profile run for account \"" + getPage().getAccount().toString() + "\"");
+                "Edit Profile run for account \"" + getListener().getController().getPage().getAccount().toString() + "\"");
         showGraphic();
     }
 

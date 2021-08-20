@@ -1,6 +1,5 @@
 package view.pages.explorer.view.random;
 
-import model.pages.ExplorerPage;
 import model.pages.TimeLinePage;
 import view.pages.explorer.event.SetRandomTweetEvent;
 import view.pages.explorer.view.ExplorerSwing;
@@ -22,12 +21,12 @@ public class MainPanel extends JPanel implements ActionListener {
 
     public MainPanel(ExplorerSwing explorerSwing) {
         this.explorerSwing = explorerSwing;
-        timeLine = new TimeLinePage(explorerSwing.getPage().getAccount(), explorerSwing.getPage().getManager(), false);
+        timeLine = new TimeLinePage(explorerSwing.getListener().getController().getPage().getAccount(), explorerSwing.getListener().getController().getPage().getManager(), false);
         showGraphic();
     }
 
     private void initTweetsPanel() {
-        tweetsPanel = new TweetsPanel(new TweetsPanelListener(new TweetsPanelController(explorerSwing.getPage())), timeLine.getAccount(), timeLine.getCurrentTweet(), explorerSwing);
+        tweetsPanel = new TweetsPanel(new TweetsPanelListener(new TweetsPanelController(explorerSwing.getListener().getController().getPage())), timeLine.getAccount(), timeLine.getCurrentTweet(), explorerSwing);
         tweetsPanel.setPreferredSize(new Dimension(428, 283));
     }
 

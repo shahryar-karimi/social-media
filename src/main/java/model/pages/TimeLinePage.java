@@ -1,7 +1,7 @@
 package model.pages;
 
-import model.Account;
 import logic.Manager;
+import model.Account;
 import model.Tweet;
 
 import java.util.LinkedList;
@@ -30,26 +30,6 @@ public class TimeLinePage extends Page {
         this.tweets = tweets;
         if (!tweets.isEmpty()) setIndexOfTweet(tweets.size() - 1);
         else this.indexOfTweet = -1;
-    }
-
-    public static String showPage() {
-        return "Time line:\n" +
-                "1.next tweet\n" +
-                "2.previous tweet\n" +
-                "3.fave\n" +
-                "4.save tweet\n" +
-                "5.retweet\n" +
-                "6.forward\n" +
-                "7.block user\n" +
-                "8.mute user\n" +
-                "9.report\n" +
-                "10.user page\n" +
-                "11.send comment\n" +
-                "12.show comments\n" +
-                "13.faves list\n" +
-                "14.back\n" +
-                "15.quit\n" +
-                "16.exit";
     }
 
     public static Tweet showTweetByIndex(LinkedList<Tweet> tweets, int index) {
@@ -112,18 +92,6 @@ public class TimeLinePage extends Page {
         return message;
     }
 
-    public String fave() {
-        if (currentTweet != null && !currentTweet.faveSetContains(account)) {
-            currentTweet.addFave(account);
-            return "Current tweet liked successfully";
-        } else if (currentTweet == null) {
-            return "Failed to fave current tweet\nCurrent tweet not found";
-        } else {
-            currentTweet.removeFave(account);
-            return "Current tweet disliked successfully";
-        }
-    }
-
     public void addTweet(Tweet tweet) {
         tweets.add(tweet);
         setIndexOfTweet(tweets.size() - 1);
@@ -132,46 +100,5 @@ public class TimeLinePage extends Page {
     public void removeTweetByIndex(int index) {
         tweets.remove(index);
         setIndexOfTweet(tweets.size() - 1);
-    }
-
-    public void blockUser() {
-        this.account.block(currentTweet.getAccount());
-        for (int i = 0; i < tweets.size(); i++) {
-            if (tweets.get(i).getAccount().equals(account)) {
-                tweets.remove(i);
-                i--;
-            }
-        }
-        setIndexOfTweet(tweets.size() - 1);
-    }
-
-    public void muteUser() {
-        this.account.mute(currentTweet.getAccount());
-    }
-
-    public String report() {
-        return account.report(currentTweet.getAccount());
-    }
-
-    public void sendComment(String comment) {
-        Tweet newComment = account.getPersonalPage().writeNewTweet(comment);
-        newComment.setTime();
-        currentTweet.addComment(newComment);
-    }
-
-    public String forward(LinkedList<Account> accounts) {
-        String result = "";
-        for (Account account : accounts) {
-            result += currentTweet.forward(this.account, account);
-        }
-        return result;
-    }
-
-    public String showFavesList() {
-        String result = "";
-        for (Account account1 : currentTweet.getFavesSet()) {
-            result += account1 + "\n";
-        }
-        return result;
     }
 }

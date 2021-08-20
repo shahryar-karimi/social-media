@@ -1,4 +1,4 @@
-package model.Logger;
+package model.logger;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -33,37 +33,25 @@ public class MyLogger {
         return LocalDateTime.now().toString().replace('T', ' ').substring(0, 19);
     }
 
-    private void log(Level level, String nameOfClass, String nameOfMethod ,String message) {
+    private void log(Level level, String nameOfClass, String nameOfMethod, String message) {
         try {
             getFileWriter().write(date() + " - " +
                     level + " - " +
                     nameOfClass + " - " +
                     nameOfMethod + " - " +
                     message + "\n"
-                    );
+            );
             getFileWriter().flush();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void debug(String nameOfClass, String nameOfMethod ,String message) {
+    public void debug(String nameOfClass, String nameOfMethod, String message) {
         log(Level.DEBUG, nameOfClass, nameOfMethod, message);
     }
 
-    public void info(String nameOfClass, String nameOfMethod ,String message) {
+    public void info(String nameOfClass, String nameOfMethod, String message) {
         log(Level.INFO, nameOfClass, nameOfMethod, message);
-    }
-
-    public void warn(String nameOfClass, String nameOfMethod ,String message) {
-        log(Level.WARN, nameOfClass, nameOfMethod, message);
-    }
-
-    public void error(String nameOfClass, String nameOfMethod ,String message) {
-        log(Level.ERROR, nameOfClass, nameOfMethod, message);
-    }
-
-    public void fatal(String nameOfClass, String nameOfMethod ,String message) {
-        log(Level.FATAL, nameOfClass, nameOfMethod, message);
     }
 }

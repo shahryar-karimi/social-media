@@ -19,6 +19,7 @@ public class LoginSwing extends Swing {
     public LoginSwing(RegistrationListener listener) {
         super();
         this.listener = listener;
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         run();
     }
 
@@ -31,7 +32,7 @@ public class LoginSwing extends Swing {
     @Override
     public void showGraphic() {
         this.setSize(300, 360);
-        this.setTitle("LoginEvent");
+        this.setTitle("Registration page");
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 

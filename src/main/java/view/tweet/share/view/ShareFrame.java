@@ -1,6 +1,6 @@
 package view.tweet.share.view;
 
-import view.panels.SelectingPanel;
+import view.myPanels.SelectingPanel;
 import view.tweet.share.event.ShareEvent;
 import view.tweet.share.listener.ShareListener;
 import model.Account;

@@ -1,13 +1,13 @@
 package logic;
 
-import view.controller.GraphicManager;
 import model.Account;
-import model.Logger.MyLogger;
+import model.logger.MyLogger;
 import model.Tweet;
 import model.pages.TimeLinePage;
 import model.pages.messenger.ChatRoom;
 import model.pages.messenger.MessengersPage;
 import model.pages.personal.Info;
+import view.controller.GraphicManager;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,11 +16,9 @@ public class Manager {
     private LinkedList<Account> accounts;
     private static final GraphicManager graphicManager = new GraphicManager();
     public static final Object locker = new Object();
-//    private transient Loop loop;
 
     public Manager() {
         accounts = new LinkedList<>();
-//        loop = new Loop(this);
     }
 
     public void setAccounts(LinkedList<Account> accounts) {
@@ -71,32 +69,7 @@ public class Manager {
     }
 
     public void save() {
-        Singleton.save(this);
-    }
-
-    public void update() {
-        synchronized (locker) {
-            Manager manager = Singleton.load();
-            first:
-            for (Account newAccount : manager.getAccounts()) {
-                for (Account oldAccount : accounts) {
-                    if (oldAccount.equals(newAccount)) {
-                        oldAccount.update(newAccount);
-                        continue first;
-                    }
-                }
-                accounts.add(newAccount);
-            }
-            first:
-            for (Account oldAccount : accounts) {
-                for (Account newAccount : manager.getAccounts()) {
-                    if (oldAccount.equals(newAccount)) {
-                        continue first;
-                    }
-                }
-                deleteAccount(oldAccount);
-            }
-        }
+        DBManger.save(this);
     }
 
     public void quit(Account account) {
@@ -130,7 +103,6 @@ public class Manager {
     public void goToMenuPage(Account account) {
         save();
         graphicManager.goToMenuPage(account);
-//        loop.start();
     }
 
     public void gotoPersonalPage(Account account) {

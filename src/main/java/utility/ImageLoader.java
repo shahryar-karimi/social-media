@@ -7,11 +7,6 @@ public class ImageLoader {
     private static final HashMap<String, ImageIcon> tweetsIcons = new HashMap<>();
     private static final HashMap<String, ImageIcon> others = new HashMap<>();
 
-    private static void init() {
-        initTweetsIcons();
-        initOthers();
-    }
-
     private static void initOthers() {
         others.put("refresh", new ImageIcon("src/main/resources/pictures/refresh.png"));
         others.put("unSeen", new ImageIcon("src/main/resources/pictures/tick.png"));

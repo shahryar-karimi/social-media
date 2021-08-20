@@ -8,9 +8,9 @@ import view.pages.accountsListSwing.view.AccountsListSwing;
 import view.pages.personalPage.PersonalPageSwing;
 import view.pages.personalPage.info.events.InfoEvent;
 import view.pages.personalPage.info.listener.InfoListener;
-import view.panels.footerPanel.controller.FooterPanelController;
-import view.panels.footerPanel.listener.FooterPanelListener;
-import view.panels.footerPanel.view.FooterPanel;
+import view.myPanels.footerPanel.controller.FooterPanelController;
+import view.myPanels.footerPanel.listener.FooterPanelListener;
+import view.myPanels.footerPanel.view.FooterPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,13 +32,15 @@ public class InfoPageSwing extends Swing {
     private final JButton followersBtn;
     private final JButton followingsBtn;
     private final JPanel jPanel1;
+    private final JScrollPane jScrollPane1;
+    private final JScrollPane jScrollPane3;
 
     public InfoPageSwing(InfoListener listener, Account visitor) {
         super();
         this.listener = listener;
-        this.owner = getPage().getAccount();
+        this.owner = getListener().getController().getPage().getAccount();
         this.visitor = visitor;
-        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getPage())));
+        footerPanel = new FooterPanel(new FooterPanelListener(new FooterPanelController(getListener().getController().getPage())));
         addSwing(this);
         this.followersQuantityLbl = new JLabel();
         this.followingsQuantityLbl = new JLabel();
@@ -57,6 +59,8 @@ public class InfoPageSwing extends Swing {
                 reportBtn, muteBtn, followersBtn, followingsBtn};
         for (JButton button : buttons) button.addActionListener(this);
         jPanel1 = new JPanel();
+        jScrollPane1 = new JScrollPane();
+        jScrollPane3 = new JScrollPane();
         run();
 
     }
@@ -76,12 +80,6 @@ public class InfoPageSwing extends Swing {
         JLabel idLbl = new JLabel();
         JLabel bioLbl = new JLabel();
 
-        JScrollPane jScrollPane1 = new JScrollPane();
-
-
-        JScrollPane jScrollPane3 = new JScrollPane();
-
-
         if (visitor.getUserName().equals(owner.getUserName())) {
             followOrNotBtn.setEnabled(false);
             reportBtn.setEnabled(false);
@@ -95,13 +93,13 @@ public class InfoPageSwing extends Swing {
             followOrNotBtn.setText("Follow");
         }
 
-        addOrRemoveListBtn.setText("Add to List");
+        addOrRemoveListBtn.setText("Change to List");
 
         nameLbl.setText(owner.getFirstName() + " " + owner.getLastName());
 
         userNameLbl.setText(owner.getUserName());
 
-        idLbl.setText(owner.getId());
+        idLbl.setText(owner.getId() + "");
 
         lastSeenLbl.setText(owner.getLastSeen(visitor));
 
@@ -270,25 +268,29 @@ public class InfoPageSwing extends Swing {
         } else if (e.getSource() == blockBtn) {
             sendEvent("block");
         } else if (e.getSource() == sendMessageBtn) {
-            sendEvent("send message");
+            if (sendEvent("send message")) dispose();
         } else if (e.getSource() == reportBtn) {
             sendEvent("report");
         } else if (e.getSource() == muteBtn) {
             sendEvent("mute");
         } else if (e.getSource() == followersBtn) {
             this.dispose();
-            new AccountsListSwing(owner.getFollowers(), new ClickListener(new ClickController(getPage())));
+            new AccountsListSwing(owner.getFollowers(), new ClickListener(new ClickController(getListener().getController().getPage())));
         } else if (e.getSource() == followingsBtn) {
             this.dispose();
-            new AccountsListSwing(owner.getFollowings(), new ClickListener(new ClickController(getPage())));
+            new AccountsListSwing(owner.getFollowings(), new ClickListener(new ClickController(getListener().getController().getPage())));
         }
         updateGraphic();
     }
 
-    private void sendEvent(String work) {
+    private boolean sendEvent(String work) {
         InfoEvent event = new InfoEvent(this, owner, visitor, work);
         String msg = listener.eventOccurred(event);
-        if (msg != null) JOptionPane.showMessageDialog(null, msg);
+        if (msg != null) {
+            JOptionPane.showMessageDialog(null, msg);
+            return false;
+        }
+        return true;
     }
 
     @Override

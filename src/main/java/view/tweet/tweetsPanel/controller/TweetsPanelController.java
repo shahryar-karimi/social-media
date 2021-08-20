@@ -1,5 +1,8 @@
 package view.tweet.tweetsPanel.controller;
 
+import model.Account;
+import model.Tweet;
+import model.pages.Page;
 import view.controller.MainGraphicController;
 import view.pages.accountsListSwing.controller.ClickController;
 import view.pages.accountsListSwing.listener.ClickListener;
@@ -7,9 +10,6 @@ import view.pages.accountsListSwing.view.AccountsListSwing;
 import view.tweet.share.controller.ShareController;
 import view.tweet.share.listener.ShareListener;
 import view.tweet.share.view.ShareFrame;
-import model.Account;
-import model.Tweet;
-import model.pages.Page;
 
 import java.util.LinkedList;
 
